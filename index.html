@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Block Codigos</title>
+<link rel="icon" type="image/x-icon" href="/favicon-16x16.png">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap"></noscript>
+<style>
+  :root {
+    --bg: #0a0c10; --bg2: #0f1318; --bg3: #141920; --border: #1e2a38;
+    --accent: #00c8ff; --accent2: #ff4b6e; --accent3: #39ff8c;
+    --text: #c8d8e8; --text-dim: #556677; --text-bright: #eaf4ff;
+    --mono: 'Share Tech Mono', monospace;
+    --display: 'Barlow Condensed', sans-serif;
+    --body: 'Barlow', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: var(--body); font-size: 14px; min-height: 100vh; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px); pointer-events: none; z-index: 9999; }
+
+  header { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 0 32px; display: flex; align-items: center; gap: 20px; height: 60px; position: sticky; top: 0; z-index: 100; }
+  .logo { font-family: var(--display); font-weight: 900; font-size: 22px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; text-shadow: 0 0 20px rgba(0,200,255,0.4); }
+  .logo span { color: var(--accent2); }
+  .header-meta { margin-left: auto; display: flex; align-items: center; gap: 24px; }
+  .stat-chip { font-family: var(--mono); font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
+  .stat-chip strong { color: var(--accent3); font-size: 15px; }
+  .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--accent3); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(57,255,140,0.4)} 50%{opacity:.6;box-shadow:0 0 0 5px rgba(57,255,140,0)} }
+
+  .container { display: flex; height: calc(100vh - 60px); }
+  aside { width: 300px; min-width: 300px; max-width: 300px; background: var(--bg2); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
+  .sidebar-title { font-family: var(--display); font-weight: 700; font-size: 11px; letter-spacing: 3px; color: var(--text-dim); text-transform: uppercase; padding: 18px 20px 12px; border-bottom: 1px solid var(--border); }
+  .form-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; flex: 1; contain: layout size; }
+  .field-group { display: flex; flex-direction: column; gap: 5px; }
+  label { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; color: var(--text-dim); text-transform: uppercase; }
+  input, select, textarea { background: var(--bg3); border: 1px solid var(--border); color: var(--text-bright); font-family: var(--mono); font-size: 13px; padding: 9px 12px; border-radius: 3px; outline: none; transition: border-color .2s, box-shadow .2s; width: 100%; }
+  input:focus, select:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,200,255,0.1); }
+  select option { background: var(--bg3); }
+
+  .btn-add { background: var(--accent); color: #000; border: none; font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; padding: 11px; border-radius: 3px; cursor: pointer; transition: background .15s, transform .1s, box-shadow .2s; margin-top: 4px; }
+  .btn-add:hover { background: #2ddeff; box-shadow: 0 0 20px rgba(0,200,255,0.3); }
+  .btn-add:active { transform: scale(0.97); }
+  .btn-add:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .editing-bar { display: none; background: rgba(255,75,110,0.08); border: 1px solid rgba(255,75,110,0.3); border-radius: 3px; padding: 10px 12px; font-family: var(--mono); font-size: 11px; color: var(--accent2); align-items: center; justify-content: space-between; gap: 8px; }
+  .editing-bar.active { display: flex; }
+  .btn-cancel { background: transparent; border: 1px solid var(--accent2); color: var(--accent2); font-family: var(--mono); font-size: 10px; padding: 4px 10px; border-radius: 2px; cursor: pointer; transition: background .15s; }
+  .btn-cancel:hover { background: rgba(255,75,110,0.15); }
+
+  main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+  .toolbar { padding: 14px 24px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--border); background: var(--bg2); flex-wrap: wrap; }
+  .search-wrap { position: relative; flex: 1; max-width: 280px; }
+  .search-wrap input { padding-left: 34px; font-size: 13px; }
+  .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-dim); font-size: 14px; pointer-events: none; }
+  .filter-group { display: flex; gap: 5px; flex-wrap: wrap; }
+  .filter-btn { background: var(--bg3); border: 1px solid var(--border); color: var(--text-dim); font-family: var(--display); font-weight: 600; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 9px; border-radius: 2px; cursor: pointer; transition: all .15s; white-space: nowrap; }
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active { background: rgba(0,200,255,0.1); border-color: var(--accent); color: var(--accent); }
+  .toolbar-right { margin-left: auto; display: flex; gap: 8px; }
+  .btn-export { background: transparent; border: 1px solid var(--border); color: var(--text-dim); font-family: var(--mono); font-size: 11px; padding: 7px 14px; border-radius: 2px; cursor: pointer; transition: all .15s; }
+  .btn-export:hover { border-color: var(--accent3); color: var(--accent3); }
+
+  .table-wrap { flex: 1; overflow-y: auto; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { position: sticky; top: 0; z-index: 10; background: var(--bg3); }
+  th { font-family: var(--display); font-weight: 700; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; cursor: pointer; user-select: none; transition: color .15s; }
+  th:hover { color: var(--accent); }
+  th .sa { margin-left: 4px; opacity: 0.4; font-size: 9px; }
+  th.sort-asc .sa::after { content: '▲'; opacity: 1; }
+  th.sort-desc .sa::after { content: '▼'; opacity: 1; }
+  th:not(.sort-asc):not(.sort-desc) .sa::after { content: '⇅'; }
+  tbody tr { border-bottom: 1px solid rgba(30,42,56,0.6); transition: background .1s; }
+  tbody tr:hover { background: rgba(0,200,255,0.04); }
+  tbody tr.highlight-new { animation: flash-row 1.5s ease-out; }
+  @keyframes flash-row { 0%{background:rgba(0,200,255,0.18)} 100%{background:transparent} }
+  td { padding: 9px 14px; vertical-align: middle; }
+  td.td-id   { font-family: var(--mono); font-size: 11px; color: var(--text-dim); width: 44px; }
+  td.td-code { font-family: var(--mono); font-size: 13px; color: var(--accent); white-space: nowrap; cursor: pointer; transition: color .15s, text-decoration .15s; }
+  td.td-code:hover { text-decoration: underline; color: var(--accent3); }
+  td.td-code.copied-flash { color: var(--accent3); font-weight: bold; }
+  td.td-ver  { color: var(--text-bright); max-width: 200px; }
+
+  .badge { display: inline-block; font-family: var(--display); font-weight: 600; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; white-space: nowrap; }
+  .b-MENCION        { background:rgba(0,200,255,0.12);  color:#00c8ff; border:1px solid rgba(0,200,255,0.25); }
+  .b-SUPERIMPOSICION{ background:rgba(57,255,140,0.1);  color:#39ff8c; border:1px solid rgba(57,255,140,0.25); }
+  .b-PATROCINIO     { background:rgba(255,170,0,0.12);  color:#ffaa00; border:1px solid rgba(255,170,0,0.25); }
+  .b-AMBIENTAL      { background:rgba(180,100,255,0.12);color:#b464ff; border:1px solid rgba(180,100,255,0.25); }
+  .b-CORTINILLA     { background:rgba(255,75,110,0.1);  color:#ff4b6e; border:1px solid rgba(255,75,110,0.25); }
+  .b-BLOQUE         { background:rgba(255,200,0,0.1);   color:#ffc800; border:1px solid rgba(255,200,0,0.2); }
+  .b-VIRTUAL        { background:rgba(100,100,200,0.12);color:#8888ff; border:1px solid rgba(100,100,200,0.25); }
+  .b-ACCION         { background:rgba(255,120,0,0.12);  color:#ff7800; border:1px solid rgba(255,120,0,0.25); }
+  .b-AUTOPROMO      { background:rgba(50,200,50,0.1);   color:#50cc50; border:1px solid rgba(50,200,50,0.2); }
+  .b-FESTEJO        { background:rgba(255,220,50,0.12); color:#ffdc32; border:1px solid rgba(255,220,50,0.25); }
+  .b-MULTI          { background:rgba(100,200,255,0.1); color:#64c8ff; border:1px solid rgba(100,200,255,0.2); }
+  .b-INFOMERCIAL    { background:rgba(200,50,200,0.1);  color:#cc50cc; border:1px solid rgba(200,50,200,0.2); }
+  .b-IACTIVA        { background:rgba(0,255,200,0.1);   color:#00ffc8; border:1px solid rgba(0,255,200,0.2); }
+  .b-default        { background:rgba(100,100,100,0.15);color:#aaa;    border:1px solid rgba(100,100,100,0.2); }
+
+  .action-btns { display: flex; gap: 6px; }
+  .btn-icon { background: transparent; border: 1px solid var(--border); color: var(--text-dim); font-size: 12px; padding: 5px 10px; border-radius: 2px; cursor: pointer; transition: all .15s; font-family: var(--mono); white-space: nowrap; }
+  .btn-icon:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-del:hover  { border-color: var(--accent2) !important; color: var(--accent2) !important; }
+
+  .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 20px; color: var(--text-dim); font-family: var(--mono); font-size: 13px; gap: 12px; opacity: 0.6; }
+  .empty-state .big { font-size: 40px; }
+
+  .statusbar { padding: 6px 24px; border-top: 1px solid var(--border); background: var(--bg2); font-family: var(--mono); font-size: 10px; color: var(--text-dim); display: flex; gap: 24px; align-items: center; flex-wrap: wrap; contain: layout; min-height: 32px; }
+  .statusbar span { color: var(--accent3); }
+  #sb-status { color: var(--accent2); }
+  #sb-status.ok { color: var(--accent3); }
+
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 500; align-items: center; justify-content: center; }
+  .modal-overlay.active { display: flex; }
+  .modal { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; padding: 28px; max-width: 360px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+  .modal h3 { font-family: var(--display); font-weight: 700; font-size: 16px; letter-spacing: 2px; color: var(--accent2); margin-bottom: 12px; }
+  .modal p { font-size: 13px; color: var(--text); margin-bottom: 20px; line-height: 1.5; }
+  .modal p strong { color: var(--text-bright); font-family: var(--mono); }
+  .modal-btns { display: flex; gap: 10px; justify-content: flex-end; }
+
+  .prop-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; max-height: 220px; overflow-y: auto; }
+  .prop-row { display: flex; align-items: center; justify-content: space-between; background: var(--bg3); border: 1px solid var(--border); border-radius: 3px; padding: 8px 12px; font-family: var(--mono); font-size: 12px; color: var(--text-bright); }
+  .prop-row .prop-name { flex: 1; }
+  .prop-row .btn-prop-del { background: transparent; border: 1px solid rgba(255,75,110,0.3); color: var(--accent2); font-family: var(--mono); font-size: 10px; padding: 3px 8px; border-radius: 2px; cursor: pointer; transition: all .15s; }
+  .prop-row .btn-prop-del:hover { background: rgba(255,75,110,0.15); border-color: var(--accent2); }
+  .prop-row .btn-prop-del:disabled { opacity: 0.3; cursor: not-allowed; }
+  .secret-field { margin-bottom: 14px; }
+  .secret-field label { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 2px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 5px; }
+  .secret-hint { font-family: var(--mono); font-size: 10px; color: var(--text-dim); margin-top: 4px; }
+  .secret-hint.error { color: var(--accent2); }
+
+  .toast { position: fixed; bottom: 24px; right: 24px; background: var(--bg3); border: 1px solid var(--border); border-left: 3px solid var(--accent3); color: var(--text-bright); font-family: var(--mono); font-size: 12px; padding: 12px 18px; border-radius: 3px; box-shadow: 0 8px 30px rgba(0,0,0,0.4); transform: translateY(80px); opacity: 0; transition: all .3s cubic-bezier(0.34,1.56,0.64,1); z-index: 999; }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.error { border-left-color: var(--accent2); }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg2); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #2a3d52; }
+  #f-codigo:invalid { border-color: rgba(255,75,110,0.5); }
+  #f-codigo:valid:not(:placeholder-shown) { border-color: rgba(57,255,140,0.4); }
+  
+  /* Estilo para el select de propietarios en la tabla */
+  .prop-select-table {
+    width: 100%;
+    min-width: 40px;
+    font-family: var(--mono);
+    font-size: 11px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text-bright);
+    padding: 5px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .prop-select-table:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(0,200,255,0.1);
+  }
+  .prop-select-table option {
+    background: var(--bg3);
+    color: var(--text-bright);
+    padding: 6px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">BLOCK<span>/</span>CODIGOS</div>
+  <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);letter-spacing:2px;">AUDITSA — GESTIÓN DE SPOTS</div>
+  <div class="header-meta">
+    <div class="stat-chip"><div class="pulse"></div> LIVE</div>
+    <div class="stat-chip">TOTAL <strong id="hdr-total">—</strong></div>
+    <div class="stat-chip">FILTRADOS <strong id="hdr-filtered">—</strong></div>
+  </div>
+</header>
+
+<div class="container">
+  <aside>
+    <div class="sidebar-title">➕ Agregar / Editar registro</div>
+    <div class="form-body">
+      <div class="editing-bar" id="editingBar">
+        <span>✏️ EDITANDO ID #<span id="editingId">—</span></span>
+        <button class="btn-cancel" onclick="cancelEdit()">CANCELAR</button>
+      </div>
+
+      <div class="field-group">
+        <label for="f-codigo">Código <span style="color:var(--text-dim);font-size:9px;letter-spacing:1px;">— 8 dígitos</span></label>
+        <input type="text" id="f-codigo" placeholder="12345678" maxlength="8" pattern="\d{8}" title="8 dígitos">
+      </div>
+      <div class="field-group">
+        <label for="f-version">Versión</label>
+        <input type="text" id="f-version" placeholder="Ej. GONHER V2">
+      </div>
+      <div class="field-group">
+        <label for="f-tipo">Tipo</label>
+        <select id="f-tipo">
+          <option value="">— Seleccionar —</option>
+          <option>ACCION ESPECIAL</option>
+          <option>BLOQUE PATROCINADO</option>
+          <option>CORTINILLA COMERCIAL</option>
+          <option>FESTEJOS DE GOL</option>
+          <option>I.ACTIVA</option>
+          <option>I.AMBIENTAL</option>
+          <option>INFOMERCIAL</option>
+          <option>MENCION</option>
+          <option>MULTIPATROCINIO</option>
+          <option>PATROCINIO</option>
+          <option>SUPERIMPOSICION</option>
+          <option>VIRTUAL</option>
+          <option>AUTOPROMO</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label for="f-marca">Marca</label>
+        <input type="text" id="f-marca" placeholder="Ej. GONHER">
+      </div>
+      <div class="field-group">
+        <label for="f-submarca">Submarca</label>
+        <input type="text" id="f-submarca" placeholder="Ej. GONHERGO">
+      </div>
+      <div class="field-group">
+        <label for="f-producto">Producto</label>
+        <input type="text" id="f-producto" placeholder="Ej. DETERGENTE">
+      </div>
+
+      <button class="btn-add" id="btn-submit" onclick="submitForm()">GUARDAR REGISTRO</button>
+
+      <!-- ─── PROPIETARIOS ─────────────────────────────────── -->
+      <div style="border-top:1px solid var(--border); margin-top:14px; padding-top:14px;">
+        <div class="sidebar-title" style="padding:0 0 10px 0; border-bottom:none;">👤 PROPIETARIOS</div>
+
+        <div class="field-group" style="margin-bottom:8px;">
+          <label for="filtroPropietario">Filtrar por propietario</label>
+          <select id="filtroPropietario" onchange="cambiarPropietarioActivo()">
+            <option value="">— Todos —</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="f-nuevoPropietarioNombre">Nuevo propietario</label>
+          <input type="text" id="nuevoPropietarioNombre" placeholder="Nombre">
+          <div style="display:flex; gap:6px; margin-top:6px;">
+            <button class="btn-icon" onclick="crearPropietario()" style="flex:1;">➕ AGREGAR</button>
+            <button class="btn-icon btn-del" onclick="abrirModalGestionPropietarios()" style="flex:1;">🗑 GESTIONAR</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="toolbar">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Buscar código, nombre..." oninput="searchDebounce()" onclick="this.select();">
+      </div>
+      <div class="filter-group">
+        <button class="filter-btn active" onclick="setFilter('ALL',this)">TODOS</button>
+        <button class="filter-btn" onclick="setFilter('ACCION ESPECIAL',this)">ACCIÓN</button>
+        <button class="filter-btn" onclick="setFilter('BLOQUE PATROCINADO',this)">BLOQUE</button>
+        <button class="filter-btn" onclick="setFilter('CORTINILLA COMERCIAL',this)">CORTINILLA</button>
+        <button class="filter-btn" onclick="setFilter('FESTEJOS DE GOL',this)">FESTEJOS</button>
+        <button class="filter-btn" onclick="setFilter('I.ACTIVA',this)">I.ACTIVA</button>
+        <button class="filter-btn" onclick="setFilter('I.AMBIENTAL',this)">I.AMBIENTAL</button>
+        <button class="filter-btn" onclick="setFilter('INFOMERCIAL',this)">INFOMERCIAL</button>
+        <button class="filter-btn" onclick="setFilter('MENCION',this)">MENCIÓN</button>
+        <button class="filter-btn" onclick="setFilter('MULTIPATROCINIO',this)">MULTI</button>
+        <button class="filter-btn" onclick="setFilter('PATROCINIO',this)">PATROCINIO</button>
+        <button class="filter-btn" onclick="setFilter('SUPERIMPOSICION',this)">SUPER.</button>
+        <button class="filter-btn" onclick="setFilter('VIRTUAL',this)">VIRTUAL</button>
+        <button class="filter-btn" onclick="setFilter('AUTOPROMO',this)">AUTOPROMO</button>
+      </div>
+      <div class="toolbar-right">
+        <button class="btn-export" onclick="exportCSV()">⬇ CSV</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th onclick="sortBy('id')"       data-col="id">#<span class="sa"></span></th>
+            <th onclick="sortBy('codigo')"   data-col="codigo">CÓDIGO<span class="sa"></span></th>
+            <th onclick="sortBy('version')"  data-col="version">VERSIÓN<span class="sa"></span></th>
+            <th onclick="sortBy('tipo')"     data-col="tipo">TIPO<span class="sa"></span></th>
+            <th onclick="sortBy('marca')"    data-col="marca">MARCA<span class="sa"></span></th>
+            <th onclick="sortBy('submarca')" data-col="submarca">SUBMARCA<span class="sa"></span></th>
+            <th onclick="sortBy('producto')" data-col="producto">PRODUCTO<span class="sa"></span></th>
+            <th style="text-align:center;">👤</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+      <div class="empty-state" id="empty-state" style="display:none">
+        <div class="big">📭</div>
+        <div>No hay registros que coincidan</div>
+      </div>
+    </div>
+
+    <div class="statusbar">
+      DB: <span>db.json</span> &nbsp;|&nbsp;
+      Total: <span id="sb-total">—</span> &nbsp;|&nbsp;
+      Mostrando: <span id="sb-visible">—</span> &nbsp;|&nbsp;
+      Guardado: <span id="sb-time">—</span> &nbsp;|&nbsp;
+      Estado: <span id="sb-status">conectando...</span>
+    </div>
+  </main>
+</div>
+
+<!-- Modal: eliminar código -->
+<div class="modal-overlay" id="modal-del">
+  <div class="modal">
+    <h3>⚠ CONFIRMAR ELIMINACIÓN</h3>
+    <p>¿Eliminar el registro <strong id="modal-name">—</strong>?<br>Esta acción no se puede deshacer.</p>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeModal()">CANCELAR</button>
+      <button class="btn-add" style="background:var(--accent2);min-width:90px" onclick="confirmDelete()">ELIMINAR</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: gestión de propietarios -->
+<div class="modal-overlay" id="modal-prop">
+  <div class="modal" style="max-width:420px;">
+    <h3>🗑 GESTIONAR PROPIETARIOS</h3>
+    <p style="margin-bottom:14px;">Para eliminar un propietario ingresa la palabra secreta.<br>
+    <span style="font-size:11px;color:var(--text-dim);">⚠ Se desasociará de todos los códigos vinculados.</span></p>
+    <div class="secret-field">
+      <label>Palabra secreta</label>
+      <input type="password" id="secret-input" placeholder="••••••••••" autocomplete="off" oninput="validarSecreto()">
+      <div class="secret-hint" id="secret-hint">Ingresa la clave para habilitar eliminaciones</div>
+    </div>
+    <div class="prop-list" id="prop-list"></div>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="cerrarModalPropietarios()">CERRAR</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const BASE = window.location.origin;
+const API  = BASE + '/api/codigos';
+const CODIGO_RE = /^\d{8}$/;
+
+let propietarios        = [];
+let propietarioActivoId = null;
+let db        = { codigos: [], meta: {} };
+let editingId = null;
+let deleteId  = null;
+let sortCol   = 'id';
+let sortDir   = 'asc';
+let filterTipo = 'ALL';
+let _searchTimer   = null;
+let _secretOk      = false;
+let _validandoClave = false;
+let _claveTimer    = null;
+
+function actualizarContadores(total) {
+  document.getElementById('sb-time').textContent  = new Date().toLocaleTimeString('es-MX');
+  document.getElementById('sb-total').textContent  = total;
+  document.getElementById('hdr-total').textContent = total;
+}
+
+async function loadFromServer() {
+  try {
+    const r = await fetch(API);
+    if (!r.ok) throw new Error();
+    db = await r.json();
+    const sb = document.getElementById('sb-status');
+    sb.textContent = '✓ conectado';
+    sb.classList.add('ok');
+    await cargarPropietarios();
+    renderTable();
+    updateCounts();
+  } catch {
+    document.getElementById('sb-status').textContent = '✗ servidor no responde — abre INICIAR.bat';
+    toast('No se pudo conectar. Ejecuta INICIAR.bat primero.', true);
+  }
+}
+
+async function submitForm() {
+  const codigo   = document.getElementById('f-codigo').value.trim();
+  const version  = document.getElementById('f-version').value.trim();
+  const tipo     = document.getElementById('f-tipo').value;
+  const marca    = document.getElementById('f-marca').value.trim();
+  const submarca = document.getElementById('f-submarca').value.trim();
+  const producto = document.getElementById('f-producto').value.trim();
+
+  if (!codigo || !version || !tipo || !marca) {
+    toast('Completa código, versión, tipo y marca', true); return;
+  }
+  if (editingId === null && !CODIGO_RE.test(codigo)) {
+    toast('Formato inválido — debe ser 8 dígitos', true);
+    document.getElementById('f-codigo').focus(); return;
+  }
+
+  const btn = document.getElementById('btn-submit');
+  btn.disabled = true;
+  try {
+    if (editingId !== null) {
+      const r = await fetch(`${API}/${editingId}`, {
+        method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ version, tipo, marca, submarca, producto })
+      });
+      if (!r.ok) { const err = await r.json(); throw new Error(err.error || 'Error del servidor'); }
+      const res = await r.json();
+      const idx = db.codigos.findIndex(c => c.id === editingId);
+      if (idx !== -1) db.codigos[idx] = res.registro;
+      actualizarContadores(res.total);
+      toast('Registro actualizado ✓');
+      cancelEdit();
+    } else {
+      if (db.codigos.some(c => c.codigo === codigo)) { toast(`El código ${codigo} ya existe`, true); return; }
+      const r = await fetch(API, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ codigo, version, tipo, marca, submarca, producto,
+          propietarios_ids: propietarioActivoId ? [propietarioActivoId] : [] })
+      });
+      if (!r.ok) { const err = await r.json(); throw new Error(err.error || 'Error del servidor'); }
+      const res = await r.json();
+      db.codigos.push(res.registro);
+      db.meta = { total: res.total };
+      actualizarContadores(res.total);
+      toast('Registro agregado ✓');
+      clearForm();
+      setTimeout(() => {
+        const row = document.querySelector(`tr[data-id="${res.registro.id}"]`);
+        if (row) { row.classList.add('highlight-new'); row.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+      }, 80);
+    }
+  } catch (e) { toast('Error: ' + e.message, true); }
+  finally { btn.disabled = false; }
+  renderTable(); updateCounts();
+}
+
+function clearForm() {
+  ['f-codigo','f-version','f-marca','f-submarca','f-producto'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('f-tipo').value = '';
+}
+
+function startEdit(id) {
+  const item = db.codigos.find(c => c.id === id);
+  if (!item) return;
+  editingId = id;
+  document.getElementById('f-codigo').value    = item.codigo;
+  document.getElementById('f-codigo').readOnly = true;
+  document.getElementById('f-version').value   = item.version  || '';
+  document.getElementById('f-tipo').value      = item.tipo     || '';
+  document.getElementById('f-marca').value     = item.marca    || '';
+  document.getElementById('f-submarca').value  = item.submarca || '';
+  document.getElementById('f-producto').value  = item.producto || '';
+  document.getElementById('editingId').textContent = id;
+  document.getElementById('editingBar').classList.add('active');
+  document.getElementById('btn-submit').textContent = 'ACTUALIZAR';
+  document.getElementById('f-version').focus();
+}
+
+function cancelEdit() {
+  editingId = null;
+  document.getElementById('editingBar').classList.remove('active');
+  document.getElementById('btn-submit').textContent = 'GUARDAR REGISTRO';
+  document.getElementById('f-codigo').readOnly = false;
+  clearForm();
+}
+
+function askDelete(id) {
+  const item = db.codigos.find(c => c.id === id);
+  if (!item) return;
+  deleteId = id;
+  document.getElementById('modal-name').textContent = `${item.codigo} — ${item.version}`;
+  document.getElementById('modal-del').classList.add('active');
+}
+function closeModal() { deleteId = null; document.getElementById('modal-del').classList.remove('active'); }
+
+async function confirmDelete() {
+  try {
+    const r = await fetch(`${API}/${deleteId}`, { method: 'DELETE' });
+    if (!r.ok) { const err = await r.json(); throw new Error(err.error || 'Error al eliminar'); }
+    const res = await r.json();
+    db.codigos = db.codigos.filter(c => c.id !== deleteId);
+    actualizarContadores(res.total);
+    toast('Registro eliminado');
+  } catch (e) { toast('Error: ' + e.message, true); }
+  renderTable(); updateCounts(); closeModal();
+}
+
+function abrirModalGestionPropietarios() {
+  _secretOk = false; _validandoClave = false;
+  document.getElementById('secret-input').value = '';
+  const hint = document.getElementById('secret-hint');
+  hint.textContent = 'Ingresa la clave para habilitar eliminaciones';
+  hint.classList.remove('error'); hint.style.color = '';
+  renderPropList();
+  document.getElementById('modal-prop').classList.add('active');
+  setTimeout(() => document.getElementById('secret-input').focus(), 80);
+}
+function cerrarModalPropietarios() {
+  _secretOk = false;
+  document.getElementById('secret-input').value = '';
+  document.getElementById('modal-prop').classList.remove('active');
+}
+
+async function validarSecreto() {
+  const val = document.getElementById('secret-input').value;
+  const hint = document.getElementById('secret-hint');
+  if (val.length === 0) {
+    _secretOk = false;
+    hint.textContent = 'Ingresa la clave para habilitar eliminaciones';
+    hint.classList.remove('error'); hint.style.color = '';
+    renderPropList(); return;
+  }
+  hint.textContent = '...'; hint.classList.remove('error'); hint.style.color = 'var(--text-dim)';
+  clearTimeout(_claveTimer);
+  _claveTimer = setTimeout(async () => {
+    if (_validandoClave) return;
+    _validandoClave = true;
+    try {
+      const r = await fetch(`${BASE}/api/propietarios/verificar-clave`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ clave: val })
+      });
+      const res = await r.json();
+      _secretOk = res.ok === true;
+      if (_secretOk) {
+        hint.textContent = '✓ Clave correcta — eliminaciones habilitadas';
+        hint.classList.remove('error'); hint.style.color = 'var(--accent3)';
+      } else {
+        hint.textContent = '✗ Clave incorrecta';
+        hint.classList.add('error'); hint.style.color = '';
+      }
+    } catch {
+      hint.textContent = '✗ No se pudo verificar';
+      hint.classList.add('error'); hint.style.color = ''; _secretOk = false;
+    } finally { _validandoClave = false; renderPropList(); }
+  }, 400);
+}
+
+function renderPropList() {
+  const lista = document.getElementById('prop-list');
+  if (propietarios.length === 0) {
+    lista.innerHTML = '<div style="font-family:var(--mono);font-size:12px;color:var(--text-dim);text-align:center;padding:16px;">No hay propietarios registrados</div>';
+    return;
+  }
+  lista.innerHTML = propietarios.map(p => {
+    const asociados = db.codigos.filter(c => Array.isArray(c.propietarios_ids) && c.propietarios_ids.includes(p.id)).length;
+    return `<div class="prop-row">
+      <span class="prop-name">${x(p.nombre)}</span>
+      <span style="font-size:10px;color:var(--text-dim);margin-right:10px;">${asociados} código${asociados !== 1 ? 's' : ''}</span>
+      <button class="btn-prop-del" ${_secretOk ? '' : 'disabled'} onclick="eliminarPropietario(${p.id}, '${x(p.nombre)}')">🗑 ELIMINAR</button>
+    </div>`;
+  }).join('');
+}
+
+async function eliminarPropietario(id, nombre) {
+  if (!_secretOk) { toast('Ingresa la clave secreta primero', true); return; }
+  const btn = document.querySelector(`.prop-row button[onclick*="eliminarPropietario(${id},"]`);
+  if (btn) btn.disabled = true;
+  try {
+    const r = await fetch(`${BASE}/api/propietarios/${id}`, { method: 'DELETE' });
+    if (!r.ok) { const err = await r.json(); throw new Error(err.error || 'Error al eliminar'); }
+    propietarios = propietarios.filter(p => p.id !== id);
+    db.codigos.forEach(c => {
+      if (Array.isArray(c.propietarios_ids)) c.propietarios_ids = c.propietarios_ids.filter(pid => pid !== id);
+    });
+    if (propietarioActivoId === id) { propietarioActivoId = null; document.getElementById('filtroPropietario').value = ''; }
+    actualizarSelectPropietarios(); renderTable(); renderPropList();
+    toast(`Propietario "${nombre}" eliminado ✓`);
+  } catch (e) { toast('Error: ' + e.message, true); if (btn) btn.disabled = false; }
+}
+
+function searchDebounce() {
+  clearTimeout(_searchTimer);
+  _searchTimer = setTimeout(() => applyFilters(), 150);
+}
+function setFilter(tipo, btn) {
+  filterTipo = tipo;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+function applyFilters() { renderTable(); updateCounts(); }
+function getFiltered() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  return db.codigos.filter(c => {
+    const matchTipo = filterTipo === 'ALL' || c.tipo === filterTipo;
+    const matchQ    = !q || c.codigo.toLowerCase().includes(q)
+                         || (c.version||'').toLowerCase().includes(q)
+                         || (c.marca||'').toLowerCase().includes(q)
+                         || (c.submarca||'').toLowerCase().includes(q)
+                         || (c.producto||'').toLowerCase().includes(q)
+                         || (c.tipo||'').toLowerCase().includes(q);
+    const matchProp = propietarioActivoId === null ||
+      (Array.isArray(c.propietarios_ids) && c.propietarios_ids.includes(propietarioActivoId));
+    return matchTipo && matchQ && matchProp;
+  });
+}
+
+function sortBy(col) {
+  sortDir = sortCol === col ? (sortDir === 'asc' ? 'desc' : 'asc') : 'asc';
+  sortCol = col;
+  document.querySelectorAll('th[data-col]').forEach(th => {
+    th.classList.remove('sort-asc','sort-desc');
+    if (th.dataset.col === col) th.classList.add(sortDir === 'asc' ? 'sort-asc' : 'sort-desc');
+  });
+  renderTable();
+}
+function getSorted(arr) {
+  return [...arr].sort((a,b) => {
+    let va = a[sortCol]??'', vb = b[sortCol]??'';
+    if (sortCol === 'id') return sortDir === 'asc' ? va-vb : vb-va;
+    return sortDir === 'asc' ? String(va).localeCompare(String(vb)) : String(vb).localeCompare(String(va));
+  });
+}
+
+function bc(v='') {
+  v = (v||'').toUpperCase();
+  if (v === 'MENCION')             return 'b-MENCION';
+  if (v === 'SUPERIMPOSICION')     return 'b-SUPERIMPOSICION';
+  if (v === 'PATROCINIO')          return 'b-PATROCINIO';
+  if (v === 'I.AMBIENTAL')         return 'b-AMBIENTAL';
+  if (v === 'CORTINILLA COMERCIAL')return 'b-CORTINILLA';
+  if (v === 'BLOQUE PATROCINADO')  return 'b-BLOQUE';
+  if (v === 'VIRTUAL')             return 'b-VIRTUAL';
+  if (v === 'ACCION ESPECIAL')     return 'b-ACCION';
+  if (v === 'AUTOPROMO')           return 'b-AUTOPROMO';
+  if (v === 'FESTEJOS DE GOL')     return 'b-FESTEJO';
+  if (v === 'MULTIPATROCINIO')     return 'b-MULTI';
+  if (v === 'INFOMERCIAL')         return 'b-INFOMERCIAL';
+  if (v === 'I.ACTIVA')            return 'b-IACTIVA';
+  return 'b-default';
+}
+
+function renderTable() {
+  const rows = getSorted(getFiltered());
+  const tbody = document.getElementById('table-body');
+  document.getElementById('empty-state').style.display = rows.length ? 'none' : 'flex';
+
+  tbody.innerHTML = rows.map(c => {
+    const cls = bc(c.tipo);
+    let celdaProp = '';
+    if (propietarioActivoId !== null) {
+      const marcado = Array.isArray(c.propietarios_ids) && c.propietarios_ids.includes(propietarioActivoId);
+      celdaProp = `<td style="text-align:center;">
+        <input type="checkbox" ${marcado ? 'checked' : ''} onchange="togglePropietario(${c.id}, ${propietarioActivoId}, this.checked)">
+      </td>`;
+    } else {
+      const opciones = propietarios.map(p => `<option value="${p.id}">${p.nombre}</option>`).join('');
+      celdaProp = `<td style="padding:4px 8px;vertical-align:middle;">
+        <select class="prop-select-table" aria-label="Añadir propietario al código ${c.codigo}" onchange="agregarPropietarioDesdeSelect(${c.id}, this.value); this.value=''">
+          <option value="">+</option>${opciones}
+        </select>
+      </td>`;
+    }
+    return `<tr data-id="${c.id}">
+      <td class="td-id">${c.id}</td>
+      <td class="td-code" onclick="copiarCodigo(this,'${c.codigo}')" title="Copiar">${x(c.codigo)}</td>
+      <td class="td-ver">${x(c.version||'')}</td>
+      <td><span class="badge ${cls}">${x(c.tipo||'')}</span></td>
+      <td><span class="badge ${cls}">${x(c.marca||'—')}</span></td>
+      <td><span class="badge ${cls}">${x(c.submarca||'—')}</span></td>
+      <td><span class="badge ${cls}">${x(c.producto||'—')}</span></td>
+      ${celdaProp}
+      <td><div class="action-btns">
+        <button class="btn-icon" onclick="startEdit(${c.id})">✏️ EDIT</button>
+        <button class="btn-icon btn-del" onclick="askDelete(${c.id})">🗑</button>
+      </div></td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('sb-visible').textContent  = rows.length;
+  document.getElementById('hdr-filtered').textContent = rows.length;
+}
+
+function updateCounts() {
+  const t = db.codigos.length;
+  document.getElementById('hdr-total').textContent = t;
+  document.getElementById('sb-total').textContent  = t;
+}
+function x(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function exportCSV() {
+  const rows = [['ID','CODIGO','VERSION','TIPO','MARCA','SUBMARCA','PRODUCTO','PROPIETARIOS']];
+  const datos = getFiltered(); 
+  datos.forEach(c => {
+    const nombres = Array.isArray(c.propietarios_ids)
+      ? c.propietarios_ids.map(pid => (propietarios.find(p => p.id === pid)||{}).nombre||'???').join('; ')
+      : '';
+    rows.push([c.id, c.codigo, `"${c.version||''}"`, c.tipo, `"${c.marca||''}"`, `"${c.submarca||''}"`, `"${c.producto||''}"`, `"${nombres}"`]);
+  });
+  const blob = new Blob([rows.map(r=>r.join(',')).join('\n')], {type:'text/csv'});
+  Object.assign(document.createElement('a'), {href:URL.createObjectURL(blob), download:'block_codigos.csv'}).click();
+  toast(`CSV exportado ✓ (${datos.length} registros)`);
+}
+
+function toast(msg, error=false) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast show' + (error ? ' error' : '');
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove('show'), 3200);
+}
+
+async function cargarPropietarios() {
+  try {
+    const r = await fetch(BASE + '/api/propietarios');
+    if (!r.ok) throw new Error();
+    propietarios = await r.json();
+    actualizarSelectPropietarios();
+  } catch { toast('Error al cargar propietarios', true); }
+}
+function actualizarSelectPropietarios() {
+  const select = document.getElementById('filtroPropietario');
+  const prev = select.value;
+  select.innerHTML = '<option value="">— Todos —</option>';
+  propietarios.forEach(p => { select.innerHTML += `<option value="${p.id}">${p.nombre}</option>`; });
+  if (propietarios.some(p => String(p.id) === prev)) select.value = prev;
+  else select.value = '';
+}
+function cambiarPropietarioActivo() {
+  const val = document.getElementById('filtroPropietario').value;
+  propietarioActivoId = val === '' ? null : Number(val);
+  applyFilters();
+}
+async function crearPropietario() {
+  const nombre = document.getElementById('nuevoPropietarioNombre').value.trim();
+  if (!nombre) { toast('Escribe un nombre para el nuevo propietario', true); return; }
+  const btns = document.querySelectorAll('.field-group button');
+  btns.forEach(b => b.disabled = true);
+  try {
+    const r = await fetch(BASE + '/api/propietarios', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nombre })
+    });
+    if (!r.ok) { const err = await r.json(); throw new Error(err.error || 'Error al crear propietario'); }
+    const res = await r.json();
+    propietarios.push(res.propietario);
+    actualizarSelectPropietarios();
+    document.getElementById('filtroPropietario').value = res.propietario.id;
+    cambiarPropietarioActivo();
+    document.getElementById('nuevoPropietarioNombre').value = '';
+    toast('Propietario creado ✓');
+  } catch (e) { toast(e.message, true); }
+  finally { btns.forEach(b => b.disabled = false); }
+}
+async function togglePropietario(codigoId, propietarioId, agregar) {
+  const codigo = db.codigos.find(c => c.id === codigoId);
+  if (!codigo) return;
+  let ids = Array.isArray(codigo.propietarios_ids) ? [...codigo.propietarios_ids] : [];
+  if (agregar) { if (!ids.includes(propietarioId)) ids.push(propietarioId); }
+  else { ids = ids.filter(id => id !== propietarioId); }
+  try {
+    const r = await fetch(`${API}/${codigoId}/propietarios`, {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ propietarios_ids: ids })
+    });
+    if (!r.ok) throw new Error('Error al actualizar');
+    codigo.propietarios_ids = ids;
+    renderTable();
+    toast(agregar ? 'Propietario añadido' : 'Propietario eliminado');
+  } catch (e) { toast(e.message, true); renderTable(); }
+}
+function agregarPropietarioDesdeSelect(codigoId, propId) {
+  if (!propId) return;
+  const propietarioId = Number(propId);
+  const codigo = db.codigos.find(c => c.id === codigoId);
+  if (!codigo) return;
+  if (!Array.isArray(codigo.propietarios_ids)) codigo.propietarios_ids = [];
+  if (!codigo.propietarios_ids.includes(propietarioId)) {
+    const ids = [...codigo.propietarios_ids, propietarioId];
+    fetch(`${API}/${codigoId}/propietarios`, {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ propietarios_ids: ids })
+    }).then(r => {
+      if (r.ok) { codigo.propietarios_ids = ids; renderTable(); toast('Propietario añadido ✓'); }
+      else { r.json().then(err => toast(err.error || 'Error al añadir', true)); }
+    }).catch(e => toast(e.message, true));
+  } else { toast('Ya pertenece a ese propietario', true); }
+}
+function copiarCodigo(el, codigo) {
+  const fallbackCopy = () => {
+    const textarea = document.createElement('textarea');
+    textarea.value = codigo;
+    textarea.style.position = 'fixed';
+    textarea.style.top = '-9999px';
+    textarea.style.left = '-9999px';
+    document.body.appendChild(textarea);
+    textarea.select();
+    textarea.setSelectionRange(0, 99999);
+    
+    try {
+      const success = document.execCommand('copy');
+      document.body.removeChild(textarea);
+      if (success) {
+        toast('📋 Código copiado: ' + codigo);
+        el.classList.add('copied-flash');
+        setTimeout(() => el.classList.remove('copied-flash'), 800);
+      } else {
+        toast('❌ Error al copiar', true);
+      }
+    } catch (err) {
+      document.body.removeChild(textarea);
+      toast('❌ No se pudo copiar', true);
+    }
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(codigo)
+      .then(() => {
+        toast('📋 Código copiado: ' + codigo);
+        el.classList.add('copied-flash');
+        setTimeout(() => el.classList.remove('copied-flash'), 800);
+      })
+      .catch(() => fallbackCopy());
+  } else {
+    fallbackCopy();
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeModal(); cerrarModalPropietarios(); if (editingId !== null) cancelEdit(); }
+  if (e.key === 'Enter' && document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.closest('aside')) submitForm();
+});
+
+loadFromServer();
+</script>
+</body>
+</html>
