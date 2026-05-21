@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda — Teleactiva</title>
+  <link rel="stylesheet" href="tienda.css">
+</head>
+<body>
+
+<!-- ═══════════════ PANTALLA LOGIN ═══════════════ -->
+<div id="pantalla-login">
+  <div class="login-card">
+    <div class="login-logo">
+      <span class="icono">🛒</span>
+      <h1>Tienda Teleactiva</h1>
+      <p>Selecciona tu perfil para continuar</p>
+    </div>
+
+    <label for="sel-usuario">¿Quién eres?</label>
+    <select id="sel-usuario">
+      <option value="">Cargando...</option>
+    </select>
+
+    <button class="btn-primary" id="btn-ingresar">Ingresar →</button>
+
+    <div class="login-divider">¿No tienes perfil?</div>
+
+    <button class="btn-outline" id="btn-nuevo-perfil">+ Crear nuevo perfil</button>
+
+    <div id="form-nuevo-usuario">
+      <input type="text" id="inp-nuevo-usuario" placeholder="Tu nombre" maxlength="30">
+      <button class="btn-primary" id="btn-crear-usuario">Crear perfil</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ APP ═══════════════════════════ -->
+<div id="app">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="header-logo">
+        <span>🛒</span>
+        <span class="nombre">Tienda</span>
+      </div>
+
+      <div class="header-search">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="buscador" placeholder="Buscar productos...">
+      </div>
+
+      <div class="header-acciones">
+        <div class="header-usuario">
+          <div class="avatar" id="avatar-letra">?</div>
+          <span id="nombre-usuario">—</span>
+        </div>
+
+        <button class="btn-carrito" id="btn-carrito">
+          🛒 Carrito
+          <span class="badge-carrito" id="badge-carrito">0</span>
+        </button>
+
+        <button class="btn-cerrar-sesion" id="btn-cerrar-sesion">Salir</button>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="nav-tabs" style="max-width:none;padding:0 1.5rem">
+      <button class="tab activo" id="tab-tienda">🛍 Tienda</button>
+      <button class="tab" id="tab-admin" style="display:none">⚙️ Administración</button>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+
+    <!-- ──── VISTA TIENDA ──── -->
+    <div id="vista-tienda">
+      <div class="filtros-wrap" id="filtros-wrap">
+        <!-- filtros dinámicos -->
+      </div>
+      <div class="productos-grid" id="productos-grid">
+        <!-- productos dinámicos -->
+      </div>
+    </div>
+
+    <!-- ──── VISTA ADMIN ──── -->
+    <div id="vista-admin">
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num" id="stat-total-pedidos">—</div>
+          <div class="stat-label">Total Pedidos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" id="stat-pendientes">—</div>
+          <div class="stat-label">Pendientes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" id="stat-entregados">—</div>
+          <div class="stat-label">Entregados</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" id="stat-revenue">—</div>
+          <div class="stat-label">Ingresos</div>
+        </div>
+      </div>
+
+      <!-- Sub tabs -->
+      <div class="admin-tabs">
+        <button class="admin-tab activo" data-tab="pedidos">📋 Pedidos</button>
+        <button class="admin-tab" data-tab="productos">📦 Productos</button>
+        <button class="admin-tab" data-tab="categorias">🏷 Categorías</button>
+        <button class="admin-tab" data-tab="usuarios">👥 Usuarios</button>
+      </div>
+
+      <!-- ─── SUB: PEDIDOS ─── -->
+      <div id="admin-pedidos">
+        <div class="filtro-estado-wrap" style="margin-bottom:1rem">
+          <button class="filtro-btn filtro-pedido-btn activo" data-estado="todos">Todos</button>
+          <button class="filtro-btn filtro-pedido-btn" data-estado="pendiente">⏳ Pendiente</button>
+          <button class="filtro-btn filtro-pedido-btn" data-estado="entregado">✅ Entregado</button>
+          <button class="filtro-btn filtro-pedido-btn" data-estado="cancelado">❌ Cancelado</button>
+        </div>
+
+        <div class="tabla-wrap">
+          <div class="tabla-header">
+            <h3>📋 Pedidos</h3>
+          </div>
+          <div style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Usuario</th>
+                  <th>Productos</th>
+                  <th>Total</th>
+                  <th>Estado</th>
+                  <th>Fecha</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-pedidos"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── SUB: PRODUCTOS ─── -->
+      <div id="admin-productos" style="display:none">
+        <div class="admin-productos-header">
+          <h3 style="font-family:'Nunito',sans-serif;font-weight:800">📦 Productos</h3>
+          <button class="btn-nuevo" id="btn-nuevo-producto">+ Nuevo producto</button>
+        </div>
+
+        <div class="tabla-wrap">
+          <div style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr>
+                  <th>Img</th>
+                  <th>Nombre</th>
+                  <th>Categoría</th>
+                  <th>Precio</th>
+                  <th>Stock</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-admin-productos"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── SUB: CATEGORIAS ─── -->
+      <div id="admin-categorias" style="display:none">
+        <div class="admin-productos-header">
+          <h3 style="font-family:'Nunito',sans-serif;font-weight:800">🏷 Categorías</h3>
+          <button class="btn-nuevo" id="btn-nueva-categoria">+ Nueva categoría</button>
+        </div>
+        <div class="tabla-wrap">
+          <div style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr>
+                  <th>Emoji</th>
+                  <th>Nombre</th>
+                  <th>Color</th>
+                  <th>Productos</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-admin-categorias"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── SUB: USUARIOS ─── -->
+      <div id="admin-usuarios" style="display:none">
+        <div class="tabla-wrap">
+          <div class="tabla-header">
+            <h3>👥 Usuarios del sistema</h3>
+          </div>
+          <div style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr>
+                  <th>Usuario</th>
+                  <th>Rol</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-admin-usuarios"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /vista-admin -->
+  </main>
+</div><!-- /app -->
+
+<!-- ═══════════════ MODAL CARRITO ════════════════ -->
+<div class="overlay" id="overlay-carrito">
+  <div class="modal-carrito">
+    <div class="modal-header">
+      <h2>🛒 Tu carrito</h2>
+      <button class="btn-cerrar-modal" id="btn-cerrar-carrito">✕</button>
+    </div>
+    <div class="carrito-items" id="carrito-items"></div>
+    <div class="carrito-footer" id="carrito-footer" style="display:none">
+      <div class="carrito-total">
+        <span>Total</span>
+        <span id="carrito-total">S/ 0.00</span>
+      </div>
+      <button class="btn-confirmar" id="btn-confirmar-pedido">Confirmar pedido ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ MODAL PRODUCTO ════════════════ -->
+<div class="overlay-modal" id="overlay-modal-producto">
+  <div class="modal-producto">
+    <h3 id="modal-producto-titulo">Nuevo Producto</h3>
+    <form id="form-producto" onsubmit="return false">
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Nombre *</label>
+          <input type="text" id="prod-nombre" placeholder="Ej: Coca Cola 1L" required>
+        </div>
+        <div class="form-group">
+          <label>Categoría *</label>
+          <select id="prod-categoria" required>
+            <option value="">— Seleccionar —</option>
+            <option value="gaseosas">Gaseosas</option>
+            <option value="galletas">Galletas</option>
+            <option value="snacks">Snacks</option>
+            <option value="lacteos">Lácteos</option>
+            <option value="agua">Agua</option>
+            <option value="otros">Otros</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Precio (S/) *</label>
+          <input type="number" id="prod-precio" step="0.10" min="0" placeholder="0.00" required>
+        </div>
+        <div class="form-group">
+          <label>Stock</label>
+          <input type="number" id="prod-stock" min="0" placeholder="0">
+        </div>
+        <div class="form-group full">
+          <label>URL Imagen</label>
+          <input type="text" id="prod-imagen" placeholder="https://...">
+        </div>
+      </div>
+      <div class="form-acciones">
+        <button type="button" class="btn-cancelar" id="btn-cancelar-producto">Cancelar</button>
+        <button type="button" class="btn-guardar" id="btn-guardar-producto">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════════════ TOAST ════════════════════════ -->
+<div id="toast-container"></div>
+
+<!-- ═══════════════ MODAL CATEGORÍA ════════════ -->
+<div class="overlay-modal" id="overlay-modal-categoria">
+  <div class="modal-producto" style="max-width:420px">
+    <h3 id="modal-categoria-titulo">Nueva Categoría</h3>
+    <form id="form-categoria" onsubmit="return false">
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Nombre *</label>
+          <input type="text" id="cat-nombre" placeholder="Ej: Bebidas" maxlength="30" required>
+        </div>
+        <div class="form-group">
+          <label>Emoji</label>
+          <input type="text" id="cat-emoji" placeholder="🛒" maxlength="4"
+                 style="font-size:1.3rem;text-align:center">
+        </div>
+        <div class="form-group">
+          <label>Color</label>
+          <input type="color" id="cat-color" value="#16a34a"
+                 style="height:42px;padding:.3rem;cursor:pointer">
+        </div>
+        <div class="form-group full">
+          <label>Vista previa</label>
+          <div id="cat-preview"
+               style="display:inline-flex;align-items:center;padding:.4rem 1rem;border-radius:50px;font-weight:700;font-size:.9rem;border:2px solid;transition:.2s">
+            📦 Categoría
+          </div>
+        </div>
+      </div>
+      <div class="form-acciones">
+        <button type="button" class="btn-cancelar" id="btn-cancelar-categoria">Cancelar</button>
+        <button type="button" class="btn-guardar" id="btn-guardar-categoria">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════════════ MODAL CLAVE ADMIN ══════════ -->
+<div class="overlay-modal" id="overlay-modal-clave">
+  <div class="modal-producto" style="max-width:360px">
+    <div style="text-align:center;margin-bottom:1.2rem">
+      <div style="font-size:2.5rem;margin-bottom:.4rem">🔐</div>
+      <h3 style="margin:0">Acceso Administrador</h3>
+      <p style="font-size:.82rem;color:var(--gris-texto);margin-top:.3rem">Ingresa la clave de administrador</p>
+    </div>
+    <div class="form-group" style="margin-bottom:.5rem">
+      <label>Clave</label>
+      <input type="password" id="inp-clave-admin" placeholder="••••••••" autocomplete="off">
+    </div>
+    <div id="error-clave-admin" style="color:var(--rojo);font-size:.8rem;font-weight:600;min-height:1.2rem;margin-bottom:.8rem"></div>
+    <div class="form-acciones">
+      <button type="button" class="btn-cancelar" id="btn-cancelar-clave">Cancelar</button>
+      <button type="button" class="btn-guardar" id="btn-confirmar-clave">Ingresar</button>
+    </div>
+  </div>
+</div>
+
+<script src="tienda.js"></script>
+</body>
+</html>

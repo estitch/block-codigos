@@ -1,0 +1,377 @@
+{
+  "usuarios": [
+    "Admin",
+    "stitch"
+  ],
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Inca Kola 1.5L",
+      "categoria": "gaseosas",
+      "precio": 5.5,
+      "imagen": "https://placehold.co/200x200/FFD700/333?text=Inca+Kola",
+      "stock": 50
+    },
+    {
+      "id": 2,
+      "nombre": "Coca Cola 1L",
+      "categoria": "gaseosas",
+      "precio": 4.8,
+      "imagen": "https://placehold.co/200x200/CC0000/fff?text=Coca+Cola",
+      "stock": 40
+    },
+    {
+      "id": 3,
+      "nombre": "Sprite 500ml",
+      "categoria": "gaseosas",
+      "precio": 3.2,
+      "imagen": "https://placehold.co/200x200/00AA44/fff?text=Sprite",
+      "stock": 35
+    },
+    {
+      "id": 4,
+      "nombre": "Galletas Oreo",
+      "categoria": "galletas",
+      "precio": 3.5,
+      "imagen": "https://placehold.co/200x200/222/fff?text=Oreo",
+      "stock": 60
+    },
+    {
+      "id": 5,
+      "nombre": "Galletas Vainilla",
+      "categoria": "galletas",
+      "precio": 2.8,
+      "imagen": "https://placehold.co/200x200/F5DEB3/333?text=Vainilla",
+      "stock": 45
+    },
+    {
+      "id": 6,
+      "nombre": "Chifles Clásicos",
+      "categoria": "snacks",
+      "precio": 2,
+      "imagen": "https://placehold.co/200x200/DAA520/333?text=Chifles",
+      "stock": 80
+    },
+    {
+      "id": 7,
+      "nombre": "Papas Lays",
+      "categoria": "snacks",
+      "precio": 3,
+      "imagen": "https://placehold.co/200x200/FFB700/333?text=Lays",
+      "stock": 70
+    },
+    {
+      "id": 8,
+      "nombre": "Leche Gloria 1L",
+      "categoria": "lacteos",
+      "precio": 4.2,
+      "imagen": "https://placehold.co/200x200/E8F4FD/333?text=Gloria",
+      "stock": 30
+    },
+    {
+      "id": 9,
+      "nombre": "Yogurt Fresa",
+      "categoria": "lacteos",
+      "precio": 3.8,
+      "imagen": "https://placehold.co/200x200/FF69B4/fff?text=Yogurt",
+      "stock": 25
+    }
+  ],
+  "pedidos": [
+    {
+      "id": 1,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 3,
+          "nombre": "Sprite 500ml",
+          "precio": 3.2,
+          "cantidad": 1
+        },
+        {
+          "productoId": 2,
+          "nombre": "Coca Cola 1L",
+          "precio": 4.8,
+          "cantidad": 1
+        },
+        {
+          "productoId": 1,
+          "nombre": "Inca Kola 1.5L",
+          "precio": 5.5,
+          "cantidad": 1
+        }
+      ],
+      "total": 13.5,
+      "estado": "entregado",
+      "fecha": "2026-05-21T08:08:40.544Z",
+      "pagado": true
+    },
+    {
+      "id": 2,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 3,
+          "nombre": "Sprite 500ml",
+          "precio": 3.2,
+          "cantidad": 1
+        },
+        {
+          "productoId": 2,
+          "nombre": "Coca Cola 1L",
+          "precio": 4.8,
+          "cantidad": 1
+        },
+        {
+          "productoId": 7,
+          "nombre": "Papas Lays",
+          "precio": 3,
+          "cantidad": 1
+        },
+        {
+          "productoId": 9,
+          "nombre": "Yogurt Fresa",
+          "precio": 3.8,
+          "cantidad": 1
+        }
+      ],
+      "total": 14.8,
+      "estado": "entregado",
+      "fecha": "2026-05-21T08:22:12.389Z"
+    },
+    {
+      "id": 3,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 5,
+          "nombre": "Galletas Vainilla",
+          "precio": 2.8,
+          "cantidad": 1
+        },
+        {
+          "productoId": 4,
+          "nombre": "Galletas Oreo",
+          "precio": 3.5,
+          "cantidad": 1
+        }
+      ],
+      "total": 6.3,
+      "estado": "cancelado",
+      "fecha": "2026-05-21T08:22:16.283Z"
+    },
+    {
+      "id": 4,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 3,
+          "nombre": "Sprite 500ml",
+          "precio": 3.2,
+          "cantidad": 1
+        }
+      ],
+      "total": 3.2,
+      "estado": "entregado",
+      "fecha": "2026-05-21T08:22:21.429Z"
+    },
+    {
+      "id": 5,
+      "usuario": "Admin",
+      "items": [
+        {
+          "productoId": 2,
+          "nombre": "Coca Cola 1L",
+          "precio": 4.8,
+          "cantidad": 1
+        }
+      ],
+      "total": 4.8,
+      "estado": "entregado",
+      "fecha": "2026-05-21T08:41:37.077Z"
+    },
+    {
+      "id": 6,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 3,
+          "nombre": "Sprite 500ml",
+          "precio": 3.2,
+          "cantidad": 1
+        },
+        {
+          "productoId": 2,
+          "nombre": "Coca Cola 1L",
+          "precio": 4.8,
+          "cantidad": 1
+        },
+        {
+          "productoId": 4,
+          "nombre": "Galletas Oreo",
+          "precio": 3.5,
+          "cantidad": 2
+        },
+        {
+          "productoId": 9,
+          "nombre": "Yogurt Fresa",
+          "precio": 3.8,
+          "cantidad": 1
+        }
+      ],
+      "total": 18.8,
+      "estado": "entregado",
+      "fecha": "2026-05-21T08:49:31.932Z",
+      "pagado": true
+    },
+    {
+      "id": 7,
+      "usuario": "Admin",
+      "items": [
+        {
+          "productoId": 9,
+          "nombre": "Yogurt Fresa",
+          "precio": 3.8,
+          "cantidad": 1
+        },
+        {
+          "productoId": 8,
+          "nombre": "Leche Gloria 1L",
+          "precio": 4.2,
+          "cantidad": 1
+        },
+        {
+          "productoId": 7,
+          "nombre": "Papas Lays",
+          "precio": 3,
+          "cantidad": 1
+        },
+        {
+          "productoId": 6,
+          "nombre": "Chifles Clásicos",
+          "precio": 2,
+          "cantidad": 1
+        }
+      ],
+      "total": 13,
+      "estado": "entregado",
+      "fecha": "2026-05-21T09:12:47.335Z",
+      "pagado": true
+    },
+    {
+      "id": 8,
+      "usuario": "Admin",
+      "items": [
+        {
+          "productoId": 2,
+          "nombre": "Coca Cola 1L",
+          "precio": 4.8,
+          "cantidad": 1
+        },
+        {
+          "productoId": 3,
+          "nombre": "Sprite 500ml",
+          "precio": 3.2,
+          "cantidad": 1
+        },
+        {
+          "productoId": 4,
+          "nombre": "Galletas Oreo",
+          "precio": 3.5,
+          "cantidad": 1
+        }
+      ],
+      "total": 11.5,
+      "estado": "entregado",
+      "fecha": "2026-05-21T09:15:00.561Z"
+    },
+    {
+      "id": 9,
+      "usuario": "Admin",
+      "items": [
+        {
+          "productoId": 9,
+          "nombre": "Yogurt Fresa",
+          "precio": 3.8,
+          "cantidad": 1
+        },
+        {
+          "productoId": 8,
+          "nombre": "Leche Gloria 1L",
+          "precio": 4.2,
+          "cantidad": 1
+        },
+        {
+          "productoId": 7,
+          "nombre": "Papas Lays",
+          "precio": 3,
+          "cantidad": 1
+        },
+        {
+          "productoId": 6,
+          "nombre": "Chifles Clásicos",
+          "precio": 2,
+          "cantidad": 1
+        }
+      ],
+      "total": 13,
+      "estado": "entregado",
+      "fecha": "2026-05-21T09:15:22.114Z"
+    },
+    {
+      "id": 10,
+      "usuario": "Admin",
+      "items": [
+        {
+          "productoId": 8,
+          "nombre": "Leche Gloria 1L",
+          "precio": 4.2,
+          "cantidad": 11
+        },
+        {
+          "productoId": 7,
+          "nombre": "Papas Lays",
+          "precio": 3,
+          "cantidad": 1
+        }
+      ],
+      "total": 49.2,
+      "estado": "entregado",
+      "fecha": "2026-05-21T09:15:55.994Z"
+    }
+  ],
+  "_nextProductoId": 11,
+  "_nextPedidoId": 11,
+  "categorias": [
+    {
+      "id": "gaseosas",
+      "nombre": "Gaseosas",
+      "emoji": "🥤",
+      "color": "#3b82f6"
+    },
+    {
+      "id": "galletas",
+      "nombre": "Galletas",
+      "emoji": "🍪",
+      "color": "#f59e0b"
+    },
+    {
+      "id": "snacks",
+      "nombre": "Snacks",
+      "emoji": "🍟",
+      "color": "#ef4444"
+    },
+    {
+      "id": "lacteos",
+      "nombre": "Lácteos",
+      "emoji": "🥛",
+      "color": "#8b5cf6"
+    },
+    {
+      "id": "dulces",
+      "nombre": "Dulces",
+      "emoji": "🍭",
+      "color": "#f0b433"
+    }
+  ]
+}
