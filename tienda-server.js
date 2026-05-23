@@ -4,7 +4,10 @@ const path = require('path');
 const app = express();
 const PORT = 3031;
 
-const DB_PATH = path.join(__dirname, 'tienda-db.json');
+const DB_PATH      = path.join(__dirname, 'tienda-db.json');
+const BACKUP_DIR   = path.join(__dirname, 'backups');
+const MAX_BACKUPS  = 30;   // máximo de archivos a conservar
+const BACKUP_INTERVALO_MS = 60 * 60 * 1000; // backup automático cada 1 hora
 const ADMIN_CLAVE = 'TIENDA2026';
 const crypto = require('crypto');
 
@@ -94,16 +97,16 @@ function cargarDB() {
         { id: 'agua',     nombre: 'Agua',       emoji: '💧', color: '#06b6d4' }
       ],
       productos: [
-        { id: 1, nombre: 'Inca Kola 1.5L', categoria: 'gaseosas', precio: 5.50, imagen: 'https://placehold.co/200x200/FFD700/333?text=Inca+Kola', stock: 50 },
-        { id: 2, nombre: 'Coca Cola 1L', categoria: 'gaseosas', precio: 4.80, imagen: 'https://placehold.co/200x200/CC0000/fff?text=Coca+Cola', stock: 40 },
-        { id: 3, nombre: 'Sprite 500ml', categoria: 'gaseosas', precio: 3.20, imagen: 'https://placehold.co/200x200/00AA44/fff?text=Sprite', stock: 35 },
-        { id: 4, nombre: 'Galletas Oreo', categoria: 'galletas', precio: 3.50, imagen: 'https://placehold.co/200x200/222/fff?text=Oreo', stock: 60 },
-        { id: 5, nombre: 'Galletas Vainilla', categoria: 'galletas', precio: 2.80, imagen: 'https://placehold.co/200x200/F5DEB3/333?text=Vainilla', stock: 45 },
-        { id: 6, nombre: 'Chifles Clásicos', categoria: 'snacks', precio: 2.00, imagen: 'https://placehold.co/200x200/DAA520/333?text=Chifles', stock: 80 },
-        { id: 7, nombre: 'Papas Lays', categoria: 'snacks', precio: 3.00, imagen: 'https://placehold.co/200x200/FFB700/333?text=Lays', stock: 70 },
-        { id: 8, nombre: 'Leche Gloria 1L', categoria: 'lacteos', precio: 4.20, imagen: 'https://placehold.co/200x200/E8F4FD/333?text=Gloria', stock: 30 },
-        { id: 9, nombre: 'Yogurt Fresa', categoria: 'lacteos', precio: 3.80, imagen: 'https://placehold.co/200x200/FF69B4/fff?text=Yogurt', stock: 25 },
-        { id: 10, nombre: 'Agua San Luis 600ml', categoria: 'agua', precio: 1.50, imagen: 'https://placehold.co/200x200/87CEEB/333?text=San+Luis', stock: 100 }
+        { id: 1, nombre: 'Inca Kola 1.5L', precioBase: 3.8, categoria: 'gaseosas', precio: 5.50, imagen: 'https://placehold.co/200x200/FFD700/333?text=Inca+Kola', stock: 50 },
+        { id: 2, nombre: 'Coca Cola 1L', precioBase: 3.2, categoria: 'gaseosas', precio: 4.80, imagen: 'https://placehold.co/200x200/CC0000/fff?text=Coca+Cola', stock: 40 },
+        { id: 3, nombre: 'Sprite 500ml', precioBase: 2.0, categoria: 'gaseosas', precio: 3.20, imagen: 'https://placehold.co/200x200/00AA44/fff?text=Sprite', stock: 35 },
+        { id: 4, nombre: 'Galletas Oreo', precioBase: 2.2, categoria: 'galletas', precio: 3.50, imagen: 'https://placehold.co/200x200/222/fff?text=Oreo', stock: 60 },
+        { id: 5, nombre: 'Galletas Vainilla', precioBase: 1.8, categoria: 'galletas', precio: 2.80, imagen: 'https://placehold.co/200x200/F5DEB3/333?text=Vainilla', stock: 45 },
+        { id: 6, nombre: 'Chifles Clásicos', precioBase: 1.2, categoria: 'snacks', precio: 2.00, imagen: 'https://placehold.co/200x200/DAA520/333?text=Chifles', stock: 80 },
+        { id: 7, nombre: 'Papas Lays', precioBase: 1.8, categoria: 'snacks', precio: 3.00, imagen: 'https://placehold.co/200x200/FFB700/333?text=Lays', stock: 70 },
+        { id: 8, nombre: 'Leche Gloria 1L', precioBase: 2.8, categoria: 'lacteos', precio: 4.20, imagen: 'https://placehold.co/200x200/E8F4FD/333?text=Gloria', stock: 30 },
+        { id: 9, nombre: 'Yogurt Fresa', precioBase: 2.5, categoria: 'lacteos', precio: 3.80, imagen: 'https://placehold.co/200x200/FF69B4/fff?text=Yogurt', stock: 25 },
+        { id: 10, nombre: 'Agua San Luis 600ml', precioBase: 0.8, categoria: 'agua', precio: 1.50, imagen: 'https://placehold.co/200x200/87CEEB/333?text=San+Luis', stock: 100 }
       ],
       pedidos: [],
       _nextProductoId: 11,
@@ -112,8 +115,18 @@ function cargarDB() {
     fs.writeFileSync(DB_PATH, JSON.stringify(inicial, null, 2));
     return inicial;
   }
-  const db = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
-  // Migración: agregar categorias si no existe
+  let db;
+  try {
+    db = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
+  } catch (e) {
+    console.error('[DB] Error leyendo tienda-db.json:', e.message);
+    throw new Error('No se pudo leer la base de datos: ' + e.message);
+  }
+
+  // ── Migraciones acumuladas (una sola escritura al final) ─────────────────
+  let necesitaGuardar = false;
+
+  // M1: categorias
   if (!db.categorias) {
     db.categorias = [
       { id: 'gaseosas', nombre: 'Gaseosas',  emoji: '🥤', color: '#3b82f6' },
@@ -122,13 +135,73 @@ function cargarDB() {
       { id: 'lacteos',  nombre: 'Lácteos',    emoji: '🥛', color: '#8b5cf6' },
       { id: 'agua',     nombre: 'Agua',       emoji: '💧', color: '#06b6d4' }
     ];
-    guardarDB(db);
+    necesitaGuardar = true;
   }
+
+  // M2: precioBase en productos
+  if (!db.productos) db.productos = [];
+  db.productos.forEach(p => {
+    if (p.precioBase == null) {
+      p.precioBase = parseFloat((p.precio * 0.65).toFixed(2));
+      necesitaGuardar = true;
+    }
+  });
+
+  // M3: campos faltantes globales
+  if (!db.pedidos)   { db.pedidos  = []; necesitaGuardar = true; }
+  if (!db.usuarios)  { db.usuarios = ['Admin']; necesitaGuardar = true; }
+  if (!db._nextProductoId) { db._nextProductoId = (db.productos.reduce((m,p) => Math.max(m,p.id),0) + 1); necesitaGuardar = true; }
+  if (!db._nextPedidoId)   { db._nextPedidoId   = (db.pedidos.reduce((m,p)  => Math.max(m,p.id),0) + 1); necesitaGuardar = true; }
+
+  if (necesitaGuardar) {
+    guardarDB(db);
+    console.log('[DB] Migración aplicada y guardada.');
+  }
+
   return db;
 }
 
 function guardarDB(db) {
   fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2));
+}
+
+// ─── BACKUPS ──────────────────────────────────────────────────────────────────
+
+function crearBackup(motivo = 'manual') {
+  if (!fs.existsSync(DB_PATH)) return null;
+  if (!fs.existsSync(BACKUP_DIR)) fs.mkdirSync(BACKUP_DIR, { recursive: true });
+
+  const ahora    = new Date();
+  const stamp    = ahora.toISOString().replace(/[:.]/g, '-').slice(0, 19);
+  const nombre   = `tienda-db_${stamp}_${motivo}.json`;
+  const destino  = path.join(BACKUP_DIR, nombre);
+
+  fs.copyFileSync(DB_PATH, destino);
+
+  // Rotar: eliminar backups más antiguos si supera el límite
+  const archivos = fs.readdirSync(BACKUP_DIR)
+    .filter(f => f.startsWith('tienda-db_') && f.endsWith('.json'))
+    .map(f => ({ nombre: f, mtime: fs.statSync(path.join(BACKUP_DIR, f)).mtimeMs }))
+    .sort((a, b) => a.mtime - b.mtime);
+
+  while (archivos.length > MAX_BACKUPS) {
+    const viejo = archivos.shift();
+    fs.unlinkSync(path.join(BACKUP_DIR, viejo.nombre));
+    console.log(`[BACKUP] Eliminado por rotación: ${viejo.nombre}`);
+  }
+
+  console.log(`[BACKUP] Creado: ${nombre}`);
+  return nombre;
+}
+
+// Backup automático periódico
+setInterval(() => {
+  crearBackup('auto');
+}, BACKUP_INTERVALO_MS);
+
+// Backup al iniciar el servidor (si ya existe DB)
+if (fs.existsSync(DB_PATH)) {
+  crearBackup('inicio');
 }
 
 // ─── AUTH ADMIN ───────────────────────────────────────────────────────────────
@@ -175,6 +248,16 @@ app.post('/api/admin/logout', (req, res) => {
   const token = req.headers['x-admin-token'];
   if (token) sesionesAdmin.delete(token);
   res.json({ ok: true });
+});
+
+// Verificar si un token sigue válido (usado al restaurar sesión tras recarga)
+app.post('/api/admin/verificar-token', (req, res) => {
+  const token = req.headers['x-admin-token'];
+  if (tokenValido(token)) {
+    res.json({ ok: true });
+  } else {
+    res.status(401).json({ ok: false, error: 'Token expirado o inválido' });
+  }
 });
 
 // ─── USUARIOS ─────────────────────────────────────────────────────────────────
@@ -253,13 +336,14 @@ app.get('/api/productos', (req, res) => {
 });
 
 app.post('/api/productos', requireAdmin, (req, res) => {
-  const { nombre, categoria, precio, imagen, stock } = req.body;
+  const { nombre, categoria, precio, precioBase, imagen, stock } = req.body;
   if (!nombre || !categoria || precio == null) return res.status(400).json({ error: 'Faltan campos' });
   const db = cargarDB();
   const nuevo = {
     id: db._nextProductoId++,
     nombre: nombre.trim(),
     categoria: categoria.trim(),
+    precioBase: parseFloat(precioBase) || 0,
     precio: parseFloat(precio),
     imagen: imagen || `https://placehold.co/200x200/888/fff?text=${encodeURIComponent(nombre)}`,
     stock: parseInt(stock) || 0
@@ -273,7 +357,20 @@ app.put('/api/productos/:id', requireAdmin, (req, res) => {
   const db = cargarDB();
   const idx = db.productos.findIndex(p => p.id === parseInt(req.params.id));
   if (idx === -1) return res.status(404).json({ error: 'No encontrado' });
-  db.productos[idx] = { ...db.productos[idx], ...req.body, id: db.productos[idx].id };
+
+  const productoId = db.productos[idx].id;
+  db.productos[idx] = { ...db.productos[idx], ...req.body, id: productoId };
+  const nuevoPrecioBase = db.productos[idx].precioBase;
+
+  // Sincronizar precioBase en TODOS los pedidos que contengan este producto
+  db.pedidos.forEach(pedido => {
+    pedido.items.forEach(item => {
+      if (item.productoId === productoId) {
+        item.precioBase = nuevoPrecioBase;
+      }
+    });
+  });
+
   guardarDB(db);
   res.json(db.productos[idx]);
 });
@@ -291,6 +388,20 @@ app.delete('/api/productos/:id', requireAdmin, (req, res) => {
 
 app.get('/api/pedidos', (req, res) => {
   const db = cargarDB();
+  // Enriquecer items viejos que no tienen precioBase con el valor actual del producto
+  let modificado = false;
+  db.pedidos.forEach(pedido => {
+    pedido.items.forEach(item => {
+      if (item.precioBase == null || item.precioBase === 0) {
+        const prod = db.productos.find(p => p.id === item.productoId);
+        if (prod && prod.precioBase) {
+          item.precioBase = prod.precioBase;
+          modificado = true;
+        }
+      }
+    });
+  });
+  if (modificado) guardarDB(db);
   res.json(db.pedidos);
 });
 
@@ -298,6 +409,24 @@ app.post('/api/pedidos', (req, res) => {
   const { usuario, items, total } = req.body;
   if (!usuario || !items || !items.length) return res.status(400).json({ error: 'Pedido inválido' });
   const db = cargarDB();
+
+  // Verificar stock suficiente y enriquecer items con precioBase
+  for (const item of items) {
+    const prod = db.productos.find(p => p.id === item.productoId);
+    if (!prod) return res.status(404).json({ error: `Producto "${item.nombre}" no encontrado` });
+    if (prod.stock < item.cantidad) {
+      return res.status(409).json({ error: `Stock insuficiente para "${prod.nombre}" (disponible: ${prod.stock})` });
+    }
+    // Guardar precioBase en el snapshot del item para cálculos futuros
+    item.precioBase = prod.precioBase || 0;
+  }
+
+  // Reservar stock inmediatamente al crear el pedido
+  items.forEach(item => {
+    const prod = db.productos.find(p => p.id === item.productoId);
+    prod.stock -= item.cantidad;
+  });
+
   const pedido = {
     id: db._nextPedidoId++,
     usuario,
@@ -308,7 +437,8 @@ app.post('/api/pedidos', (req, res) => {
   };
   db.pedidos.push(pedido);
   guardarDB(db);
-  res.json(pedido);
+  // Devolver pedido + productos actualizados para que el frontend sincronice
+  res.json({ pedido, productos: db.productos });
 });
 
 app.put('/api/pedidos/:id/pagado', requireAdmin, (req, res) => {
@@ -326,9 +456,23 @@ app.put('/api/pedidos/:id/estado', requireAdmin, (req, res) => {
   const db = cargarDB();
   const idx = db.pedidos.findIndex(p => p.id === parseInt(req.params.id));
   if (idx === -1) return res.status(404).json({ error: 'No encontrado' });
-  db.pedidos[idx].estado = estado;
+
+  const pedido = db.pedidos[idx];
+  const estadoAnterior = pedido.estado;
+
+  // Stock ya fue descontado al crear el pedido (pendiente)
+  // Solo restaurar si se cancela desde pendiente o entregado
+  if (estado === 'cancelado' && (estadoAnterior === 'pendiente' || estadoAnterior === 'entregado')) {
+    pedido.items.forEach(item => {
+      const prod = db.productos.find(p => p.id === item.productoId);
+      if (prod) prod.stock += item.cantidad;
+    });
+  }
+
+  pedido.estado = estado;
   guardarDB(db);
-  res.json(db.pedidos[idx]);
+  // Devolver pedido actualizado + productos actualizados para que el frontend sincronice
+  res.json({ pedido, productos: db.productos });
 });
 
 app.delete('/api/usuarios/:nombre', requireAdmin, (req, res) => {
@@ -338,6 +482,52 @@ app.delete('/api/usuarios/:nombre', requireAdmin, (req, res) => {
   if (!db.usuarios.includes(nombre)) return res.status(404).json({ error: 'No encontrado' });
   db.usuarios = db.usuarios.filter(u => u !== nombre);
   guardarDB(db);
+  res.json({ ok: true });
+});
+
+// ─── ENDPOINTS BACKUP ────────────────────────────────────────────────────────
+
+// Listar backups disponibles
+app.get('/api/backups', requireAdmin, (req, res) => {
+  if (!fs.existsSync(BACKUP_DIR)) return res.json([]);
+  const archivos = fs.readdirSync(BACKUP_DIR)
+    .filter(f => f.startsWith('tienda-db_') && f.endsWith('.json'))
+    .map(f => {
+      const stat = fs.statSync(path.join(BACKUP_DIR, f));
+      return { nombre: f, tamaño: stat.size, fecha: stat.mtime };
+    })
+    .sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+  res.json(archivos);
+});
+
+// Crear backup manual
+app.post('/api/backups', requireAdmin, (req, res) => {
+  try {
+    const nombre = crearBackup('manual');
+    res.json({ ok: true, nombre });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+// Restaurar un backup específico
+app.post('/api/backups/restaurar', requireAdmin, (req, res) => {
+  const { nombre } = req.body;
+  if (!nombre) return res.status(400).json({ error: 'Nombre requerido' });
+  const origen = path.join(BACKUP_DIR, nombre);
+  if (!fs.existsSync(origen)) return res.status(404).json({ error: 'Backup no encontrado' });
+  // Hacer backup del estado actual antes de restaurar
+  crearBackup('pre-restauracion');
+  fs.copyFileSync(origen, DB_PATH);
+  console.log(`[BACKUP] Restaurado: ${nombre}`);
+  res.json({ ok: true });
+});
+
+// Eliminar un backup
+app.delete('/api/backups/:nombre', requireAdmin, (req, res) => {
+  const archivo = path.join(BACKUP_DIR, req.params.nombre);
+  if (!fs.existsSync(archivo)) return res.status(404).json({ error: 'No encontrado' });
+  fs.unlinkSync(archivo);
   res.json({ ok: true });
 });
 

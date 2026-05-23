@@ -81,8 +81,24 @@
       <div class="filtros-wrap" id="filtros-wrap">
         <!-- filtros dinámicos -->
       </div>
-      <div class="productos-grid" id="productos-grid">
-        <!-- productos dinámicos -->
+      <div class="tienda-layout">
+        <!-- Panel Yape -->
+        <aside class="yape-panel">
+          <div class="yape-card">
+            <div class="yape-header">
+              <span class="yape-logo">💜</span>
+              <span class="yape-titulo">Paga con Yape</span>
+            </div>
+            <img src="yape_payment.png" alt="QR Yape" class="yape-qr">
+            <p class="yape-mensaje">
+              📝 Incluir tu usuario en la descripción del Yape por favor
+            </p>
+          </div>
+        </aside>
+        <!-- Grid productos -->
+        <div class="productos-grid" id="productos-grid">
+          <!-- productos dinámicos -->
+        </div>
       </div>
     </div>
 
@@ -107,6 +123,10 @@
           <div class="stat-num" id="stat-revenue">—</div>
           <div class="stat-label">Ingresos</div>
         </div>
+        <div class="stat-card" style="border:2px solid #bbf7d0">
+          <div class="stat-num" id="stat-ganancia" style="color:#15803d">—</div>
+          <div class="stat-label">Ganancia Neta</div>
+        </div>
       </div>
 
       <!-- Sub tabs -->
@@ -115,6 +135,7 @@
         <button class="admin-tab" data-tab="productos">📦 Productos</button>
         <button class="admin-tab" data-tab="categorias">🏷 Categorías</button>
         <button class="admin-tab" data-tab="usuarios">👥 Usuarios</button>
+        <button class="admin-tab" data-tab="backups">💾 Backups</button>
       </div>
 
       <!-- ─── SUB: PEDIDOS ─── -->
@@ -137,7 +158,8 @@
                   <th>#</th>
                   <th>Usuario</th>
                   <th>Productos</th>
-                  <th>Total</th>
+                  <th>Precio Base</th>
+                  <th>Total Venta</th>
                   <th>Estado</th>
                   <th>Fecha</th>
                   <th>Acciones</th>
@@ -164,7 +186,8 @@
                   <th>Img</th>
                   <th>Nombre</th>
                   <th>Categoría</th>
-                  <th>Precio</th>
+                  <th>Precio Base</th>
+                  <th>Precio Venta</th>
                   <th>Stock</th>
                   <th>Acciones</th>
                 </tr>
@@ -220,6 +243,37 @@
         </div>
       </div>
 
+      <!-- ─── SUB: BACKUPS ─── -->
+      <div id="admin-backups" style="display:none">
+        <div class="admin-productos-header">
+          <h3 style="font-family:'Nunito',sans-serif;font-weight:800">💾 Backups de la Base de Datos</h3>
+          <button class="btn-nuevo" id="btn-crear-backup">+ Crear backup ahora</button>
+        </div>
+
+        <!-- Info strip -->
+        <div style="background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:var(--radio);padding:.9rem 1.2rem;margin-bottom:1rem;font-size:.83rem;color:#166534;display:flex;align-items:center;gap:.6rem">
+          <span style="font-size:1.1rem">ℹ️</span>
+          <span>Se crea un backup automático cada <strong>1 hora</strong> y al iniciar el servidor. Se conservan los últimos <strong>30 backups</strong>. Al restaurar se guarda el estado actual antes de sobreescribir.</span>
+        </div>
+
+        <div class="tabla-wrap">
+          <div style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr>
+                  <th>Archivo</th>
+                  <th>Motivo</th>
+                  <th>Fecha</th>
+                  <th>Tamaño</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-backups"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
     </div><!-- /vista-admin -->
   </main>
 </div><!-- /app -->
@@ -265,7 +319,11 @@
           </select>
         </div>
         <div class="form-group">
-          <label>Precio (S/) *</label>
+          <label>Precio Base (S/) *</label>
+          <input type="number" id="prod-precio-base" step="0.10" min="0" placeholder="0.00" required>
+        </div>
+        <div class="form-group">
+          <label>Precio Venta (S/) *</label>
           <input type="number" id="prod-precio" step="0.10" min="0" placeholder="0.00" required>
         </div>
         <div class="form-group">

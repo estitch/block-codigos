@@ -195,12 +195,16 @@ async function crearPerfil() {
 }
 
 function mostrarApp() {
+  // Persistir sesión para sobrevivir recargas
+  sessionStorage.setItem('ts_usuario', estado.usuario);
+  sessionStorage.setItem('ts_esAdmin', estado.esAdmin ? '1' : '');
+  if (estado.adminToken) sessionStorage.setItem('ts_adminToken', estado.adminToken);
+
   document.getElementById('pantalla-login').style.display = 'none';
   document.getElementById('app').style.display = 'block';
   document.getElementById('nombre-usuario').textContent = estado.usuario;
   document.getElementById('avatar-letra').textContent = estado.usuario[0].toUpperCase();
 
-  // Mostrar tab admin si corresponde
   if (estado.esAdmin) {
     document.getElementById('tab-admin').style.display = 'flex';
   }
@@ -214,6 +218,11 @@ function cerrarSesion() {
     fetchJSON(`${API}/admin/logout`, { method: 'POST' }).catch(() => {});
     estado.adminToken = null;
   }
+  sessionStorage.removeItem('ts_usuario');
+  sessionStorage.removeItem('ts_esAdmin');
+  sessionStorage.removeItem('ts_adminToken');
+  sessionStorage.removeItem('ts_vistaAdmin');
+  sessionStorage.removeItem('ts_adminSubTab');
   estado.usuario   = null;
   estado.esAdmin   = false;
   estado.carrito   = [];
@@ -231,6 +240,7 @@ function cerrarSesion() {
 // ─── VISTAS (TIENDA / ADMIN) ──────────────────────────────────────────────────
 
 function mostrarVista(vista) {
+  sessionStorage.setItem('ts_vistaAdmin', vista === 'admin' ? '1' : '');
   document.getElementById('vista-tienda').style.display = vista === 'tienda' ? 'block' : 'none';
   document.getElementById('vista-admin').style.display  = vista === 'admin'  ? 'block' : 'none';
 
@@ -431,14 +441,19 @@ async function confirmarPedido() {
   const total = estado.carrito.reduce((s, i) => s + i.producto.precio * i.cantidad, 0);
 
   try {
-    await fetchJSON(`${API}/pedidos`, {
+    const res = await fetchJSON(`${API}/pedidos`, {
       method: 'POST',
       body: JSON.stringify({ usuario: estado.usuario, items, total })
     });
 
+    // Sincronizar stock actualizado desde el servidor
+    if (res.productos) estado.productos = res.productos;
+
     estado.carrito = [];
     actualizarBadgeCarrito();
     cerrarCarrito();
+    sincronizarTodasLasVistas();
+    actualizarTitulo();
     toast('¡Pedido confirmado! 🎉', 'exito');
   } catch (e) {
     toast(e.message, 'error');
@@ -456,8 +471,9 @@ async function cargarDashboard() {
     ]);
     await cargarProductos();
     renderDashboard();
-  } catch {
-    toast('Error cargando dashboard', 'error');
+  } catch (err) {
+    console.error('[Dashboard]', err);
+    toast('Error cargando dashboard: ' + err.message, 'error');
   }
 }
 
@@ -466,14 +482,38 @@ function renderDashboard() {
   if (estado.adminSubTab === 'pedidos') renderPedidos();
   else if (estado.adminSubTab === 'productos') renderAdminProductos();
   else if (estado.adminSubTab === 'categorias') renderAdminCategorias();
+  else if (estado.adminSubTab === 'backups') renderAdminBackups();
   else renderAdminUsuarios();
+}
+
+// Propaga cambios a todas las secciones que consumen los mismos datos
+function sincronizarTodasLasVistas() {
+  // Siempre actualizar la tienda (productos/filtros)
+  construirFiltros();
+  renderProductos();
+  // Si estamos en admin, re-renderizar la sub-vista activa
+  if (estado.esAdmin && document.getElementById('vista-admin').style.display !== 'none') {
+    actualizarStats();
+    if (estado.adminSubTab === 'pedidos')    renderPedidos();
+    else if (estado.adminSubTab === 'productos') renderAdminProductos();
+    else if (estado.adminSubTab === 'categorias') renderAdminCategorias();
+    else renderAdminUsuarios();
+  }
 }
 
 function cambiarAdminTab(tab) {
   estado.adminSubTab = tab;
+  sessionStorage.setItem('ts_adminSubTab', tab);
   document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('activo'));
   document.querySelector(`.admin-tab[data-tab="${tab}"]`).classList.add('activo');
   renderDashboard();
+}
+
+const TITULO_BASE = 'Tienda Teleactiva';
+
+function actualizarTitulo() {
+  const pendientes = estado.pedidos.filter(p => p.estado === 'pendiente').length;
+  document.title = pendientes > 0 ? `(${pendientes}) ${TITULO_BASE}` : TITULO_BASE;
 }
 
 function actualizarStats() {
@@ -481,8 +521,14 @@ function actualizarStats() {
   document.getElementById('stat-total-pedidos').textContent = pedidos.length;
   document.getElementById('stat-pendientes').textContent = pedidos.filter(p => p.estado === 'pendiente').length;
   document.getElementById('stat-entregados').textContent = pedidos.filter(p => p.estado === 'entregado').length;
-  const revenue = pedidos.filter(p => p.estado !== 'cancelado').reduce((s, p) => s + p.total, 0);
+  const pedidosActivos = pedidos.filter(p => p.estado !== 'cancelado');
+  const revenue = pedidosActivos.reduce((s, p) => s + p.total, 0);
+  const ganancia = pedidosActivos.reduce((s, p) => {
+    return s + p.items.reduce((si, i) => si + ((i.precio - (i.precioBase || 0)) * i.cantidad), 0);
+  }, 0);
   document.getElementById('stat-revenue').textContent = formatPrecio(revenue);
+  document.getElementById('stat-ganancia').textContent = formatPrecio(ganancia);
+  actualizarTitulo();
 }
 
 // PEDIDOS
@@ -493,8 +539,11 @@ function renderPedidos() {
   const contenedor = document.getElementById('admin-pedidos');
   contenedor.style.display = 'block';
   document.getElementById('admin-productos').style.display = 'none';
+  document.getElementById('admin-backups').style.display = 'none';
   document.getElementById('admin-categorias').style.display = 'none';
+  document.getElementById('admin-backups').style.display = 'none';
   document.getElementById('admin-usuarios').style.display = 'none';
+  document.getElementById('admin-backups').style.display = 'none';
 
   let lista = estado.pedidos;
   if (filtroPedidoEstado !== 'todos') {
@@ -534,6 +583,18 @@ function renderPedidos() {
       ? '<span class="badge" style="background:#d1fae5;color:#065f46">💰 Pagado</span>'
       : `<button class="btn-estado" onclick="marcarPagado(${p.id})" style="border-color:#f59e0b;color:#92400e">💰 Pagado</button>`;
 
+    const totalBase = p.items.reduce((s, i) => s + (i.precioBase || 0) * i.cantidad, 0);
+    const itemsBaseHTML = p.items.map(i => {
+      const base = i.precioBase || 0;
+      return '<div style="display:flex;align-items:center;gap:.4rem;margin-bottom:.3rem">'
+        + '<span style="background:var(--gris-2);border-radius:6px;padding:.2rem .5rem;font-size:.78rem;font-weight:700;color:var(--oscuro);white-space:nowrap">x' + i.cantidad + '</span>'
+        + '<span style="font-size:.78rem;color:var(--gris-texto)">' + i.nombre + '</span>'
+        + '<span style="font-size:.78rem;color:#92400e;font-weight:600;margin-left:auto;white-space:nowrap;padding-left:.5rem">' + formatPrecio(base * i.cantidad) + '</span>'
+        + '</div>';
+    }).join('')
+      + '<div style="border-top:1px solid var(--gris-3);margin-top:.3rem;padding-top:.3rem;text-align:right;font-size:.78rem;font-weight:700;color:#92400e">'
+      + 'Total base: ' + formatPrecio(totalBase) + '</div>';
+
     const acciones = p.estado === 'pendiente'
       ? `<div style="display:flex;flex-direction:column;gap:.3rem">
            <button class="btn-estado" onclick="cambiarEstadoPedido(${p.id},'entregado')">✅ Entregar</button>
@@ -547,6 +608,7 @@ function renderPedidos() {
         <td><strong>#${p.id}</strong></td>
         <td>${p.usuario}</td>
         <td style="min-width:220px">${itemsHTML}</td>
+        <td style="min-width:190px">${itemsBaseHTML}</td>
         <td><strong>${formatPrecio(p.total)}</strong></td>
         <td>${badge}</td>
         <td>${fechaCorta(p.fecha)}</td>
@@ -558,14 +620,18 @@ function renderPedidos() {
 
 async function cambiarEstadoPedido(id, nuevoEstado) {
   try {
-    await fetchJSON(`${API}/pedidos/${id}/estado`, {
+    const res = await fetchJSON(`${API}/pedidos/${id}/estado`, {
       method: 'PUT',
       body: JSON.stringify({ estado: nuevoEstado })
     });
     const idx = estado.pedidos.findIndex(p => p.id === id);
-    estado.pedidos[idx].estado = nuevoEstado;
+    estado.pedidos[idx].estado = res.pedido.estado;
+    // Sincronizar productos (stock actualizado por el servidor)
+    if (res.productos) {
+      estado.productos = res.productos;
+    }
     actualizarStats();
-    renderPedidos();
+    sincronizarTodasLasVistas();
     toast(`Pedido #${id} marcado como ${nuevoEstado}`, 'exito');
   } catch (e) {
     toast(e.message, 'error');
@@ -577,8 +643,7 @@ async function marcarPagado(id) {
     await fetchJSON(`${API}/pedidos/${id}/pagado`, { method: 'PUT' });
     const idx = estado.pedidos.findIndex(p => p.id === id);
     estado.pedidos[idx].pagado = true;
-    actualizarStats();
-    renderPedidos();
+    sincronizarTodasLasVistas();
     toast(`Pedido #${id} marcado como pagado 💰`, 'exito');
   } catch (e) {
     toast(e.message, 'error');
@@ -589,8 +654,11 @@ async function marcarPagado(id) {
 
 function renderAdminProductos() {
   document.getElementById('admin-pedidos').style.display = 'none';
+  document.getElementById('admin-backups').style.display = 'none';
   document.getElementById('admin-categorias').style.display = 'none';
+  document.getElementById('admin-backups').style.display = 'none';
   document.getElementById('admin-usuarios').style.display = 'none';
+  document.getElementById('admin-backups').style.display = 'none';
   const contenedor = document.getElementById('admin-productos');
   contenedor.style.display = 'block';
 
@@ -608,7 +676,8 @@ function renderAdminProductos() {
              onerror="this.src='https://placehold.co/36x36/888/fff?text=?'">
       </td>
       <td><strong>${p.nombre}</strong></td>
-      <td><span style="background:var(--verde-bg);color:#166534;padding:.2rem .6rem;border-radius:50px;font-size:.73rem;font-weight:700">${p.categoria}</span></td>
+      <td><span style="background:var(--verde-bg);color:#166534;padding:.2rem .6rem;border-radius:50px;font-size:.73rem;font-weight:700">${getCatLabel(p.categoria)}</span></td>
+      <td style="color:#92400e;font-weight:600">${formatPrecio(p.precioBase || 0)}</td>
       <td><strong>${formatPrecio(p.precio)}</strong></td>
       <td>${p.stock}</td>
       <td>
@@ -642,11 +711,12 @@ function abrirModalProducto(productoId = null) {
   if (productoId) {
     titulo.textContent = 'Editar Producto';
     const p = estado.productos.find(pr => pr.id === productoId);
-    document.getElementById('prod-nombre').value    = p.nombre;
-    document.getElementById('prod-categoria').value = p.categoria;
-    document.getElementById('prod-precio').value    = p.precio;
-    document.getElementById('prod-stock').value     = p.stock;
-    document.getElementById('prod-imagen').value    = p.imagen;
+    document.getElementById('prod-nombre').value       = p.nombre;
+    document.getElementById('prod-categoria').value    = p.categoria;
+    document.getElementById('prod-precio-base').value  = p.precioBase || '';
+    document.getElementById('prod-precio').value       = p.precio;
+    document.getElementById('prod-stock').value        = p.stock;
+    document.getElementById('prod-imagen').value       = p.imagen;
   } else {
     titulo.textContent = 'Nuevo Producto';
   }
@@ -663,15 +733,19 @@ async function guardarProducto() {
   const editId = form.dataset.editando;
 
   const datos = {
-    nombre:    document.getElementById('prod-nombre').value.trim(),
-    categoria: document.getElementById('prod-categoria').value.trim(),
-    precio:    parseFloat(document.getElementById('prod-precio').value),
-    stock:     parseInt(document.getElementById('prod-stock').value),
-    imagen:    document.getElementById('prod-imagen').value.trim() || undefined
+    nombre:     document.getElementById('prod-nombre').value.trim(),
+    categoria:  document.getElementById('prod-categoria').value.trim(),
+    precioBase: parseFloat(document.getElementById('prod-precio-base').value),
+    precio:     parseFloat(document.getElementById('prod-precio').value),
+    stock:      parseInt(document.getElementById('prod-stock').value),
+    imagen:     document.getElementById('prod-imagen').value.trim() || undefined
   };
 
-  if (!datos.nombre || !datos.categoria || isNaN(datos.precio)) {
+  if (!datos.nombre || !datos.categoria || isNaN(datos.precioBase) || isNaN(datos.precio)) {
     return toast('Completa los campos requeridos', 'error');
+  }
+  if (datos.precioBase >= datos.precio) {
+    return toast('El precio base debe ser menor al precio de venta', 'error');
   }
 
   try {
@@ -693,8 +767,7 @@ async function guardarProducto() {
     }
 
     cerrarModalProducto();
-    renderAdminProductos();
-    construirFiltros();
+    sincronizarTodasLasVistas();
   } catch (e) {
     toast(e.message, 'error');
   }
@@ -706,8 +779,7 @@ async function eliminarProducto(id) {
     await fetchJSON(`${API}/productos/${id}`, { method: 'DELETE' });
     estado.productos = estado.productos.filter(p => p.id !== id);
     toast('Producto eliminado', 'exito');
-    renderAdminProductos();
-    construirFiltros();
+    sincronizarTodasLasVistas();
   } catch (e) {
     toast(e.message, 'error');
   }
@@ -717,8 +789,11 @@ async function eliminarProducto(id) {
 
 function renderAdminCategorias() {
   document.getElementById('admin-pedidos').style.display = 'none';
+  document.getElementById('admin-backups').style.display = 'none';
   document.getElementById('admin-productos').style.display = 'none';
+  document.getElementById('admin-backups').style.display = 'none';
   document.getElementById('admin-usuarios').style.display = 'none';
+  document.getElementById('admin-backups').style.display = 'none';
   const contenedor = document.getElementById('admin-categorias');
   contenedor.style.display = 'block';
 
@@ -852,8 +927,7 @@ async function guardarCategoria() {
       toast('Categoría creada ✓', 'exito');
     }
     cerrarModalCategoria();
-    construirFiltros();
-    renderAdminCategorias();
+    sincronizarTodasLasVistas();
   } catch (e) {
     toast(e.message, 'error');
   }
@@ -876,8 +950,11 @@ async function eliminarCategoria(id) {
 
 function renderAdminUsuarios() {
   document.getElementById('admin-pedidos').style.display = 'none';
+  document.getElementById('admin-backups').style.display = 'none';
   document.getElementById('admin-productos').style.display = 'none';
+  document.getElementById('admin-backups').style.display = 'none';
   document.getElementById('admin-categorias').style.display = 'none';
+  document.getElementById('admin-backups').style.display = 'none';
   const contenedor = document.getElementById('admin-usuarios');
   contenedor.style.display = 'block';
 
@@ -924,6 +1001,127 @@ async function eliminarUsuario(nombre) {
   }
 }
 
+// ─── GESTIÓN BACKUPS ─────────────────────────────────────────────────────────
+
+async function renderAdminBackups() {
+  ['admin-pedidos','admin-productos','admin-categorias','admin-usuarios'].forEach(id => {
+    document.getElementById(id).style.display = 'none';
+  });
+  const contenedor = document.getElementById('admin-backups');
+  contenedor.style.display = 'block';
+
+  const tbody = document.getElementById('tbody-backups');
+  tbody.innerHTML = '<tr><td colspan="5" class="tabla-vacia">⏳ Cargando backups...</td></tr>';
+
+  let lista = [];
+  try {
+    lista = await fetchJSON(`${API}/backups`);
+  } catch (e) {
+    tbody.innerHTML = `<tr><td colspan="5" class="tabla-vacia">Error: ${e.message}</td></tr>`;
+    return;
+  }
+
+  if (!lista.length) {
+    tbody.innerHTML = '<tr><td colspan="5" class="tabla-vacia">No hay backups aún</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = '';
+  lista.forEach(b => {
+    const motivo = b.nombre.match(/_([a-z-]+)\.json$/)?.[1] || '—';
+    const motivoLabel = {
+      'manual': '🖐 Manual',
+      'auto': '⏱ Automático',
+      'inicio': '🚀 Inicio servidor',
+      'pre-restauracion': '🔄 Pre-restauración'
+    }[motivo] || motivo;
+
+    const fecha  = new Date(b.fecha).toLocaleString('es-PE', {
+      day: '2-digit', month: '2-digit', year: 'numeric',
+      hour: '2-digit', minute: '2-digit', second: '2-digit'
+    });
+    const kb = (b.tamaño / 1024).toFixed(1) + ' KB';
+
+    const tr = document.createElement('tr');
+
+    const tdNombre = document.createElement('td');
+    tdNombre.innerHTML = '<code style="font-size:.75rem;color:var(--gris-texto)">' + b.nombre + '</code>';
+    tr.appendChild(tdNombre);
+
+    const tdMotivo = document.createElement('td');
+    tdMotivo.textContent = motivoLabel;
+    tr.appendChild(tdMotivo);
+
+    const tdFecha = document.createElement('td');
+    tdFecha.textContent = fecha;
+    tr.appendChild(tdFecha);
+
+    const tdSize = document.createElement('td');
+    tdSize.textContent = kb;
+    tr.appendChild(tdSize);
+
+    const tdAcc = document.createElement('td');
+    tdAcc.style.whiteSpace = 'nowrap';
+
+    const btnRestore = document.createElement('button');
+    btnRestore.className = 'btn-edit';
+    btnRestore.textContent = '🔄 Restaurar';
+    btnRestore.addEventListener('click', () => restaurarBackup(b.nombre));
+    tdAcc.appendChild(btnRestore);
+
+    const btnDel = document.createElement('button');
+    btnDel.className = 'btn-del';
+    btnDel.textContent = '🗑 Eliminar';
+    btnDel.addEventListener('click', () => eliminarBackup(b.nombre));
+    tdAcc.appendChild(btnDel);
+
+    tr.appendChild(tdAcc);
+    tbody.appendChild(tr);
+  });
+}
+
+async function crearBackupManual() {
+  const btn = document.getElementById('btn-crear-backup');
+  btn.disabled = true;
+  btn.textContent = '⏳ Creando...';
+  try {
+    const res = await fetchJSON(`${API}/backups`, { method: 'POST' });
+    toast(`Backup creado: ${res.nombre}`, 'exito');
+    renderAdminBackups();
+  } catch (e) {
+    toast(e.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '+ Crear backup ahora';
+  }
+}
+
+async function restaurarBackup(nombre) {
+  if (!confirm(`¿Restaurar el backup "${nombre}"?\n\nEl estado actual se guardará como pre-restauración antes de sobreescribir.`)) return;
+  try {
+    await fetchJSON(`${API}/backups/restaurar`, {
+      method: 'POST',
+      body: JSON.stringify({ nombre })
+    });
+    toast('✅ Backup restaurado. Recargando datos...', 'exito');
+    // Recargar todos los datos del servidor
+    await cargarDashboard();
+  } catch (e) {
+    toast(e.message, 'error');
+  }
+}
+
+async function eliminarBackup(nombre) {
+  if (!confirm(`¿Eliminar el backup "${nombre}"?`)) return;
+  try {
+    await fetchJSON(`${API}/backups/${encodeURIComponent(nombre)}`, { method: 'DELETE' });
+    toast('Backup eliminado', 'exito');
+    renderAdminBackups();
+  } catch (e) {
+    toast(e.message, 'error');
+  }
+}
+
 // ─── BÚSQUEDA ─────────────────────────────────────────────────────────────────
 
 function onBusqueda(e) {
@@ -933,8 +1131,9 @@ function onBusqueda(e) {
 
 // ─── INICIALIZACIÓN ───────────────────────────────────────────────────────────
 
-document.addEventListener('DOMContentLoaded', () => {
-  inicializarLogin();
+document.addEventListener('DOMContentLoaded', async () => {
+
+  // ── REGISTRAR TODOS LOS LISTENERS SIEMPRE (independiente de sesión) ──────
 
   // Login
   document.getElementById('btn-ingresar').addEventListener('click', iniciarSesion);
@@ -950,7 +1149,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-cerrar-carrito').addEventListener('click', cerrarCarrito);
   document.getElementById('btn-confirmar-pedido').addEventListener('click', confirmarPedido);
 
-  // Cerrar carrito al click en overlay
   document.getElementById('overlay-carrito').addEventListener('click', e => {
     if (e.target === e.currentTarget) cerrarCarrito();
   });
@@ -985,6 +1183,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target === e.currentTarget) cerrarModalProducto();
   });
 
+  // Backups
+  document.getElementById('btn-crear-backup').addEventListener('click', crearBackupManual);
+
   // Modal categoría
   document.getElementById('btn-nueva-categoria').addEventListener('click', () => abrirModalCategoria());
   document.getElementById('btn-cancelar-categoria').addEventListener('click', cerrarModalCategoria);
@@ -1003,4 +1204,36 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Enter') confirmarClave();
     if (e.key === 'Escape') cerrarModalClave();
   });
+
+  // ── RESTAURAR SESIÓN O MOSTRAR LOGIN ─────────────────────────────────────
+
+  const usuarioGuardado = sessionStorage.getItem('ts_usuario');
+  const esAdminGuardado = sessionStorage.getItem('ts_esAdmin') === '1';
+  const tokenGuardado   = sessionStorage.getItem('ts_adminToken');
+  const vistaAdmin      = sessionStorage.getItem('ts_vistaAdmin') === '1';
+  const subTabGuardado  = sessionStorage.getItem('ts_adminSubTab') || 'pedidos';
+
+  if (usuarioGuardado) {
+    if (esAdminGuardado && tokenGuardado) {
+      try {
+        await fetchJSON(`${API}/admin/verificar-token`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-token': tokenGuardado }
+        });
+        estado.adminToken = tokenGuardado;
+        estado.esAdmin = true;
+      } catch {
+        sessionStorage.removeItem('ts_adminToken');
+        sessionStorage.removeItem('ts_esAdmin');
+      }
+    }
+    estado.usuario = usuarioGuardado;
+    estado.adminSubTab = subTabGuardado;
+    mostrarApp();
+    if (vistaAdmin && estado.esAdmin) {
+      mostrarVista('admin');
+    }
+  } else {
+    inicializarLogin();
+  }
 });

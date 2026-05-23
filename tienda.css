@@ -402,6 +402,8 @@ main {
   align-items: center;
   justify-content: center;
   height: 160px;
+  overflow: hidden;
+  cursor: zoom-in;
 }
 
 .producto-img-wrap img {
@@ -409,6 +411,13 @@ main {
   max-width: 100%;
   object-fit: contain;
   border-radius: 8px;
+  transition: transform .35s ease, filter .35s ease;
+  transform-origin: center center;
+}
+
+.producto-img-wrap:hover img {
+  transform: scale(1.55);
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,.18));
 }
 
 .producto-info {
@@ -991,4 +1000,90 @@ tr:hover td { background: var(--gris-1); }
   padding: 2rem;
   color: var(--gris-texto);
   font-size: .9rem;
+}
+
+/* ── LAYOUT TIENDA CON YAPE ──────────────────────────────── */
+
+.tienda-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 1.4rem;
+  align-items: start;
+}
+
+.yape-panel {
+  position: sticky;
+  top: 110px; /* debajo del header */
+}
+
+.yape-card {
+  background: var(--blanco);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-md);
+  overflow: hidden;
+  border: 2px solid #e9d5ff;
+}
+
+.yape-header {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  padding: .7rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.yape-logo { font-size: 1.2rem; }
+
+.yape-titulo {
+  color: #fff;
+  font-weight: 700;
+  font-size: .9rem;
+  font-family: 'Nunito', sans-serif;
+}
+
+.yape-qr {
+  width: 100%;
+  display: block;
+  padding: .8rem;
+  background: var(--blanco);
+}
+
+.yape-mensaje {
+  font-size: .78rem;
+  font-weight: 600;
+  color: #6d28d9;
+  background: #f5f3ff;
+  padding: .7rem .9rem;
+  text-align: center;
+  line-height: 1.4;
+  border-top: 1px solid #e9d5ff;
+}
+
+/* En pantallas pequeñas el panel se va arriba */
+@media (max-width: 768px) {
+  .tienda-layout {
+    grid-template-columns: 1fr;
+  }
+  .yape-panel {
+    position: static;
+  }
+  .yape-card {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .yape-header {
+    display: none;
+  }
+  .yape-qr {
+    width: 110px;
+    flex-shrink: 0;
+    padding: .5rem;
+  }
+  .yape-mensaje {
+    border-top: none;
+    border-left: 1px solid #e9d5ff;
+    text-align: left;
+    font-size: .82rem;
+  }
 }
