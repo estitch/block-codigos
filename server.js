@@ -4,7 +4,7 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
-const PORT = 3031;
+const PORT = 3032;
 const DB_PATH     = path.join(__dirname, 'db.json');
 const DB_BAK_PATH = path.join(__dirname, 'db.json.bak');
 const BACKUP_DIR  = path.join(__dirname, 'backups'); // Directorio para backups periódicos

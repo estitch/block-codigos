@@ -33,7 +33,16 @@
   @keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(57,255,140,0.4)} 50%{opacity:.6;box-shadow:0 0 0 5px rgba(57,255,140,0)} }
 
   .container { display: flex; height: calc(100vh - 60px); }
-  aside { width: 300px; min-width: 300px; max-width: 300px; background: var(--bg2); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
+  aside { width: 300px; min-width: 300px; max-width: 300px; background: var(--bg2); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; transition: width .25s cubic-bezier(.4,0,.2,1), min-width .25s cubic-bezier(.4,0,.2,1); }
+  aside.collapsed { width: 0; min-width: 0; border-right: none; }
+  aside.collapsed .form-body,
+  aside.collapsed .sidebar-title { opacity: 0; pointer-events: none; }
+  .sidebar-title { transition: opacity .15s; }
+  .form-body { transition: opacity .15s; }
+
+  .btn-toggle-aside { background: var(--bg3); border: 1px solid var(--border); color: var(--text-dim); font-family: var(--mono); font-size: 11px; padding: 4px 9px; border-radius: 2px; cursor: pointer; transition: all .15s; display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+  .btn-toggle-aside:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-toggle-aside-fixed { display: none; }
   .sidebar-title { font-family: var(--display); font-weight: 700; font-size: 11px; letter-spacing: 3px; color: var(--text-dim); text-transform: uppercase; padding: 18px 20px 12px; border-bottom: 1px solid var(--border); }
   .form-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; flex: 1; contain: layout size; }
   .field-group { display: flex; flex-direction: column; gap: 5px; }
@@ -175,6 +184,9 @@
 <header>
   <div class="logo">BLOCK<span>/</span>CODIGOS</div>
   <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);letter-spacing:2px;">AUDITSA — GESTIÓN DE SPOTS</div>
+  <button onclick="window.open('http://localhost:3031/tienda.html','_blank')" style="background:#16a34a;color:#fff;padding:.6rem 1.2rem;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:.9rem">
+  🛒 Ir a la Tienda
+</button>
   <div class="header-meta">
     <div class="stat-chip"><div class="pulse"></div> LIVE</div>
     <div class="stat-chip">TOTAL <strong id="hdr-total">—</strong></div>
@@ -183,8 +195,14 @@
 </header>
 
 <div class="container">
+  <button class="btn-toggle-aside-fixed" id="btn-aside-fixed" onclick="toggleAside()" title="Mostrar panel de registro">
+    ➕ Panel
+  </button>
   <aside>
-    <div class="sidebar-title">➕ Agregar / Editar registro</div>
+    <div class="sidebar-title" style="display:flex;align-items:center;justify-content:space-between;">
+      <span>➕ Agregar / Editar registro</span>
+      <button class="btn-toggle-aside" id="btn-toggle-aside" onclick="toggleAside()" title="Ocultar panel">◀ Ocultar</button>
+    </div>
     <div class="form-body">
       <div class="editing-bar" id="editingBar">
         <span>✏️ EDITANDO ID #<span id="editingId">—</span></span>
@@ -279,6 +297,7 @@
         <button class="filter-btn" onclick="setFilter('AUTOPROMO',this)">AUTOPROMO</button>
       </div>
       <div class="toolbar-right">
+      <button class="btn-export" id="btn-toggle-aside-toolbar" onclick="toggleAside()" title="Mostrar / ocultar panel" style="display:none">➕ Panel</button>
         <button class="btn-export" onclick="exportCSV()">⬇ CSV</button>
       </div>
     </div>
@@ -826,6 +845,20 @@ function copiarCodigo(el, codigo) {
       .catch(() => fallbackCopy());
   } else {
     fallbackCopy();
+  }
+}
+
+function toggleAside() {
+  const aside       = document.querySelector('aside');
+  const btnToolbar  = document.getElementById('btn-toggle-aside-toolbar');
+  const btnInner    = document.getElementById('btn-toggle-aside');
+  const collapsed   = aside.classList.toggle('collapsed');
+  if (collapsed) {
+    if (btnToolbar) btnToolbar.style.display = 'block';
+    if (btnInner)   btnInner.textContent = '▶ Mostrar';
+  } else {
+    if (btnToolbar) btnToolbar.style.display = 'none';
+    if (btnInner)   btnInner.innerHTML = '◀ Ocultar';
   }
 }
 

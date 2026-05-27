@@ -308,6 +308,13 @@ function renderProductos() {
     lista = lista.filter(p => p.nombre.toLowerCase().includes(q) || p.categoria.toLowerCase().includes(q));
   }
 
+  // Productos con stock primero, sin stock al final
+  lista = [...lista].sort((a, b) => {
+    const aStock = a.stock > 0 ? 0 : 1;
+    const bStock = b.stock > 0 ? 0 : 1;
+    return aStock - bStock;
+  });
+
   if (!lista.length) {
     grid.innerHTML = `<div class="sin-resultados"><span class="emoji">🔍</span>No hay productos que coincidan</div>`;
     return;
@@ -962,12 +969,19 @@ function renderAdminUsuarios() {
   const lista = estado.usuarios;
 
   if (!lista.length) {
-    tbody.innerHTML = '<tr><td colspan="3" class="tabla-vacia">No hay usuarios</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="4" class="tabla-vacia">No hay usuarios</td></tr>';
     return;
   }
 
   tbody.innerHTML = lista.map(u => {
     const esAdmin = u === 'Admin';
+    const pedidosU = estado.pedidos.filter(p => p.usuario === u && p.estado !== 'cancelado');
+    const gastoTotal = pedidosU.reduce((s, p) => s + p.total, 0);
+    const numPedidos = pedidosU.length;
+    const gastoHTML = esAdmin
+      ? '<span style="color:var(--gris-texto);font-size:.8rem">—</span>'
+      : '<div><span style="font-family:Nunito,sans-serif;font-size:1.1rem;font-weight:900;color:var(--verde)">' + formatPrecio(gastoTotal) + '</span>'
+        + '<span style="display:block;font-size:.72rem;color:var(--gris-texto)">' + numPedidos + ' pedido' + (numPedidos !== 1 ? 's' : '') + '</span></div>';
     return '<tr>'
       + '<td>'
         + '<div style="display:flex;align-items:center;gap:.6rem">'
@@ -980,6 +994,7 @@ function renderAdminUsuarios() {
           ? '<span class="badge" style="background:#fef3c7;color:#92400e">👑 Admin</span>'
           : '<span class="badge" style="background:var(--gris-2);color:var(--gris-texto)">👤 Usuario</span>')
       + '</td>'
+      + '<td>' + gastoHTML + '</td>'
       + '<td>'
         + (esAdmin
           ? '<span style="color:var(--gris-texto);font-size:.8rem">—</span>'

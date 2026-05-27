@@ -826,8 +826,7 @@
       "codigo": "16586883",
       "tipo": "PATROCINIO",
       "propietarios_ids": [
-        1,
-        5
+        1
       ],
       "version": "ANA SEGUROS",
       "marca": "Ana Seguros",
@@ -1121,16 +1120,6 @@
       "marca": "EL POLLO LOCO",
       "submarca": "EL POLLO LOCO (SM)",
       "producto": "RESTAURANTE"
-    },
-    {
-      "id": 135,
-      "codigo": "16627474",
-      "tipo": "BLOQUE PATROCINADO",
-      "propietarios_ids": [],
-      "version": "SUPERIMPOSICION ANA SEGUROS",
-      "marca": "Ana Seguros",
-      "submarca": "Ana Seguros (SM)",
-      "producto": "Aseguradora"
     },
     {
       "id": 136,
@@ -1722,7 +1711,9 @@
       "id": 288,
       "codigo": "16050619",
       "tipo": "MENCION",
-      "propietarios_ids": [],
+      "propietarios_ids": [
+        1
+      ],
       "version": "SUPER COLCHONES",
       "marca": "SÚPER COLCHONES",
       "submarca": "SÚPER COLCHONES (SM)",
@@ -5609,16 +5600,6 @@
       "producto": "GASOLINA"
     },
     {
-      "id": 695,
-      "codigo": "16575718",
-      "tipo": "MENCION",
-      "propietarios_ids": [],
-      "version": "TIENDAS ATLAS",
-      "marca": "TIENDAS ATLAS",
-      "submarca": "TIENDAS ATLAS (SM)",
-      "producto": "TIENDA DE COLCHONES"
-    },
-    {
       "id": 697,
       "codigo": "16575761",
       "tipo": "MENCION",
@@ -6032,7 +6013,9 @@
       "id": 740,
       "codigo": "16612870",
       "tipo": "BLOQUE PATROCINADO",
-      "propietarios_ids": [],
+      "propietarios_ids": [
+        1
+      ],
       "version": "SUPERIMPOSICION ANA SEGUROS",
       "marca": "ANA SEGUROS",
       "submarca": "ANA SEGUROS (SM)",
@@ -8583,18 +8566,6 @@
       "producto": "TORTILLAS"
     },
     {
-      "id": 999,
-      "codigo": "16761601",
-      "tipo": "MENCION",
-      "propietarios_ids": [
-        1
-      ],
-      "version": "VIX MUNDIAL",
-      "marca": "VIX",
-      "submarca": "VIX (SM)",
-      "producto": "STREAMING VIDEO"
-    },
-    {
       "id": 1000,
       "codigo": "16761673",
       "tipo": "SUPERIMPOSICION",
@@ -10093,16 +10064,6 @@
       "marca": "CV DIRECTO",
       "submarca": "JADE COOK",
       "producto": "VENTAS POR TELEVISIÓN"
-    },
-    {
-      "id": 1152,
-      "codigo": "16780813",
-      "tipo": "MENCION",
-      "propietarios_ids": [],
-      "version": "DORMIMUNDO",
-      "marca": "DORMIMUNDO",
-      "submarca": "DORMIMUNDO (SM)",
-      "producto": "TIENDA DE COLCHONES"
     },
     {
       "id": 1153,
@@ -16477,26 +16438,6 @@
       "producto": "TIENDA DEPARTAMENTAL"
     },
     {
-      "id": 1863,
-      "codigo": "16783968",
-      "tipo": "MENCION",
-      "propietarios_ids": [],
-      "version": "SUPER COLCHONES",
-      "marca": "SÚPER COLCHONES",
-      "submarca": "SÚPER COLCHONES (SM)",
-      "producto": "TIENDA DE COLCHONES"
-    },
-    {
-      "id": 1864,
-      "codigo": "16571877",
-      "tipo": "BLOQUE PATROCINADO",
-      "propietarios_ids": [],
-      "version": "SUPERIMPOSICION EL POLLO LOCO",
-      "marca": "EL POLLO LOCO",
-      "submarca": "EL POLLO LOCO (SM)",
-      "producto": "RESTAURANTE"
-    },
-    {
       "id": 1865,
       "codigo": "16717893",
       "tipo": "PATROCINIO",
@@ -16660,7 +16601,9 @@
       "id": 1881,
       "codigo": "16786143",
       "tipo": "MENCION",
-      "propietarios_ids": [],
+      "propietarios_ids": [
+        1
+      ],
       "version": "VIX MUNDIAL",
       "marca": "VIX",
       "submarca": "VIX (SM)",
@@ -17235,16 +17178,6 @@
       "marca": "NISSAN",
       "submarca": "NISSAN (SM)",
       "producto": "VERSA + FINANCIAMIENTO"
-    },
-    {
-      "id": 1939,
-      "codigo": "16067191",
-      "tipo": "MENCION",
-      "propietarios_ids": [],
-      "version": "RESTONIC",
-      "marca": "RESTONIC",
-      "submarca": "RESTONIC (SM)",
-      "producto": "COLCHONES"
     },
     {
       "id": 1940,
@@ -18215,16 +18148,6 @@
       "marca": "TELEVISA",
       "submarca": "TELEVISA (SM)",
       "producto": "AUTOPROMO"
-    },
-    {
-      "id": 2037,
-      "codigo": "16162637",
-      "tipo": "MENCION",
-      "propietarios_ids": [],
-      "version": "VIX",
-      "marca": "VIX",
-      "submarca": "VIX (SM)",
-      "producto": "STREAMING VIDEO"
     },
     {
       "id": 2038,
@@ -19857,16 +19780,6 @@
       "producto": "AUTOPROMO"
     },
     {
-      "id": 2201,
-      "codigo": "16064441",
-      "tipo": "SUPERIMPOSICION",
-      "propietarios_ids": [],
-      "version": "VIX",
-      "marca": "VIX",
-      "submarca": "VIX (SM)",
-      "producto": "STREAMING VIDEO"
-    },
-    {
       "id": 2202,
       "codigo": "16516862",
       "tipo": "MENCION",
@@ -20065,16 +19978,6 @@
       "marca": "BOING",
       "submarca": "BOING (SM)",
       "producto": "BEBIDAS DE FRUTAS"
-    },
-    {
-      "id": 2222,
-      "codigo": "16547896",
-      "tipo": "MENCION",
-      "propietarios_ids": [],
-      "version": "TIENDAS ATLAS",
-      "marca": "TIENDAS ATLAS",
-      "submarca": "TIENDAS ATLAS (SM)",
-      "producto": "TIENDA DE COLCHONES"
     },
     {
       "id": 2223,
@@ -20919,7 +20822,7 @@
     {
       "id": 2307,
       "codigo": "16804712",
-      "tipo": "I.AMBIENTAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "CALIENTE",
       "marca": "CALIENTE",
@@ -20985,11 +20888,31 @@
       "marca": "CV DIRECTO",
       "submarca": "SOFIA DELUXE",
       "producto": "VENTAS POR TELEVISIÓN"
+    },
+    {
+      "id": 2314,
+      "codigo": "16028309",
+      "version": "BBVA",
+      "tipo": "VIRTUAL",
+      "marca": "BBVA",
+      "submarca": "BBVA (SM)",
+      "producto": "BANCO",
+      "propietarios_ids": []
+    },
+    {
+      "id": 2315,
+      "codigo": "16813836",
+      "version": "CHRISTUS MUGUERZA",
+      "tipo": "MENCION",
+      "marca": "Christus Muguerza",
+      "submarca": "Christus Muguerza (SM)",
+      "producto": "Institucional",
+      "propietarios_ids": []
     }
   ],
   "meta": {
-    "total": 2089,
-    "ultima_actualizacion": "2026-05-19"
+    "total": 2081,
+    "ultima_actualizacion": "2026-05-26"
   },
   "propietarios": [
     {

@@ -826,8 +826,7 @@
       "codigo": "16586883",
       "tipo": "PATROCINIO",
       "propietarios_ids": [
-        1,
-        5
+        1
       ],
       "version": "ANA SEGUROS",
       "marca": "Ana Seguros",
@@ -1121,16 +1120,6 @@
       "marca": "EL POLLO LOCO",
       "submarca": "EL POLLO LOCO (SM)",
       "producto": "RESTAURANTE"
-    },
-    {
-      "id": 135,
-      "codigo": "16627474",
-      "tipo": "BLOQUE PATROCINADO",
-      "propietarios_ids": [],
-      "version": "SUPERIMPOSICION ANA SEGUROS",
-      "marca": "Ana Seguros",
-      "submarca": "Ana Seguros (SM)",
-      "producto": "Aseguradora"
     },
     {
       "id": 136,
@@ -1722,7 +1711,9 @@
       "id": 288,
       "codigo": "16050619",
       "tipo": "MENCION",
-      "propietarios_ids": [],
+      "propietarios_ids": [
+        1
+      ],
       "version": "SUPER COLCHONES",
       "marca": "SÚPER COLCHONES",
       "submarca": "SÚPER COLCHONES (SM)",
@@ -5609,16 +5600,6 @@
       "producto": "GASOLINA"
     },
     {
-      "id": 695,
-      "codigo": "16575718",
-      "tipo": "MENCION",
-      "propietarios_ids": [],
-      "version": "TIENDAS ATLAS",
-      "marca": "TIENDAS ATLAS",
-      "submarca": "TIENDAS ATLAS (SM)",
-      "producto": "TIENDA DE COLCHONES"
-    },
-    {
       "id": 697,
       "codigo": "16575761",
       "tipo": "MENCION",
@@ -6032,7 +6013,9 @@
       "id": 740,
       "codigo": "16612870",
       "tipo": "BLOQUE PATROCINADO",
-      "propietarios_ids": [],
+      "propietarios_ids": [
+        1
+      ],
       "version": "SUPERIMPOSICION ANA SEGUROS",
       "marca": "ANA SEGUROS",
       "submarca": "ANA SEGUROS (SM)",
@@ -8583,18 +8566,6 @@
       "producto": "TORTILLAS"
     },
     {
-      "id": 999,
-      "codigo": "16761601",
-      "tipo": "MENCION",
-      "propietarios_ids": [
-        1
-      ],
-      "version": "VIX MUNDIAL",
-      "marca": "VIX",
-      "submarca": "VIX (SM)",
-      "producto": "STREAMING VIDEO"
-    },
-    {
       "id": 1000,
       "codigo": "16761673",
       "tipo": "SUPERIMPOSICION",
@@ -10093,16 +10064,6 @@
       "marca": "CV DIRECTO",
       "submarca": "JADE COOK",
       "producto": "VENTAS POR TELEVISIÓN"
-    },
-    {
-      "id": 1152,
-      "codigo": "16780813",
-      "tipo": "MENCION",
-      "propietarios_ids": [],
-      "version": "DORMIMUNDO",
-      "marca": "DORMIMUNDO",
-      "submarca": "DORMIMUNDO (SM)",
-      "producto": "TIENDA DE COLCHONES"
     },
     {
       "id": 1153,
@@ -16469,32 +16430,12 @@
     {
       "id": 1862,
       "codigo": "16803620",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "ELEKTRA VIVO V70 SERIES",
       "marca": "ELEKTRA",
       "submarca": "ELEKTRA (SM)",
       "producto": "TIENDA DEPARTAMENTAL"
-    },
-    {
-      "id": 1863,
-      "codigo": "16783968",
-      "tipo": "MENCIÓN",
-      "propietarios_ids": [],
-      "version": "SUPER COLCHONES",
-      "marca": "SÚPER COLCHONES",
-      "submarca": "SÚPER COLCHONES (SM)",
-      "producto": "TIENDA DE COLCHONES"
-    },
-    {
-      "id": 1864,
-      "codigo": "16571877",
-      "tipo": "BLOQUE PATROCINADO",
-      "propietarios_ids": [],
-      "version": "SUPERIMPOSICION EL POLLO LOCO",
-      "marca": "EL POLLO LOCO",
-      "submarca": "EL POLLO LOCO (SM)",
-      "producto": "RESTAURANTE"
     },
     {
       "id": 1865,
@@ -16569,7 +16510,7 @@
     {
       "id": 1872,
       "codigo": "16791106",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "TELCEL",
       "marca": "TELCEL",
@@ -16579,7 +16520,7 @@
     {
       "id": 1873,
       "codigo": "16789812",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "SUBURBIA",
       "marca": "SUBURBIA",
@@ -16599,7 +16540,7 @@
     {
       "id": 1875,
       "codigo": "16069094",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "GNP SEGUROS",
       "marca": "GNP SEGUROS",
@@ -16619,7 +16560,7 @@
     {
       "id": 1877,
       "codigo": "16246085",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "GNP SEGUROS",
       "marca": "GNP SEGUROS",
@@ -16639,7 +16580,7 @@
     {
       "id": 1879,
       "codigo": "16798545",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "MILPA REAL",
       "marca": "MILPA REAL",
@@ -16649,7 +16590,7 @@
     {
       "id": 1880,
       "codigo": "16678812",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "SORIANA",
       "marca": "SORIANA",
@@ -16659,8 +16600,10 @@
     {
       "id": 1881,
       "codigo": "16786143",
-      "tipo": "MENCIÓN",
-      "propietarios_ids": [],
+      "tipo": "MENCION",
+      "propietarios_ids": [
+        1
+      ],
       "version": "VIX MUNDIAL",
       "marca": "VIX",
       "submarca": "VIX (SM)",
@@ -16669,7 +16612,7 @@
     {
       "id": 1882,
       "codigo": "16801968",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "GRAN CARRERA PASCUAL",
       "marca": "BOING",
@@ -16679,7 +16622,7 @@
     {
       "id": 1883,
       "codigo": "16802580",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "_LACTEO FERMENTADO SOFUL LT LACTEO FERMENTADO YAKULT LACTEO FERMENTADO YAKULT LT_YAKULT",
       "marca": "YAKULT MM",
@@ -16689,7 +16632,7 @@
     {
       "id": 1884,
       "codigo": "16229254",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "RUSHBET",
       "marca": "RUSHBET",
@@ -16699,7 +16642,7 @@
     {
       "id": 1885,
       "codigo": "16798769",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "KFC SALSEOTONINA",
       "marca": "KFC",
@@ -16709,7 +16652,7 @@
     {
       "id": 1886,
       "codigo": "16798778",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "KFC SALSEOTONINA",
       "marca": "KFC",
@@ -16719,7 +16662,7 @@
     {
       "id": 1887,
       "codigo": "16796083",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "SORIANA",
       "marca": "SORIANA",
@@ -16749,7 +16692,7 @@
     {
       "id": 1890,
       "codigo": "16796190",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "BBVA",
       "marca": "BBVA",
@@ -16759,7 +16702,7 @@
     {
       "id": 1891,
       "codigo": "16796241",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "MERCADO PAGO HOT SALE 2026",
       "marca": "MERCADO PAGO",
@@ -16789,7 +16732,7 @@
     {
       "id": 1894,
       "codigo": "16068940",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "CARLS JR",
       "marca": "CARL'S JR",
@@ -16819,7 +16762,7 @@
     {
       "id": 1897,
       "codigo": "16750236",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "JUMEX",
       "marca": "JUMEX",
@@ -16839,7 +16782,7 @@
     {
       "id": 1899,
       "codigo": "16796275",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "BBVA",
       "marca": "BBVA",
@@ -16849,7 +16792,7 @@
     {
       "id": 1900,
       "codigo": "16796191",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "VIX MUNDIAL CR 5 - $699",
       "marca": "VIX",
@@ -16859,7 +16802,7 @@
     {
       "id": 1901,
       "codigo": "16796276",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "LIGUILLA LIGA BBVA CLAUSURA 2025 SEMIFINALES",
       "marca": "CANAL 5",
@@ -16889,7 +16832,7 @@
     {
       "id": 1904,
       "codigo": "16775785",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "DOMINOS PIZZA",
       "marca": "DOMINO'S PIZZA",
@@ -16919,7 +16862,7 @@
     {
       "id": 1907,
       "codigo": "16796247",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "KLAR",
       "marca": "KLAR",
@@ -16939,7 +16882,7 @@
     {
       "id": 1909,
       "codigo": "16352853",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "TREDA",
       "marca": "TREDA",
@@ -17009,7 +16952,7 @@
     {
       "id": 1916,
       "codigo": "16072252",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "OGGI JEANS",
       "marca": "OGGI JEANS",
@@ -17029,7 +16972,7 @@
     {
       "id": 1918,
       "codigo": "16796248",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "KANK-A",
       "marca": "KANK-A",
@@ -17109,7 +17052,7 @@
     {
       "id": 1926,
       "codigo": "16725721",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "JUMEX",
       "marca": "JUMEX",
@@ -17229,22 +17172,12 @@
     {
       "id": 1938,
       "codigo": "16647041",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "NISSAN",
       "marca": "NISSAN",
       "submarca": "NISSAN (SM)",
       "producto": "VERSA + FINANCIAMIENTO"
-    },
-    {
-      "id": 1939,
-      "codigo": "16067191",
-      "tipo": "MENCIÓN",
-      "propietarios_ids": [],
-      "version": "RESTONIC",
-      "marca": "RESTONIC",
-      "submarca": "RESTONIC (SM)",
-      "producto": "COLCHONES"
     },
     {
       "id": 1940,
@@ -17259,7 +17192,7 @@
     {
       "id": 1941,
       "codigo": "16796263",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "_GOMAS DE MASCAR CLORETS GOMITAS PANDITAS PASTILLAS DE DULCE HALLS_ MONDELEZ INTERNATIONAL",
       "marca": "MONDELEZ INTERNATIONAL MM",
@@ -17359,7 +17292,7 @@
     {
       "id": 1951,
       "codigo": "16796199",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "SEMIFINALES",
       "marca": "CANAL 5",
@@ -17369,7 +17302,7 @@
     {
       "id": 1952,
       "codigo": "16796215",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "SAN DIEGO VS MILWAUKEE LA DODGERS VS LA ANGELS",
       "marca": "EL NU9VE",
@@ -17389,7 +17322,7 @@
     {
       "id": 1954,
       "codigo": "16767325",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "MASTERCHEF 24/7",
       "marca": "AZTECA UNO",
@@ -17399,7 +17332,7 @@
     {
       "id": 1955,
       "codigo": "16335577",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "THERABREATH",
       "marca": "THERABREATH",
@@ -17419,7 +17352,7 @@
     {
       "id": 1957,
       "codigo": "16796254",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "_EQUIPOS CELULARES LAPTOPS_ SAMSUNG",
       "marca": "SAMSUNG",
@@ -17429,7 +17362,7 @@
     {
       "id": 1958,
       "codigo": "16586891",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "QUAKER STATE",
       "marca": "QUAKER STATE",
@@ -17469,7 +17402,7 @@
     {
       "id": 1962,
       "codigo": "16069473",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "RUSHBET",
       "marca": "RUSHBET",
@@ -17499,7 +17432,7 @@
     {
       "id": 1965,
       "codigo": "16777174",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CARNES SELECTA",
       "marca": "CARNES SELECTA",
@@ -17519,7 +17452,7 @@
     {
       "id": 1967,
       "codigo": "16777182",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "NUEVO LEON",
       "marca": "NUEVO LEÓN",
@@ -17529,7 +17462,7 @@
     {
       "id": 1968,
       "codigo": "16796214",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "SAN DIEGO VS MILWAUKEE LA DODGERS VS LA ANGELS",
       "marca": "TELEVISA",
@@ -17539,7 +17472,7 @@
     {
       "id": 1969,
       "codigo": "16069408",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "GNP SEGUROS",
       "marca": "GNP SEGUROS",
@@ -17549,7 +17482,7 @@
     {
       "id": 1970,
       "codigo": "16777016",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "TECATE",
       "marca": "TECATE",
@@ -17579,7 +17512,7 @@
     {
       "id": 1973,
       "codigo": "16799227",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "_FRAGANCIAS CABALLERO JABON LIQUIDO_GRISI",
       "marca": "GRISI",
@@ -17629,7 +17562,7 @@
     {
       "id": 1978,
       "codigo": "16797087",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "NO DEJES A LOS NIÑOS SOLOS",
       "marca": "NO DEJES A LOS NIÑOS SOLOS",
@@ -17639,7 +17572,7 @@
     {
       "id": 1979,
       "codigo": "16796689",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "PUMAS VS PACHUCA CHIVAS VS CRUZ AZUL",
       "marca": "CANAL 5",
@@ -17649,7 +17582,7 @@
     {
       "id": 1980,
       "codigo": "16796807",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "VIX MUNDIAL CR 4 - $699",
       "marca": "VIX",
@@ -17679,7 +17612,7 @@
     {
       "id": 1983,
       "codigo": "16797213",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "LIGUILLA SEMIFINALES LIGA BBVA",
       "marca": "CANAL 5",
@@ -17699,7 +17632,7 @@
     {
       "id": 1985,
       "codigo": "16664840",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "SANTA CLARA",
       "marca": "SANTA CLARA",
@@ -17709,7 +17642,7 @@
     {
       "id": 1986,
       "codigo": "16450447",
-      "tipo": "I. ACTIVA",
+      "tipo": "I.ACTIVA",
       "propietarios_ids": [],
       "version": "SANTA CLARA",
       "marca": "SANTA CLARA",
@@ -17719,7 +17652,7 @@
     {
       "id": 1987,
       "codigo": "16797722",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "BANORTE",
       "marca": "BANORTE",
@@ -17739,7 +17672,7 @@
     {
       "id": 1989,
       "codigo": "16581213",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CRUZ AZUL VS GUADALAJARA",
       "marca": "CANAL 5",
@@ -17759,7 +17692,7 @@
     {
       "id": 1991,
       "codigo": "16797452",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "LABORATORIO MEDICO DEL CHOPO",
       "marca": "LABORATORIO MÉDICO DEL CHOPO",
@@ -17769,7 +17702,7 @@
     {
       "id": 1992,
       "codigo": "16797066",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "IBERIA",
       "marca": "IBERIA",
@@ -17779,7 +17712,7 @@
     {
       "id": 1993,
       "codigo": "16484887",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "EXATLON MEXICO",
       "marca": "AZTECA UNO",
@@ -17789,7 +17722,7 @@
     {
       "id": 1994,
       "codigo": "16797752",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "ITALIKA",
       "marca": "ITALIKA",
@@ -17829,7 +17762,7 @@
     {
       "id": 1998,
       "codigo": "16797759",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "_ALIMENTOS ENLATADOS O ENVASADOS MAYONESAS SALSA CASERA_ LA COSTEÑA",
       "marca": "LA COSTEÑA",
@@ -17839,7 +17772,7 @@
     {
       "id": 1999,
       "codigo": "16797763",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "_ALIMENTOS PARA GATOS MIXI HUEVOS SAN JUAN PASTELITOS VUALA_ PROTEINA ANIMAL",
       "marca": "PROTEÍNA ANIMAL MM",
@@ -17859,7 +17792,7 @@
     {
       "id": 2001,
       "codigo": "16594162",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "IMPULS",
       "marca": "IMPULS",
@@ -17869,7 +17802,7 @@
     {
       "id": 2002,
       "codigo": "16797447",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "GLUTAPAK R",
       "marca": "GLUTAPAK R",
@@ -17879,7 +17812,7 @@
     {
       "id": 2003,
       "codigo": "16448417",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "INCORREGIBLES",
       "marca": "INCORREGIBLES",
@@ -17889,7 +17822,7 @@
     {
       "id": 2004,
       "codigo": "16192048",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "VOLARIS",
       "marca": "VOLARIS",
@@ -17899,7 +17832,7 @@
     {
       "id": 2005,
       "codigo": "16580864",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CONSEJO REGULADOR DEL TEQUILA",
       "marca": "CONSEJO REGULADOR DEL TEQUILA",
@@ -17919,7 +17852,7 @@
     {
       "id": 2007,
       "codigo": "16796672",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "LO MAS HOT",
       "marca": "TELEVISA MONTERREY",
@@ -17949,7 +17882,7 @@
     {
       "id": 2010,
       "codigo": "16769320",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "GOBIERNO DEL ESTADO DE NUEVO LEON",
       "marca": "GOBIERNO DEL ESTADO DE NUEVO LEÓN",
@@ -17959,7 +17892,7 @@
     {
       "id": 2011,
       "codigo": "16692870",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "AUTOZONE",
       "marca": "AUTOZONE",
@@ -17979,7 +17912,7 @@
     {
       "id": 2013,
       "codigo": "16611229",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CONSTRURAMA BLANQUITA",
       "marca": "CONSTRURAMA BLANQUITA",
@@ -17989,7 +17922,7 @@
     {
       "id": 2014,
       "codigo": "16797235",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "ANTOJOS NEVADOS",
       "marca": "ANTOJOS NEVADOS",
@@ -18009,7 +17942,7 @@
     {
       "id": 2016,
       "codigo": "16699180",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "JIDOSHA",
       "marca": "JIDOSHA",
@@ -18019,7 +17952,7 @@
     {
       "id": 2017,
       "codigo": "16800439",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CHEVROLET",
       "marca": "CHEVROLET",
@@ -18049,7 +17982,7 @@
     {
       "id": 2020,
       "codigo": "16189099",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "ES SHOW",
       "marca": "CANAL 6",
@@ -18069,7 +18002,7 @@
     {
       "id": 2022,
       "codigo": "16797717",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "TELEVISA MONTERREY",
       "marca": "TELEVISA MONTERREY",
@@ -18089,7 +18022,7 @@
     {
       "id": 2024,
       "codigo": "16680469",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "YAKULT",
       "marca": "YAKULT",
@@ -18099,7 +18032,7 @@
     {
       "id": 2025,
       "codigo": "16772615",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "MD_26 KIA",
       "marca": "KIA",
@@ -18109,7 +18042,7 @@
     {
       "id": 2026,
       "codigo": "16739827",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "_ACEITE COMESTIBLE ACEITE EN AEROSOL_OLEICO",
       "marca": "OLÉICO",
@@ -18169,7 +18102,7 @@
     {
       "id": 2032,
       "codigo": "16060445",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CALIENTE",
       "marca": "CALIENTE",
@@ -18209,7 +18142,7 @@
     {
       "id": 2036,
       "codigo": "16798091",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "FALTAN 30 DIAS COPA MUNDIAL DE LA FIFA 2026",
       "marca": "TELEVISA",
@@ -18217,19 +18150,9 @@
       "producto": "AUTOPROMO"
     },
     {
-      "id": 2037,
-      "codigo": "16162637",
-      "tipo": "MENCIÓN",
-      "propietarios_ids": [],
-      "version": "VIX",
-      "marca": "VIX",
-      "submarca": "VIX (SM)",
-      "producto": "STREAMING VIDEO"
-    },
-    {
       "id": 2038,
       "codigo": "16798135",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "MERCADO LIBRE",
       "marca": "MERCADOLIBRE.COM",
@@ -18249,7 +18172,7 @@
     {
       "id": 2040,
       "codigo": "16798215",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "VIX MUNDIAL CR 3 - $699",
       "marca": "VIX",
@@ -18269,7 +18192,7 @@
     {
       "id": 2042,
       "codigo": "16798618",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "FALTAN 29 DIAS COPA MUNDIAL DE LA FIFA 2026",
       "marca": "TELEVISA",
@@ -18289,7 +18212,7 @@
     {
       "id": 2044,
       "codigo": "16799228",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "_SIDRAL MUNDET SPRITE_ COCA-COLA",
       "marca": "COCA-COLA MM",
@@ -18299,7 +18222,7 @@
     {
       "id": 2045,
       "codigo": "16799249",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "_JUGOS Y NECTARES DEL VALLE LECHE SANTA CLARA_ COCA-COLA",
       "marca": "COCA-COLA MM",
@@ -18309,7 +18232,7 @@
     {
       "id": 2046,
       "codigo": "16798068",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CV DIRECTO",
       "marca": "CV DIRECTO",
@@ -18329,7 +18252,7 @@
     {
       "id": 2048,
       "codigo": "16798834",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "_ARTICULOS PARA MASCOTAS DEL PERRO CONSENTIDO FRAGANCIAS CABALLERO GRISI SHAMPOO RICITOS DE ORO_LABORATORIOS GRISI",
       "marca": "LABORATORIOS GRISI MM",
@@ -18339,7 +18262,7 @@
     {
       "id": 2049,
       "codigo": "16763027",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "INOVA",
       "marca": "INOVA",
@@ -18349,7 +18272,7 @@
     {
       "id": 2050,
       "codigo": "16478020",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "ROOTACTIV",
       "marca": "ROOTACTIV",
@@ -18369,7 +18292,7 @@
     {
       "id": 2052,
       "codigo": "16798051",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "CRUZ AZUL VS CHIVAS PUMAS VS PACHUCA",
       "marca": "CANAL 7",
@@ -18379,7 +18302,7 @@
     {
       "id": 2053,
       "codigo": "16798497",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "PRISA",
       "marca": "PRISA",
@@ -18389,7 +18312,7 @@
     {
       "id": 2054,
       "codigo": "16799171",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "PLATINUM LINE",
       "marca": "PLATINUM LINE",
@@ -18399,7 +18322,7 @@
     {
       "id": 2055,
       "codigo": "16799244",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "FESTIVAL DEL VIENTO",
       "marca": "FESTIVAL DEL VIENTO",
@@ -18409,7 +18332,7 @@
     {
       "id": 2056,
       "codigo": "16309592",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CAMERINO MAKEUP Y ACADEMY",
       "marca": "CAMERINO MAKEUP & ACADEMY",
@@ -18419,7 +18342,7 @@
     {
       "id": 2057,
       "codigo": "16268219",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "SANANDO DUDAS",
       "marca": "TELEVISA MONTERREY",
@@ -18449,7 +18372,7 @@
     {
       "id": 2060,
       "codigo": "16749351",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "OSOS DE MONTERREY",
       "marca": "OSOS DE MONTERREY",
@@ -18459,7 +18382,7 @@
     {
       "id": 2061,
       "codigo": "16460001",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "HYUNDAI CLEBER",
       "marca": "HYUNDAI CLEBER",
@@ -18479,7 +18402,7 @@
     {
       "id": 2063,
       "codigo": "16718001",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "ES SHOW",
       "marca": "ES SHOW",
@@ -18489,7 +18412,7 @@
     {
       "id": 2064,
       "codigo": "16431250",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "MOBIL",
       "marca": "MOBIL",
@@ -18529,7 +18452,7 @@
     {
       "id": 2068,
       "codigo": "16418363",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "BOING",
       "marca": "BOING",
@@ -18539,7 +18462,7 @@
     {
       "id": 2069,
       "codigo": "16799864",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "VIX MUNDIAL CR 2 - $699",
       "marca": "VIX",
@@ -18559,7 +18482,7 @@
     {
       "id": 2071,
       "codigo": "16681970",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CRUZ AZUL VS CHIVAS",
       "marca": "CANAL 5",
@@ -18569,7 +18492,7 @@
     {
       "id": 2072,
       "codigo": "16800339",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "FALTAN 28 DIAS COPA MUNDIAL DE LA FIFA 2026",
       "marca": "TELEVISA",
@@ -18589,7 +18512,7 @@
     {
       "id": 2074,
       "codigo": "16562893",
-      "tipo": "I. ACTIVA",
+      "tipo": "I.ACTIVA",
       "propietarios_ids": [],
       "version": "FANTA",
       "marca": "FANTA",
@@ -18599,7 +18522,7 @@
     {
       "id": 2075,
       "codigo": "16800324",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CV DIRECTO",
       "marca": "CV DIRECTO",
@@ -18619,7 +18542,7 @@
     {
       "id": 2077,
       "codigo": "16598892",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CALIENTE LA CASA DEL FUTBOL MOMIOS",
       "marca": "CALIENTE",
@@ -18629,7 +18552,7 @@
     {
       "id": 2078,
       "codigo": "16800854",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "PUMAS VS PACHUCA",
       "marca": "CANAL 5",
@@ -18649,7 +18572,7 @@
     {
       "id": 2080,
       "codigo": "16357060",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "AMERICA VS MONTERREY",
       "marca": "CANAL 5",
@@ -18679,7 +18602,7 @@
     {
       "id": 2083,
       "codigo": "16800878",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "LA DODGERS VS LA ANGELS",
       "marca": "EL NU9VE",
@@ -18749,7 +18672,7 @@
     {
       "id": 2090,
       "codigo": "16292310",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "BODEGAS ALIANZA",
       "marca": "BODEGAS ALIANZA",
@@ -18789,7 +18712,7 @@
     {
       "id": 2094,
       "codigo": "16800874",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "KAVAK HOTSALE2026",
       "marca": "KAVAK",
@@ -18819,7 +18742,7 @@
     {
       "id": 2097,
       "codigo": "16586859",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "COLGATE",
       "marca": "COLGATE",
@@ -18899,7 +18822,7 @@
     {
       "id": 2105,
       "codigo": "16676069",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CALIENTE",
       "marca": "CALIENTE",
@@ -18909,7 +18832,7 @@
     {
       "id": 2106,
       "codigo": "16800837",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "UNIVERSIDAD ICEL",
       "marca": "UNIVERSIDAD ICEL",
@@ -18949,7 +18872,7 @@
     {
       "id": 2110,
       "codigo": "16800840",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "BOX AZTECA AKITSUGI VS MIGUEL CALDERON",
       "marca": "CANAL 7",
@@ -18959,7 +18882,7 @@
     {
       "id": 2111,
       "codigo": "16800841",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "PUMAS VS PACHUCA",
       "marca": "CANAL 7",
@@ -19019,7 +18942,7 @@
     {
       "id": 2117,
       "codigo": "16800853",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "UNAM VS PACHUCA",
       "marca": "CANAL 7",
@@ -19039,7 +18962,7 @@
     {
       "id": 2119,
       "codigo": "16106196",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "TECATE",
       "marca": "TECATE",
@@ -19079,7 +19002,7 @@
     {
       "id": 2123,
       "codigo": "16603040",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "QUAKER STATE",
       "marca": "QUAKER STATE",
@@ -19109,7 +19032,7 @@
     {
       "id": 2126,
       "codigo": "16292686",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "LIVERPOOL",
       "marca": "LIVERPOOL",
@@ -19129,7 +19052,7 @@
     {
       "id": 2128,
       "codigo": "16077440",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "TRIKI-TRAKES",
       "marca": "TRIKI-TRAKES",
@@ -19149,7 +19072,7 @@
     {
       "id": 2130,
       "codigo": "16799919",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "GEELY",
       "marca": "GEELY",
@@ -19189,7 +19112,7 @@
     {
       "id": 2134,
       "codigo": "16761780",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "_BLOQUEADOR SOLAR FACIAL BLOQUEADOR SOLAR FACIAL BARRA_ ISDIN",
       "marca": "ISDIN",
@@ -19199,7 +19122,7 @@
     {
       "id": 2135,
       "codigo": "14710755",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "MERCADO LIBRE",
       "marca": "MERCADOLIBRE.COM",
@@ -19209,7 +19132,7 @@
     {
       "id": 2136,
       "codigo": "16800412",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "COPPEL",
       "marca": "COPPEL",
@@ -19219,7 +19142,7 @@
     {
       "id": 2137,
       "codigo": "16221797",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "FLORADIX +H FRUITY",
       "marca": "FLORADIX +H FRUITY",
@@ -19229,7 +19152,7 @@
     {
       "id": 2138,
       "codigo": "16129039",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "NISSAN",
       "marca": "NISSAN",
@@ -19239,7 +19162,7 @@
     {
       "id": 2139,
       "codigo": "16800917",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "PEPTO-BISMOL",
       "marca": "PEPTO-BISMOL",
@@ -19249,7 +19172,7 @@
     {
       "id": 2140,
       "codigo": "16800919",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "BOX AZTECA KATSUMA AKITSUGI VS JOSE MIGUEL CALDERON",
       "marca": "CANAL 7",
@@ -19269,7 +19192,7 @@
     {
       "id": 2142,
       "codigo": "16064534",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CARLS JR",
       "marca": "CARL'S JR",
@@ -19289,7 +19212,7 @@
     {
       "id": 2144,
       "codigo": "16799696",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "GLOBAL TRADE SUMMIT",
       "marca": "GLOBAL TRADE SUMMIT",
@@ -19299,7 +19222,7 @@
     {
       "id": 2145,
       "codigo": "16799662",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "VIVO",
       "marca": "VIVO",
@@ -19309,7 +19232,7 @@
     {
       "id": 2146,
       "codigo": "16167198",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "SOUTH PADRE ISLAND",
       "marca": "SOUTH PADRE ISLAND",
@@ -19329,7 +19252,7 @@
     {
       "id": 2148,
       "codigo": "16800330",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "LAS NOTICIAS CON GREGORIO MARTINEZ Y ANASOFIA CONTRERAS",
       "marca": "TELEVISA MONTERREY",
@@ -19349,7 +19272,7 @@
     {
       "id": 2150,
       "codigo": "16659017",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "BRAVO",
       "marca": "BRAVO",
@@ -19369,7 +19292,7 @@
     {
       "id": 2152,
       "codigo": "16230038",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "CARLS JR",
       "marca": "CARL'S JR",
@@ -19409,7 +19332,7 @@
     {
       "id": 2156,
       "codigo": "16602918",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "BLANQUITA",
       "marca": "BLANQUITA",
@@ -19419,7 +19342,7 @@
     {
       "id": 2157,
       "codigo": "16422348",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "FUERZA REGIA",
       "marca": "FUERZA REGIA",
@@ -19439,7 +19362,7 @@
     {
       "id": 2159,
       "codigo": "16085026",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "CALIENTE",
       "marca": "CALIENTE",
@@ -19449,7 +19372,7 @@
     {
       "id": 2160,
       "codigo": "16028477",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CALIENTE",
       "marca": "CALIENTE",
@@ -19459,7 +19382,7 @@
     {
       "id": 2161,
       "codigo": "16766292",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "SUPERGIRL",
       "marca": "SUPERGIRL",
@@ -19579,7 +19502,7 @@
     {
       "id": 2173,
       "codigo": "16799710",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "VICTORINOX",
       "marca": "VICTORINOX",
@@ -19599,7 +19522,7 @@
     {
       "id": 2175,
       "codigo": "16303029",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CALIENTE",
       "marca": "CALIENTE",
@@ -19619,7 +19542,7 @@
     {
       "id": 2177,
       "codigo": "16801371",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "VIX MUNDIAL CR MAÑANA - $699",
       "marca": "VIX",
@@ -19629,7 +19552,7 @@
     {
       "id": 2178,
       "codigo": "16673313",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "FIESTA INN",
       "marca": "FIESTA INN",
@@ -19639,7 +19562,7 @@
     {
       "id": 2179,
       "codigo": "16717530",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "DESPEGAR",
       "marca": "DESPEGAR.COM",
@@ -19649,7 +19572,7 @@
     {
       "id": 2180,
       "codigo": "16801731",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "JUMEX",
       "marca": "JUMEX",
@@ -19669,7 +19592,7 @@
     {
       "id": 2182,
       "codigo": "16802558",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "_FANTA FRESCA_ COCA-COLA",
       "marca": "COCA-COLA MM",
@@ -19679,7 +19602,7 @@
     {
       "id": 2183,
       "codigo": "16758639",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "DIDI",
       "marca": "DIDI",
@@ -19689,7 +19612,7 @@
     {
       "id": 2184,
       "codigo": "16801382",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "DEVLYN",
       "marca": "DEVLYN",
@@ -19719,7 +19642,7 @@
     {
       "id": 2187,
       "codigo": "16232175",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "MILPA REAL",
       "marca": "MILPA REAL",
@@ -19729,7 +19652,7 @@
     {
       "id": 2188,
       "codigo": "16801850",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "INOVA",
       "marca": "INOVA",
@@ -19759,7 +19682,7 @@
     {
       "id": 2191,
       "codigo": "16064711",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "FLOR-ESSENCE",
       "marca": "FLOR-ESSENCE",
@@ -19789,7 +19712,7 @@
     {
       "id": 2194,
       "codigo": "16028385",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "BBVA",
       "marca": "BBVA",
@@ -19799,7 +19722,7 @@
     {
       "id": 2195,
       "codigo": "16802592",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "_DETERGENTE LIQUIDO ARIEL SUAVIZANTE DOWNY SHAMPOO HEAD Y SHOULDERS_PROCTER Y GAMBLE",
       "marca": "PROCTER & GAMBLE MM",
@@ -19809,7 +19732,7 @@
     {
       "id": 2196,
       "codigo": "16801072",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "PUMAS VS PACHUCA",
       "marca": "CANAL 7",
@@ -19819,7 +19742,7 @@
     {
       "id": 2197,
       "codigo": "16801286",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "EXPO GUADALAJARA",
       "marca": "EXPO GUADALAJARA",
@@ -19839,7 +19762,7 @@
     {
       "id": 2199,
       "codigo": "16303848",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CITY CLUB",
       "marca": "CITY CLUB",
@@ -19857,19 +19780,9 @@
       "producto": "AUTOPROMO"
     },
     {
-      "id": 2201,
-      "codigo": "16064441",
-      "tipo": "SUPERIMPOSICION",
-      "propietarios_ids": [],
-      "version": "VIX",
-      "marca": "VIX",
-      "submarca": "VIX (SM)",
-      "producto": "STREAMING VIDEO"
-    },
-    {
       "id": 2202,
       "codigo": "16516862",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CLINICAS DEL AZUCAR",
       "marca": "CLÍNICAS DEL AZÚCAR",
@@ -19899,7 +19812,7 @@
     {
       "id": 2205,
       "codigo": "16080504",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "CARLS JR",
       "marca": "CARL'S JR",
@@ -19909,7 +19822,7 @@
     {
       "id": 2206,
       "codigo": "16307470",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CITY CLUB",
       "marca": "CITY CLUB",
@@ -19929,7 +19842,7 @@
     {
       "id": 2208,
       "codigo": "16732491",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "_ALIMENTO PARA GATOS FELICETTE ALIMENTO PARA PERROS PERRAZO_ MNA",
       "marca": "MNA MM",
@@ -19959,7 +19872,7 @@
     {
       "id": 2211,
       "codigo": "16802417",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "EN LA ZONA GRIS",
       "marca": "EN LA ZONA GRIS",
@@ -19999,7 +19912,7 @@
     {
       "id": 2215,
       "codigo": "16073600",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "BYD AUTO",
       "marca": "BYD AUTO",
@@ -20009,7 +19922,7 @@
     {
       "id": 2216,
       "codigo": "16761345",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "CV DIRECTO",
       "marca": "CV DIRECTO",
@@ -20049,7 +19962,7 @@
     {
       "id": 2220,
       "codigo": "16437265",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "BOING",
       "marca": "BOING",
@@ -20059,22 +19972,12 @@
     {
       "id": 2221,
       "codigo": "16801916",
-      "tipo": "I. ACTIVA",
+      "tipo": "I.ACTIVA",
       "propietarios_ids": [],
       "version": "BOING",
       "marca": "BOING",
       "submarca": "BOING (SM)",
       "producto": "BEBIDAS DE FRUTAS"
-    },
-    {
-      "id": 2222,
-      "codigo": "16547896",
-      "tipo": "MENCIÓN",
-      "propietarios_ids": [],
-      "version": "TIENDAS ATLAS",
-      "marca": "TIENDAS ATLAS",
-      "submarca": "TIENDAS ATLAS (SM)",
-      "producto": "TIENDA DE COLCHONES"
     },
     {
       "id": 2223,
@@ -20099,7 +20002,7 @@
     {
       "id": 2225,
       "codigo": "16709060",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "ANDREA",
       "marca": "ANDREA",
@@ -20109,7 +20012,7 @@
     {
       "id": 2226,
       "codigo": "16804027",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "RIQUISIMOS POR CIERTO",
       "marca": "VIX",
@@ -20119,7 +20022,7 @@
     {
       "id": 2227,
       "codigo": "16805828",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "OUTLET VIAJA Y VUELA",
       "marca": "OUTLET VIAJA Y VUELA",
@@ -20129,7 +20032,7 @@
     {
       "id": 2228,
       "codigo": "16263443",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "MAS COLOR",
       "marca": "MAS COLOR",
@@ -20169,7 +20072,7 @@
     {
       "id": 2232,
       "codigo": "16777084",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "COCA-COLA",
       "marca": "COCA-COLA",
@@ -20179,7 +20082,7 @@
     {
       "id": 2233,
       "codigo": "16542795",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "COCA COLA",
       "marca": "COCA-COLA",
@@ -20189,7 +20092,7 @@
     {
       "id": 2234,
       "codigo": "16586706",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "COCA-COLA",
       "marca": "COCA-COLA",
@@ -20199,7 +20102,7 @@
     {
       "id": 2235,
       "codigo": "16804348",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "ESTA SEMANA",
       "marca": "N+ FORO",
@@ -20209,7 +20112,7 @@
     {
       "id": 2236,
       "codigo": "16735348",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "ANDREA",
       "marca": "ANDREA",
@@ -20219,7 +20122,7 @@
     {
       "id": 2237,
       "codigo": "16804211",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "ENTREVISTA A ILIA TOPURIA BENDELIANI",
       "marca": "N+ FORO",
@@ -20239,7 +20142,7 @@
     {
       "id": 2239,
       "codigo": "16460480",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "JUGO MAGGI",
       "marca": "MAGGI",
@@ -20249,7 +20152,7 @@
     {
       "id": 2240,
       "codigo": "16804132",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "_ALIMENTOS ENLATADOS O ENVASADOS SALSAS PICANTES_HERDEZ",
       "marca": "HERDEZ",
@@ -20259,7 +20162,7 @@
     {
       "id": 2241,
       "codigo": "16804031",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "INOVA",
       "marca": "INOVA",
@@ -20269,7 +20172,7 @@
     {
       "id": 2242,
       "codigo": "16494984",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "GREEN MARVEL",
       "marca": "INOVA",
@@ -20299,7 +20202,7 @@
     {
       "id": 2245,
       "codigo": "16804405",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "PARAMOUNT +",
       "marca": "PARAMOUNT +",
@@ -20319,7 +20222,7 @@
     {
       "id": 2247,
       "codigo": "16600143",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "RAM",
       "marca": "RAM",
@@ -20349,7 +20252,7 @@
     {
       "id": 2250,
       "codigo": "16168038",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "RAM",
       "marca": "RAM",
@@ -20359,7 +20262,7 @@
     {
       "id": 2251,
       "codigo": "16322158",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "DUNKIN DONUTS",
       "marca": "DUNKIN' DONUTS",
@@ -20369,7 +20272,7 @@
     {
       "id": 2252,
       "codigo": "16803434",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "TODOS EN ACCION",
       "marca": "TELEVISA MONTERREY",
@@ -20399,7 +20302,7 @@
     {
       "id": 2255,
       "codigo": "16805315",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "RUMBO AL GRAN FINAL DE HERMANAS UN AMOR COMPARTIDO",
       "marca": "TELEVISA MONTERREY",
@@ -20409,7 +20312,7 @@
     {
       "id": 2256,
       "codigo": "16050136",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "MI TIENDA DEL AHORRO",
       "marca": "MI TIENDA DEL AHORRO",
@@ -20429,7 +20332,7 @@
     {
       "id": 2258,
       "codigo": "16289086",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "HEB",
       "marca": "HEB",
@@ -20439,7 +20342,7 @@
     {
       "id": 2259,
       "codigo": "16074500",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "MI TIENDA DEL AHORRO",
       "marca": "MI TIENDA DEL AHORRO",
@@ -20449,7 +20352,7 @@
     {
       "id": 2260,
       "codigo": "16803430",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "HEB",
       "marca": "HEB",
@@ -20469,7 +20372,7 @@
     {
       "id": 2262,
       "codigo": "16803459",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "SR CAMARO",
       "marca": "SR CAMARO",
@@ -20479,7 +20382,7 @@
     {
       "id": 2263,
       "codigo": "16518705",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "DR LEE",
       "marca": "DR LEE",
@@ -20509,7 +20412,7 @@
     {
       "id": 2266,
       "codigo": "16803760",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "OLIVE GARDEN",
       "marca": "OLIVE GARDEN",
@@ -20529,7 +20432,7 @@
     {
       "id": 2268,
       "codigo": "16804054",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "SULTANES VS ALGODONEROS FUERZA REGIA FEMENIL VS ADELITAS",
       "marca": "CANAL 6",
@@ -20549,7 +20452,7 @@
     {
       "id": 2270,
       "codigo": "16290249",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "ORBITAL",
       "marca": "CANAL 6",
@@ -20569,7 +20472,7 @@
     {
       "id": 2272,
       "codigo": "16804371",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "MD_26 CORONA",
       "marca": "CORONA",
@@ -20589,7 +20492,7 @@
     {
       "id": 2274,
       "codigo": "16595569",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "MD_26 CORONA",
       "marca": "CORONA",
@@ -20609,7 +20512,7 @@
     {
       "id": 2276,
       "codigo": "16804325",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "VOIT",
       "marca": "VOÍT",
@@ -20619,7 +20522,7 @@
     {
       "id": 2277,
       "codigo": "16062655",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "NISSAN",
       "marca": "NISSAN",
@@ -20629,7 +20532,7 @@
     {
       "id": 2278,
       "codigo": "16803433",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "VALENTINA",
       "marca": "VALENTINA",
@@ -20649,7 +20552,7 @@
     {
       "id": 2280,
       "codigo": "16606326",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "INOVA",
       "marca": "INOVA",
@@ -20659,7 +20562,7 @@
     {
       "id": 2281,
       "codigo": "16062228",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "AUDIOTECH",
       "marca": "INSTITUTO AUDIOLÓGICO AUDIOTECH",
@@ -20689,7 +20592,7 @@
     {
       "id": 2284,
       "codigo": "16804339",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "FESTER",
       "marca": "FESTER",
@@ -20739,7 +20642,7 @@
     {
       "id": 2289,
       "codigo": "16687980",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "_PAPEL HIGIENICO SERVILLETAS TOALLA DE COCINA_TRULY GREEN",
       "marca": "TRULY GREEN",
@@ -20799,7 +20702,7 @@
     {
       "id": 2295,
       "codigo": "16805791",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "KFC",
       "marca": "KFC",
@@ -20839,7 +20742,7 @@
     {
       "id": 2299,
       "codigo": "16805777",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "LAS NOTICIAS CONTIGO CON ME Y BP.",
       "marca": "ADN NOTICIAS",
@@ -20849,7 +20752,7 @@
     {
       "id": 2300,
       "codigo": "16805784",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "LA COPA DEL MUNDO",
       "marca": "TELEVISA UNIVISIÓN",
@@ -20859,7 +20762,7 @@
     {
       "id": 2301,
       "codigo": "16330278",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "NMAS MONTERREY",
       "marca": "TELEVISA MONTERREY",
@@ -20879,7 +20782,7 @@
     {
       "id": 2303,
       "codigo": "16805302",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "BARLO",
       "marca": "BARLO",
@@ -20889,7 +20792,7 @@
     {
       "id": 2304,
       "codigo": "16805702",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "BANKAOOL",
       "marca": "BANKAOOL",
@@ -20919,7 +20822,7 @@
     {
       "id": 2307,
       "codigo": "16804712",
-      "tipo": "ACCIÓN ESPECIAL",
+      "tipo": "ACCION ESPECIAL",
       "propietarios_ids": [],
       "version": "CALIENTE",
       "marca": "CALIENTE",
@@ -20929,7 +20832,7 @@
     {
       "id": 2308,
       "codigo": "16136465",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "COCA-COLA",
       "marca": "COCA-COLA",
@@ -20939,7 +20842,7 @@
     {
       "id": 2309,
       "codigo": "16247537",
-      "tipo": "I. ACTIVA",
+      "tipo": "I.ACTIVA",
       "propietarios_ids": [],
       "version": "COCA-COLA",
       "marca": "COCA-COLA",
@@ -20949,7 +20852,7 @@
     {
       "id": 2310,
       "codigo": "16277564",
-      "tipo": "I. ACTIVA",
+      "tipo": "I.ACTIVA",
       "propietarios_ids": [],
       "version": "CIEL",
       "marca": "CIEL",
@@ -20959,7 +20862,7 @@
     {
       "id": 2311,
       "codigo": "16304684",
-      "tipo": "I. AMBIENTAL",
+      "tipo": "I.AMBIENTAL",
       "propietarios_ids": [],
       "version": "CIEL",
       "marca": "CIEL",
@@ -20969,7 +20872,7 @@
     {
       "id": 2312,
       "codigo": "16292318",
-      "tipo": "MENCIÓN",
+      "tipo": "MENCION",
       "propietarios_ids": [],
       "version": "YAKULT",
       "marca": "YAKULT",
@@ -20985,11 +20888,31 @@
       "marca": "CV DIRECTO",
       "submarca": "SOFIA DELUXE",
       "producto": "VENTAS POR TELEVISIÓN"
+    },
+    {
+      "id": 2314,
+      "codigo": "16028309",
+      "version": "BBVA",
+      "tipo": "VIRTUAL",
+      "marca": "BBVA",
+      "submarca": "BBVA (SM)",
+      "producto": "BANCO",
+      "propietarios_ids": []
+    },
+    {
+      "id": 2315,
+      "codigo": "16813836",
+      "version": "CHRISTUS MUGUERZA",
+      "tipo": "MENCION",
+      "marca": "Christus Muguerza",
+      "submarca": "Christus Muguerza (SM)",
+      "producto": "Institucional",
+      "propietarios_ids": []
     }
   ],
   "meta": {
-    "total": 2089,
-    "ultima_actualizacion": "2026-05-18"
+    "total": 2081,
+    "ultima_actualizacion": "2026-05-26"
   },
   "propietarios": [
     {

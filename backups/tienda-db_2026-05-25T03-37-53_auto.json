@@ -12,7 +12,9 @@
     "sandro",
     "JENN",
     "cesar",
-    "Diana E."
+    "Diana E.",
+    "Jian Pierre",
+    "percy"
   ],
   "productos": [
     {
@@ -22,7 +24,7 @@
       "precio": 2,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/DvnDwHq6mbTyDFZ7h-300-x.webp",
       "stock": 0,
-      "precioBase": 1.3
+      "precioBase": 1.69
     },
     {
       "id": 5,
@@ -31,7 +33,7 @@
       "precio": 2.9,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/AfjuHsJ2wD9HK9yaC-300-x.webp",
       "stock": 1,
-      "precioBase": 1.89
+      "precioBase": 2.39
     },
     {
       "id": 11,
@@ -40,7 +42,7 @@
       "precio": 4,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/Afvbs9sSGGyKrF7Sj-300-x.webp",
       "stock": 0,
-      "precioBase": 2.6
+      "precioBase": 3.59
     },
     {
       "id": 12,
@@ -49,16 +51,16 @@
       "precio": 3.8,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/rf7LpEao2TjcY59qF-300-x.webp",
       "stock": 0,
-      "precioBase": 2.47
+      "precioBase": 3.25
     },
     {
       "id": 13,
       "nombre": "ENERGIZANTE MONSTER ENERGY 473ML",
       "categoria": "gaseosas",
       "precio": 9,
-      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/Hpd2ncsGRuurn6684-300-x.webp",
+      "imagen": "https://media.falabella.com/tottusPE/40701705_1/w=1200,h=1200,fit=pad",
       "stock": 1,
-      "precioBase": 5.85
+      "precioBase": 8.29
     },
     {
       "id": 14,
@@ -67,7 +69,7 @@
       "precio": 10.9,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/2qSR7b2H7hDZ2HTpD-300-x.webp",
       "stock": 1,
-      "precioBase": 7.09
+      "precioBase": 9.9
     },
     {
       "id": 15,
@@ -76,7 +78,7 @@
       "precio": 7.8,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/uTzukz5adQEWXQCSo-300-x.webp",
       "stock": 0,
-      "precioBase": 5.07
+      "precioBase": 6.9
     },
     {
       "id": 16,
@@ -85,7 +87,7 @@
       "precio": 6.5,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/bzefbTzBwRvnKAAoY-300-x.webp",
       "stock": 1,
-      "precioBase": 4.23
+      "precioBase": 5.59
     },
     {
       "id": 17,
@@ -94,7 +96,7 @@
       "precio": 8.8,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/X7LMJW9zqRCkAjxbf-300-x.webp",
       "stock": 0,
-      "precioBase": 5.72
+      "precioBase": 8.39
     },
     {
       "id": 18,
@@ -102,8 +104,8 @@
       "categoria": "gaseosas",
       "precio": 4.9,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/WCFMt3TdYvFzZxEvs-300-x.webp",
-      "stock": 1,
-      "precioBase": 3.19
+      "stock": 3,
+      "precioBase": 4.25
     },
     {
       "id": 19,
@@ -111,8 +113,8 @@
       "categoria": "snacks",
       "precio": 4.5,
       "imagen": "https://metroio.vtexassets.com/arquivos/ids/507817/737861-01-45383.jpg?v=638403646404570000",
-      "stock": 1,
-      "precioBase": 2.93
+      "stock": 0,
+      "precioBase": 3.9
     },
     {
       "id": 20,
@@ -120,39 +122,65 @@
       "categoria": "snacks",
       "precio": 4.5,
       "imagen": "https://metroio.vtexassets.com/arquivos/ids/596494-1600-auto?v=638882841694300000&width=1600&height=auto&aspect=true",
-      "stock": 1,
-      "precioBase": 2.93
+      "stock": 0,
+      "precioBase": 3.9
+    },
+    {
+      "id": 21,
+      "nombre": "GALLETAS PICARAS 40GR",
+      "categoria": "galletas",
+      "precioBase": 0.9,
+      "precio": 1.3,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/zexjqkCy2Pn9Cfadt-300-x.webp",
+      "stock": 5
+    },
+    {
+      "id": 22,
+      "nombre": "GALLETA OREO 36GR",
+      "categoria": "galletas",
+      "precioBase": 0.5,
+      "precio": 0.8,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/nWfEeXYW56wE9GXZj-300-x.webp",
+      "stock": 6
+    },
+    {
+      "id": 23,
+      "nombre": "GALLETAS CHIPS AHOY 37GR",
+      "categoria": "galletas",
+      "precioBase": 1.1,
+      "precio": 1.5,
+      "imagen": "https://www.fybeca.com/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_FybecaEcuador/default/dw58f191af/images/large/5525636_1.jpg?sw=1000&sh=1000",
+      "stock": 6
+    },
+    {
+      "id": 24,
+      "nombre": "AGUA CIELO MANZANA 600ML",
+      "categoria": "gaseosas",
+      "precioBase": 1.7,
+      "precio": 2,
+      "imagen": "https://media.falabella.com/tottusPE/43545294_1/w=800,h=800,fit=pad",
+      "stock": 1
+    },
+    {
+      "id": 25,
+      "nombre": "CEREAL BAR",
+      "categoria": "galletas",
+      "precioBase": 0.5,
+      "precio": 1,
+      "imagen": "https://corporacionliderperu.com/50803-large_default/costa-cereal-bar-x-21-gr-chips.jpg",
+      "stock": 5
+    },
+    {
+      "id": 26,
+      "nombre": "LECHE GLORIA 390GR",
+      "categoria": "lacteos",
+      "precioBase": 4,
+      "precio": 4.9,
+      "imagen": "https://media.falabella.com/tottusPE/43273630_8/w=1200,h=1200,fit=pad",
+      "stock": 1
     }
   ],
   "pedidos": [
-    {
-      "id": 1,
-      "usuario": "stitch",
-      "items": [
-        {
-          "productoId": 3,
-          "nombre": "Sprite 500ml",
-          "precio": 3.2,
-          "cantidad": 1
-        },
-        {
-          "productoId": 2,
-          "nombre": "Coca Cola 1L",
-          "precio": 4.8,
-          "cantidad": 1
-        },
-        {
-          "productoId": 1,
-          "nombre": "Inca Kola 1.5L",
-          "precio": 5.5,
-          "cantidad": 1
-        }
-      ],
-      "total": 13.5,
-      "estado": "entregado",
-      "fecha": "2026-05-21T08:08:40.544Z",
-      "pagado": true
-    },
     {
       "id": 12,
       "usuario": "Nick - el papuh",
@@ -161,7 +189,8 @@
           "productoId": 18,
           "nombre": "ENERGIZANTE VOLT GINSENG LATA 473ML",
           "precio": 4.9,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 4.25
         }
       ],
       "total": 4.9,
@@ -177,44 +206,13 @@
           "productoId": 14,
           "nombre": "MIX PREMIUM NUT SNACK 150GR",
           "precio": 10.9,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 9.9
         }
       ],
       "total": 10.9,
       "estado": "cancelado",
       "fecha": "2026-05-23T02:54:54.720Z",
-      "pagado": true
-    },
-    {
-      "id": 14,
-      "usuario": "Admin",
-      "items": [
-        {
-          "productoId": 4,
-          "nombre": "Galletas RITZ TACO",
-          "precio": 2,
-          "cantidad": 1
-        }
-      ],
-      "total": 2,
-      "estado": "cancelado",
-      "fecha": "2026-05-23T03:06:49.380Z",
-      "pagado": true
-    },
-    {
-      "id": 15,
-      "usuario": "Admin",
-      "items": [
-        {
-          "productoId": 4,
-          "nombre": "Galletas RITZ TACO",
-          "precio": 2,
-          "cantidad": 1
-        }
-      ],
-      "total": 2,
-      "estado": "entregado",
-      "fecha": "2026-05-23T03:10:46.413Z",
       "pagado": true
     },
     {
@@ -225,7 +223,8 @@
           "productoId": 4,
           "nombre": "Galletas RITZ TACO",
           "precio": 2,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 1.69
         }
       ],
       "total": 2,
@@ -241,7 +240,8 @@
           "productoId": 4,
           "nombre": "Galletas RITZ TACO",
           "precio": 2,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 1.69
         }
       ],
       "total": 2,
@@ -256,7 +256,8 @@
           "productoId": 11,
           "nombre": "GALLETA CASINO TACO FRESA",
           "precio": 4,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 3.59
         }
       ],
       "total": 4,
@@ -272,13 +273,15 @@
           "productoId": 12,
           "nombre": "GASEOSA COCA COLA 600ML",
           "precio": 3.8,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 3.25
         },
         {
           "productoId": 15,
           "nombre": "NACHOS JAPPY SNACK ORIGINAL 200GR",
           "precio": 7.8,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 6.9
         }
       ],
       "total": 11.6,
@@ -294,7 +297,8 @@
           "productoId": 12,
           "nombre": "GASEOSA COCA COLA 600ML",
           "precio": 3.8,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 3.25
         }
       ],
       "total": 3.8,
@@ -310,17 +314,86 @@
           "productoId": 17,
           "nombre": "PAPAS INKA CHIPS JALAPEÑO 135GR",
           "precio": 8.8,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 8.39
         }
       ],
       "total": 8.8,
       "estado": "entregado",
       "fecha": "2026-05-23T03:31:07.746Z",
       "pagado": true
+    },
+    {
+      "id": 22,
+      "usuario": "JENN",
+      "items": [
+        {
+          "productoId": 21,
+          "nombre": "GALLETAS PICARAS 40GR",
+          "precio": 1.3,
+          "cantidad": 1,
+          "precioBase": 0.9
+        }
+      ],
+      "total": 1.3,
+      "estado": "entregado",
+      "fecha": "2026-05-25T02:46:40.582Z",
+      "pagado": true
+    },
+    {
+      "id": 23,
+      "usuario": "JENN",
+      "items": [
+        {
+          "productoId": 20,
+          "nombre": "MIX CON ARANDANOS GRANUTS 100GR",
+          "precio": 4.5,
+          "cantidad": 1,
+          "precioBase": 3.9
+        }
+      ],
+      "total": 4.5,
+      "estado": "entregado",
+      "fecha": "2026-05-25T02:46:56.805Z",
+      "pagado": true
+    },
+    {
+      "id": 24,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 19,
+          "nombre": "MANI KRAKS ORIENTAL GRANUTS 100GR",
+          "precio": 4.5,
+          "cantidad": 1,
+          "precioBase": 3.9
+        }
+      ],
+      "total": 4.5,
+      "estado": "entregado",
+      "fecha": "2026-05-25T03:28:46.129Z",
+      "pagado": true
+    },
+    {
+      "id": 25,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 25,
+          "nombre": "CEREAL BAR",
+          "precio": 1,
+          "cantidad": 1,
+          "precioBase": 0.5
+        }
+      ],
+      "total": 1,
+      "estado": "entregado",
+      "fecha": "2026-05-25T03:31:29.712Z",
+      "pagado": true
     }
   ],
-  "_nextProductoId": 21,
-  "_nextPedidoId": 22,
+  "_nextProductoId": 27,
+  "_nextPedidoId": 26,
   "categorias": [
     {
       "id": "gaseosas",

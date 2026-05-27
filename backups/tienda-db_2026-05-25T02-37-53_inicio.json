@@ -21,7 +21,8 @@
       "categoria": "galletas",
       "precio": 2,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/DvnDwHq6mbTyDFZ7h-300-x.webp",
-      "stock": 0
+      "stock": 0,
+      "precioBase": 1.69
     },
     {
       "id": 5,
@@ -29,7 +30,8 @@
       "categoria": "galletas",
       "precio": 2.9,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/AfjuHsJ2wD9HK9yaC-300-x.webp",
-      "stock": 1
+      "stock": 1,
+      "precioBase": 2.39
     },
     {
       "id": 11,
@@ -37,7 +39,8 @@
       "categoria": "galletas",
       "precio": 4,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/Afvbs9sSGGyKrF7Sj-300-x.webp",
-      "stock": 0
+      "stock": 0,
+      "precioBase": 3.59
     },
     {
       "id": 12,
@@ -45,7 +48,8 @@
       "categoria": "gaseosas",
       "precio": 3.8,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/rf7LpEao2TjcY59qF-300-x.webp",
-      "stock": 0
+      "stock": 0,
+      "precioBase": 3.25
     },
     {
       "id": 13,
@@ -53,7 +57,8 @@
       "categoria": "gaseosas",
       "precio": 9,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/Hpd2ncsGRuurn6684-300-x.webp",
-      "stock": 1
+      "stock": 1,
+      "precioBase": 8.29
     },
     {
       "id": 14,
@@ -61,7 +66,8 @@
       "categoria": "snacks",
       "precio": 10.9,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/2qSR7b2H7hDZ2HTpD-300-x.webp",
-      "stock": 1
+      "stock": 1,
+      "precioBase": 9.9
     },
     {
       "id": 15,
@@ -69,7 +75,8 @@
       "categoria": "snacks",
       "precio": 7.8,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/uTzukz5adQEWXQCSo-300-x.webp",
-      "stock": 0
+      "stock": 0,
+      "precioBase": 6.9
     },
     {
       "id": 16,
@@ -77,7 +84,8 @@
       "categoria": "snacks",
       "precio": 6.5,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/bzefbTzBwRvnKAAoY-300-x.webp",
-      "stock": 1
+      "stock": 1,
+      "precioBase": 5.59
     },
     {
       "id": 17,
@@ -85,7 +93,8 @@
       "categoria": "snacks",
       "precio": 8.8,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/X7LMJW9zqRCkAjxbf-300-x.webp",
-      "stock": 0
+      "stock": 0,
+      "precioBase": 8.39
     },
     {
       "id": 18,
@@ -93,7 +102,8 @@
       "categoria": "gaseosas",
       "precio": 4.9,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/WCFMt3TdYvFzZxEvs-300-x.webp",
-      "stock": 1
+      "stock": 1,
+      "precioBase": 4.25
     },
     {
       "id": 19,
@@ -101,7 +111,8 @@
       "categoria": "snacks",
       "precio": 4.5,
       "imagen": "https://metroio.vtexassets.com/arquivos/ids/507817/737861-01-45383.jpg?v=638403646404570000",
-      "stock": 1
+      "stock": 1,
+      "precioBase": 3.9
     },
     {
       "id": 20,
@@ -109,38 +120,11 @@
       "categoria": "snacks",
       "precio": 4.5,
       "imagen": "https://metroio.vtexassets.com/arquivos/ids/596494-1600-auto?v=638882841694300000&width=1600&height=auto&aspect=true",
-      "stock": 1
+      "stock": 1,
+      "precioBase": 3.9
     }
   ],
   "pedidos": [
-    {
-      "id": 1,
-      "usuario": "stitch",
-      "items": [
-        {
-          "productoId": 3,
-          "nombre": "Sprite 500ml",
-          "precio": 3.2,
-          "cantidad": 1
-        },
-        {
-          "productoId": 2,
-          "nombre": "Coca Cola 1L",
-          "precio": 4.8,
-          "cantidad": 1
-        },
-        {
-          "productoId": 1,
-          "nombre": "Inca Kola 1.5L",
-          "precio": 5.5,
-          "cantidad": 1
-        }
-      ],
-      "total": 13.5,
-      "estado": "entregado",
-      "fecha": "2026-05-21T08:08:40.544Z",
-      "pagado": true
-    },
     {
       "id": 12,
       "usuario": "Nick - el papuh",
@@ -149,7 +133,8 @@
           "productoId": 18,
           "nombre": "ENERGIZANTE VOLT GINSENG LATA 473ML",
           "precio": 4.9,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 4.25
         }
       ],
       "total": 4.9,
@@ -165,44 +150,13 @@
           "productoId": 14,
           "nombre": "MIX PREMIUM NUT SNACK 150GR",
           "precio": 10.9,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 9.9
         }
       ],
       "total": 10.9,
       "estado": "cancelado",
       "fecha": "2026-05-23T02:54:54.720Z",
-      "pagado": true
-    },
-    {
-      "id": 14,
-      "usuario": "Admin",
-      "items": [
-        {
-          "productoId": 4,
-          "nombre": "Galletas RITZ TACO",
-          "precio": 2,
-          "cantidad": 1
-        }
-      ],
-      "total": 2,
-      "estado": "cancelado",
-      "fecha": "2026-05-23T03:06:49.380Z",
-      "pagado": true
-    },
-    {
-      "id": 15,
-      "usuario": "Admin",
-      "items": [
-        {
-          "productoId": 4,
-          "nombre": "Galletas RITZ TACO",
-          "precio": 2,
-          "cantidad": 1
-        }
-      ],
-      "total": 2,
-      "estado": "entregado",
-      "fecha": "2026-05-23T03:10:46.413Z",
       "pagado": true
     },
     {
@@ -213,7 +167,8 @@
           "productoId": 4,
           "nombre": "Galletas RITZ TACO",
           "precio": 2,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 1.69
         }
       ],
       "total": 2,
@@ -229,7 +184,8 @@
           "productoId": 4,
           "nombre": "Galletas RITZ TACO",
           "precio": 2,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 1.69
         }
       ],
       "total": 2,
@@ -244,7 +200,8 @@
           "productoId": 11,
           "nombre": "GALLETA CASINO TACO FRESA",
           "precio": 4,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 3.59
         }
       ],
       "total": 4,
@@ -260,13 +217,15 @@
           "productoId": 12,
           "nombre": "GASEOSA COCA COLA 600ML",
           "precio": 3.8,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 3.25
         },
         {
           "productoId": 15,
           "nombre": "NACHOS JAPPY SNACK ORIGINAL 200GR",
           "precio": 7.8,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 6.9
         }
       ],
       "total": 11.6,
@@ -282,7 +241,8 @@
           "productoId": 12,
           "nombre": "GASEOSA COCA COLA 600ML",
           "precio": 3.8,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 3.25
         }
       ],
       "total": 3.8,
@@ -298,7 +258,8 @@
           "productoId": 17,
           "nombre": "PAPAS INKA CHIPS JALAPEÑO 135GR",
           "precio": 8.8,
-          "cantidad": 1
+          "cantidad": 1,
+          "precioBase": 8.39
         }
       ],
       "total": 8.8,
