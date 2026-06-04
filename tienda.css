@@ -1059,6 +1059,36 @@ tr:hover td { background: var(--gris-1); }
   border-top: 1px solid #e9d5ff;
 }
 
+/* ── NOTICIA ───────────────────────────────────────────────── */
+.noticia-card {
+  background: var(--blanco);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-md);
+  overflow: hidden;
+  margin-top: 1rem;
+  border: 2px solid #fde68a;
+}
+.noticia-header {
+  background: linear-gradient(135deg, #d97706, #f59e0b);
+  padding: .7rem 1rem;
+  color: #fff;
+  font-weight: 800;
+  font-size: .88rem;
+  font-family: 'Nunito', sans-serif;
+}
+.noticia-texto {
+  font-size: .78rem;
+  font-weight: 500;
+  color: #92400e;
+  background: #fffbeb;
+  padding: .8rem .9rem;
+  line-height: 1.5;
+  text-align: left;
+}
+.noticia-texto strong {
+  color: #b45309;
+}
+
 /* En pantallas pequeñas el panel se va arriba */
 @media (max-width: 768px) {
   .tienda-layout {
@@ -1086,4 +1116,17 @@ tr:hover td { background: var(--gris-1); }
     text-align: left;
     font-size: .82rem;
   }
+}
+
+/* ── COLUMNAS ORDENABLES ─────────────────────────────────── */
+#thead-admin-productos th[data-col]:hover {
+  background: var(--verde-bg);
+  color: var(--verde);
+}
+#thead-admin-productos th[data-col] {
+  transition: color .15s, background .15s;
+}
+.sort-ico {
+  font-size: .7rem;
+  opacity: .6;
 }

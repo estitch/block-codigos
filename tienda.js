@@ -19,6 +19,7 @@ const estado = {
   carrito: [],           // [{ producto, cantidad }]
   pedidos: [],
   adminSubTab: 'pedidos', // 'pedidos' | 'productos' | 'categorias' | 'usuarios'
+  sortProductos: { col: null, dir: 1 }, // col: campo, dir: 1 asc / -1 desc
   usuarios: [],
   categorias: [],
   adminToken: null
@@ -308,12 +309,8 @@ function renderProductos() {
     lista = lista.filter(p => p.nombre.toLowerCase().includes(q) || p.categoria.toLowerCase().includes(q));
   }
 
-  // Productos con stock primero, sin stock al final
-  lista = [...lista].sort((a, b) => {
-    const aStock = a.stock > 0 ? 0 : 1;
-    const bStock = b.stock > 0 ? 0 : 1;
-    return aStock - bStock;
-  });
+  // Ocultar productos sin stock en la tienda
+  lista = lista.filter(p => p.stock > 0);
 
   if (!lista.length) {
     grid.innerHTML = `<div class="sin-resultados"><span class="emoji">🔍</span>No hay productos que coincidan</div>`;
@@ -659,27 +656,60 @@ async function marcarPagado(id) {
 
 // GESTIÓN PRODUCTOS
 
+function sortAdminProductos(col) {
+  if (estado.sortProductos.col === col) {
+    estado.sortProductos.dir *= -1; // invertir dirección
+  } else {
+    estado.sortProductos.col = col;
+    estado.sortProductos.dir = 1;
+  }
+  renderAdminProductos();
+}
+
 function renderAdminProductos() {
   document.getElementById('admin-pedidos').style.display = 'none';
   document.getElementById('admin-backups').style.display = 'none';
   document.getElementById('admin-categorias').style.display = 'none';
-  document.getElementById('admin-backups').style.display = 'none';
   document.getElementById('admin-usuarios').style.display = 'none';
-  document.getElementById('admin-backups').style.display = 'none';
   const contenedor = document.getElementById('admin-productos');
   contenedor.style.display = 'block';
 
   const tbody = document.getElementById('tbody-admin-productos');
 
   if (!estado.productos.length) {
-    tbody.innerHTML = `<tr><td colspan="6" class="tabla-vacia">No hay productos</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="7" class="tabla-vacia">No hay productos</td></tr>`;
     return;
   }
 
-  tbody.innerHTML = estado.productos.map(p => `
+  // Ordenar lista según columna activa
+  const { col, dir } = estado.sortProductos;
+  let lista = [...estado.productos];
+  if (col) {
+    lista.sort((a, b) => {
+      let va = a[col], vb = b[col];
+      if (col === 'categoria') { va = getCatLabel(va); vb = getCatLabel(vb); }
+      if (typeof va === 'string') return va.localeCompare(vb) * dir;
+      return (va - vb) * dir;
+    });
+  }
+
+  // Actualizar indicadores en los th
+  document.querySelectorAll('#thead-admin-productos th[data-col]').forEach(th => {
+    const ico = th.querySelector('.sort-ico');
+    if (!ico) return;
+    if (th.dataset.col === col) {
+      ico.textContent = dir === 1 ? ' ▲' : ' ▼';
+      th.style.color = 'var(--verde)';
+    } else {
+      ico.textContent = ' ⇅';
+      th.style.color = '';
+    }
+  });
+
+  tbody.innerHTML = lista.map(p => `
     <tr>
       <td>
-        <img src="${p.imagen}" style="width:36px;height:36px;object-fit:contain;border-radius:6px;background:var(--gris-2);padding:2px" 
+        <img src="${p.imagen}" style="width:36px;height:36px;object-fit:contain;border-radius:6px;background:var(--gris-2);padding:2px"
              onerror="this.src='https://placehold.co/36x36/888/fff?text=?'">
       </td>
       <td><strong>${p.nombre}</strong></td>

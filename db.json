@@ -18070,16 +18070,6 @@
       "producto": "CASINOS Y APUESTAS VIRTUALES"
     },
     {
-      "id": 2029,
-      "codigo": "16089756",
-      "tipo": "VIRTUAL",
-      "propietarios_ids": [],
-      "version": "YAKULT",
-      "marca": "YAKULT",
-      "submarca": "YAKULT (SM)",
-      "producto": "LÁCTEO FERMENTADO"
-    },
-    {
       "id": 2030,
       "codigo": "16796681",
       "tipo": "BLOQUE PATROCINADO",
@@ -20598,16 +20588,6 @@
       "marca": "FESTER",
       "submarca": "FESTER (SM)",
       "producto": "IMPERMEABILIZANTES"
-    },
-    {
-      "id": 2285,
-      "codigo": "16129550",
-      "tipo": "VIRTUAL",
-      "propietarios_ids": [],
-      "version": "YAKULT",
-      "marca": "YAKULT",
-      "submarca": "YAKULT (SM)",
-      "producto": "LÁCTEO FERMENTADO"
     },
     {
       "id": 2286,
@@ -23430,16 +23410,6 @@
       "producto": "VENTAS POR CATÁLOGO"
     },
     {
-      "id": 2568,
-      "codigo": "16813818",
-      "tipo": "MENCION",
-      "propietarios_ids": [],
-      "version": "SORIANA JULIO REGALADO 2026",
-      "marca": "SORIANA",
-      "submarca": "SORIANA (SM)",
-      "producto": "TIENDA DE AUTOSERVICIO"
-    },
-    {
       "id": 2569,
       "codigo": "16673236",
       "tipo": "MENCION",
@@ -26123,17 +26093,9 @@
       "id": 2837,
       "codigo": "16815738",
       "tipo": "MENCION",
-      "propietarios_ids": [],
-      "version": "SUPER COLCHONES HOT SALE 2026",
-      "marca": "SÚPER COLCHONES",
-      "submarca": "SÚPER COLCHONES (SM)",
-      "producto": "TIENDA DE COLCHONES"
-    },
-    {
-      "id": 2838,
-      "codigo": "16816368",
-      "tipo": "MENCION",
-      "propietarios_ids": [],
+      "propietarios_ids": [
+        1
+      ],
       "version": "SUPER COLCHONES HOT SALE 2026",
       "marca": "SÚPER COLCHONES",
       "submarca": "SÚPER COLCHONES (SM)",
@@ -26458,11 +26420,71 @@
       "marca": "VIX",
       "submarca": "VIX (SM)",
       "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 2871,
+      "codigo": "16820120",
+      "version": "GONHER",
+      "tipo": "MENCION",
+      "marca": "GONHER",
+      "submarca": "GONHERGO",
+      "producto": "SERVICIO DE ASISTENCIA VEHICULAR",
+      "propietarios_ids": [
+        1
+      ]
+    },
+    {
+      "id": 2872,
+      "codigo": "16592995",
+      "version": "MD_26 COCA-COLA",
+      "tipo": "MENCION",
+      "marca": "Coca-Cola",
+      "submarca": "Coca-Cola (SM)",
+      "producto": "Refresco Cola",
+      "propietarios_ids": [
+        1
+      ]
+    },
+    {
+      "id": 2873,
+      "codigo": "16826368",
+      "version": "ANDAMIOS AMARILLOS (PRESENCIA CONTINUA)",
+      "tipo": "SUPERIMPOSICION",
+      "marca": "Andamios Amarillos",
+      "submarca": "Andamios Amarillos (SM)",
+      "producto": "Venta y Alquiler de Andamios",
+      "propietarios_ids": [
+        1
+      ]
+    },
+    {
+      "id": 2874,
+      "codigo": "16707147",
+      "version": "ANDAMIOS AMARILLOS",
+      "tipo": "PATROCINIO",
+      "marca": "Andamios Amarillos",
+      "submarca": "Andamios Amarillos (SM)",
+      "producto": "Venta y Alquiler de Andamios",
+      "propietarios_ids": [
+        1
+      ]
+    },
+    {
+      "id": 2875,
+      "codigo": "16829646",
+      "version": "ANDAMIOS AMARILLOS",
+      "tipo": "MENCION",
+      "marca": "Andamios Amarillos",
+      "submarca": "Andamios Amarillos (SM)",
+      "producto": "Plataforma de Venta y Alquiler de Andamios",
+      "propietarios_ids": [
+        1
+      ]
     }
   ],
   "meta": {
-    "total": 2636,
-    "ultima_actualizacion": "2026-05-27 02:48:15"
+    "total": 2637,
+    "ultima_actualizacion": "2026-06-04"
   },
   "propietarios": [
     {

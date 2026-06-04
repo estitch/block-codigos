@@ -1,0 +1,4 @@
+desde powershell administrador
+New-NetFirewallRule -DisplayName "Block Codigos" -Direction Inbound -LocalPort 3030 -Protocol TCP -Action Allow
+ejecuta desde carpeta donde esta server.js
+$node server.js

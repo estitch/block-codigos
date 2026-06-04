@@ -1,0 +1,1515 @@
+{
+  "usuarios": [
+    "Admin",
+    "stitch",
+    "Nick - el papuh",
+    "mikhail",
+    "Karla :)",
+    "LOLO",
+    "Jhon",
+    "BRONI",
+    "sandro",
+    "JENN",
+    "cesar",
+    "Diana E.",
+    "Jian Pierre",
+    "Jhonathan",
+    "Anita",
+    "Shelbi",
+    "Arnold B",
+    "Danny",
+    "maria",
+    "CLAU",
+    "GUIDO",
+    "Renato L."
+  ],
+  "productos": [
+    {
+      "id": 4,
+      "nombre": "Galletas RITZ TACO",
+      "categoria": "galletas",
+      "precio": 2,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/DvnDwHq6mbTyDFZ7h-300-x.webp",
+      "stock": 0,
+      "precioBase": 1.69
+    },
+    {
+      "id": 5,
+      "nombre": "WAFER NIK VAINILLA",
+      "categoria": "galletas",
+      "precio": 2.9,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/AfjuHsJ2wD9HK9yaC-300-x.webp",
+      "stock": 0,
+      "precioBase": 2.39
+    },
+    {
+      "id": 11,
+      "nombre": "GALLETA CASINO TACO FRESA",
+      "categoria": "galletas",
+      "precio": 4,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/Afvbs9sSGGyKrF7Sj-300-x.webp",
+      "stock": 0,
+      "precioBase": 3.59
+    },
+    {
+      "id": 12,
+      "nombre": "GASEOSA COCA COLA 600ML",
+      "categoria": "gaseosas",
+      "precio": 3.8,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/rf7LpEao2TjcY59qF-300-x.webp",
+      "stock": 0,
+      "precioBase": 3.25
+    },
+    {
+      "id": 13,
+      "nombre": "ENERGIZANTE MONSTER ENERGY 473ML",
+      "categoria": "gaseosas",
+      "precio": 8.9,
+      "imagen": "https://media.falabella.com/tottusPE/40701705_1/w=1200,h=1200,fit=pad",
+      "stock": 1,
+      "precioBase": 8.29
+    },
+    {
+      "id": 14,
+      "nombre": "MIX PREMIUM NUT SNACK 150GR",
+      "categoria": "snacks",
+      "precio": 10.9,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/2qSR7b2H7hDZ2HTpD-300-x.webp",
+      "stock": 1,
+      "precioBase": 9.9
+    },
+    {
+      "id": 15,
+      "nombre": "NACHOS JAPPY SNACK ORIGINAL 200GR",
+      "categoria": "snacks",
+      "precio": 7.8,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/uTzukz5adQEWXQCSo-300-x.webp",
+      "stock": 0,
+      "precioBase": 6.9
+    },
+    {
+      "id": 16,
+      "nombre": "CHEETOS HORNEADOS QUESO 90GR",
+      "categoria": "snacks",
+      "precio": 6.5,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/bzefbTzBwRvnKAAoY-300-x.webp",
+      "stock": 0,
+      "precioBase": 5.59
+    },
+    {
+      "id": 17,
+      "nombre": "PAPAS INKA CHIPS JALAPEÑO 135GR",
+      "categoria": "snacks",
+      "precio": 8.8,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/X7LMJW9zqRCkAjxbf-300-x.webp",
+      "stock": 0,
+      "precioBase": 8.39
+    },
+    {
+      "id": 18,
+      "nombre": "ENERGIZANTE VOLT GINSENG LATA 473ML",
+      "categoria": "gaseosas",
+      "precio": 4.9,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/WCFMt3TdYvFzZxEvs-300-x.webp",
+      "stock": 0,
+      "precioBase": 4.25
+    },
+    {
+      "id": 19,
+      "nombre": "MANI KRAKS ORIENTAL GRANUTS 100GR",
+      "categoria": "snacks",
+      "precio": 4.5,
+      "imagen": "https://metroio.vtexassets.com/arquivos/ids/507817/737861-01-45383.jpg?v=638403646404570000",
+      "stock": 0,
+      "precioBase": 3.9
+    },
+    {
+      "id": 20,
+      "nombre": "MIX CON ARANDANOS GRANUTS 100GR",
+      "categoria": "snacks",
+      "precio": 4.5,
+      "imagen": "https://metroio.vtexassets.com/arquivos/ids/596494-1600-auto?v=638882841694300000&width=1600&height=auto&aspect=true",
+      "stock": 0,
+      "precioBase": 3.9
+    },
+    {
+      "id": 21,
+      "nombre": "GALLETAS PICARAS 40GR",
+      "categoria": "galletas",
+      "precioBase": 1.2,
+      "precio": 1.4,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/zexjqkCy2Pn9Cfadt-300-x.webp",
+      "stock": 0
+    },
+    {
+      "id": 22,
+      "nombre": "GALLETA OREO 36GR",
+      "categoria": "galletas",
+      "precioBase": 0.5,
+      "precio": 0.8,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/nWfEeXYW56wE9GXZj-300-x.webp",
+      "stock": 0
+    },
+    {
+      "id": 23,
+      "nombre": "GALLETAS CHIPS AHOY 37GR",
+      "categoria": "galletas",
+      "precioBase": 1.1,
+      "precio": 1.5,
+      "imagen": "https://www.fybeca.com/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_FybecaEcuador/default/dw58f191af/images/large/5525636_1.jpg?sw=1000&sh=1000",
+      "stock": 0
+    },
+    {
+      "id": 24,
+      "nombre": "AGUA CIELO MANZANA 600ML",
+      "categoria": "gaseosas",
+      "precioBase": 1.7,
+      "precio": 2,
+      "imagen": "https://media.falabella.com/tottusPE/43545294_1/w=800,h=800,fit=pad",
+      "stock": 0
+    },
+    {
+      "id": 25,
+      "nombre": "CEREAL BAR",
+      "categoria": "galletas",
+      "precioBase": 0.5,
+      "precio": 1,
+      "imagen": "https://cdnx.jumpseller.com/serviceshop/image/15317987/thumb/540/540?1615398110",
+      "stock": 0
+    },
+    {
+      "id": 26,
+      "nombre": "LECHE GLORIA 390GR",
+      "categoria": "lacteos",
+      "precioBase": 4,
+      "precio": 4.9,
+      "imagen": "https://media.falabella.com/tottusPE/43273630_8/w=1200,h=1200,fit=pad",
+      "stock": 0
+    },
+    {
+      "id": 27,
+      "nombre": "NACHOS JAPPY SNACK JALAPEÑO 200GR",
+      "categoria": "snacks",
+      "precioBase": 6.9,
+      "precio": 7.9,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/YtzyR9kHQKZx62hHZ-300-x.webp",
+      "stock": 0
+    },
+    {
+      "id": 28,
+      "nombre": "POP CORN JAPPY SNACK ORIGINAL 95GR",
+      "categoria": "snacks",
+      "precioBase": 4.9,
+      "precio": 5.5,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/Ky5DTGgxQ6Wa2aaWs-300-x.webp",
+      "stock": 0
+    },
+    {
+      "id": 29,
+      "nombre": "Rehidratante Sporade Tropical Tapa Plana 500 ML",
+      "categoria": "gaseosas",
+      "precioBase": 1.95,
+      "precio": 2.5,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/e76dNokFCh9MwqFny-300-x.webp",
+      "stock": 0
+    },
+    {
+      "id": 30,
+      "nombre": "LECHE GLORIA 170GR",
+      "categoria": "lacteos",
+      "precioBase": 2.2,
+      "precio": 2.6,
+      "imagen": "https://vegaperu.vtexassets.com/arquivos/ids/165286-1200-auto?v=638312641952700000&width=1200&height=auto&aspect=true",
+      "stock": 4
+    },
+    {
+      "id": 31,
+      "nombre": "GALLETA CHOMP NARANJA X 38 GR",
+      "categoria": "galletas",
+      "precioBase": 0.9,
+      "precio": 1.2,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/M9QqCc9eCYphq2oto-300-x.webp",
+      "stock": 0
+    },
+    {
+      "id": 32,
+      "nombre": "Galleta Chocodonuts Leche Costa 36 GR",
+      "categoria": "galletas",
+      "precioBase": 0.8,
+      "precio": 1,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/96GMWWoo3frxLq8qM-300-x.webp",
+      "stock": 0
+    },
+    {
+      "id": 33,
+      "nombre": "Caramelos Toffee Ambrosoli Menta X5 UND",
+      "categoria": "dulces",
+      "precioBase": 0.55,
+      "precio": 1,
+      "imagen": "https://media.falabella.com/tottusPE/43399932_1/w=1200,h=1200,fit=pad",
+      "stock": 20
+    },
+    {
+      "id": 34,
+      "nombre": "MAYONESA ALACENA 95GR",
+      "categoria": "lacteos",
+      "precioBase": 3.6,
+      "precio": 4,
+      "imagen": "https://dojiw2m9tvv09.cloudfront.net/53648/product/X_www0319.png?77&t=1779850778",
+      "stock": 2
+    },
+    {
+      "id": 35,
+      "nombre": "Sopa Ajinomen Sabor Pollo con fideos 51gr",
+      "categoria": "instantaneos",
+      "precioBase": 3.3,
+      "precio": 3.7,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/HAsfEBBDLpXGWAvaQ-300-x.webp",
+      "stock": 0
+    },
+    {
+      "id": 36,
+      "nombre": "Galleta Chokosoda FIELD 36GR",
+      "categoria": "galletas",
+      "precioBase": 1.2,
+      "precio": 1.5,
+      "imagen": "https://www.bodega-latina.de/wp-content/uploads/2023/10/chokosoda.jpg",
+      "stock": 0
+    },
+    {
+      "id": 37,
+      "nombre": "Gaseosa Pepsi 1 LT",
+      "categoria": "gaseosas",
+      "precioBase": 2.75,
+      "precio": 3.5,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/LoAaHGAwdFsr4wKLr-300-x.webp",
+      "stock": 0
+    },
+    {
+      "id": 38,
+      "nombre": "Pop Corn Jappy Extra Mantequilla 95 GR",
+      "categoria": "snacks",
+      "precioBase": 4.9,
+      "precio": 5.5,
+      "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/kXSXS5eNDGdmL8ZHq-300-x.webp",
+      "stock": 0
+    }
+  ],
+  "pedidos": [
+    {
+      "id": 12,
+      "usuario": "Nick - el papuh",
+      "items": [
+        {
+          "productoId": 18,
+          "nombre": "ENERGIZANTE VOLT GINSENG LATA 473ML",
+          "precio": 4.9,
+          "cantidad": 1,
+          "precioBase": 4.25
+        }
+      ],
+      "total": 4.9,
+      "estado": "entregado",
+      "fecha": "2026-05-23T02:48:15.619Z",
+      "pagado": true
+    },
+    {
+      "id": 13,
+      "usuario": "Multimedios",
+      "items": [
+        {
+          "productoId": 14,
+          "nombre": "MIX PREMIUM NUT SNACK 150GR",
+          "precio": 10.9,
+          "cantidad": 1,
+          "precioBase": 9.9
+        }
+      ],
+      "total": 10.9,
+      "estado": "cancelado",
+      "fecha": "2026-05-23T02:54:54.720Z",
+      "pagado": true
+    },
+    {
+      "id": 16,
+      "usuario": "Admin",
+      "items": [
+        {
+          "productoId": 4,
+          "nombre": "Galletas RITZ TACO",
+          "precio": 2,
+          "cantidad": 1,
+          "precioBase": 1.69
+        }
+      ],
+      "total": 2,
+      "estado": "cancelado",
+      "fecha": "2026-05-23T03:11:11.468Z",
+      "pagado": true
+    },
+    {
+      "id": 17,
+      "usuario": "cesar",
+      "items": [
+        {
+          "productoId": 4,
+          "nombre": "Galletas RITZ TACO",
+          "precio": 2,
+          "cantidad": 1,
+          "precioBase": 1.69
+        }
+      ],
+      "total": 2,
+      "estado": "entregado",
+      "fecha": "2026-05-23T03:15:21.457Z",
+      "pagado": true
+    },
+    {
+      "id": 18,
+      "usuario": "LOLO",
+      "items": [
+        {
+          "productoId": 11,
+          "nombre": "GALLETA CASINO TACO FRESA",
+          "precio": 4,
+          "cantidad": 1,
+          "precioBase": 3.59
+        }
+      ],
+      "total": 4,
+      "estado": "entregado",
+      "fecha": "2026-05-23T03:16:27.733Z",
+      "pagado": true
+    },
+    {
+      "id": 19,
+      "usuario": "Diana E.",
+      "items": [
+        {
+          "productoId": 12,
+          "nombre": "GASEOSA COCA COLA 600ML",
+          "precio": 3.8,
+          "cantidad": 1,
+          "precioBase": 3.25
+        },
+        {
+          "productoId": 15,
+          "nombre": "NACHOS JAPPY SNACK ORIGINAL 200GR",
+          "precio": 7.8,
+          "cantidad": 1,
+          "precioBase": 6.9
+        }
+      ],
+      "total": 11.6,
+      "estado": "entregado",
+      "fecha": "2026-05-23T03:21:03.287Z",
+      "pagado": true
+    },
+    {
+      "id": 20,
+      "usuario": "Karla :)",
+      "items": [
+        {
+          "productoId": 12,
+          "nombre": "GASEOSA COCA COLA 600ML",
+          "precio": 3.8,
+          "cantidad": 1,
+          "precioBase": 3.25
+        }
+      ],
+      "total": 3.8,
+      "estado": "entregado",
+      "fecha": "2026-05-23T03:22:31.238Z",
+      "pagado": true
+    },
+    {
+      "id": 21,
+      "usuario": "sandro",
+      "items": [
+        {
+          "productoId": 17,
+          "nombre": "PAPAS INKA CHIPS JALAPEÑO 135GR",
+          "precio": 8.8,
+          "cantidad": 1,
+          "precioBase": 8.39
+        }
+      ],
+      "total": 8.8,
+      "estado": "entregado",
+      "fecha": "2026-05-23T03:31:07.746Z",
+      "pagado": true
+    },
+    {
+      "id": 22,
+      "usuario": "JENN",
+      "items": [
+        {
+          "productoId": 21,
+          "nombre": "GALLETAS PICARAS 40GR",
+          "precio": 1.3,
+          "cantidad": 1,
+          "precioBase": 1.2
+        }
+      ],
+      "total": 1.3,
+      "estado": "entregado",
+      "fecha": "2026-05-25T02:46:40.582Z",
+      "pagado": true
+    },
+    {
+      "id": 23,
+      "usuario": "JENN",
+      "items": [
+        {
+          "productoId": 20,
+          "nombre": "MIX CON ARANDANOS GRANUTS 100GR",
+          "precio": 4.5,
+          "cantidad": 1,
+          "precioBase": 3.9
+        }
+      ],
+      "total": 4.5,
+      "estado": "entregado",
+      "fecha": "2026-05-25T02:46:56.805Z",
+      "pagado": true
+    },
+    {
+      "id": 24,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 19,
+          "nombre": "MANI KRAKS ORIENTAL GRANUTS 100GR",
+          "precio": 4.5,
+          "cantidad": 1,
+          "precioBase": 3.9
+        }
+      ],
+      "total": 4.5,
+      "estado": "entregado",
+      "fecha": "2026-05-25T03:28:46.129Z",
+      "pagado": true
+    },
+    {
+      "id": 25,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 25,
+          "nombre": "CEREAL BAR",
+          "precio": 1,
+          "cantidad": 1,
+          "precioBase": 0.5
+        }
+      ],
+      "total": 1,
+      "estado": "entregado",
+      "fecha": "2026-05-25T03:31:29.712Z",
+      "pagado": true
+    },
+    {
+      "id": 26,
+      "usuario": "Nick - el papuh",
+      "items": [
+        {
+          "productoId": 21,
+          "nombre": "GALLETAS PICARAS 40GR",
+          "precio": 1.3,
+          "cantidad": 1,
+          "precioBase": 1.2
+        }
+      ],
+      "total": 1.3,
+      "estado": "entregado",
+      "fecha": "2026-05-25T03:43:17.700Z",
+      "pagado": true
+    },
+    {
+      "id": 27,
+      "usuario": "sandro",
+      "items": [
+        {
+          "productoId": 22,
+          "nombre": "GALLETA OREO 36GR",
+          "precio": 0.8,
+          "cantidad": 2,
+          "precioBase": 0.5
+        }
+      ],
+      "total": 1.6,
+      "estado": "entregado",
+      "fecha": "2026-05-25T04:03:06.085Z",
+      "pagado": true
+    },
+    {
+      "id": 28,
+      "usuario": "Nick - el papuh",
+      "items": [
+        {
+          "productoId": 26,
+          "nombre": "LECHE GLORIA 390GR",
+          "precio": 4.9,
+          "cantidad": 1,
+          "precioBase": 4
+        }
+      ],
+      "total": 4.9,
+      "estado": "entregado",
+      "fecha": "2026-05-25T04:04:37.291Z",
+      "pagado": true
+    },
+    {
+      "id": 29,
+      "usuario": "Jhonathan",
+      "items": [
+        {
+          "productoId": 23,
+          "nombre": "GALLETAS CHIPS AHOY 37GR",
+          "precio": 1.5,
+          "cantidad": 1,
+          "precioBase": 1.1
+        }
+      ],
+      "total": 1.5,
+      "estado": "entregado",
+      "fecha": "2026-05-25T04:04:56.180Z",
+      "pagado": true
+    },
+    {
+      "id": 30,
+      "usuario": "mikhail",
+      "items": [
+        {
+          "productoId": 21,
+          "nombre": "GALLETAS PICARAS 40GR",
+          "precio": 1.3,
+          "cantidad": 1,
+          "precioBase": 1.2
+        },
+        {
+          "productoId": 22,
+          "nombre": "GALLETA OREO 36GR",
+          "precio": 0.8,
+          "cantidad": 1,
+          "precioBase": 0.5
+        },
+        {
+          "productoId": 23,
+          "nombre": "GALLETAS CHIPS AHOY 37GR",
+          "precio": 1.5,
+          "cantidad": 1,
+          "precioBase": 1.1
+        }
+      ],
+      "total": 3.6,
+      "estado": "entregado",
+      "fecha": "2026-05-25T04:29:47.154Z",
+      "pagado": true
+    },
+    {
+      "id": 31,
+      "usuario": "Nick - el papuh",
+      "items": [
+        {
+          "productoId": 25,
+          "nombre": "CEREAL BAR",
+          "precio": 1,
+          "cantidad": 1,
+          "precioBase": 0.5
+        }
+      ],
+      "total": 1,
+      "estado": "entregado",
+      "fecha": "2026-05-25T04:40:32.314Z",
+      "pagado": true
+    },
+    {
+      "id": 32,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 16,
+          "nombre": "CHEETOS HORNEADOS QUESO 90GR",
+          "precio": 6.5,
+          "cantidad": 1,
+          "precioBase": 5.59
+        }
+      ],
+      "total": 6.5,
+      "estado": "entregado",
+      "fecha": "2026-05-25T07:05:26.623Z",
+      "pagado": true
+    },
+    {
+      "id": 33,
+      "usuario": "Nick - el papuh",
+      "items": [
+        {
+          "productoId": 21,
+          "nombre": "GALLETAS PICARAS 40GR",
+          "precio": 1.3,
+          "cantidad": 1,
+          "precioBase": 1.2
+        }
+      ],
+      "total": 1.3,
+      "estado": "entregado",
+      "fecha": "2026-05-25T07:15:57.186Z",
+      "pagado": true
+    },
+    {
+      "id": 34,
+      "usuario": "Anita",
+      "items": [
+        {
+          "productoId": 21,
+          "nombre": "GALLETAS PICARAS 40GR",
+          "precio": 1.3,
+          "cantidad": 1,
+          "precioBase": 1.2
+        },
+        {
+          "productoId": 23,
+          "nombre": "GALLETAS CHIPS AHOY 37GR",
+          "precio": 1.5,
+          "cantidad": 1,
+          "precioBase": 1.1
+        }
+      ],
+      "total": 2.8,
+      "estado": "entregado",
+      "fecha": "2026-05-26T03:03:27.805Z",
+      "pagado": true
+    },
+    {
+      "id": 35,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 29,
+          "nombre": "Rehidratante Sporade Tropical Tapa Plana 500 ML",
+          "precio": 2.5,
+          "cantidad": 1,
+          "precioBase": 1.95
+        }
+      ],
+      "total": 2.5,
+      "estado": "entregado",
+      "fecha": "2026-05-26T03:05:29.778Z",
+      "pagado": true
+    },
+    {
+      "id": 36,
+      "usuario": "Jian Pierre",
+      "items": [
+        {
+          "productoId": 22,
+          "nombre": "GALLETA OREO 36GR",
+          "precio": 0.8,
+          "cantidad": 1,
+          "precioBase": 0.5
+        }
+      ],
+      "total": 0.8,
+      "estado": "entregado",
+      "fecha": "2026-05-27T03:06:27.763Z",
+      "pagado": true
+    },
+    {
+      "id": 37,
+      "usuario": "Diana E.",
+      "items": [
+        {
+          "productoId": 30,
+          "nombre": "LECHE GLORIA 170GR",
+          "precio": 2.8,
+          "cantidad": 1,
+          "precioBase": 2.2
+        }
+      ],
+      "total": 2.8,
+      "estado": "entregado",
+      "fecha": "2026-05-27T03:33:08.537Z",
+      "pagado": true
+    },
+    {
+      "id": 38,
+      "usuario": "sandro",
+      "items": [
+        {
+          "productoId": 16,
+          "nombre": "CHEETOS HORNEADOS QUESO 90GR",
+          "precio": 6.5,
+          "cantidad": 1,
+          "precioBase": 5.59
+        }
+      ],
+      "total": 6.5,
+      "estado": "entregado",
+      "fecha": "2026-05-27T03:33:27.328Z",
+      "pagado": true
+    },
+    {
+      "id": 39,
+      "usuario": "mikhail",
+      "items": [
+        {
+          "productoId": 27,
+          "nombre": "NACHOS JAPPY SNACK JALAPEÑO 200GR",
+          "precio": 7.9,
+          "cantidad": 1,
+          "precioBase": 6.9
+        }
+      ],
+      "total": 7.9,
+      "estado": "entregado",
+      "fecha": "2026-05-27T04:50:50.767Z",
+      "pagado": true
+    },
+    {
+      "id": 40,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 21,
+          "nombre": "GALLETAS PICARAS 40GR",
+          "precio": 1.3,
+          "cantidad": 1,
+          "precioBase": 1.2
+        }
+      ],
+      "total": 1.3,
+      "estado": "entregado",
+      "fecha": "2026-05-27T05:43:46.828Z",
+      "pagado": true
+    },
+    {
+      "id": 41,
+      "usuario": "Danny",
+      "items": [
+        {
+          "productoId": 17,
+          "nombre": "PAPAS INKA CHIPS JALAPEÑO 135GR",
+          "precio": 8.8,
+          "cantidad": 1,
+          "precioBase": 8.39
+        }
+      ],
+      "total": 8.8,
+      "estado": "entregado",
+      "fecha": "2026-05-27T07:04:11.989Z",
+      "pagado": true
+    },
+    {
+      "id": 42,
+      "usuario": "sandro",
+      "items": [
+        {
+          "productoId": 28,
+          "nombre": "POP CORN JAPPY SNACK ORIGINAL 95GR",
+          "precio": 5.5,
+          "cantidad": 1,
+          "precioBase": 4.9
+        }
+      ],
+      "total": 5.5,
+      "estado": "entregado",
+      "fecha": "2026-05-28T03:38:13.916Z",
+      "pagado": true
+    },
+    {
+      "id": 43,
+      "usuario": "Nick - el papuh",
+      "items": [
+        {
+          "productoId": 29,
+          "nombre": "Rehidratante Sporade Tropical Tapa Plana 500 ML",
+          "precio": 2.5,
+          "cantidad": 1,
+          "precioBase": 1.95
+        }
+      ],
+      "total": 2.5,
+      "estado": "entregado",
+      "fecha": "2026-05-28T03:42:58.851Z",
+      "pagado": true
+    },
+    {
+      "id": 44,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 30,
+          "nombre": "LECHE GLORIA 170GR",
+          "precio": 2.6,
+          "cantidad": 1,
+          "precioBase": 2.2
+        }
+      ],
+      "total": 2.6,
+      "estado": "entregado",
+      "fecha": "2026-05-28T03:51:12.615Z",
+      "pagado": true
+    },
+    {
+      "id": 45,
+      "usuario": "cesar",
+      "items": [
+        {
+          "productoId": 31,
+          "nombre": "GALLETA CHOMP NARANJA X 38 GR",
+          "precio": 1.2,
+          "cantidad": 1,
+          "precioBase": 0.9
+        }
+      ],
+      "total": 1.2,
+      "estado": "cancelado",
+      "fecha": "2026-05-28T04:11:19.789Z"
+    },
+    {
+      "id": 46,
+      "usuario": "Anita",
+      "items": [
+        {
+          "productoId": 23,
+          "nombre": "GALLETAS CHIPS AHOY 37GR",
+          "precio": 1.5,
+          "cantidad": 2,
+          "precioBase": 1.1
+        },
+        {
+          "productoId": 32,
+          "nombre": "Galleta Chocodonuts Leche Costa 36 GR",
+          "precio": 1,
+          "cantidad": 1,
+          "precioBase": 0.8
+        }
+      ],
+      "total": 4,
+      "estado": "entregado",
+      "fecha": "2026-05-28T04:13:49.459Z",
+      "pagado": true
+    },
+    {
+      "id": 47,
+      "usuario": "cesar",
+      "items": [
+        {
+          "productoId": 31,
+          "nombre": "GALLETA CHOMP NARANJA X 38 GR",
+          "precio": 1.2,
+          "cantidad": 1,
+          "precioBase": 0.9
+        }
+      ],
+      "total": 1.2,
+      "estado": "entregado",
+      "fecha": "2026-05-28T04:28:31.076Z",
+      "pagado": true
+    },
+    {
+      "id": 48,
+      "usuario": "Nick - el papuh",
+      "items": [
+        {
+          "productoId": 32,
+          "nombre": "Galleta Chocodonuts Leche Costa 36 GR",
+          "precio": 1,
+          "cantidad": 1,
+          "precioBase": 0.8
+        }
+      ],
+      "total": 1,
+      "estado": "entregado",
+      "fecha": "2026-05-29T02:39:52.708Z",
+      "pagado": true
+    },
+    {
+      "id": 49,
+      "usuario": "Jian Pierre",
+      "items": [
+        {
+          "productoId": 18,
+          "nombre": "ENERGIZANTE VOLT GINSENG LATA 473ML",
+          "precio": 4.9,
+          "cantidad": 1,
+          "precioBase": 4.25
+        }
+      ],
+      "total": 4.9,
+      "estado": "entregado",
+      "fecha": "2026-05-29T02:45:31.668Z",
+      "pagado": true
+    },
+    {
+      "id": 50,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 25,
+          "nombre": "CEREAL BAR",
+          "precio": 1,
+          "cantidad": 2,
+          "precioBase": 0.5
+        }
+      ],
+      "total": 2,
+      "estado": "entregado",
+      "fecha": "2026-05-29T03:40:41.469Z",
+      "pagado": true
+    },
+    {
+      "id": 51,
+      "usuario": "JENN",
+      "items": [
+        {
+          "productoId": 36,
+          "nombre": "Galleta Chokosoda FIELD 36GR",
+          "precio": 1.5,
+          "cantidad": 1,
+          "precioBase": 1.2
+        }
+      ],
+      "total": 1.5,
+      "estado": "entregado",
+      "fecha": "2026-05-29T08:04:29.979Z",
+      "pagado": true
+    },
+    {
+      "id": 52,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 22,
+          "nombre": "GALLETA OREO 36GR",
+          "precio": 0.8,
+          "cantidad": 1,
+          "precioBase": 0.5
+        }
+      ],
+      "total": 0.8,
+      "estado": "entregado",
+      "fecha": "2026-05-29T09:31:04.269Z",
+      "pagado": true
+    },
+    {
+      "id": 53,
+      "usuario": "Nick - el papuh",
+      "items": [
+        {
+          "productoId": 18,
+          "nombre": "ENERGIZANTE VOLT GINSENG LATA 473ML",
+          "precio": 4.9,
+          "cantidad": 1,
+          "precioBase": 4.25
+        }
+      ],
+      "total": 4.9,
+      "estado": "entregado",
+      "fecha": "2026-05-30T03:10:06.867Z",
+      "pagado": true
+    },
+    {
+      "id": 54,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 37,
+          "nombre": "Gaseosa Pepsi 1 LT",
+          "precio": 3.5,
+          "cantidad": 1,
+          "precioBase": 2.75
+        }
+      ],
+      "total": 3.5,
+      "estado": "entregado",
+      "fecha": "2026-05-30T03:20:24.050Z",
+      "pagado": true
+    },
+    {
+      "id": 55,
+      "usuario": "cesar",
+      "items": [
+        {
+          "productoId": 31,
+          "nombre": "GALLETA CHOMP NARANJA X 38 GR",
+          "precio": 1.2,
+          "cantidad": 1,
+          "precioBase": 0.9
+        }
+      ],
+      "total": 1.2,
+      "estado": "entregado",
+      "fecha": "2026-05-30T04:02:46.754Z",
+      "pagado": true
+    },
+    {
+      "id": 56,
+      "usuario": "maria",
+      "items": [
+        {
+          "productoId": 37,
+          "nombre": "Gaseosa Pepsi 1 LT",
+          "precio": 3.5,
+          "cantidad": 1,
+          "precioBase": 2.75
+        },
+        {
+          "productoId": 17,
+          "nombre": "PAPAS INKA CHIPS JALAPEÑO 135GR",
+          "precio": 8.8,
+          "cantidad": 1,
+          "precioBase": 8.39
+        }
+      ],
+      "total": 12.3,
+      "estado": "entregado",
+      "fecha": "2026-05-30T04:57:46.003Z",
+      "pagado": true
+    },
+    {
+      "id": 57,
+      "usuario": "CLAU",
+      "items": [
+        {
+          "productoId": 18,
+          "nombre": "ENERGIZANTE VOLT GINSENG LATA 473ML",
+          "precio": 4.9,
+          "cantidad": 1,
+          "precioBase": 4.25
+        }
+      ],
+      "total": 4.9,
+      "estado": "entregado",
+      "fecha": "2026-05-30T05:54:45.195Z",
+      "pagado": true
+    },
+    {
+      "id": 58,
+      "usuario": "Danny",
+      "items": [
+        {
+          "productoId": 35,
+          "nombre": "Sopa Ajinomen Sabor Pollo con fideos 51gr",
+          "precio": 3.7,
+          "cantidad": 1,
+          "precioBase": 3.3
+        }
+      ],
+      "total": 3.7,
+      "estado": "entregado",
+      "fecha": "2026-05-30T06:15:32.515Z",
+      "pagado": true
+    },
+    {
+      "id": 59,
+      "usuario": "cesar",
+      "items": [
+        {
+          "productoId": 35,
+          "nombre": "Sopa Ajinomen Sabor Pollo con fideos 51gr",
+          "precio": 3.7,
+          "cantidad": 1,
+          "precioBase": 3.3
+        }
+      ],
+      "total": 3.7,
+      "estado": "entregado",
+      "fecha": "2026-05-30T06:17:08.347Z"
+    },
+    {
+      "id": 60,
+      "usuario": "Nick - el papuh",
+      "items": [
+        {
+          "productoId": 37,
+          "nombre": "Gaseosa Pepsi 1 LT",
+          "precio": 3.5,
+          "cantidad": 1,
+          "precioBase": 2.75
+        },
+        {
+          "productoId": 16,
+          "nombre": "CHEETOS HORNEADOS QUESO 90GR",
+          "precio": 6.5,
+          "cantidad": 1,
+          "precioBase": 5.59
+        }
+      ],
+      "total": 10,
+      "estado": "entregado",
+      "fecha": "2026-05-31T02:41:36.173Z",
+      "pagado": true
+    },
+    {
+      "id": 61,
+      "usuario": "mikhail",
+      "items": [
+        {
+          "productoId": 37,
+          "nombre": "Gaseosa Pepsi 1 LT",
+          "precio": 3.5,
+          "cantidad": 1,
+          "precioBase": 2.75
+        },
+        {
+          "productoId": 17,
+          "nombre": "PAPAS INKA CHIPS JALAPEÑO 135GR",
+          "precio": 8.8,
+          "cantidad": 1,
+          "precioBase": 8.39
+        }
+      ],
+      "total": 12.3,
+      "estado": "entregado",
+      "fecha": "2026-05-31T02:47:42.370Z",
+      "pagado": true
+    },
+    {
+      "id": 62,
+      "usuario": "Danny",
+      "items": [
+        {
+          "productoId": 38,
+          "nombre": "Pop Corn Jappy Extra Mantequilla 95 GR",
+          "precio": 5.5,
+          "cantidad": 1,
+          "precioBase": 4.9
+        }
+      ],
+      "total": 5.5,
+      "estado": "entregado",
+      "fecha": "2026-05-31T02:49:39.594Z",
+      "pagado": true
+    },
+    {
+      "id": 63,
+      "usuario": "Jian Pierre",
+      "items": [
+        {
+          "productoId": 12,
+          "nombre": "GASEOSA COCA COLA 600ML",
+          "precio": 3.8,
+          "cantidad": 1,
+          "precioBase": 3.25
+        }
+      ],
+      "total": 3.8,
+      "estado": "entregado",
+      "fecha": "2026-05-31T03:26:59.521Z",
+      "pagado": true
+    },
+    {
+      "id": 64,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 24,
+          "nombre": "AGUA CIELO MANZANA 600ML",
+          "precio": 2,
+          "cantidad": 1,
+          "precioBase": 1.7
+        }
+      ],
+      "total": 2,
+      "estado": "entregado",
+      "fecha": "2026-05-31T04:06:16.059Z",
+      "pagado": true
+    },
+    {
+      "id": 65,
+      "usuario": "GUIDO",
+      "items": [
+        {
+          "productoId": 12,
+          "nombre": "GASEOSA COCA COLA 600ML",
+          "precio": 3.8,
+          "cantidad": 1,
+          "precioBase": 3.25
+        },
+        {
+          "productoId": 31,
+          "nombre": "GALLETA CHOMP NARANJA X 38 GR",
+          "precio": 1.2,
+          "cantidad": 1,
+          "precioBase": 0.9
+        }
+      ],
+      "total": 5,
+      "estado": "entregado",
+      "fecha": "2026-05-31T07:04:21.152Z",
+      "pagado": true
+    },
+    {
+      "id": 66,
+      "usuario": "cesar",
+      "items": [
+        {
+          "productoId": 5,
+          "nombre": "WAFER NIK VAINILLA",
+          "precio": 2.9,
+          "cantidad": 1,
+          "precioBase": 2.39
+        }
+      ],
+      "total": 2.9,
+      "estado": "entregado",
+      "fecha": "2026-05-31T07:30:56.294Z"
+    },
+    {
+      "id": 67,
+      "usuario": "Jian Pierre",
+      "items": [
+        {
+          "productoId": 22,
+          "nombre": "GALLETA OREO 36GR",
+          "precio": 0.8,
+          "cantidad": 1,
+          "precioBase": 0.5
+        }
+      ],
+      "total": 0.8,
+      "estado": "entregado",
+      "fecha": "2026-05-31T09:15:43.677Z",
+      "pagado": true
+    },
+    {
+      "id": 68,
+      "usuario": "mikhail",
+      "items": [
+        {
+          "productoId": 36,
+          "nombre": "Galleta Chokosoda FIELD 36GR",
+          "precio": 1.5,
+          "cantidad": 1,
+          "precioBase": 1.2
+        },
+        {
+          "productoId": 32,
+          "nombre": "Galleta Chocodonuts Leche Costa 36 GR",
+          "precio": 1,
+          "cantidad": 1,
+          "precioBase": 0.8
+        },
+        {
+          "productoId": 31,
+          "nombre": "GALLETA CHOMP NARANJA X 38 GR",
+          "precio": 1.2,
+          "cantidad": 1,
+          "precioBase": 0.9
+        },
+        {
+          "productoId": 23,
+          "nombre": "GALLETAS CHIPS AHOY 37GR",
+          "precio": 1.5,
+          "cantidad": 1,
+          "precioBase": 1.1
+        },
+        {
+          "productoId": 25,
+          "nombre": "CEREAL BAR",
+          "precio": 1,
+          "cantidad": 1,
+          "precioBase": 0.5
+        }
+      ],
+      "total": 6.2,
+      "estado": "entregado",
+      "fecha": "2026-06-02T03:44:38.400Z"
+    },
+    {
+      "id": 69,
+      "usuario": "Jian Pierre",
+      "items": [
+        {
+          "productoId": 36,
+          "nombre": "Galleta Chokosoda FIELD 36GR",
+          "precio": 1.5,
+          "cantidad": 1,
+          "precioBase": 1.2
+        }
+      ],
+      "total": 1.5,
+      "estado": "entregado",
+      "fecha": "2026-06-02T03:50:07.775Z",
+      "pagado": true
+    },
+    {
+      "id": 70,
+      "usuario": "sandro",
+      "items": [
+        {
+          "productoId": 32,
+          "nombre": "Galleta Chocodonuts Leche Costa 36 GR",
+          "precio": 1,
+          "cantidad": 2,
+          "precioBase": 0.8
+        }
+      ],
+      "total": 2,
+      "estado": "entregado",
+      "fecha": "2026-06-02T04:17:25.362Z"
+    },
+    {
+      "id": 71,
+      "usuario": "Arnold B",
+      "items": [
+        {
+          "productoId": 35,
+          "nombre": "Sopa Ajinomen Sabor Pollo con fideos 51gr",
+          "precio": 3.7,
+          "cantidad": 1,
+          "precioBase": 3.3
+        }
+      ],
+      "total": 3.7,
+      "estado": "entregado",
+      "fecha": "2026-06-02T05:36:02.153Z",
+      "pagado": true
+    },
+    {
+      "id": 72,
+      "usuario": "Anita",
+      "items": [
+        {
+          "productoId": 36,
+          "nombre": "Galleta Chokosoda FIELD 36GR",
+          "precio": 1.5,
+          "cantidad": 1,
+          "precioBase": 1.2
+        },
+        {
+          "productoId": 25,
+          "nombre": "CEREAL BAR",
+          "precio": 1,
+          "cantidad": 1,
+          "precioBase": 0.5
+        }
+      ],
+      "total": 2.5,
+      "estado": "entregado",
+      "fecha": "2026-06-02T09:34:48.875Z"
+    },
+    {
+      "id": 73,
+      "usuario": "BRONI",
+      "items": [
+        {
+          "productoId": 28,
+          "nombre": "POP CORN JAPPY SNACK ORIGINAL 95GR",
+          "precio": 5.5,
+          "cantidad": 1,
+          "precioBase": 4.9
+        }
+      ],
+      "total": 5.5,
+      "estado": "entregado",
+      "fecha": "2026-06-04T02:52:15.825Z"
+    },
+    {
+      "id": 74,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 31,
+          "nombre": "GALLETA CHOMP NARANJA X 38 GR",
+          "precio": 1.2,
+          "cantidad": 1,
+          "precioBase": 0.9
+        },
+        {
+          "productoId": 36,
+          "nombre": "Galleta Chokosoda FIELD 36GR",
+          "precio": 1.5,
+          "cantidad": 2,
+          "precioBase": 1.2
+        }
+      ],
+      "total": 4.2,
+      "estado": "entregado",
+      "fecha": "2026-06-04T02:53:27.372Z",
+      "pagado": true
+    },
+    {
+      "id": 75,
+      "usuario": "Danny",
+      "items": [
+        {
+          "productoId": 16,
+          "nombre": "CHEETOS HORNEADOS QUESO 90GR",
+          "precio": 6.5,
+          "cantidad": 1,
+          "precioBase": 5.59
+        }
+      ],
+      "total": 6.5,
+      "estado": "entregado",
+      "fecha": "2026-06-04T02:54:24.303Z"
+    },
+    {
+      "id": 76,
+      "usuario": "Jhon",
+      "items": [
+        {
+          "productoId": 31,
+          "nombre": "GALLETA CHOMP NARANJA X 38 GR",
+          "precio": 1.2,
+          "cantidad": 1,
+          "precioBase": 0.9
+        },
+        {
+          "productoId": 32,
+          "nombre": "Galleta Chocodonuts Leche Costa 36 GR",
+          "precio": 1,
+          "cantidad": 1,
+          "precioBase": 0.8
+        }
+      ],
+      "total": 2.2,
+      "estado": "entregado",
+      "fecha": "2026-06-04T05:08:53.883Z",
+      "pagado": true
+    }
+  ],
+  "_nextProductoId": 39,
+  "_nextPedidoId": 77,
+  "categorias": [
+    {
+      "id": "gaseosas",
+      "nombre": "Gaseosas",
+      "emoji": "🥤",
+      "color": "#3b82f6"
+    },
+    {
+      "id": "galletas",
+      "nombre": "Galletas",
+      "emoji": "🍪",
+      "color": "#f59e0b"
+    },
+    {
+      "id": "snacks",
+      "nombre": "Snacks",
+      "emoji": "🍟",
+      "color": "#ef4444"
+    },
+    {
+      "id": "lacteos",
+      "nombre": "Lácteos",
+      "emoji": "🥛",
+      "color": "#8b5cf6"
+    },
+    {
+      "id": "dulces",
+      "nombre": "Dulces",
+      "emoji": "🍭",
+      "color": "#f0b433"
+    },
+    {
+      "id": "instantaneos",
+      "nombre": "Instantaneos",
+      "emoji": "🍜",
+      "color": "#ec7b6f"
+    }
+  ]
+}

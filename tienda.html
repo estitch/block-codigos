@@ -94,6 +94,14 @@
               📝 Incluir tu usuario en la descripción del Yape por favor
             </p>
           </div>
+
+          <div class="noticia-card">
+            <div class="noticia-header">📰 Noticia</div>
+            <p class="noticia-texto">
+              La tienda busca un <strong>nuevo dueño</strong> que se encargue de la administración del sistema.
+              Si estás interesado, puedes conversar con el <strong>dueño anterior</strong> para coordinar el traspaso de la tienda.
+            </p>
+          </div>
         </aside>
         <!-- Grid productos -->
         <div class="productos-grid" id="productos-grid">
@@ -181,15 +189,15 @@
         <div class="tabla-wrap">
           <div style="overflow-x:auto">
             <table>
-              <thead>
+              <thead id="thead-admin-productos">
                 <tr>
-                  <th>Img</th>
-                  <th>Nombre</th>
-                  <th>Categoría</th>
-                  <th>Precio Base</th>
-                  <th>Precio Venta</th>
-                  <th>Stock</th>
-                  <th>Acciones</th>
+                                    <th style="cursor:default">Img</th>
+                  <th data-col="nombre"    style="cursor:pointer;user-select:none" onclick="sortAdminProductos('nombre')">Nombre<span class="sort-ico"> ⇅</span></th>
+                  <th data-col="categoria" style="cursor:pointer;user-select:none" onclick="sortAdminProductos('categoria')">Categoría<span class="sort-ico"> ⇅</span></th>
+                  <th data-col="precioBase" style="cursor:pointer;user-select:none" onclick="sortAdminProductos('precioBase')">Precio Base<span class="sort-ico"> ⇅</span></th>
+                  <th data-col="precio"    style="cursor:pointer;user-select:none" onclick="sortAdminProductos('precio')">Precio Venta<span class="sort-ico"> ⇅</span></th>
+                  <th data-col="stock"     style="cursor:pointer;user-select:none" onclick="sortAdminProductos('stock')">Stock<span class="sort-ico"> ⇅</span></th>
+                  <th style="cursor:default">Acciones</th>
                 </tr>
               </thead>
               <tbody id="tbody-admin-productos"></tbody>
