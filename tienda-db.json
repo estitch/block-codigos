@@ -21,7 +21,8 @@
     "maria",
     "CLAU",
     "GUIDO",
-    "Renato L."
+    "Renato L.",
+    "gladys"
   ],
   "productos": [
     {
@@ -66,7 +67,7 @@
       "categoria": "gaseosas",
       "precio": 8.9,
       "imagen": "https://media.falabella.com/tottusPE/40701705_1/w=1200,h=1200,fit=pad",
-      "stock": 1,
+      "stock": 0,
       "precioBase": 8.29
     },
     {
@@ -75,7 +76,7 @@
       "categoria": "snacks",
       "precio": 10.9,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/2qSR7b2H7hDZ2HTpD-300-x.webp",
-      "stock": 1,
+      "stock": 0,
       "precioBase": 9.9
     },
     {
@@ -220,7 +221,7 @@
       "precioBase": 2.2,
       "precio": 2.6,
       "imagen": "https://vegaperu.vtexassets.com/arquivos/ids/165286-1200-auto?v=638312641952700000&width=1200&height=auto&aspect=true",
-      "stock": 4
+      "stock": 2
     },
     {
       "id": 31,
@@ -247,7 +248,7 @@
       "precioBase": 0.55,
       "precio": 1,
       "imagen": "https://media.falabella.com/tottusPE/43399932_1/w=1200,h=1200,fit=pad",
-      "stock": 20
+      "stock": 0
     },
     {
       "id": 34,
@@ -256,7 +257,7 @@
       "precioBase": 3.6,
       "precio": 4,
       "imagen": "https://dojiw2m9tvv09.cloudfront.net/53648/product/X_www0319.png?77&t=1779850778",
-      "stock": 2
+      "stock": 1
     },
     {
       "id": 35,
@@ -1116,7 +1117,8 @@
       ],
       "total": 3.7,
       "estado": "entregado",
-      "fecha": "2026-05-30T06:17:08.347Z"
+      "fecha": "2026-05-30T06:17:08.347Z",
+      "pagado": true
     },
     {
       "id": 60,
@@ -1255,7 +1257,8 @@
       ],
       "total": 2.9,
       "estado": "entregado",
-      "fecha": "2026-05-31T07:30:56.294Z"
+      "fecha": "2026-05-31T07:30:56.294Z",
+      "pagado": true
     },
     {
       "id": 67,
@@ -1316,7 +1319,8 @@
       ],
       "total": 6.2,
       "estado": "entregado",
-      "fecha": "2026-06-02T03:44:38.400Z"
+      "fecha": "2026-06-02T03:44:38.400Z",
+      "pagado": true
     },
     {
       "id": 69,
@@ -1349,7 +1353,8 @@
       ],
       "total": 2,
       "estado": "entregado",
-      "fecha": "2026-06-02T04:17:25.362Z"
+      "fecha": "2026-06-02T04:17:25.362Z",
+      "pagado": true
     },
     {
       "id": 71,
@@ -1389,7 +1394,8 @@
       ],
       "total": 2.5,
       "estado": "entregado",
-      "fecha": "2026-06-02T09:34:48.875Z"
+      "fecha": "2026-06-02T09:34:48.875Z",
+      "pagado": true
     },
     {
       "id": 73,
@@ -1405,7 +1411,8 @@
       ],
       "total": 5.5,
       "estado": "entregado",
-      "fecha": "2026-06-04T02:52:15.825Z"
+      "fecha": "2026-06-04T02:52:15.825Z",
+      "pagado": true
     },
     {
       "id": 74,
@@ -1445,7 +1452,8 @@
       ],
       "total": 6.5,
       "estado": "entregado",
-      "fecha": "2026-06-04T02:54:24.303Z"
+      "fecha": "2026-06-04T02:54:24.303Z",
+      "pagado": true
     },
     {
       "id": 76,
@@ -1470,10 +1478,95 @@
       "estado": "entregado",
       "fecha": "2026-06-04T05:08:53.883Z",
       "pagado": true
+    },
+    {
+      "id": 77,
+      "usuario": "JENN",
+      "items": [
+        {
+          "productoId": 14,
+          "nombre": "MIX PREMIUM NUT SNACK 150GR",
+          "precio": 10.9,
+          "cantidad": 1,
+          "precioBase": 9.9
+        }
+      ],
+      "total": 10.9,
+      "estado": "entregado",
+      "fecha": "2026-06-04T09:04:08.597Z",
+      "pagado": true
+    },
+    {
+      "id": 78,
+      "usuario": "Admin",
+      "items": [
+        {
+          "productoId": 33,
+          "nombre": "Caramelos Toffee Ambrosoli Menta X5 UND",
+          "precio": 1,
+          "cantidad": 20,
+          "precioBase": 0.55
+        }
+      ],
+      "total": 20,
+      "estado": "entregado",
+      "fecha": "2026-06-06T03:14:35.486Z",
+      "pagado": true
+    },
+    {
+      "id": 79,
+      "usuario": "Admin",
+      "items": [
+        {
+          "productoId": 34,
+          "nombre": "MAYONESA ALACENA 95GR",
+          "precio": 4,
+          "cantidad": 1,
+          "precioBase": 3.6
+        }
+      ],
+      "total": 4,
+      "estado": "entregado",
+      "fecha": "2026-06-06T03:14:43.242Z",
+      "pagado": true
+    },
+    {
+      "id": 80,
+      "usuario": "Admin",
+      "items": [
+        {
+          "productoId": 30,
+          "nombre": "LECHE GLORIA 170GR",
+          "precio": 2.6,
+          "cantidad": 2,
+          "precioBase": 2.2
+        }
+      ],
+      "total": 5.2,
+      "estado": "entregado",
+      "fecha": "2026-06-11T05:34:12.477Z",
+      "pagado": true
+    },
+    {
+      "id": 81,
+      "usuario": "Admin",
+      "items": [
+        {
+          "productoId": 13,
+          "nombre": "ENERGIZANTE MONSTER ENERGY 473ML",
+          "precio": 8.9,
+          "cantidad": 1,
+          "precioBase": 8.29
+        }
+      ],
+      "total": 8.9,
+      "estado": "entregado",
+      "fecha": "2026-06-11T06:05:45.239Z",
+      "pagado": true
     }
   ],
   "_nextProductoId": 39,
-  "_nextPedidoId": 77,
+  "_nextPedidoId": 82,
   "categorias": [
     {
       "id": "gaseosas",

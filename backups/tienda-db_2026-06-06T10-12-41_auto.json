@@ -19,7 +19,9 @@
     "Arnold B",
     "Danny",
     "maria",
-    "CLAU"
+    "CLAU",
+    "GUIDO",
+    "Renato L."
   ],
   "productos": [
     {
@@ -37,7 +39,7 @@
       "categoria": "galletas",
       "precio": 2.9,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/AfjuHsJ2wD9HK9yaC-300-x.webp",
-      "stock": 1,
+      "stock": 0,
       "precioBase": 2.39
     },
     {
@@ -55,7 +57,7 @@
       "categoria": "gaseosas",
       "precio": 3.8,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/rf7LpEao2TjcY59qF-300-x.webp",
-      "stock": 1,
+      "stock": 0,
       "precioBase": 3.25
     },
     {
@@ -73,7 +75,7 @@
       "categoria": "snacks",
       "precio": 10.9,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/2qSR7b2H7hDZ2HTpD-300-x.webp",
-      "stock": 1,
+      "stock": 0,
       "precioBase": 9.9
     },
     {
@@ -91,7 +93,7 @@
       "categoria": "snacks",
       "precio": 6.5,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/bzefbTzBwRvnKAAoY-300-x.webp",
-      "stock": 1,
+      "stock": 0,
       "precioBase": 5.59
     },
     {
@@ -146,7 +148,7 @@
       "precioBase": 0.5,
       "precio": 0.8,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/nWfEeXYW56wE9GXZj-300-x.webp",
-      "stock": 1
+      "stock": 0
     },
     {
       "id": 23,
@@ -155,7 +157,7 @@
       "precioBase": 1.1,
       "precio": 1.5,
       "imagen": "https://www.fybeca.com/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_FybecaEcuador/default/dw58f191af/images/large/5525636_1.jpg?sw=1000&sh=1000",
-      "stock": 1
+      "stock": 0
     },
     {
       "id": 24,
@@ -173,7 +175,7 @@
       "precioBase": 0.5,
       "precio": 1,
       "imagen": "https://cdnx.jumpseller.com/serviceshop/image/15317987/thumb/540/540?1615398110",
-      "stock": 2
+      "stock": 0
     },
     {
       "id": 26,
@@ -200,7 +202,7 @@
       "precioBase": 4.9,
       "precio": 5.5,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/Ky5DTGgxQ6Wa2aaWs-300-x.webp",
-      "stock": 1
+      "stock": 0
     },
     {
       "id": 29,
@@ -227,7 +229,7 @@
       "precioBase": 0.9,
       "precio": 1.2,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/M9QqCc9eCYphq2oto-300-x.webp",
-      "stock": 4
+      "stock": 0
     },
     {
       "id": 32,
@@ -236,7 +238,7 @@
       "precioBase": 0.8,
       "precio": 1,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/96GMWWoo3frxLq8qM-300-x.webp",
-      "stock": 4
+      "stock": 0
     },
     {
       "id": 33,
@@ -245,7 +247,7 @@
       "precioBase": 0.55,
       "precio": 1,
       "imagen": "https://media.falabella.com/tottusPE/43399932_1/w=1200,h=1200,fit=pad",
-      "stock": 20
+      "stock": 0
     },
     {
       "id": 34,
@@ -254,7 +256,7 @@
       "precioBase": 3.6,
       "precio": 4,
       "imagen": "https://dojiw2m9tvv09.cloudfront.net/53648/product/X_www0319.png?77&t=1779850778",
-      "stock": 2
+      "stock": 1
     },
     {
       "id": 35,
@@ -263,7 +265,7 @@
       "precioBase": 3.3,
       "precio": 3.7,
       "imagen": "https://tofuu.getjusto.com/orioneat-local/resized2/HAsfEBBDLpXGWAvaQ-300-x.webp",
-      "stock": 1
+      "stock": 0
     },
     {
       "id": 36,
@@ -272,7 +274,7 @@
       "precioBase": 1.2,
       "precio": 1.5,
       "imagen": "https://www.bodega-latina.de/wp-content/uploads/2023/10/chokosoda.jpg",
-      "stock": 5
+      "stock": 0
     },
     {
       "id": 37,
@@ -1097,7 +1099,8 @@
       ],
       "total": 3.7,
       "estado": "entregado",
-      "fecha": "2026-05-30T06:15:32.515Z"
+      "fecha": "2026-05-30T06:15:32.515Z",
+      "pagado": true
     },
     {
       "id": 59,
@@ -1113,7 +1116,8 @@
       ],
       "total": 3.7,
       "estado": "entregado",
-      "fecha": "2026-05-30T06:17:08.347Z"
+      "fecha": "2026-05-30T06:17:08.347Z",
+      "pagado": true
     },
     {
       "id": 60,
@@ -1160,7 +1164,8 @@
       ],
       "total": 12.3,
       "estado": "entregado",
-      "fecha": "2026-05-31T02:47:42.370Z"
+      "fecha": "2026-05-31T02:47:42.370Z",
+      "pagado": true
     },
     {
       "id": 62,
@@ -1176,7 +1181,8 @@
       ],
       "total": 5.5,
       "estado": "entregado",
-      "fecha": "2026-05-31T02:49:39.594Z"
+      "fecha": "2026-05-31T02:49:39.594Z",
+      "pagado": true
     },
     {
       "id": 63,
@@ -1211,10 +1217,320 @@
       "estado": "entregado",
       "fecha": "2026-05-31T04:06:16.059Z",
       "pagado": true
+    },
+    {
+      "id": 65,
+      "usuario": "GUIDO",
+      "items": [
+        {
+          "productoId": 12,
+          "nombre": "GASEOSA COCA COLA 600ML",
+          "precio": 3.8,
+          "cantidad": 1,
+          "precioBase": 3.25
+        },
+        {
+          "productoId": 31,
+          "nombre": "GALLETA CHOMP NARANJA X 38 GR",
+          "precio": 1.2,
+          "cantidad": 1,
+          "precioBase": 0.9
+        }
+      ],
+      "total": 5,
+      "estado": "entregado",
+      "fecha": "2026-05-31T07:04:21.152Z",
+      "pagado": true
+    },
+    {
+      "id": 66,
+      "usuario": "cesar",
+      "items": [
+        {
+          "productoId": 5,
+          "nombre": "WAFER NIK VAINILLA",
+          "precio": 2.9,
+          "cantidad": 1,
+          "precioBase": 2.39
+        }
+      ],
+      "total": 2.9,
+      "estado": "entregado",
+      "fecha": "2026-05-31T07:30:56.294Z",
+      "pagado": true
+    },
+    {
+      "id": 67,
+      "usuario": "Jian Pierre",
+      "items": [
+        {
+          "productoId": 22,
+          "nombre": "GALLETA OREO 36GR",
+          "precio": 0.8,
+          "cantidad": 1,
+          "precioBase": 0.5
+        }
+      ],
+      "total": 0.8,
+      "estado": "entregado",
+      "fecha": "2026-05-31T09:15:43.677Z",
+      "pagado": true
+    },
+    {
+      "id": 68,
+      "usuario": "mikhail",
+      "items": [
+        {
+          "productoId": 36,
+          "nombre": "Galleta Chokosoda FIELD 36GR",
+          "precio": 1.5,
+          "cantidad": 1,
+          "precioBase": 1.2
+        },
+        {
+          "productoId": 32,
+          "nombre": "Galleta Chocodonuts Leche Costa 36 GR",
+          "precio": 1,
+          "cantidad": 1,
+          "precioBase": 0.8
+        },
+        {
+          "productoId": 31,
+          "nombre": "GALLETA CHOMP NARANJA X 38 GR",
+          "precio": 1.2,
+          "cantidad": 1,
+          "precioBase": 0.9
+        },
+        {
+          "productoId": 23,
+          "nombre": "GALLETAS CHIPS AHOY 37GR",
+          "precio": 1.5,
+          "cantidad": 1,
+          "precioBase": 1.1
+        },
+        {
+          "productoId": 25,
+          "nombre": "CEREAL BAR",
+          "precio": 1,
+          "cantidad": 1,
+          "precioBase": 0.5
+        }
+      ],
+      "total": 6.2,
+      "estado": "entregado",
+      "fecha": "2026-06-02T03:44:38.400Z"
+    },
+    {
+      "id": 69,
+      "usuario": "Jian Pierre",
+      "items": [
+        {
+          "productoId": 36,
+          "nombre": "Galleta Chokosoda FIELD 36GR",
+          "precio": 1.5,
+          "cantidad": 1,
+          "precioBase": 1.2
+        }
+      ],
+      "total": 1.5,
+      "estado": "entregado",
+      "fecha": "2026-06-02T03:50:07.775Z",
+      "pagado": true
+    },
+    {
+      "id": 70,
+      "usuario": "sandro",
+      "items": [
+        {
+          "productoId": 32,
+          "nombre": "Galleta Chocodonuts Leche Costa 36 GR",
+          "precio": 1,
+          "cantidad": 2,
+          "precioBase": 0.8
+        }
+      ],
+      "total": 2,
+      "estado": "entregado",
+      "fecha": "2026-06-02T04:17:25.362Z",
+      "pagado": true
+    },
+    {
+      "id": 71,
+      "usuario": "Arnold B",
+      "items": [
+        {
+          "productoId": 35,
+          "nombre": "Sopa Ajinomen Sabor Pollo con fideos 51gr",
+          "precio": 3.7,
+          "cantidad": 1,
+          "precioBase": 3.3
+        }
+      ],
+      "total": 3.7,
+      "estado": "entregado",
+      "fecha": "2026-06-02T05:36:02.153Z",
+      "pagado": true
+    },
+    {
+      "id": 72,
+      "usuario": "Anita",
+      "items": [
+        {
+          "productoId": 36,
+          "nombre": "Galleta Chokosoda FIELD 36GR",
+          "precio": 1.5,
+          "cantidad": 1,
+          "precioBase": 1.2
+        },
+        {
+          "productoId": 25,
+          "nombre": "CEREAL BAR",
+          "precio": 1,
+          "cantidad": 1,
+          "precioBase": 0.5
+        }
+      ],
+      "total": 2.5,
+      "estado": "entregado",
+      "fecha": "2026-06-02T09:34:48.875Z",
+      "pagado": true
+    },
+    {
+      "id": 73,
+      "usuario": "BRONI",
+      "items": [
+        {
+          "productoId": 28,
+          "nombre": "POP CORN JAPPY SNACK ORIGINAL 95GR",
+          "precio": 5.5,
+          "cantidad": 1,
+          "precioBase": 4.9
+        }
+      ],
+      "total": 5.5,
+      "estado": "entregado",
+      "fecha": "2026-06-04T02:52:15.825Z",
+      "pagado": true
+    },
+    {
+      "id": 74,
+      "usuario": "stitch",
+      "items": [
+        {
+          "productoId": 31,
+          "nombre": "GALLETA CHOMP NARANJA X 38 GR",
+          "precio": 1.2,
+          "cantidad": 1,
+          "precioBase": 0.9
+        },
+        {
+          "productoId": 36,
+          "nombre": "Galleta Chokosoda FIELD 36GR",
+          "precio": 1.5,
+          "cantidad": 2,
+          "precioBase": 1.2
+        }
+      ],
+      "total": 4.2,
+      "estado": "entregado",
+      "fecha": "2026-06-04T02:53:27.372Z",
+      "pagado": true
+    },
+    {
+      "id": 75,
+      "usuario": "Danny",
+      "items": [
+        {
+          "productoId": 16,
+          "nombre": "CHEETOS HORNEADOS QUESO 90GR",
+          "precio": 6.5,
+          "cantidad": 1,
+          "precioBase": 5.59
+        }
+      ],
+      "total": 6.5,
+      "estado": "entregado",
+      "fecha": "2026-06-04T02:54:24.303Z",
+      "pagado": true
+    },
+    {
+      "id": 76,
+      "usuario": "Jhon",
+      "items": [
+        {
+          "productoId": 31,
+          "nombre": "GALLETA CHOMP NARANJA X 38 GR",
+          "precio": 1.2,
+          "cantidad": 1,
+          "precioBase": 0.9
+        },
+        {
+          "productoId": 32,
+          "nombre": "Galleta Chocodonuts Leche Costa 36 GR",
+          "precio": 1,
+          "cantidad": 1,
+          "precioBase": 0.8
+        }
+      ],
+      "total": 2.2,
+      "estado": "entregado",
+      "fecha": "2026-06-04T05:08:53.883Z",
+      "pagado": true
+    },
+    {
+      "id": 77,
+      "usuario": "JENN",
+      "items": [
+        {
+          "productoId": 14,
+          "nombre": "MIX PREMIUM NUT SNACK 150GR",
+          "precio": 10.9,
+          "cantidad": 1,
+          "precioBase": 9.9
+        }
+      ],
+      "total": 10.9,
+      "estado": "entregado",
+      "fecha": "2026-06-04T09:04:08.597Z",
+      "pagado": true
+    },
+    {
+      "id": 78,
+      "usuario": "Admin",
+      "items": [
+        {
+          "productoId": 33,
+          "nombre": "Caramelos Toffee Ambrosoli Menta X5 UND",
+          "precio": 1,
+          "cantidad": 20,
+          "precioBase": 0.55
+        }
+      ],
+      "total": 20,
+      "estado": "entregado",
+      "fecha": "2026-06-06T03:14:35.486Z",
+      "pagado": true
+    },
+    {
+      "id": 79,
+      "usuario": "Admin",
+      "items": [
+        {
+          "productoId": 34,
+          "nombre": "MAYONESA ALACENA 95GR",
+          "precio": 4,
+          "cantidad": 1,
+          "precioBase": 3.6
+        }
+      ],
+      "total": 4,
+      "estado": "entregado",
+      "fecha": "2026-06-06T03:14:43.242Z",
+      "pagado": true
     }
   ],
   "_nextProductoId": 39,
-  "_nextPedidoId": 65,
+  "_nextPedidoId": 80,
   "categorias": [
     {
       "id": "gaseosas",

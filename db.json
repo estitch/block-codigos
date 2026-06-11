@@ -46,7 +46,8 @@
         1,
         5,
         6,
-        7
+        7,
+        9
       ],
       "version": "GONHER (PRESENCIA CONTINUA)",
       "marca": "GONHER",
@@ -17843,7 +17844,9 @@
       "id": 2006,
       "codigo": "16428110",
       "tipo": "SUPERIMPOSICION",
-      "propietarios_ids": [],
+      "propietarios_ids": [
+        1
+      ],
       "version": "LAS NOTICIAS MONTERREY AL DIA",
       "marca": "TELEVISA MONTERREY",
       "submarca": "TELEVISA MONTERREY (SM)",
@@ -20253,7 +20256,9 @@
       "id": 2251,
       "codigo": "16322158",
       "tipo": "MENCION",
-      "propietarios_ids": [],
+      "propietarios_ids": [
+        1
+      ],
       "version": "DUNKIN DONUTS",
       "marca": "DUNKIN' DONUTS",
       "submarca": "DUNKIN' DONUTS (SM)",
@@ -26480,11 +26485,4037 @@
       "propietarios_ids": [
         1
       ]
+    },
+    {
+      "id": 2876,
+      "codigo": "16834986",
+      "version": "I.AMBIENTAL MENCION VIRTUAL SUPER COLCHONES",
+      "tipo": "BLOQUE PATROCINADO",
+      "marca": "Súper Colchones",
+      "submarca": "Súper Colchones (SM)",
+      "producto": "Tienda de Colchones",
+      "propietarios_ids": [
+        1
+      ]
+    },
+    {
+      "id": 2877,
+      "codigo": "16707163",
+      "version": "ANDAMIOS AMARILLOS",
+      "tipo": "SUPERIMPOSICION",
+      "marca": "Andamios Amarillos",
+      "submarca": "Andamios Amarillos (SM)",
+      "producto": "Venta y Alquiler de Andamios",
+      "propietarios_ids": [
+        1
+      ]
+    },
+    {
+      "id": 2878,
+      "codigo": "16839819",
+      "version": "REGIO FEST",
+      "tipo": "MENCION",
+      "marca": "Regio Fest",
+      "submarca": "Regio Fest (SM)",
+      "producto": "Festival",
+      "propietarios_ids": [
+        1
+      ]
+    },
+    {
+      "id": 2879,
+      "codigo": "16831540",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "(EXT) BERRIOS",
+      "marca": "BERRÍOS",
+      "submarca": "BERRÍOS (SM)",
+      "producto": "TIENDA DEPARTAMENTAL"
+    },
+    {
+      "id": 2880,
+      "codigo": "16831541",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "(EXT) MUNICIPIO DE SAN JUAN",
+      "marca": "MUNICIPIO DE SAN JUAN",
+      "submarca": "MUNICIPIO DE SAN JUAN (SM)",
+      "producto": "INSTITUCIONAL"
+    },
+    {
+      "id": 2881,
+      "codigo": "16833897",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "(EXT) PAX ASSISTANCE",
+      "marca": "PAX ASSISTANCE",
+      "submarca": "PAX ASSISTANCE (SM)",
+      "producto": "ASEGURADORA"
+    },
+    {
+      "id": 2882,
+      "codigo": "16834042",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "(EXT) PAX ASSISTANCE",
+      "marca": "PAX ASSISTANCE",
+      "submarca": "PAX ASSISTANCE (SM)",
+      "producto": "ASEGURADORA"
+    },
+    {
+      "id": 2883,
+      "codigo": "16588357",
+      "tipo": "INFOMERCIAL",
+      "propietarios_ids": [],
+      "version": "(EXT) SI TU QUIERES BAJAR DE PESO Y NO PUEDES DEJAR DE COMER EL MEJOR SISTEMA DE ADELGAZAR TIENES QUE CONOCER TE PRESENTAMOS BALLOON SLIM.",
+      "marca": "SWISS TRADING",
+      "submarca": "BALLOON SLIM",
+      "producto": "VENTAS POR TELEVISIÓN"
+    },
+    {
+      "id": 2884,
+      "codigo": "16796156",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "(EXT) YPF",
+      "marca": "YPF",
+      "submarca": "YPF (SM)",
+      "producto": "ACEITES Y LUBRICANTES"
+    },
+    {
+      "id": 2885,
+      "codigo": "16836566",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "(TX: KFC)",
+      "marca": "KFC",
+      "submarca": "KFC (SM)",
+      "producto": "COMIDA RÁPIDA"
+    },
+    {
+      "id": 2886,
+      "codigo": "16828846",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "18 FESTIVALES FUTBOLEROS",
+      "marca": "SECRETARÍA DE TURISMO",
+      "submarca": "SECRETARÍA DE TURISMO (SM)",
+      "producto": "INSTITUCIONAL"
+    },
+    {
+      "id": 2887,
+      "codigo": "16813882",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "ACCION ESPECIAL I.ACTIVA I.AMBIENTAL MENCION SUPERIMPOSICION HEB",
+      "marca": "HEB",
+      "submarca": "HEB (SM)",
+      "producto": "TIENDA DE AUTOSERVICIO"
+    },
+    {
+      "id": 2888,
+      "codigo": "16744615",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "ACCION ESPECIAL I.AMBIENTAL MENCION CALIENTE",
+      "marca": "CALIENTE",
+      "submarca": "CALIENTE (SM)",
+      "producto": "CASINOS Y APUESTAS VIRTUALES"
+    },
+    {
+      "id": 2889,
+      "codigo": "16835029",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "ACCION ESPECIAL I.AMBIENTAL MENCION SUPERIMPOSICION LALA",
+      "marca": "LALA",
+      "submarca": "CHELALA",
+      "producto": "LECHE"
+    },
+    {
+      "id": 2890,
+      "codigo": "16836536",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "ACCION ESPECIAL MENCION SUPERIMPOSICION CALIENTE",
+      "marca": "CALIENTE",
+      "submarca": "CALIENTE (SM)",
+      "producto": "CASINOS Y APUESTAS VIRTUALES"
+    },
+    {
+      "id": 2891,
+      "codigo": "16833128",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "ADN VLOGS",
+      "marca": "ADN NOTICIAS",
+      "submarca": "ADN NOTICIAS (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2892,
+      "codigo": "16835009",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "AEROMEXICO",
+      "marca": "AEROMÉXICO",
+      "submarca": "AEROMÉXICO (SM)",
+      "producto": "LÍNEA AÉREA"
+    },
+    {
+      "id": 2893,
+      "codigo": "16130314",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "AMERICA",
+      "marca": "AMÉRICA",
+      "submarca": "AMÉRICA (SM)",
+      "producto": "COLCHONES"
+    },
+    {
+      "id": 2894,
+      "codigo": "16252650",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "ANDAMIOS AMARILLOS",
+      "marca": "ANDAMIOS AMARILLOS",
+      "submarca": "ANDAMIOS AMARILLOS (SM)",
+      "producto": "VENTA Y ALQUILER DE ANDAMIOS"
+    },
+    {
+      "id": 2895,
+      "codigo": "16206195",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "ARCA CONTINENTAL",
+      "marca": "ARCA CONTINENTAL",
+      "submarca": "ARCA CONTINENTAL (SM)",
+      "producto": "INSTITUCIONAL"
+    },
+    {
+      "id": 2896,
+      "codigo": "16707127",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "ARQ",
+      "marca": "ARQ",
+      "submarca": "ARQ (SM)",
+      "producto": "PLATAFORMA DE SERVICIOS FINANCIEROS"
+    },
+    {
+      "id": 2897,
+      "codigo": "16829676",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "ASADORES HUMO",
+      "marca": "ASADORES HUMO",
+      "submarca": "ASADORES HUMO (SM)",
+      "producto": "ASADORES"
+    },
+    {
+      "id": 2898,
+      "codigo": "16737946",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "ATYT",
+      "marca": "AT&T",
+      "submarca": "PLAN MI SELECCIÓN",
+      "producto": "POSTPAGO"
+    },
+    {
+      "id": 2899,
+      "codigo": "16673174",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "ATYT",
+      "marca": "AT&T",
+      "submarca": "PLAN LITE ILIMITADO",
+      "producto": "POSTPAGO"
+    },
+    {
+      "id": 2900,
+      "codigo": "16220184",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "AUDITORIO SANTIAGO",
+      "marca": "AUDITORIO SANTIAGO",
+      "submarca": "AUDITORIO SANTIAGO (SM)",
+      "producto": "AUDITORIO"
+    },
+    {
+      "id": 2901,
+      "codigo": "16191530",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "BANAMEX",
+      "marca": "BANAMEX",
+      "submarca": "BANAMEX (SM)",
+      "producto": "BANCO"
+    },
+    {
+      "id": 2902,
+      "codigo": "16818542",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "BANAMEX",
+      "marca": "BANAMEX",
+      "submarca": "BANAMEX (SM)",
+      "producto": "CUENTA DE NÓMINA"
+    },
+    {
+      "id": 2903,
+      "codigo": "16820088",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "BANAMEX",
+      "marca": "BANAMEX",
+      "submarca": "BANAMEX (SM)",
+      "producto": "CUENTA DE NÓMINA"
+    },
+    {
+      "id": 2904,
+      "codigo": "16359143",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "BANAMEX",
+      "marca": "BANAMEX",
+      "submarca": "BANAMEX (SM)",
+      "producto": "CUENTAS"
+    },
+    {
+      "id": 2905,
+      "codigo": "16324302",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "BANAMEX",
+      "marca": "BANAMEX",
+      "submarca": "BANAMEX (SM)",
+      "producto": "CUENTAS"
+    },
+    {
+      "id": 2906,
+      "codigo": "16189128",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "BANCO AZTECA",
+      "marca": "BANCO AZTECA",
+      "submarca": "BANCO AZTECA (SM)",
+      "producto": "INVERSIONES BANCARIAS"
+    },
+    {
+      "id": 2907,
+      "codigo": "16087179",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "BANORTE",
+      "marca": "BANORTE",
+      "submarca": "BANORTE (SM)",
+      "producto": "BANCO"
+    },
+    {
+      "id": 2908,
+      "codigo": "16832601",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "BANORTE",
+      "marca": "BANORTE",
+      "submarca": "BANORTE (SM)",
+      "producto": "PLATAFORMA DE SERVICIOS BANCARIOS"
+    },
+    {
+      "id": 2909,
+      "codigo": "16422859",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "BANORTE",
+      "marca": "BANORTE",
+      "submarca": "BANORTE (SM)",
+      "producto": "BANCO"
+    },
+    {
+      "id": 2910,
+      "codigo": "16823149",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "BANORTE HOT SALE 2026",
+      "marca": "BANORTE",
+      "submarca": "BANORTE (SM)",
+      "producto": "BANCO"
+    },
+    {
+      "id": 2911,
+      "codigo": "16836281",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "BANORTE PANINI",
+      "marca": "BANORTE",
+      "submarca": "BANORTE (SM)",
+      "producto": "TARJETAS DE CRÉDITO"
+    },
+    {
+      "id": 2912,
+      "codigo": "16834927",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "BEREL",
+      "marca": "BEREL",
+      "submarca": "BEREL (SM)",
+      "producto": "TIENDA DE PINTURAS E IMPERMEABILIZANTES"
+    },
+    {
+      "id": 2913,
+      "codigo": "16250654",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "BETCRIS",
+      "marca": "BETCRIS",
+      "submarca": "BETCRIS (SM)",
+      "producto": "CASINOS Y APUESTAS VIRTUALES"
+    },
+    {
+      "id": 2914,
+      "codigo": "16727463",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "BIMBO",
+      "marca": "BIMBO",
+      "submarca": "BIMBO (SM)",
+      "producto": "INSTITUCIONAL"
+    },
+    {
+      "id": 2915,
+      "codigo": "16118935",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "BIOTAP",
+      "marca": "BIOTAP",
+      "submarca": "BIOTAP (SM)",
+      "producto": "CLÍNICA"
+    },
+    {
+      "id": 2916,
+      "codigo": "16049560",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "BODEGA AURRERA",
+      "marca": "BODEGA AURRERA",
+      "submarca": "BODEGA AURRERA (SM)",
+      "producto": "TIENDA DE AUTOSERVICIO"
+    },
+    {
+      "id": 2917,
+      "codigo": "16819468",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "BODEGA AURRERA HOT SALE 2026",
+      "marca": "BODEGA AURRERA",
+      "submarca": "BODEGA AURRERA (SM)",
+      "producto": "TIENDA DE AUTOSERVICIO DIGITAL"
+    },
+    {
+      "id": 2918,
+      "codigo": "16831732",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "BOX AZTECA MARCO VERDE VS DAVID CAMACHO",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2919,
+      "codigo": "16828162",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "BOX AZTECA MARCO VERDE VS DAVID CAMACHO",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2920,
+      "codigo": "16826124",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "BOX AZTECA MARCO VERDE VS DAVID CAMACHO",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2921,
+      "codigo": "16824433",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "BUSCAPINA",
+      "marca": "BUSCAPINA",
+      "submarca": "BUSCAPINA DUO",
+      "producto": "ANALGÉSICOS"
+    },
+    {
+      "id": 2922,
+      "codigo": "16836547",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "CAJA POPULAR SAN RAFAEL",
+      "marca": "CAJA POPULAR SAN RAFAEL",
+      "submarca": "CAJA POPULAR SAN RAFAEL (SM)",
+      "producto": "COOPERATIVA DE AHORRO Y CRÉDITO"
+    },
+    {
+      "id": 2923,
+      "codigo": "16244300",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "CAJA POPULAR SAN RAFAEL",
+      "marca": "CAJA POPULAR SAN RAFAEL",
+      "submarca": "CAJA POPULAR SAN RAFAEL (SM)",
+      "producto": "COOPERATIVA DE AHORRO Y CRÉDITO"
+    },
+    {
+      "id": 2924,
+      "codigo": "16134822",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "CAMERINO MAKEUP Y ACADEMY",
+      "marca": "CAMERINO MAKEUP & ACADEMY",
+      "submarca": "CAMERINO MAKEUP & ACADEMY (SM)",
+      "producto": "CURSOS ACADÉMICOS"
+    },
+    {
+      "id": 2925,
+      "codigo": "16822214",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "CAMPO MARTE 26",
+      "marca": "CAMPO MARTE 26",
+      "submarca": "CAMPO MARTE 26 (SM)",
+      "producto": "FESTIVAL"
+    },
+    {
+      "id": 2926,
+      "codigo": "16820118",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "CAMPO MARTE 26",
+      "marca": "CAMPO MARTE 26",
+      "submarca": "CAMPO MARTE 26 (SM)",
+      "producto": "FESTIVAL"
+    },
+    {
+      "id": 2927,
+      "codigo": "16833142",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "CANESTEN",
+      "marca": "CANESTEN",
+      "submarca": "CANESTEN V",
+      "producto": "MEDICAMENTO CONTRA INFECCIONES VAGINALES ÓVULO"
+    },
+    {
+      "id": 2928,
+      "codigo": "16820533",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "CANESTEN",
+      "marca": "CANESTEN",
+      "submarca": "CANESTEN V 1 DÍA",
+      "producto": "MEDICAMENTO CONTRA INFECCIONES VAGINALES ÓVULO"
+    },
+    {
+      "id": 2929,
+      "codigo": "16830098",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "CAR SHOW",
+      "marca": "CAR SHOW",
+      "submarca": "CAR SHOW (SM)",
+      "producto": "EVENTO"
+    },
+    {
+      "id": 2930,
+      "codigo": "16834990",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "CARLS JR",
+      "marca": "CARL'S JR",
+      "submarca": "CARL'S JR (SM)",
+      "producto": "COMIDA RÁPIDA"
+    },
+    {
+      "id": 2931,
+      "codigo": "16695279",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "CELCO",
+      "marca": "CELCO",
+      "submarca": "CELCO (SM)",
+      "producto": "PINTURAS INTERIOR Y EXTERIOR"
+    },
+    {
+      "id": 2932,
+      "codigo": "16836361",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "CEREMONIA DE INAUGURACION",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2933,
+      "codigo": "16835311",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "CEREMONIA DE INAUGURACION MEXICO VS SUDAFRICA",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2934,
+      "codigo": "16828570",
+      "tipo": "I.AMBIENTAL",
+      "propietarios_ids": [],
+      "version": "CEREMONIA INAUGURACION MEXICO VS SUDAFRICA",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2935,
+      "codigo": "16828169",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "CEREMONIA INAUGURACION MEXICO VS SUDAFRICA",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2936,
+      "codigo": "16831482",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "CHEDRAUI",
+      "marca": "CHEDRAUI",
+      "submarca": "CHEDRAUI (SM)",
+      "producto": "TIENDA DE AUTOSERVICIO DIGITAL"
+    },
+    {
+      "id": 2937,
+      "codigo": "16817396",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "CHEDRAUI HOT SALE 2026",
+      "marca": "CHEDRAUI",
+      "submarca": "CHEDRAUI (SM)",
+      "producto": "TIENDA DE AUTOSERVICIO DIGITAL"
+    },
+    {
+      "id": 2938,
+      "codigo": "16777064",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "CHEVROLET",
+      "marca": "CHEVROLET",
+      "submarca": "CHEVROLET (SM)",
+      "producto": "S10 MAX PICK UP + FINANCIAMIENTO"
+    },
+    {
+      "id": 2939,
+      "codigo": "16835034",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "CHEVROLET",
+      "marca": "CHEVROLET",
+      "submarca": "CHEVROLET (SM)",
+      "producto": "AVEO"
+    },
+    {
+      "id": 2940,
+      "codigo": "16820935",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "CITY CLUB HOT SALE 2026",
+      "marca": "CITY CLUB",
+      "submarca": "CITY CLUB (SM)",
+      "producto": "CLUB DE PRECIOS DIGITAL"
+    },
+    {
+      "id": 2941,
+      "codigo": "16580300",
+      "tipo": "I.ACTIVA",
+      "propietarios_ids": [],
+      "version": "COCA-COLA",
+      "marca": "COCA-COLA",
+      "submarca": "COCA-COLA ZERO",
+      "producto": "REFRESCO COLA"
+    },
+    {
+      "id": 2942,
+      "codigo": "16639767",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "COCA-COLA",
+      "marca": "COCA-COLA",
+      "submarca": "COCA-COLA (SM)",
+      "producto": "COLA SODA"
+    },
+    {
+      "id": 2943,
+      "codigo": "16069135",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "CODERE",
+      "marca": "CODERE",
+      "submarca": "CODERE (SM)",
+      "producto": "CASINOS Y APUESTAS VIRTUALES"
+    },
+    {
+      "id": 2944,
+      "codigo": "16832775",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "CODERE",
+      "marca": "CODERE",
+      "submarca": "CASINO CODERE GUADALUPE",
+      "producto": "CASINOS Y APUESTAS VIRTUALES"
+    },
+    {
+      "id": 2945,
+      "codigo": "16835003",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "COFFEE MATE",
+      "marca": "COFFEE MATE",
+      "submarca": "COFFEE MATE (SM)",
+      "producto": "SUSTITUTOS DE CREMA LÍNEA"
+    },
+    {
+      "id": 2946,
+      "codigo": "16465368",
+      "tipo": "I.AMBIENTAL",
+      "propietarios_ids": [],
+      "version": "COLAG V",
+      "marca": "COLAG V",
+      "submarca": "COLAG V (SM)",
+      "producto": "COMPLEMENTOS ALIMENTICIOS"
+    },
+    {
+      "id": 2947,
+      "codigo": "16835507",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "COLAGENO LOCION CAPILAR SHAMPOO _ CRECABUND FORTE",
+      "marca": "CRECABUND FORTE",
+      "submarca": "CRECABUND FORTE (SM)",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 2948,
+      "codigo": "16257468",
+      "tipo": "INFOMERCIAL",
+      "propietarios_ids": [],
+      "version": "CON PROTEINA DE CARACOL UNA PROTEINA MUNDIALMENTE RECONOCIDA Y CONSUMIDA POR SU INCREIBLE CAPACIDAD DE REPARAR Y REGENERAR",
+      "marca": "INOVA",
+      "submarca": "REGEMAX",
+      "producto": "VENTAS POR TELEVISIÓN"
+    },
+    {
+      "id": 2949,
+      "codigo": "16830072",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "CONSTRURAMA",
+      "marca": "CONSTRURAMA",
+      "submarca": "CONSTRURAMA (SM)",
+      "producto": "TIENDA DE MATERIALES PARA CONSTRUCCIÓN"
+    },
+    {
+      "id": 2950,
+      "codigo": "16834850",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "COPA MUNDIAL DE LA FIFA 2026",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2951,
+      "codigo": "16642392",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "COPA MUNDIAL DE LA FIFA 2026",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2952,
+      "codigo": "16831527",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "COPA MUNDIAL DE LA FIFA 2026",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2953,
+      "codigo": "16700556",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "COPA MUNDIAL DE LA FIFA 2026",
+      "marca": "TV AZTECA",
+      "submarca": "TV AZTECA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2954,
+      "codigo": "16822666",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "COPPEL HOT SALE 2026",
+      "marca": "COPPEL",
+      "submarca": "COPPEL (SM)",
+      "producto": "TIENDA DEPARTAMENTAL"
+    },
+    {
+      "id": 2955,
+      "codigo": "16826374",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "COPPEL HOT SALE 2026",
+      "marca": "COPPEL",
+      "submarca": "COPPEL (SM)",
+      "producto": "TIENDA DEPARTAMENTAL"
+    },
+    {
+      "id": 2956,
+      "codigo": "16834937",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "CORONA",
+      "marca": "CORONA",
+      "submarca": "CORONA (SM)",
+      "producto": "CERVEZA"
+    },
+    {
+      "id": 2957,
+      "codigo": "16834817",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "CRONOMETRO BOX AZTECA MARCO VERDE VS DAVID CAMACHO",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2958,
+      "codigo": "16826330",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "CRONOMETRO ESCONDEME (PRESENCIA CONTINUA)",
+      "marca": "IMAGEN TV",
+      "submarca": "IMAGEN TV (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2959,
+      "codigo": "16834983",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "CRONOMETRO LOS PROTAGONISTAS (PRESENCIA CONTINUA)",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2960,
+      "codigo": "16830365",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "CRONOMETRO MEXICO VS SERBIA ( PRESENCIA CONTINUA )",
+      "marca": "CANAL 5",
+      "submarca": "CANAL 5 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2961,
+      "codigo": "16829851",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "CRONOMETRO MEXICO VS SERBIA (PRESENCIA CONTINUA)",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2962,
+      "codigo": "16834956",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "CRONOMETRO OLMECAS VS DIABLOS (PRESENCIA CONTINUA)",
+      "marca": "IMAGEN TV",
+      "submarca": "IMAGEN TV (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2963,
+      "codigo": "16490885",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "CUMBRE IMAGEN",
+      "marca": "CUMBRE IMAGEN",
+      "submarca": "CUMBRE IMAGEN (SM)",
+      "producto": "EVENTO"
+    },
+    {
+      "id": 2964,
+      "codigo": "16825732",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "DABALASH HOT SALE 2026",
+      "marca": "DABALASH",
+      "submarca": "DABALASH (SM)",
+      "producto": "COSMÉTICOS"
+    },
+    {
+      "id": 2965,
+      "codigo": "16833357",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "DANONE",
+      "marca": "DANONE",
+      "submarca": "DANONE (SM)",
+      "producto": "YOGHURT GRIEGO DESLACTOSADO"
+    },
+    {
+      "id": 2966,
+      "codigo": "16827418",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "DANONE",
+      "marca": "DANONE",
+      "submarca": "GRIEGO",
+      "producto": "YOGHURT GRIEGO"
+    },
+    {
+      "id": 2967,
+      "codigo": "16834867",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "DEPORTV",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2968,
+      "codigo": "16817339",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "DESPECHADOS",
+      "marca": "DESPECHADOS",
+      "submarca": "DESPECHADOS (SM)",
+      "producto": "CONCIERTO"
+    },
+    {
+      "id": 2969,
+      "codigo": "16829691",
+      "tipo": "I.AMBIENTAL",
+      "propietarios_ids": [],
+      "version": "DGARI",
+      "marca": "DGARI",
+      "submarca": "DGARI (SM)",
+      "producto": "MIEL"
+    },
+    {
+      "id": 2970,
+      "codigo": "16055420",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "DISNEY+",
+      "marca": "DISNEY+",
+      "submarca": "DISNEY+ (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 2971,
+      "codigo": "16467360",
+      "tipo": "VIRTUAL",
+      "propietarios_ids": [],
+      "version": "DISNEY+",
+      "marca": "DISNEY+",
+      "submarca": "DISNEY+ (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 2972,
+      "codigo": "16826436",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "DOAL",
+      "marca": "DOAL",
+      "submarca": "DOAL (SM)",
+      "producto": "IMPERMEABILIZANTES"
+    },
+    {
+      "id": 2973,
+      "codigo": "16835014",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "DOMINOS PIZZA",
+      "marca": "DOMINO'S PIZZA",
+      "submarca": "DOMINO'S PIZZA (SM)",
+      "producto": "COMIDA RÁPIDA"
+    },
+    {
+      "id": 2974,
+      "codigo": "16292179",
+      "tipo": "VIRTUAL",
+      "propietarios_ids": [],
+      "version": "DOMINOS PIZZA",
+      "marca": "DOMINO'S PIZZA",
+      "submarca": "DOMINO'S PIZZA (SM)",
+      "producto": "COMIDA RÁPIDA"
+    },
+    {
+      "id": 2975,
+      "codigo": "16540890",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "DONITAS",
+      "marca": "DONITAS",
+      "submarca": "DONITAS (SM)",
+      "producto": "PAN DULCE"
+    },
+    {
+      "id": 2976,
+      "codigo": "16820514",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "DORMIMUNDO HOT SALE 2026",
+      "marca": "DORMIMUNDO",
+      "submarca": "DORMIMUNDO (SM)",
+      "producto": "TIENDA DE COLCHONES"
+    },
+    {
+      "id": 2977,
+      "codigo": "16679324",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "DRA LUCIA UN DON EXTRAORDINARIO",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2978,
+      "codigo": "16823583",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "DRA LUCIA UN DON EXTRAORDINARIO FBI NCIS HAWAII",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2979,
+      "codigo": "16139290",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "EL ASTURIANO",
+      "marca": "EL ASTURIANO",
+      "submarca": "EL ASTURIANO (SM)",
+      "producto": "TIENDA DE ROPA"
+    },
+    {
+      "id": 2980,
+      "codigo": "16616092",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "EL CANAL DEL MUNDIAL",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2981,
+      "codigo": "16831511",
+      "tipo": "VIRTUAL",
+      "propietarios_ids": [],
+      "version": "EL DIA DE LA REVELACION",
+      "marca": "EL DÍA DE LA REVELACIÓN",
+      "submarca": "EL DÍA DE LA REVELACIÓN (SM)",
+      "producto": "PELÍCULA"
+    },
+    {
+      "id": 2982,
+      "codigo": "16823670",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "EL DIABLO VISTE A LA MODA 2",
+      "marca": "EL DIABLO VISTE A LA MODA 2",
+      "submarca": "EL DIABLO VISTE A LA MODA 2 (SM)",
+      "producto": "PELÍCULA"
+    },
+    {
+      "id": 2983,
+      "codigo": "16828992",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "EL PLANETA DE LOS SIMIOS EL PLANETA DE LOS SIMIOS 2 EL PLANETA DE LOS SIMIOS 3",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2984,
+      "codigo": "16069775",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "EL POLLO LOCO",
+      "marca": "EL POLLO LOCO",
+      "submarca": "EL POLLO LOCO (SM)",
+      "producto": "RESTAURANTE"
+    },
+    {
+      "id": 2985,
+      "codigo": "16835427",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "EL RENACER DE LUNA",
+      "marca": "CANAL 2",
+      "submarca": "CANAL 2 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2986,
+      "codigo": "16836565",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "EL RESUMEN DEL PRIMER TIEMPO ES PRESENTADO POR ENTRENADAS PARA SER LAS MEJORES LAS VERDADERAS PIERNAS DE CRACK",
+      "marca": "KFC",
+      "submarca": "KFC (SM)",
+      "producto": "COMIDA RÁPIDA"
+    },
+    {
+      "id": 2987,
+      "codigo": "16037686",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "ENERGIZER",
+      "marca": "ENERGIZER",
+      "submarca": "ENERGIZER (SM)",
+      "producto": "PILAS"
+    },
+    {
+      "id": 2988,
+      "codigo": "16827409",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "ESCONDEME",
+      "marca": "IMAGEN TV",
+      "submarca": "IMAGEN TV (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2989,
+      "codigo": "16826362",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "ESCONDEME POR UN AMOR",
+      "marca": "IMAGEN TV",
+      "submarca": "IMAGEN TV (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2990,
+      "codigo": "16822694",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "ESPACIO GANADO",
+      "marca": "JALISCO TV",
+      "submarca": "JALISCO TV (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2991,
+      "codigo": "16822908",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "ESPACIO GANADO",
+      "marca": "JALISCO TV",
+      "submarca": "JALISCO TV (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2992,
+      "codigo": "16830106",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "EXPO CONSTRUCTO",
+      "marca": "EXPO CONSTRUCTO",
+      "submarca": "EXPO CONSTRUCTO (SM)",
+      "producto": "EXPO"
+    },
+    {
+      "id": 2993,
+      "codigo": "16825786",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "FALTAN 10 DIAS COPA MUNDIAL DE LA FIFA 2026",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2994,
+      "codigo": "16835409",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "FALTAN 3 DIAS COPA MUNDIAL DE LA FIFA 2026",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2995,
+      "codigo": "16835425",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "FALTAN 3 DIAS COPA MUNDIAL DE LA FIFA 2026",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2996,
+      "codigo": "16834957",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "FALTAN 4 DIAS COPA MUNDIAL DE LA FIFA 2026",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2997,
+      "codigo": "16834436",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "FALTAN 5 DIAS MUNDIAL DE LA COPA FIFA 2026",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2998,
+      "codigo": "16832073",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "FALTAN 6 DIAS COPA MUNDIAL DE LA FIFA",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 2999,
+      "codigo": "16830470",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "FALTAN 7 DIAS COPA MUNDIAL DE LA FIFA",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3000,
+      "codigo": "16830212",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "FALTAN 7 DIAS COPA MUNDIAL DE LA FIFA",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3001,
+      "codigo": "16828634",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "FALTAN 8 DIAS COPA MUNDIAL DE LA FIFA 2026",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3002,
+      "codigo": "16827098",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "FALTAN 9 DIAS COPA MUNDIAL DE LA FIFA 2026",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3003,
+      "codigo": "16827454",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "FALTAN 9 DIAS COPA MUNDIAL DE LA FIFA 2026",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3004,
+      "codigo": "16770724",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "FESTER",
+      "marca": "FESTER",
+      "submarca": "ACRITON",
+      "producto": "IMPERMEABILIZANTES"
+    },
+    {
+      "id": 3005,
+      "codigo": "16305831",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "FESTIVAL DEL VENADO",
+      "marca": "FESTIVAL DEL VENADO",
+      "submarca": "FESTIVAL DEL VENADO (SM)",
+      "producto": "FESTIVAL"
+    },
+    {
+      "id": 3006,
+      "codigo": "16832132",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "FESTIVAL DEL VENADO",
+      "marca": "FESTIVAL DEL VENADO",
+      "submarca": "FESTIVAL DEL VENADO (SM)",
+      "producto": "FESTIVAL"
+    },
+    {
+      "id": 3007,
+      "codigo": "16307597",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "FESTIVAL DEL VENADO",
+      "marca": "FESTIVAL DEL VENADO",
+      "submarca": "FESTIVAL DEL VENADO (SM)",
+      "producto": "FESTIVAL"
+    },
+    {
+      "id": 3008,
+      "codigo": "16827021",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "FINAL INDIVIDUAL",
+      "marca": "TELEVISA MONTERREY",
+      "submarca": "TELEVISA MONTERREY (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3009,
+      "codigo": "16833342",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "FOLCRESS",
+      "marca": "FOLCRESS",
+      "submarca": "FOLCRESS (SM)",
+      "producto": "TRATAMIENTOS PARA EL CABELLO"
+    },
+    {
+      "id": 3010,
+      "codigo": "16835531",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "FRESKO LA COMER SUMESA",
+      "marca": "LA COMER MM",
+      "submarca": "LA COMER MM (SM)",
+      "producto": "TIENDA DE AUTOSERVICIO"
+    },
+    {
+      "id": 3011,
+      "codigo": "16835323",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "FRESKO LA COMER SUMESA",
+      "marca": "LA COMER MM",
+      "submarca": "LA COMER MM (SM)",
+      "producto": "TIENDA DE AUTOSERVICIO"
+    },
+    {
+      "id": 3012,
+      "codigo": "16276830",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "FRIKKO",
+      "marca": "FRIKKO",
+      "submarca": "FRIKKO (SM)",
+      "producto": "AIRE ACONDICIONADO DOMÉSTICO"
+    },
+    {
+      "id": 3013,
+      "codigo": "16835317",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "FUNDACION LAZOS",
+      "marca": "FUNDACIÓN LAZOS",
+      "submarca": "FUNDACIÓN LAZOS (SM)",
+      "producto": "INSTITUCIONAL"
+    },
+    {
+      "id": 3014,
+      "codigo": "16834866",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "FUT AZTECA MEXICO VS SUDAFRICA LOS PROTAGONISTAS",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3015,
+      "codigo": "16827503",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "GARAGE Y TALLERES",
+      "marca": "GARAGE Y TALLERES",
+      "submarca": "GARAGE Y TALLERES (SM)",
+      "producto": "SERVICIO DE GRÚAS"
+    },
+    {
+      "id": 3016,
+      "codigo": "16648500",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "GBM+",
+      "marca": "GBM+",
+      "submarca": "GBM+ (SM)",
+      "producto": "PLATAFORMA DE INVERSIONES"
+    },
+    {
+      "id": 3017,
+      "codigo": "16648508",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "GBM+",
+      "marca": "GBM+",
+      "submarca": "GBM+ (SM)",
+      "producto": "PLATAFORMA DE INVERSIONES"
+    },
+    {
+      "id": 3018,
+      "codigo": "16596609",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "GOBIERNO MUNICIPAL DE SAN PEDRO GARZA GARCIA",
+      "marca": "GOBIERNO MUNICIPAL DE SAN PEDRO GARZA GARCÍA",
+      "submarca": "GOBIERNO MUNICIPAL DE SAN PEDRO GARZA GARCÍA (SM)",
+      "producto": "INSTITUCIONAL"
+    },
+    {
+      "id": 3019,
+      "codigo": "16057735",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "GONHER",
+      "marca": "GONHER",
+      "submarca": "GONHER (SM)",
+      "producto": "BATERÍAS AUTOMOTRICES"
+    },
+    {
+      "id": 3020,
+      "codigo": "16408206",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "GOOGLE PIXEL",
+      "marca": "GOOGLE PIXEL",
+      "submarca": "PIXEL 10",
+      "producto": "EQUIPOS CELULARES"
+    },
+    {
+      "id": 3021,
+      "codigo": "16113075",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "GOVI",
+      "marca": "GOVI",
+      "submarca": "GOVI (SM)",
+      "producto": "REFACCIONES PARA VEHÍCULOS Y MOTORES"
+    },
+    {
+      "id": 3022,
+      "codigo": "16836515",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "GRAN INAUGURACION COPA MUNDIAL DE LA FIFA 2026",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3023,
+      "codigo": "16263949",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "HEMSA",
+      "marca": "HEMSA",
+      "submarca": "HEMSA (SM)",
+      "producto": "TIENDA DEPARTAMENTAL"
+    },
+    {
+      "id": 3024,
+      "codigo": "16818947",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "HERDEZ",
+      "marca": "HERDEZ",
+      "submarca": "HERDEZ (SM)",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 3025,
+      "codigo": "16203871",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "HERDEZ",
+      "marca": "HERDEZ",
+      "submarca": "HERDEZ (SM)",
+      "producto": "SALSAS PICANTES"
+    },
+    {
+      "id": 3026,
+      "codigo": "16696654",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "HISTIACIL",
+      "marca": "HISTIACIL",
+      "submarca": "HISTIACIL NF",
+      "producto": "PRODUCTOS CONTRA LA TOS"
+    },
+    {
+      "id": 3027,
+      "codigo": "16834738",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "HOY CELEBREMOS CEREMONIA INAUGURACION COPA MUNDIAL DE LA FIFA 2026 MEXICO VS SUDAFRICA",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3028,
+      "codigo": "16834942",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "HOY CELEBREMOS CEREMONIA INAUGURACION MEXICO VS SUDAFRICA",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3029,
+      "codigo": "16831576",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "HSBC",
+      "marca": "HSBC",
+      "submarca": "HSBC (SM)",
+      "producto": "CUENTA DE NÓMINA"
+    },
+    {
+      "id": 3030,
+      "codigo": "16831572",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "HSBC",
+      "marca": "HSBC",
+      "submarca": "HSBC (SM)",
+      "producto": "TARJETAS DE DÉBITO"
+    },
+    {
+      "id": 3031,
+      "codigo": "16713092",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "I.ACTIVA I.AMBIENTAL MENCION SUPERIMPOSICION CAMERINO MAKEUP Y ACADEMY",
+      "marca": "CAMERINO MAKEUP & ACADEMY",
+      "submarca": "CAMERINO MAKEUP & ACADEMY (SM)",
+      "producto": "CURSOS ACADÉMICOS"
+    },
+    {
+      "id": 3032,
+      "codigo": "16826076",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "I.ACTIVA I.AMBIENTAL MENCION SUPERIMPOSICION DONITAS",
+      "marca": "DONITAS",
+      "submarca": "DONITAS (SM)",
+      "producto": "PAN DULCE"
+    },
+    {
+      "id": 3033,
+      "codigo": "16832321",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "I.ACTIVA I.AMBIENTAL MENCION SUPERIMPOSICION DUNKIN DONUTS",
+      "marca": "DUNKIN' DONUTS",
+      "submarca": "DUNKIN' DONUTS (SM)",
+      "producto": "CAFETERÍA"
+    },
+    {
+      "id": 3034,
+      "codigo": "16835028",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "I.ACTIVA I.AMBIENTAL MENCION SUPERIMPOSICION OSTER",
+      "marca": "OSTER",
+      "submarca": "OSTER (SM)",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 3035,
+      "codigo": "16836552",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "I.ACTIVA MENCION SUPERIMPOSICION IMPAC",
+      "marca": "IMPAC",
+      "submarca": "IMPAC (SM)",
+      "producto": "IMPERMEABILIZANTES"
+    },
+    {
+      "id": 3036,
+      "codigo": "16751137",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "I.AMBIENTAL BURNOK",
+      "marca": "BURNOK",
+      "submarca": "BURNOK (SM)",
+      "producto": "SUPLEMENTOS ALIMENTICIOS"
+    },
+    {
+      "id": 3037,
+      "codigo": "16836539",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "I.AMBIENTAL MENCION SUPERIMPOSICION ANDAMIOS AMARILLOS",
+      "marca": "ANDAMIOS AMARILLOS",
+      "submarca": "ANDAMIOS AMARILLOS (SM)",
+      "producto": "VENTA Y ALQUILER DE ANDAMIOS"
+    },
+    {
+      "id": 3038,
+      "codigo": "16826426",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "I.AMBIENTAL MENCION SUPERIMPOSICION ENERGIZER",
+      "marca": "ENERGIZER",
+      "submarca": "ENERGIZER (SM)",
+      "producto": "PILAS"
+    },
+    {
+      "id": 3039,
+      "codigo": "16817495",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "I.AMBIENTAL MENCION SUPERIMPOSICION GONHER",
+      "marca": "GONHER",
+      "submarca": "GONHERGO",
+      "producto": "SERVICIO DE ASISTENCIA VEHICULAR"
+    },
+    {
+      "id": 3040,
+      "codigo": "16836560",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "I.AMBIENTAL MENCION SUPERIMPOSICION OREILLY AUTO PARTS",
+      "marca": "O'REILLY AUTO PARTS",
+      "submarca": "O'REILLY AUTO PARTS (SM)",
+      "producto": "REFACCIONARIA"
+    },
+    {
+      "id": 3041,
+      "codigo": "16836556",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "I.AMBIENTAL MENCION SUPERIMPOSICION PRISA",
+      "marca": "PRISA",
+      "submarca": "RIVINOL",
+      "producto": "PINTURAS INTERIOR Y EXTERIOR"
+    },
+    {
+      "id": 3042,
+      "codigo": "16836526",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "I.AMBIENTAL MENCION SUPERIMPOSICION SKARCH",
+      "marca": "SKARCH",
+      "submarca": "SKARCH TWIST",
+      "producto": "AGUAS SABORIZADAS"
+    },
+    {
+      "id": 3043,
+      "codigo": "16827185",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "I.AMBIENTAL MENCION SUPERIMPOSICION SUPER COLCHONES HOT SALE 2026",
+      "marca": "SÚPER COLCHONES",
+      "submarca": "SÚPER COLCHONES (SM)",
+      "producto": "TIENDA DE COLCHONES"
+    },
+    {
+      "id": 3044,
+      "codigo": "16584101",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "ICONOS DEL ESPECTACULO",
+      "marca": "TELEVISA MONTERREY",
+      "submarca": "TELEVISA MONTERREY (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3045,
+      "codigo": "16826166",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "IMPAC HOT SALE 2026",
+      "marca": "IMPAC",
+      "submarca": "IMPAC (SM)",
+      "producto": "IMPERMEABILIZANTES"
+    },
+    {
+      "id": 3046,
+      "codigo": "16831169",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "INOVA",
+      "marca": "INOVA",
+      "submarca": "BLINDA",
+      "producto": "VENTAS POR TELEVISIÓN"
+    },
+    {
+      "id": 3047,
+      "codigo": "16818321",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "INOVA",
+      "marca": "INOVA",
+      "submarca": "SOGNARE CUBRE COLCHÓN",
+      "producto": "VENTAS POR TELEVISIÓN"
+    },
+    {
+      "id": 3048,
+      "codigo": "16827215",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "INOVA",
+      "marca": "INOVA",
+      "submarca": "THERAMED PRO",
+      "producto": "VENTAS POR TELEVISIÓN"
+    },
+    {
+      "id": 3049,
+      "codigo": "16673335",
+      "tipo": "VIRTUAL",
+      "propietarios_ids": [],
+      "version": "JEEP",
+      "marca": "JEEP",
+      "submarca": "JEEP (SM)",
+      "producto": "GRAND CHEROKEE"
+    },
+    {
+      "id": 3050,
+      "codigo": "16185285",
+      "tipo": "VIRTUAL",
+      "propietarios_ids": [],
+      "version": "JEEP",
+      "marca": "JEEP",
+      "submarca": "JEEP (SM)",
+      "producto": "WRANGLER"
+    },
+    {
+      "id": 3051,
+      "codigo": "16825116",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "JETOUR SOUEAST",
+      "marca": "JETOUR SOUEAST",
+      "submarca": "JETOUR SOUEAST (SM)",
+      "producto": "DISTRIBUIDOR AUTOMOTRIZ"
+    },
+    {
+      "id": 3052,
+      "codigo": "16829660",
+      "tipo": "I.AMBIENTAL",
+      "propietarios_ids": [],
+      "version": "JOYA",
+      "marca": "JOYA",
+      "submarca": "JOYA (SM)",
+      "producto": "REFRESCO"
+    },
+    {
+      "id": 3053,
+      "codigo": "16318913",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "JOYA",
+      "marca": "JOYA",
+      "submarca": "JOYA (SM)",
+      "producto": "REFRESCO"
+    },
+    {
+      "id": 3054,
+      "codigo": "16229463",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "JOYA",
+      "marca": "JOYA",
+      "submarca": "JOYA (SM)",
+      "producto": "REFRESCO"
+    },
+    {
+      "id": 3055,
+      "codigo": "16829663",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "JOYA",
+      "marca": "JOYA",
+      "submarca": "JOYA (SM)",
+      "producto": "REFRESCO"
+    },
+    {
+      "id": 3056,
+      "codigo": "16835734",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "JUGAMOS EN CASA",
+      "marca": "IMAGEN TV",
+      "submarca": "IMAGEN TV (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3057,
+      "codigo": "16834953",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "JUGAMOS EN CASA",
+      "marca": "IMAGEN TV",
+      "submarca": "IMAGEN TV (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3058,
+      "codigo": "16329728",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "KFC",
+      "marca": "KFC",
+      "submarca": "KFC (SM)",
+      "producto": "COMIDA RÁPIDA"
+    },
+    {
+      "id": 3059,
+      "codigo": "16672878",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "KFC_BUCKET",
+      "marca": "KFC",
+      "submarca": "KFC (SM)",
+      "producto": "COMIDA RÁPIDA"
+    },
+    {
+      "id": 3060,
+      "codigo": "16827034",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "LA ANGELS VS LA DODGERS",
+      "marca": "TELEACTIVA",
+      "submarca": "TELEACTIVA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3061,
+      "codigo": "16833337",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "LA CETTO",
+      "marca": "L.A. CETTO",
+      "submarca": "L.A. CETTO (SM)",
+      "producto": "VINOS"
+    },
+    {
+      "id": 3062,
+      "codigo": "16822296",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "LA CIUDAD QUE NO HA DEJADO DE JUGAR",
+      "marca": "LA CIUDAD QUE NO HA DEJADO DE JUGAR",
+      "submarca": "LA CIUDAD QUE NO HA DEJADO DE JUGAR (SM)",
+      "producto": "EXPO"
+    },
+    {
+      "id": 3063,
+      "codigo": "16825294",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "LA COMER",
+      "marca": "LA COMER",
+      "submarca": "LA COMER (SM)",
+      "producto": "TIENDA DE AUTOSERVICIO"
+    },
+    {
+      "id": 3064,
+      "codigo": "16825269",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "LA COMER TEMPORADA NARANJA 2026",
+      "marca": "LA COMER",
+      "submarca": "LA COMER (SM)",
+      "producto": "TIENDA DE AUTOSERVICIO"
+    },
+    {
+      "id": 3065,
+      "codigo": "16160368",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "LA COSTA REGIA",
+      "marca": "LA COSTA REGIA",
+      "submarca": "LA COSTA REGIA (SM)",
+      "producto": "RESTAURANTE"
+    },
+    {
+      "id": 3066,
+      "codigo": "16834954",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "LA DELANTERA",
+      "marca": "IMAGEN TV",
+      "submarca": "IMAGEN TV (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3067,
+      "codigo": "16829899",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "LA EMBOSCADA COLOMBIANA",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3068,
+      "codigo": "16292376",
+      "tipo": "I.AMBIENTAL",
+      "propietarios_ids": [],
+      "version": "LA FINA",
+      "marca": "LA FINA",
+      "submarca": "LA FINA (SM)",
+      "producto": "SAL DE MESA"
+    },
+    {
+      "id": 3069,
+      "codigo": "16705481",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "LA FINA",
+      "marca": "LA FINA",
+      "submarca": "LA FINA (SM)",
+      "producto": "SAL DE MESA"
+    },
+    {
+      "id": 3070,
+      "codigo": "16833151",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "LA GRAN FIESTA DEL FUTBOL",
+      "marca": "QUIERO TV",
+      "submarca": "QUIERO TV (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3071,
+      "codigo": "16218537",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "LA LECHERA",
+      "marca": "LA LECHERA",
+      "submarca": "LA LECHERA (SM)",
+      "producto": "LECHE CONDENSADA"
+    },
+    {
+      "id": 3072,
+      "codigo": "16321769",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "LA PEÑA",
+      "marca": "TELEVISA MONTERREY",
+      "submarca": "TELEVISA MONTERREY (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3073,
+      "codigo": "16830354",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "LEXUS",
+      "marca": "LEXUS",
+      "submarca": "LEXUS (SM)",
+      "producto": "VEHÍCULOS"
+    },
+    {
+      "id": 3074,
+      "codigo": "16028576",
+      "tipo": "VIRTUAL",
+      "propietarios_ids": [],
+      "version": "LITTLE CAESARS",
+      "marca": "LITTLE CAESARS",
+      "submarca": "LITTLE CAESARS (SM)",
+      "producto": "COMIDA RÁPIDA"
+    },
+    {
+      "id": 3075,
+      "codigo": "16190068",
+      "tipo": "I.AMBIENTAL",
+      "propietarios_ids": [],
+      "version": "LIVERPOOL",
+      "marca": "LIVERPOOL",
+      "submarca": "LIVERPOOL (SM)",
+      "producto": "TIENDA DEPARTAMENTAL"
+    },
+    {
+      "id": 3076,
+      "codigo": "16028491",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "LIVERPOOL",
+      "marca": "LIVERPOOL",
+      "submarca": "LIVERPOOL (SM)",
+      "producto": "TIENDA DEPARTAMENTAL"
+    },
+    {
+      "id": 3077,
+      "codigo": "16820391",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "LORD OF THE DANCE",
+      "marca": "LORD OF THE DANCE",
+      "submarca": "LORD OF THE DANCE (SM)",
+      "producto": "ESPECTÁCULO"
+    },
+    {
+      "id": 3078,
+      "codigo": "16827617",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "LOS OTROS HECHOS",
+      "marca": "TV AZTECA",
+      "submarca": "TV AZTECA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3079,
+      "codigo": "16834682",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "LOS OTROS HECHOS DE JESUS RAMIREZ CUEVAS",
+      "marca": "ADN NOTICIAS",
+      "submarca": "ADN NOTICIAS (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3080,
+      "codigo": "16828052",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "LOS OTROS HECHOS DE JESUS RAMIREZ CUEVAS",
+      "marca": "TV AZTECA",
+      "submarca": "TV AZTECA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3081,
+      "codigo": "16833341",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "LOS OTROS HECHOS DE JESUS RAMIREZ CUEVAS",
+      "marca": "TV AZTECA",
+      "submarca": "TV AZTECA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3082,
+      "codigo": "16831521",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "LOS PROTAGONISTAS",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3083,
+      "codigo": "16828994",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "LOS PROTAGONISTAS",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3084,
+      "codigo": "16835608",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "LOTERIA NACIONAL",
+      "marca": "LOTERÍA NACIONAL",
+      "submarca": "LOTERÍA NACIONAL (SM)",
+      "producto": "PLATAFORMA DE SORTEOS"
+    },
+    {
+      "id": 3085,
+      "codigo": "16835422",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "LOTERIA NACIONAL",
+      "marca": "LOTERÍA NACIONAL",
+      "submarca": "LOTERÍA NACIONAL (SM)",
+      "producto": "PLATAFORMA DE SORTEOS"
+    },
+    {
+      "id": 3086,
+      "codigo": "16828891",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "LOTERIA NACIONAL PANINI",
+      "marca": "LOTERÍA NACIONAL",
+      "submarca": "LOTERÍA NACIONAL (SM)",
+      "producto": "PLATAFORMA DE SORTEOS"
+    },
+    {
+      "id": 3087,
+      "codigo": "16835414",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "LOTERIA NACIONAL PANINI",
+      "marca": "LOTERÍA NACIONAL",
+      "submarca": "LOTERÍA NACIONAL (SM)",
+      "producto": "PLATAFORMA DE SORTEOS"
+    },
+    {
+      "id": 3088,
+      "codigo": "16824396",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "LUMIVERSE",
+      "marca": "LUMIVERSE",
+      "submarca": "LUMIVERSE (SM)",
+      "producto": "ORGANIZACIÓN DE EVENTOS"
+    },
+    {
+      "id": 3089,
+      "codigo": "16835911",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "MAS ALLA DE JUSTA",
+      "marca": "IMAGEN TV",
+      "submarca": "IMAGEN TV (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3090,
+      "codigo": "16825150",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "MAS HECHOS",
+      "marca": "A+",
+      "submarca": "A+ (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3091,
+      "codigo": "16826378",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "MAS HECHOS",
+      "marca": "A+",
+      "submarca": "A+ (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3092,
+      "codigo": "16820171",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "MASTERCHEF 24/7 + DISNEY",
+      "marca": "AZTECA UNO",
+      "submarca": "AZTECA UNO (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3093,
+      "codigo": "16831601",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "MASTERCHEF DISNEY+",
+      "marca": "DISNEY+",
+      "submarca": "DISNEY+ (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 3094,
+      "codigo": "16834701",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "MASTERCHEF DISNEY+",
+      "marca": "DISNEY+",
+      "submarca": "DISNEY+ (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 3095,
+      "codigo": "16831969",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "MASTERCHEF DISNEY+",
+      "marca": "DISNEY+",
+      "submarca": "DISNEY+ (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 3096,
+      "codigo": "16824473",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "MD_26 CHEETOS RUFFLES SABRITAS",
+      "marca": "SABRITAS MM",
+      "submarca": "SABRITAS MM (SM)",
+      "producto": "BOTANAS"
+    },
+    {
+      "id": 3097,
+      "codigo": "16357009",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "MD_26 COCA-COLA",
+      "marca": "COCA-COLA",
+      "submarca": "COCA-COLA (SM)",
+      "producto": "REFRESCO COLA"
+    },
+    {
+      "id": 3098,
+      "codigo": "16693036",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "MD_26 COCA-COLA",
+      "marca": "COCA-COLA",
+      "submarca": "COCA-COLA (SM)",
+      "producto": "REFRESCO COLA"
+    },
+    {
+      "id": 3099,
+      "codigo": "16817493",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "MD_26 COCA-COLA PANINI",
+      "marca": "COCA-COLA",
+      "submarca": "COCA-COLA ZERO",
+      "producto": "REFRESCO COLA"
+    },
+    {
+      "id": 3100,
+      "codigo": "16826431",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "MD_26 I.AMBIENTAL SUPERIMPOSICION SABRITAS",
+      "marca": "SABRITAS",
+      "submarca": "SABRITAS (SM)",
+      "producto": "BOTANAS"
+    },
+    {
+      "id": 3101,
+      "codigo": "16831544",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "MD_26 KIA",
+      "marca": "KIA",
+      "submarca": "KIA (SM)",
+      "producto": "SPORTAGE HIBRIDA"
+    },
+    {
+      "id": 3102,
+      "codigo": "16831546",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "MD_26 KIA",
+      "marca": "KIA",
+      "submarca": "KIA (SM)",
+      "producto": "SPORTAGE HIBRIDA"
+    },
+    {
+      "id": 3103,
+      "codigo": "16824424",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "MD_26 SABRITAS",
+      "marca": "SABRITAS",
+      "submarca": "TOSTITOS",
+      "producto": "BOTANAS"
+    },
+    {
+      "id": 3104,
+      "codigo": "16826418",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "MD_26 SABRITAS",
+      "marca": "SABRITAS",
+      "submarca": "SABRITAS (SM)",
+      "producto": "BOTANAS"
+    },
+    {
+      "id": 3105,
+      "codigo": "16822457",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "MD_26 SABRITAS",
+      "marca": "SABRITAS",
+      "submarca": "TOSTITOS",
+      "producto": "BOTANAS"
+    },
+    {
+      "id": 3106,
+      "codigo": "16826429",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "MD_26 SABRITAS",
+      "marca": "SABRITAS",
+      "submarca": "TOSTITOS",
+      "producto": "BOTANAS"
+    },
+    {
+      "id": 3107,
+      "codigo": "16826419",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "MD_26 SABRITAS",
+      "marca": "SABRITAS",
+      "submarca": "SABRITAS (SM)",
+      "producto": "BOTANAS"
+    },
+    {
+      "id": 3108,
+      "codigo": "16834828",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "MD_26 SKY",
+      "marca": "SKY",
+      "submarca": "SKY (SM)",
+      "producto": "MULTISERVICIOS"
+    },
+    {
+      "id": 3109,
+      "codigo": "16835011",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "MD_26 THE HOME DEPOT",
+      "marca": "THE HOME DEPOT",
+      "submarca": "THE HOME DEPOT (SM)",
+      "producto": "TIENDA DE MATERIALES PARA CONSTRUCCIÓN"
+    },
+    {
+      "id": 3110,
+      "codigo": "16385747",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "MD_26 VISA",
+      "marca": "VISA",
+      "submarca": "VISA (SM)",
+      "producto": "TARJETAS"
+    },
+    {
+      "id": 3111,
+      "codigo": "16829380",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "MEDIO TIEMPO",
+      "marca": "MEDIO TIEMPO",
+      "submarca": "MEDIO TIEMPO (SM)",
+      "producto": "PLATAFORMA DE NOTICIAS DEPORTIVAS"
+    },
+    {
+      "id": 3112,
+      "codigo": "16827260",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "MEDIO TIEMPO",
+      "marca": "MEDIO TIEMPO",
+      "submarca": "MEDIO TIEMPO (SM)",
+      "producto": "PLATAFORMA DE NOTICIAS DEPORTIVAS"
+    },
+    {
+      "id": 3113,
+      "codigo": "16836519",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "MENCION SUPERIMPOSICION SUPER COLCHONES",
+      "marca": "SÚPER COLCHONES",
+      "submarca": "SÚPER COLCHONES (SM)",
+      "producto": "TIENDA DE COLCHONES"
+    },
+    {
+      "id": 3114,
+      "codigo": "16663139",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "MERCADO LIBRE",
+      "marca": "MERCADOLIBRE.COM",
+      "submarca": "MERCADOLIBRE.COM (SM)",
+      "producto": "COMERCIO ELECTRÓNICO"
+    },
+    {
+      "id": 3115,
+      "codigo": "16737948",
+      "tipo": "VIRTUAL",
+      "propietarios_ids": [],
+      "version": "MERCADO LIBRE FECHAS DOBLES",
+      "marca": "MERCADOLIBRE.COM",
+      "submarca": "MERCADOLIBRE.COM (SM)",
+      "producto": "COMERCIO ELECTRÓNICO"
+    },
+    {
+      "id": 3116,
+      "codigo": "16162000",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "MERCADO PAGO",
+      "marca": "MERCADO PAGO",
+      "submarca": "MERCADO PAGO (SM)",
+      "producto": "CUENTAS"
+    },
+    {
+      "id": 3117,
+      "codigo": "16824920",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "MEXICO VS SERBIA",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3118,
+      "codigo": "16824471",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "MEXICO VS SERBIA",
+      "marca": "CANAL 5",
+      "submarca": "CANAL 5 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3119,
+      "codigo": "16756766",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "MEXICO VS SERBIA",
+      "marca": "CANAL 5",
+      "submarca": "CANAL 5 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3120,
+      "codigo": "16645532",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "MEXICO VS SUDAFRICA",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3121,
+      "codigo": "16688644",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "MEXICO VS SUDAFRICA",
+      "marca": "TV AZTECA",
+      "submarca": "TV AZTECA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3122,
+      "codigo": "16834936",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "MEXICO VS SUDAFRICA",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3123,
+      "codigo": "16688617",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "MEXICO VS SUDAFRICA",
+      "marca": "TV AZTECA",
+      "submarca": "TV AZTECA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3124,
+      "codigo": "16833833",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "MEXICO VS SUDAFRICA MEXICO VS REPUBLICA DE COREA REPUBLICA CHECA VS MEXICO",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3125,
+      "codigo": "16829674",
+      "tipo": "I.ACTIVA",
+      "propietarios_ids": [],
+      "version": "MI TIENDA DEL AHORRO",
+      "marca": "MI TIENDA DEL AHORRO",
+      "submarca": "MI TIENDA DEL AHORRO (SM)",
+      "producto": "TIENDA DE AUTOSERVICIO"
+    },
+    {
+      "id": 3126,
+      "codigo": "16054660",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "MI TIENDA DEL AHORRO",
+      "marca": "MI TIENDA DEL AHORRO",
+      "submarca": "MI TIENDA DEL AHORRO (SM)",
+      "producto": "TIENDA DE AUTOSERVICIO"
+    },
+    {
+      "id": 3127,
+      "codigo": "16065003",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "MI TIENDA DEL AHORRO",
+      "marca": "MI TIENDA DEL AHORRO",
+      "submarca": "MI TIENDA DEL AHORRO (SM)",
+      "producto": "TIENDA DE AUTOSERVICIO"
+    },
+    {
+      "id": 3128,
+      "codigo": "16050234",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "MI TIENDA DEL AHORRO",
+      "marca": "MI TIENDA DEL AHORRO",
+      "submarca": "MI TIENDA DEL AHORRO (SM)",
+      "producto": "TIENDA DE AUTOSERVICIO"
+    },
+    {
+      "id": 3129,
+      "codigo": "16836525",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "MINISTERIO DE COMERCIO INDUSTRIA Y TURISMO",
+      "marca": "MINISTERIO DE COMERCIO INDUSTRIA Y TURISMO",
+      "submarca": "PROCOLOMBIA",
+      "producto": "INSTITUCIONAL"
+    },
+    {
+      "id": 3130,
+      "codigo": "16833612",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "MIS HUELLAS A CASA MI AMIGO ENZO MARLEY Y YO",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3131,
+      "codigo": "16697671",
+      "tipo": "VIRTUAL",
+      "propietarios_ids": [],
+      "version": "MITSUBISHI MOTORS",
+      "marca": "MITSUBISHI MOTORS",
+      "submarca": "MITSUBISHI MOTORS (SM)",
+      "producto": "L200 PICK-UP"
+    },
+    {
+      "id": 3132,
+      "codigo": "16831900",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "MOBIL",
+      "marca": "MOBIL",
+      "submarca": "MOBIL (SM)",
+      "producto": "GASOLINERA"
+    },
+    {
+      "id": 3133,
+      "codigo": "16834928",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "MORDISKO",
+      "marca": "MORDISKO",
+      "submarca": "MORDISKO (SM)",
+      "producto": "HELADOS"
+    },
+    {
+      "id": 3134,
+      "codigo": "16820146",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "MOVISTAR",
+      "marca": "MOVISTAR",
+      "submarca": "MOVISTAR (SM)",
+      "producto": "TELEFONÍA MÓVIL"
+    },
+    {
+      "id": 3135,
+      "codigo": "16279563",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "N+",
+      "marca": "N+ FORO",
+      "submarca": "N+ FORO (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3136,
+      "codigo": "16831979",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "N+ NOTICIAS",
+      "marca": "TELEVISA",
+      "submarca": "TELEVISA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3137,
+      "codigo": "16836461",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "NATURA",
+      "marca": "NATURA",
+      "submarca": "NATURA (SM)",
+      "producto": "COSMÉTICOS"
+    },
+    {
+      "id": 3138,
+      "codigo": "16402892",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "NESCAFE",
+      "marca": "NESCAFÉ",
+      "submarca": "NESCAFÉ (SM)",
+      "producto": "CAFÉ SOLUBLE"
+    },
+    {
+      "id": 3139,
+      "codigo": "16828466",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "NISSAN",
+      "marca": "NISSAN",
+      "submarca": "NISSAN (SM)",
+      "producto": "Z"
+    },
+    {
+      "id": 3140,
+      "codigo": "16829902",
+      "tipo": "INFOMERCIAL",
+      "propietarios_ids": [],
+      "version": "NO MAS LAXANTES AGRESIVOS LLEGO PARA UN TRANSITO PERFECTO FORMULA EUROPEA AUXILIAR EN CASOS DE ESTREÑIMIENTO PROMOCION LIMPIEZA TOTAL 4 MESES",
+      "marca": "INOVA",
+      "submarca": "24-C",
+      "producto": "VENTAS POR TELEVISIÓN"
+    },
+    {
+      "id": 3141,
+      "codigo": "16790144",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "NOCHE DE LEYENDAS",
+      "marca": "TELEVISA MONTERREY",
+      "submarca": "TELEVISA MONTERREY (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3142,
+      "codigo": "16487440",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "NOCHE DE LEYENDAS",
+      "marca": "TELEVISA MONTERREY",
+      "submarca": "TELEVISA MONTERREY (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3143,
+      "codigo": "16825232",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "OFFICE DEPOT HOT SALE 2026",
+      "marca": "OFFICE DEPOT",
+      "submarca": "OFFICE DEPOT (SM)",
+      "producto": "TIENDA DE ARTÍCULOS PARA OFICINA"
+    },
+    {
+      "id": 3144,
+      "codigo": "16833351",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "OLMECAS VS DIABLOS",
+      "marca": "IMAGEN TV",
+      "submarca": "IMAGEN TV (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3145,
+      "codigo": "16828010",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "OLMECAS VS DIABLOS",
+      "marca": "IMAGEN TV",
+      "submarca": "IMAGEN TV (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3146,
+      "codigo": "16832087",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "OXXO PANINI",
+      "marca": "OXXO",
+      "submarca": "OXXO (SM)",
+      "producto": "MINI SÚPER"
+    },
+    {
+      "id": 3147,
+      "codigo": "16820144",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "PANINI",
+      "marca": "PANINI",
+      "submarca": "PANINI (SM)",
+      "producto": "ÁLBUM"
+    },
+    {
+      "id": 3148,
+      "codigo": "16831533",
+      "tipo": "VIRTUAL",
+      "propietarios_ids": [],
+      "version": "PANKO",
+      "marca": "PANKO",
+      "submarca": "PANKO (SM)",
+      "producto": "EMPANIZADOR"
+    },
+    {
+      "id": 3149,
+      "codigo": "16815440",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "PARAMOUNT +",
+      "marca": "PARAMOUNT +",
+      "submarca": "PARAMOUNT + (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 3150,
+      "codigo": "16671326",
+      "tipo": "I.AMBIENTAL",
+      "propietarios_ids": [],
+      "version": "PASTELERIA LETY",
+      "marca": "PASTELERÍA LETY",
+      "submarca": "PASTELERÍA LETY (SM)",
+      "producto": "PANADERÍA Y PASTELERÍA"
+    },
+    {
+      "id": 3151,
+      "codigo": "16188830",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "PAX ASSISTANCE",
+      "marca": "PAX ASSISTANCE",
+      "submarca": "PAX ASSISTANCE (SM)",
+      "producto": "ASEGURADORA"
+    },
+    {
+      "id": 3152,
+      "codigo": "16077077",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "PAX ASSISTANCE",
+      "marca": "PAX ASSISTANCE",
+      "submarca": "PAX ASSISTANCE (SM)",
+      "producto": "ASEGURADORA"
+    },
+    {
+      "id": 3153,
+      "codigo": "16820897",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "PERSIL",
+      "marca": "PERSIL",
+      "submarca": "PERSIL (SM)",
+      "producto": "DETERGENTE LÍQUIDO"
+    },
+    {
+      "id": 3154,
+      "codigo": "16805985",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "PERSIL",
+      "marca": "PERSIL",
+      "submarca": "PERSIL ACCIÓN PROFUNDA",
+      "producto": "DETERGENTE LÍQUIDO"
+    },
+    {
+      "id": 3155,
+      "codigo": "16555168",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "PERSIL",
+      "marca": "PERSIL",
+      "submarca": "PERSIL ACCIÓN PROFUNDA",
+      "producto": "DETERGENTE LÍQUIDO"
+    },
+    {
+      "id": 3156,
+      "codigo": "16130303",
+      "tipo": "VIRTUAL",
+      "propietarios_ids": [],
+      "version": "PERSIL",
+      "marca": "PERSIL",
+      "submarca": "PERSIL (SM)",
+      "producto": "DETERGENTE LÍQUIDO"
+    },
+    {
+      "id": 3157,
+      "codigo": "16479492",
+      "tipo": "I.AMBIENTAL",
+      "propietarios_ids": [],
+      "version": "PETRO SEVEN 7",
+      "marca": "PETRO SEVEN 7",
+      "submarca": "PETRO SEVEN 7 (SM)",
+      "producto": "GASOLINERA"
+    },
+    {
+      "id": 3158,
+      "codigo": "16826316",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "PETRO SEVEN 7",
+      "marca": "PETRO SEVEN 7",
+      "submarca": "PETRO SEVEN 7 (SM)",
+      "producto": "GASOLINERA"
+    },
+    {
+      "id": 3159,
+      "codigo": "16596755",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "PETSTAR",
+      "marca": "PETSTAR",
+      "submarca": "PETSTAR (SM)",
+      "producto": "INSTITUCIONAL"
+    },
+    {
+      "id": 3160,
+      "codigo": "16836472",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "PIRMA",
+      "marca": "PIRMA",
+      "submarca": "PIRMA (SM)",
+      "producto": "CALZADO DEPORTIVO"
+    },
+    {
+      "id": 3161,
+      "codigo": "16820912",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "PISTACHIOS",
+      "marca": "PISTACHIOS",
+      "submarca": "PISTACHIOS (SM)",
+      "producto": "BOTANAS"
+    },
+    {
+      "id": 3162,
+      "codigo": "16066982",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "PLAYDOIT",
+      "marca": "PLAYDOIT.MX",
+      "submarca": "PLAYDOIT.MX (SM)",
+      "producto": "CASINOS Y APUESTAS VIRTUALES"
+    },
+    {
+      "id": 3163,
+      "codigo": "16110471",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "PLAYDOIT",
+      "marca": "PLAYDOIT.MX",
+      "submarca": "PLAYDOIT.MX (SM)",
+      "producto": "CASINOS Y APUESTAS VIRTUALES"
+    },
+    {
+      "id": 3164,
+      "codigo": "16162777",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "PLAYDOIT",
+      "marca": "PLAYDOIT.MX",
+      "submarca": "PLAYDOIT.MX (SM)",
+      "producto": "CASINOS Y APUESTAS VIRTUALES"
+    },
+    {
+      "id": 3165,
+      "codigo": "16826150",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "PLL COPPEL TN8",
+      "marca": "COPPEL",
+      "submarca": "COPPEL (SM)",
+      "producto": "TIENDA DEPARTAMENTAL"
+    },
+    {
+      "id": 3166,
+      "codigo": "16363112",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "POPEYES LOUISIANA KITCHEN",
+      "marca": "POPEYES LOUISIANA KITCHEN",
+      "submarca": "POPEYES LOUISIANA KITCHEN (SM)",
+      "producto": "COMIDA RÁPIDA"
+    },
+    {
+      "id": 3167,
+      "codigo": "16807623",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "PRESENTA RAICES DEL COMIENZO (TX: RETIRAR EN CUALQUIER CAJERO NO CUESTA CON TU TARJETA)",
+      "marca": "BANKAOOL",
+      "submarca": "BANKAOOL (SM)",
+      "producto": "TARJETAS DE DÉBITO"
+    },
+    {
+      "id": 3168,
+      "codigo": "16478208",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "PROFUTURO",
+      "marca": "PROFUTURO",
+      "submarca": "PROFUTURO (SM)",
+      "producto": "AFORE"
+    },
+    {
+      "id": 3169,
+      "codigo": "16196239",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "PROYECTESE",
+      "marca": "TELEVISA MONTERREY",
+      "submarca": "TELEVISA MONTERREY (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3170,
+      "codigo": "16825806",
+      "tipo": "INFOMERCIAL",
+      "propietarios_ids": [],
+      "version": "PUEDE SER TUYA CON UN 50% DE DESCUENTO TE LLEVAS UNA OLLA CON CAPACIDAD DE MAS DE 6 LITROS UN CAZO DE 2 LITROS UNA OLLA CON CAPACIDAD DE 4 LITROS",
+      "marca": "CV DIRECTO",
+      "submarca": "JADE CHEF",
+      "producto": "VENTAS POR TELEVISIÓN"
+    },
+    {
+      "id": 3171,
+      "codigo": "16831179",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "PUMA ENERGY",
+      "marca": "PUMA ENERGY",
+      "submarca": "PUMA ENERGY (SM)",
+      "producto": "GASOLINERA"
+    },
+    {
+      "id": 3172,
+      "codigo": "16835639",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "RAID",
+      "marca": "RAID",
+      "submarca": "RAID MAX",
+      "producto": "INSECTICIDAS"
+    },
+    {
+      "id": 3173,
+      "codigo": "16207176",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "RAID",
+      "marca": "RAID",
+      "submarca": "RAID (SM)",
+      "producto": "INSECTICIDAS"
+    },
+    {
+      "id": 3174,
+      "codigo": "16833185",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "RAID",
+      "marca": "RAID",
+      "submarca": "RAID MAX",
+      "producto": "INSECTICIDAS"
+    },
+    {
+      "id": 3175,
+      "codigo": "16600250",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "RAM",
+      "marca": "RAM",
+      "submarca": "RAM (SM)",
+      "producto": "1500 PICK UP"
+    },
+    {
+      "id": 3176,
+      "codigo": "16077053",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "RAM",
+      "marca": "RAM",
+      "submarca": "RAM (SM)",
+      "producto": "VEHÍCULOS"
+    },
+    {
+      "id": 3177,
+      "codigo": "16834847",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "RAPPI",
+      "marca": "RAPPI",
+      "submarca": "RAPPI (SM)",
+      "producto": "PLATAFORMA DE SERVICIOS DE ENTREGA"
+    },
+    {
+      "id": 3178,
+      "codigo": "16824432",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "RAY-BAN",
+      "marca": "RAY-BAN",
+      "submarca": "RAY-BAN (SM)",
+      "producto": "LENTES"
+    },
+    {
+      "id": 3179,
+      "codigo": "16773286",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "REGEMAX",
+      "marca": "REGEMAX",
+      "submarca": "REGEMAX (SM)",
+      "producto": "SUPLEMENTOS ALIMENTICIOS"
+    },
+    {
+      "id": 3180,
+      "codigo": "16130802",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "REGIO",
+      "marca": "REGIO",
+      "submarca": "REGIO (SM)",
+      "producto": "PAPEL HIGIÉNICO"
+    },
+    {
+      "id": 3181,
+      "codigo": "16649495",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "REPORTAJES DE ALVARADO",
+      "marca": "TELEACTIVA",
+      "submarca": "TELEACTIVA (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3182,
+      "codigo": "16136809",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "RESTONIC",
+      "marca": "RESTONIC",
+      "submarca": "RESTONIC (SM)",
+      "producto": "COLCHONES"
+    },
+    {
+      "id": 3183,
+      "codigo": "16829661",
+      "tipo": "I.AMBIENTAL",
+      "propietarios_ids": [],
+      "version": "REXAL",
+      "marca": "REXAL",
+      "submarca": "REXAL (SM)",
+      "producto": "POLVO PARA HORNEAR"
+    },
+    {
+      "id": 3184,
+      "codigo": "16521781",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "REXAL",
+      "marca": "REXAL",
+      "submarca": "REXAL (SM)",
+      "producto": "POLVO PARA HORNEAR"
+    },
+    {
+      "id": 3185,
+      "codigo": "16775449",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "REXAL",
+      "marca": "REXAL",
+      "submarca": "REXAL (SM)",
+      "producto": "POLVO PARA HORNEAR"
+    },
+    {
+      "id": 3186,
+      "codigo": "16835974",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "RIQUISIMOS POR CIERTO",
+      "marca": "CANAL 2",
+      "submarca": "CANAL 2 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3187,
+      "codigo": "16817943",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "RIU HOTELS Y RESORTS HOT SALE 2026",
+      "marca": "RIU HOTELS & RESORTS",
+      "submarca": "RIU HOTELS & RESORTS (SM)",
+      "producto": "PLATAFORMA DE HOSPEDAJE Y SERVICIOS TURÍSTICOS"
+    },
+    {
+      "id": 3188,
+      "codigo": "16229455",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "ROYAL PRESTIGE",
+      "marca": "ROYAL PRESTIGE",
+      "submarca": "ROYAL PRESTIGE (SM)",
+      "producto": "BATERÍAS DE COCINA"
+    },
+    {
+      "id": 3189,
+      "codigo": "16120483",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "ROYAL PRESTIGE",
+      "marca": "ROYAL PRESTIGE",
+      "submarca": "ROYAL PRESTIGE (SM)",
+      "producto": "BATERÍAS DE COCINA"
+    },
+    {
+      "id": 3190,
+      "codigo": "16352041",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "RTC CLASIFICACION A",
+      "marca": "JALISCO TV",
+      "submarca": "JALISCO TV (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3191,
+      "codigo": "16458993",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "RTC CLASIFICACION C",
+      "marca": "ONCE TV",
+      "submarca": "ONCE TV (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3192,
+      "codigo": "16836512",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "SABRITAS",
+      "marca": "SABRITAS",
+      "submarca": "SABRITAS (SM)",
+      "producto": "BOTANAS"
+    },
+    {
+      "id": 3193,
+      "codigo": "16189081",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "SALOON DEL BOSQUE",
+      "marca": "SALOON DEL BOSQUE",
+      "submarca": "SALOON DEL BOSQUE (SM)",
+      "producto": "RESTAURANTE"
+    },
+    {
+      "id": 3194,
+      "codigo": "16043087",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "SALUD DIGNA",
+      "marca": "SALUD DIGNA",
+      "submarca": "SALUD DIGNA (SM)",
+      "producto": "CLÍNICA"
+    },
+    {
+      "id": 3195,
+      "codigo": "16829644",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "SALUD DIGNA",
+      "marca": "SALUD DIGNA",
+      "submarca": "SALUD DIGNA (SM)",
+      "producto": "ÓPTICA"
+    },
+    {
+      "id": 3196,
+      "codigo": "16738014",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "SAN JUAN",
+      "marca": "SAN JUAN",
+      "submarca": "SAN JUAN (SM)",
+      "producto": "HUEVOS"
+    },
+    {
+      "id": 3197,
+      "codigo": "16298929",
+      "tipo": "I.AMBIENTAL",
+      "propietarios_ids": [],
+      "version": "SANTA CLARA",
+      "marca": "SANTA CLARA",
+      "submarca": "SANTA CLARA (SM)",
+      "producto": "LECHE"
+    },
+    {
+      "id": 3198,
+      "codigo": "16304271",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "SANTA CLARA",
+      "marca": "SANTA CLARA",
+      "submarca": "SANTA CLARA (SM)",
+      "producto": "LECHE"
+    },
+    {
+      "id": 3199,
+      "codigo": "16829675",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "SCARY MOVIE TERRORIFICAMENTE INCORRECTA",
+      "marca": "SCARY MOVIE TERRORÍFICAMENTE INCORRECTA",
+      "submarca": "SCARY MOVIE TERRORÍFICAMENTE INCORRECTA (SM)",
+      "producto": "PELÍCULA"
+    },
+    {
+      "id": 3200,
+      "codigo": "16826591",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "SCRIBE",
+      "marca": "SCRIBE",
+      "submarca": "SCRIBE (SM)",
+      "producto": "ARTÍCULOS ESCOLARES"
+    },
+    {
+      "id": 3201,
+      "codigo": "16824798",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "SCRIBE",
+      "marca": "SCRIBE",
+      "submarca": "SCRIBE (SM)",
+      "producto": "ARTÍCULOS ESCOLARES"
+    },
+    {
+      "id": 3202,
+      "codigo": "16103238",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "SOLAR ENERGY",
+      "marca": "SOLAR ENERGY",
+      "submarca": "SOLAR ENERGY (SM)",
+      "producto": "TIENDA DE PRODUCTOS DE ENERGÍA SOLAR Y SUSTENTABLE"
+    },
+    {
+      "id": 3203,
+      "codigo": "16832046",
+      "tipo": "I.AMBIENTAL",
+      "propietarios_ids": [],
+      "version": "SORIANA JULIO REGALADO 2026",
+      "marca": "SORIANA",
+      "submarca": "SORIANA (SM)",
+      "producto": "TIENDA DE AUTOSERVICIO"
+    },
+    {
+      "id": 3204,
+      "codigo": "16322486",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "SORTEOS TEC",
+      "marca": "SORTEOS TEC",
+      "submarca": "SORTEOS TEC (SM)",
+      "producto": "SORTEOS"
+    },
+    {
+      "id": 3205,
+      "codigo": "16822713",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "SOY TU FAN",
+      "marca": "JALISCO TV",
+      "submarca": "JALISCO TV (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3206,
+      "codigo": "16834941",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "ST LOUIS VS NY METS NY YANKEES VS TORONTO",
+      "marca": "EL NU9VE",
+      "submarca": "EL NU9VE (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3207,
+      "codigo": "16028438",
+      "tipo": "VIRTUAL",
+      "propietarios_ids": [],
+      "version": "STEREN",
+      "marca": "STEREN",
+      "submarca": "STEREN (SM)",
+      "producto": "TIENDA DE ARTÍCULOS ELECTRÓNICOS"
+    },
+    {
+      "id": 3208,
+      "codigo": "16086313",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "SULTANES DE MONTERREY",
+      "marca": "SULTANES DE MONTERREY",
+      "submarca": "SULTANES DE MONTERREY (SM)",
+      "producto": "EVENTO DEPORTIVO"
+    },
+    {
+      "id": 3209,
+      "codigo": "16588639",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "SUPERIMPOSICION GNP SEGUROS",
+      "marca": "GNP SEGUROS",
+      "submarca": "GNP SEGUROS (SM)",
+      "producto": "ASEGURADORA"
+    },
+    {
+      "id": 3210,
+      "codigo": "16830020",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "SUPERIMPOSICION GONHER",
+      "marca": "GONHER",
+      "submarca": "GONHERGO",
+      "producto": "SERVICIO DE ASISTENCIA VEHICULAR"
+    },
+    {
+      "id": 3211,
+      "codigo": "16594239",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "SUPERIMPOSICION GOVI",
+      "marca": "GOVI",
+      "submarca": "GOVI (SM)",
+      "producto": "REFACCIONES PARA VEHÍCULOS Y MOTORES"
+    },
+    {
+      "id": 3212,
+      "codigo": "16836554",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "SUPERIMPOSICION SIMI PLANETA",
+      "marca": "SÍMI PLANETA",
+      "submarca": "SÍMI PLANETA (SM)",
+      "producto": "INSTITUCIONAL"
+    },
+    {
+      "id": 3213,
+      "codigo": "16835027",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "SUPERIMPOSICION SIMIPLANETA",
+      "marca": "SÍMI PLANETA",
+      "submarca": "SÍMI PLANETA (SM)",
+      "producto": "INSTITUCIONAL"
+    },
+    {
+      "id": 3214,
+      "codigo": "16833353",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "SUZUKI",
+      "marca": "SUZUKI",
+      "submarca": "SUZUKI (SM)",
+      "producto": "DZIRE HÍBRIDO"
+    },
+    {
+      "id": 3215,
+      "codigo": "16672658",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "SUZUKI",
+      "marca": "SUZUKI",
+      "submarca": "SUZUKI (SM)",
+      "producto": "SWIFT BOOSTERGREEN"
+    },
+    {
+      "id": 3216,
+      "codigo": "16826413",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "SUZUKI",
+      "marca": "SUZUKI",
+      "submarca": "SUZUKI (SM)",
+      "producto": "SWIFT HÍBRIDO"
+    },
+    {
+      "id": 3217,
+      "codigo": "16834950",
+      "tipo": "I.ACTIVA",
+      "propietarios_ids": [],
+      "version": "T-FAL",
+      "marca": "T-FAL",
+      "submarca": "T-FAL (SM)",
+      "producto": "FREIDORA DE AIRE"
+    },
+    {
+      "id": 3218,
+      "codigo": "16629690",
+      "tipo": "I.ACTIVA",
+      "propietarios_ids": [],
+      "version": "TECATE",
+      "marca": "TECATE",
+      "submarca": "TECATE 0.0",
+      "producto": "CERVEZA"
+    },
+    {
+      "id": 3219,
+      "codigo": "16833187",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "TECATE QUITAPON",
+      "marca": "TECATE",
+      "submarca": "TECATE ICE LIGHT",
+      "producto": "CERVEZA LIGHT"
+    },
+    {
+      "id": 3220,
+      "codigo": "16836019",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "TECATE QUITAPON",
+      "marca": "TECATE",
+      "submarca": "TECATE LIGHT",
+      "producto": "CERVEZA LIGHT"
+    },
+    {
+      "id": 3221,
+      "codigo": "16833380",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "TELCEL",
+      "marca": "TELCEL",
+      "submarca": "PLANES LIBRE VIP TELCEL",
+      "producto": "POSTPAGO"
+    },
+    {
+      "id": 3222,
+      "codigo": "16827186",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "TELETON MEXICO",
+      "marca": "TELETÓN MÉXICO",
+      "submarca": "TELETÓN MÉXICO (SM)",
+      "producto": "INSTITUCIONAL"
+    },
+    {
+      "id": 3223,
+      "codigo": "16828974",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "TIBURON INSTINTO PREDADOR ALIEN VS DEPREDADOR DEPREDADOR 2",
+      "marca": "CANAL 7",
+      "submarca": "CANAL 7 (SM)",
+      "producto": "AUTOPROMO"
+    },
+    {
+      "id": 3224,
+      "codigo": "16833377",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "TICKETMASTER",
+      "marca": "TICKETMASTER",
+      "submarca": "TICKETMASTER (SM)",
+      "producto": "VENTA DE BOLETOS"
+    },
+    {
+      "id": 3225,
+      "codigo": "16833379",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "TICKETMASTER",
+      "marca": "TICKETMASTER",
+      "submarca": "TICKETMASTER (SM)",
+      "producto": "VENTA DE BOLETOS"
+    },
+    {
+      "id": 3226,
+      "codigo": "16354328",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "TLAQUEPARTE",
+      "marca": "TLAQUEPARTE",
+      "submarca": "TLAQUEPARTE (SM)",
+      "producto": "EXPO"
+    },
+    {
+      "id": 3227,
+      "codigo": "16530784",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "TLAQUEPARTE",
+      "marca": "TLAQUEPARTE",
+      "submarca": "TLAQUEPARTE (SM)",
+      "producto": "EXPO"
+    },
+    {
+      "id": 3228,
+      "codigo": "16827222",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "TLAQUEPARTE",
+      "marca": "TLAQUEPARTE",
+      "submarca": "TLAQUEPARTE (SM)",
+      "producto": "EXPO"
+    },
+    {
+      "id": 3229,
+      "codigo": "16824384",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "TOTALPLAY",
+      "marca": "TOTALPLAY",
+      "submarca": "TOTALPLAY (SM)",
+      "producto": "MULTISERVICIOS"
+    },
+    {
+      "id": 3230,
+      "codigo": "16824590",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "TOY STORY 5",
+      "marca": "TOY STORY 5",
+      "submarca": "TOY STORY 5 (SM)",
+      "producto": "PELÍCULA"
+    },
+    {
+      "id": 3231,
+      "codigo": "16829077",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "TOY STORY 5",
+      "marca": "TOY STORY 5",
+      "submarca": "TOY STORY 5 (SM)",
+      "producto": "PELÍCULA"
+    },
+    {
+      "id": 3232,
+      "codigo": "16819570",
+      "tipo": "CORTINILLA COMERCIAL",
+      "propietarios_ids": [],
+      "version": "UBER EATS",
+      "marca": "UBER EATS",
+      "submarca": "UBER EATS (SM)",
+      "producto": "PLATAFORMA DE SERVICIOS DE ENTREGA"
+    },
+    {
+      "id": 3233,
+      "codigo": "16716314",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "UBER EATS",
+      "marca": "UBER EATS",
+      "submarca": "UBER EATS (SM)",
+      "producto": "PLATAFORMA DE SERVICIOS DE ENTREGA"
+    },
+    {
+      "id": 3234,
+      "codigo": "16826038",
+      "tipo": "INFOMERCIAL",
+      "propietarios_ids": [],
+      "version": "UNA JOYA QUE NO SOLO ES HERMOSA SINO QUE ESTA CARGADA DE HISTORIA SIGNIFICADO Y SOBRE TODO FORTUNA 12 AMULETOS 30% DESCUENTO Y KIT ESCENCIAS DE REGALO",
+      "marca": "INOVA",
+      "submarca": "PULSERA FORTUNARA",
+      "producto": "VENTAS POR TELEVISIÓN"
+    },
+    {
+      "id": 3235,
+      "codigo": "16590303",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "UNIVA UNIVERSIDAD CATOLICA",
+      "marca": "UNIVA UNIVERSIDAD CATÓLICA",
+      "submarca": "UNIVA UNIVERSIDAD CATÓLICA (SM)",
+      "producto": "UNIVERSIDAD"
+    },
+    {
+      "id": 3236,
+      "codigo": "16534600",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "UNIVA UNIVERSIDAD CATOLICA",
+      "marca": "UNIVA UNIVERSIDAD CATÓLICA",
+      "submarca": "UNIVA UNIVERSIDAD CATÓLICA (SM)",
+      "producto": "UNIVERSIDAD"
+    },
+    {
+      "id": 3237,
+      "codigo": "16821202",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "VAPE",
+      "marca": "VAPE",
+      "submarca": "VAPE (SM)",
+      "producto": "INSECTICIDAS"
+    },
+    {
+      "id": 3238,
+      "codigo": "16829556",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "VEAUTOS",
+      "marca": "VEAUTOS",
+      "submarca": "VEAUTOS (SM)",
+      "producto": "VENTAS DE AUTOS USADOS"
+    },
+    {
+      "id": 3239,
+      "codigo": "16284722",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "VEINCO ESPECIALIDADES VASCULARES",
+      "marca": "VEINCO ESPECIALIDADES VASCULARES",
+      "submarca": "VEINCO ESPECIALIDADES VASCULARES (SM)",
+      "producto": "CLÍNICA"
+    },
+    {
+      "id": 3240,
+      "codigo": "16163882",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "VINTE",
+      "marca": "VINTE",
+      "submarca": "VINTE (SM)",
+      "producto": "INMOBILIARIA"
+    },
+    {
+      "id": 3241,
+      "codigo": "16836570",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "VIRTUAL MENCION SUPERIMPOSICION CALIENTE",
+      "marca": "CALIENTE",
+      "submarca": "CALIENTE (SM)",
+      "producto": "CASINOS Y APUESTAS VIRTUALES"
+    },
+    {
+      "id": 3242,
+      "codigo": "16834844",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "VIVO",
+      "marca": "VIVO",
+      "submarca": "V70",
+      "producto": "EQUIPOS CELULARES"
+    },
+    {
+      "id": 3243,
+      "codigo": "16054266",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "VIX",
+      "marca": "VIX",
+      "submarca": "VIX (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 3244,
+      "codigo": "16828580",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "VIX MUNDIAL CR 2 $799",
+      "marca": "VIX",
+      "submarca": "VIX (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 3245,
+      "codigo": "16829126",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "VIX MUNDIAL CR 2 $799",
+      "marca": "VIX",
+      "submarca": "VIX (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 3246,
+      "codigo": "16835536",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "VIX MUNDIAL CR 2 $899",
+      "marca": "VIX",
+      "submarca": "VIX (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 3247,
+      "codigo": "16835964",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "VIX MUNDIAL CR 2 $899",
+      "marca": "VIX",
+      "submarca": "VIX (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 3248,
+      "codigo": "16826920",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "VIX MUNDIAL CR 3 $799",
+      "marca": "VIX",
+      "submarca": "VIX (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 3249,
+      "codigo": "16827500",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "VIX MUNDIAL CR 3 $799",
+      "marca": "VIX",
+      "submarca": "VIX (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 3250,
+      "codigo": "16834925",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "VIX MUNDIAL CR 3 $899",
+      "marca": "VIX",
+      "submarca": "VIX (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 3251,
+      "codigo": "16825252",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "VIX MUNDIAL CR 4 $799",
+      "marca": "VIX",
+      "submarca": "VIX (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 3252,
+      "codigo": "16825875",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "VIX MUNDIAL CR 4 $799",
+      "marca": "VIX",
+      "submarca": "VIX (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 3253,
+      "codigo": "16830289",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "VIX MUNDIAL MAÑANA $799",
+      "marca": "VIX",
+      "submarca": "VIX (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 3254,
+      "codigo": "16830918",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "VIX MUNDIAL MAÑANA $799",
+      "marca": "VIX",
+      "submarca": "VIX (SM)",
+      "producto": "STREAMING VIDEO"
+    },
+    {
+      "id": 3255,
+      "codigo": "16835426",
+      "tipo": "VIRTUAL",
+      "propietarios_ids": [],
+      "version": "VOLKSWAGEN",
+      "marca": "VOLKSWAGEN",
+      "submarca": "VOLKSWAGEN (SM)",
+      "producto": "VEHÍCULOS"
+    },
+    {
+      "id": 3256,
+      "codigo": "16546796",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "WALT DISNEY WORLD RESORT",
+      "marca": "WALT DISNEY WORLD RESORT",
+      "submarca": "WALT DISNEY WORLD RESORT (SM)",
+      "producto": "PARQUE TEMÁTICO"
+    },
+    {
+      "id": 3257,
+      "codigo": "16546785",
+      "tipo": "PATROCINIO",
+      "propietarios_ids": [],
+      "version": "WALT DISNEY WORLD RESORT",
+      "marca": "WALT DISNEY WORLD RESORT",
+      "submarca": "WALT DISNEY WORLD RESORT (SM)",
+      "producto": "PARQUE TEMÁTICO"
+    },
+    {
+      "id": 3258,
+      "codigo": "16174300",
+      "tipo": "VIRTUAL",
+      "propietarios_ids": [],
+      "version": "WHISKAS",
+      "marca": "WHISKAS",
+      "submarca": "WHISKAS (SM)",
+      "producto": "ALIMENTO PARA GATOS"
+    },
+    {
+      "id": 3259,
+      "codigo": "16815314",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "XUZAL",
+      "marca": "XUZAL",
+      "submarca": "XUZAL (SM)",
+      "producto": "ANTIHISTAMÍNICOS"
+    },
+    {
+      "id": 3260,
+      "codigo": "16725730",
+      "tipo": "VIRTUAL",
+      "propietarios_ids": [],
+      "version": "YAKULT",
+      "marca": "YAKULT",
+      "submarca": "YAKULT 40 LT",
+      "producto": "LÁCTEO FERMENTADO SIN AZÚCAR"
+    },
+    {
+      "id": 3261,
+      "codigo": "16831542",
+      "tipo": "VIRTUAL",
+      "propietarios_ids": [],
+      "version": "_ADEREZOS MCCORMICK MAYONESAS MCCORMICK SALSAS PICANTES FRANKS_ MCCORMICK Y COMPANY",
+      "marca": "MCCORMICK & COMPANY MM",
+      "submarca": "MCCORMICK & COMPANY MM (SM)",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 3262,
+      "codigo": "16831468",
+      "tipo": "I.AMBIENTAL",
+      "propietarios_ids": [],
+      "version": "_AGUA MINERAL CIEL REFRESCO COLA COCA-COLA_ COCA-COLA",
+      "marca": "COCA-COLA MM",
+      "submarca": "COCA-COLA MM (SM)",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 3263,
+      "codigo": "16833288",
+      "tipo": "I.AMBIENTAL",
+      "propietarios_ids": [],
+      "version": "_AGUA MINERAL CIEL REFRESCO FRESCA REFRESCO COLA COCA-COLA_ COCA-COLA",
+      "marca": "COCA-COLA MM",
+      "submarca": "COCA-COLA MM (SM)",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 3264,
+      "codigo": "16830766",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "_AIRE ACONDICIONADO AIRE LAVADO_ FRIKKO",
+      "marca": "FRIKKO",
+      "submarca": "FRIKKO (SM)",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 3265,
+      "codigo": "16830023",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "_ANTICONGELANTE INFLA LLANTAS LIQUIDO PARA FRENOS_ PRESTONE",
+      "marca": "PRESTONE",
+      "submarca": "PRESTONE (SM)",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 3266,
+      "codigo": "16798833",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "_ARTICULOS PARA MASCOTAS DEL PERRO CONSENTIDO FRAGANCIAS CABALLERO GRISI SHAMPOO RICITOS DE ORO_LABORATORIOS GRISI",
+      "marca": "LABORATORIOS GRISI MM",
+      "submarca": "LABORATORIOS GRISI MM (SM)",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 3267,
+      "codigo": "16824446",
+      "tipo": "VIRTUAL",
+      "propietarios_ids": [],
+      "version": "_CEPILLOS DENTALES DENTIFRICO_ORAL-B",
+      "marca": "ORAL-B",
+      "submarca": "ORAL-B (SM)",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 3268,
+      "codigo": "16567122",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "_CHOCOLATES MAZAPAN PALETAS_DULCES DE LA ROSA",
+      "marca": "DULCES DE LA ROSA",
+      "submarca": "DULCES DE LA ROSA (SM)",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 3269,
+      "codigo": "16818528",
+      "tipo": "I.AMBIENTAL",
+      "propietarios_ids": [],
+      "version": "_DETERGENTE EN POLVO JABON LIQUIDO LIMPIADORES LIQUIDOS_ MAESTRO LIMPIO",
+      "marca": "MAESTRO LIMPIO",
+      "submarca": "MAESTRO LIMPIO (SM)",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 3270,
+      "codigo": "16826395",
+      "tipo": "ACCION ESPECIAL",
+      "propietarios_ids": [],
+      "version": "_FIGURAS DE ACCION MOCHILAS ROPA_MARVEL",
+      "marca": "MARVEL",
+      "submarca": "VENGADORES UNIDOS",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 3271,
+      "codigo": "16831507",
+      "tipo": "SUPERIMPOSICION",
+      "propietarios_ids": [],
+      "version": "_GOMAS DE MASCAR CLORETS GOMITAS PANDITAS PASTILLAS DE DULCE HALLS_ MONDELEZ INTERNATIONAL",
+      "marca": "MONDELEZ INTERNATIONAL MM",
+      "submarca": "MONDELEZ INTERNATIONAL MM (SM)",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 3272,
+      "codigo": "16775136",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "_JAMON SALCHICHA_I.ACTIVA I.AMBIENTAL MENCION SUPERIMPOSICION KIR",
+      "marca": "KIR",
+      "submarca": "KIR (SM)",
+      "producto": "CARNES FRÍAS"
+    },
+    {
+      "id": 3273,
+      "codigo": "16836542",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "_MAZAPAN PULPARINDO PULPARINDOTS SUIZO_ MENCION_DULCES DE LA ROSA",
+      "marca": "DULCES DE LA ROSA",
+      "submarca": "DULCES DE LA ROSA (SM)",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 3274,
+      "codigo": "16712495",
+      "tipo": "BLOQUE PATROCINADO",
+      "propietarios_ids": [],
+      "version": "_MOLE EN PASTA MOLE PARA SERVIR_I.ACTIVA I.AMBIENTAL MENCION SUPERIMPOSICION DOÑA MARIA",
+      "marca": "DOÑA MARÍA",
+      "submarca": "DOÑA MARÍA (SM)",
+      "producto": "MOLES LÍNEA"
+    },
+    {
+      "id": 3275,
+      "codigo": "16836534",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "_PLATAFORMA DE SERVICIOS DE ENTREGA UBER EATS PLATAFORMA DE TRANSPORTE UBER_ UBER",
+      "marca": "UBER MM",
+      "submarca": "UBER MM (SM)",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 3276,
+      "codigo": "16774250",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "_UBER PLATAFORMA DE TRANSPORTE UBER EATS PLATAFORMA DE SERVICIOS DE ENTREGA_UBER",
+      "marca": "UBER MM",
+      "submarca": "UBER MM (SM)",
+      "producto": "PRODUCTOS LÍNEA"
+    },
+    {
+      "id": 3277,
+      "codigo": "16805953",
+      "tipo": "MENCION",
+      "propietarios_ids": [],
+      "version": "_YOGHURT GRIEGO YOGHURT GRIEGO BEBIBLE_ OIKOS",
+      "marca": "OIKOS",
+      "submarca": "OIKOS PRO",
+      "producto": "YOGHURT GRIEGO LÍNEA"
     }
   ],
   "meta": {
-    "total": 2637,
-    "ultima_actualizacion": "2026-06-04"
+    "total": 3039,
+    "ultima_actualizacion": "2026-06-11 02:22:19"
   },
   "propietarios": [
     {

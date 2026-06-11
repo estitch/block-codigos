@@ -145,7 +145,7 @@ def transferir_datos_excel_a_json():
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(nuevo_json, f, ensure_ascii=False, indent=2)
         
-        print("✅ Proceso completado exitosamente!")
+        print("Proceso completado exitosamente!")
         
         if nuevos_codigos:
             print(f"\nEjemplos de nuevos códigos agregados:")
@@ -155,7 +155,7 @@ def transferir_datos_excel_a_json():
         return nuevo_json
         
     except Exception as e:
-        print(f"❌ Error durante el proceso: {str(e)}")
+        print(f"Error durante el proceso: {str(e)}")
         import traceback
         traceback.print_exc()
         return None
@@ -177,9 +177,9 @@ def verificar_estructura():
         columnas_faltantes = [col for col in columnas_requeridas if col not in df.columns]
         
         if columnas_faltantes:
-            print(f"\n⚠️ Columnas faltantes: {columnas_faltantes}")
+            print(f"\nColumnas faltantes: {columnas_faltantes}")
         else:
-            print("\n✅ Todas las columnas requeridas están presentes")
+            print("\nTodas las columnas requeridas estan presentes")
             
     except Exception as e:
         print(f"Error al verificar estructura: {str(e)}")
