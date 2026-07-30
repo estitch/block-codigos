@@ -4,7 +4,7 @@
 
 ## 🧠 Algoritmos & Lógica
 
-- [ ] **Detección de duplicados parciales** (Levenshtein / Damerau-Levenshtein) — IDs con errores de tipeo (`12345678` vs `12345679`) o marcas escritas distinto (`GOHNER` vs `GONHER`)
+- [x] **Detección de duplicados parciales** (Damerau-Levenshtein) — IDs con errores de tipeo (`12345678` vs `12345679`) o marcas escritas distinto (`GOHNER` vs `GONHER`)
 - [ ] **Sugerencia de código siguiente** (búsqueda binaria + relleno de gaps numéricos) — próximo código 8 dígitos libre sin scrollear
 - [ ] **Autocompletado predictivo** (Trie + LRU cache) — Marca/Submarca/Producto al escribir
 - [ ] **Normalización inteligente de texto** (stemming + `normalize('NFD')` + scoring) — detectar "Coca-Cola" = "COCA COLA"

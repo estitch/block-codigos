@@ -211,6 +211,38 @@ function nextId(arr) {
   return arr.reduce((max, item) => item.id > max ? item.id : max, 0) + 1;
 }
 
+function damerauLevenshtein(a, b) {
+  const m = a.length, n = b.length;
+  const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+  for (let i = 0; i <= m; i++) dp[i][0] = i;
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      dp[i][j] = Math.min(
+        dp[i - 1][j] + 1,
+        dp[i][j - 1] + 1,
+        dp[i - 1][j - 1] + cost
+      );
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
+        dp[i][j] = Math.min(dp[i][j], dp[i - 2][j - 2] + cost);
+      }
+    }
+  }
+  return dp[m][n];
+}
+
+function buscarSimilares(lista, codigo, umbral = 1) {
+  const resultados = [];
+  for (const c of lista) {
+    const dist = damerauLevenshtein(c.codigo, codigo);
+    if (dist > 0 && dist <= umbral) {
+      resultados.push({ codigo: c.codigo, version: c.version, marca: c.marca, distancia: dist });
+    }
+  }
+  return resultados.sort((a, b) => a.distancia - b.distancia);
+}
+
 // ─── CARGA INICIAL Y MIGRACIÓN ────────────────────────────
 (function cargarDB() {
   try {
@@ -314,6 +346,13 @@ app.post('/api/codigos', (req, res) => {
 
     if (db.codigos.some(c => c.codigo === nuevo.codigo.trim())) {
       return res.status(409).json({ error: `El código ${nuevo.codigo} ya existe` });
+    }
+
+    if (!req.query.confirmar) {
+      const similares = buscarSimilares(db.codigos, nuevo.codigo.trim());
+      if (similares.length > 0) {
+        return res.status(409).json({ error: 'Código similar detectado', similares });
+      }
     }
 
     const registro = {
