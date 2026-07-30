@@ -130,6 +130,15 @@
         <button class="filter-btn" onclick="setFilter('AUTOPROMO',this)">AUTOPROMO</button>
       </div>
       <div class="toolbar-right">
+        <select id="theme-select" onchange="changeTheme(this.value)" title="Cambiar tema visual">
+          <option value="default">🌙 Default</option>
+          <option value="contrast">🔆 Alto Contraste</option>
+          <option value="warm">🟠 Cálido</option>
+          <option value="light">☀️ Claro</option>
+          <option value="classic">💠 Clásico</option>
+          <option value="sepia">🟤 Sepia</option>
+          <option value="violet">🟣 Violeta</option>
+        </select>
       <button class="btn-export" id="btn-toggle-aside-toolbar" onclick="toggleAside()" title="Mostrar / ocultar panel" style="display:none">➕ Panel</button>
         <button class="btn-export" onclick="exportCSV()">⬇ CSV</button>
       </div>
@@ -694,6 +703,19 @@ function toggleAside() {
     if (btnInner)   btnInner.innerHTML = '◀ Ocultar';
   }
 }
+
+// ─── THEMES ─────────────────────────────────────────────
+function changeTheme(theme) {
+  const cls = 'theme-' + theme;
+  document.body.className = theme === 'default' ? '' : cls;
+  localStorage.setItem('block-theme', theme);
+}
+(function loadTheme() {
+  const saved = localStorage.getItem('block-theme') || 'default';
+  const sel = document.getElementById('theme-select');
+  if (sel) sel.value = saved;
+  if (saved !== 'default') document.body.classList.add('theme-' + saved);
+})();
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { closeModal(); cerrarModalPropietarios(); if (editingId !== null) cancelEdit(); }
