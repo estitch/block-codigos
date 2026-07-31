@@ -43849,7 +43849,9 @@
       "id": 4655,
       "codigo": "16895997",
       "tipo": "MENCION",
-      "propietarios_ids": [],
+      "propietarios_ids": [
+        1
+      ],
       "version": "CHANGAN CLEBER",
       "marca": "CHANGAN CLEBER",
       "submarca": "CHANGAN CLEBER (SM)",
@@ -47754,21 +47756,11 @@
       "marca": "YOPLAIT",
       "submarca": "GRIEGO",
       "producto": "YOGHURT GRIEGO LÍNEA"
-    },
-    {
-      "id": 5048,
-      "codigo": "10001013",
-      "version": "TEST V3",
-      "tipo": "MENCION",
-      "marca": "TEST",
-      "submarca": "",
-      "producto": "",
-      "propietarios_ids": []
     }
   ],
   "meta": {
-    "total": 4756,
-    "ultima_actualizacion": "2026-07-30"
+    "total": 4755,
+    "ultima_actualizacion": "2026-07-31"
   },
   "propietarios": [
     {
