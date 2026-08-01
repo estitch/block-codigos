@@ -43849,7 +43849,9 @@
       "id": 4655,
       "codigo": "16895997",
       "tipo": "MENCION",
-      "propietarios_ids": [],
+      "propietarios_ids": [
+        1
+      ],
       "version": "CHANGAN CLEBER",
       "marca": "CHANGAN CLEBER",
       "submarca": "CHANGAN CLEBER (SM)",
@@ -45634,16 +45636,6 @@
       "marca": "LA MODERNA",
       "submarca": "LA MODERNA (SM)",
       "producto": "PASTAS"
-    },
-    {
-      "id": 4834,
-      "codigo": "16891170",
-      "tipo": "MENCION",
-      "propietarios_ids": [],
-      "version": "LA NORTEÑITA",
-      "marca": "LA NORTEÑITA",
-      "submarca": "LA NORTEÑITA (SM)",
-      "producto": "SALSAS PICANTES"
     },
     {
       "id": 4835,
@@ -47757,8 +47749,8 @@
     }
   ],
   "meta": {
-    "total": 4755,
-    "ultima_actualizacion": "2026-07-30"
+    "total": 4754,
+    "ultima_actualizacion": "2026-07-31"
   },
   "propietarios": [
     {

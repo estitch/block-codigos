@@ -2,13 +2,13 @@
 
 > Implementado: `[x]` · Pendiente: `[ ]` · Omitido: ~~tachado~~ · Los números indican el **orden sugerido de implementación** por categoría.
 
-**Progreso: 1 / 28 ítems implementados (~4%)**
+**Progreso: 2 / 28 ítems implementados (~7%)**
 
 ## 🧠 Algoritmos & Lógica
 
 - [x] **1 · Detección de duplicados parciales** (Damerau-Levenshtein) — IDs con errores de tipeo (`12345678` vs `12345679`) o marcas escritas distinto (`GOHNER` vs `GONHER`)
 - [ ] ~~**2 · Sugerencia de código siguiente** (búsqueda binaria + relleno de gaps numéricos) — próximo código 8 dígitos libre sin scrollear~~ ⏭ **OMITIDO** — un código sugerido manualmente puede chocar con la importación (IDs generados por otro software, no a decisión de una persona); la importación gana y actualiza el existente, por lo que la sugerencia no aporta.
-- [ ] **3 · Búsqueda difusa** (n-gramas + Jaccard + ranking) — encontrar "Cocacola" aunque busques "Coca Cola"
+- [x] **3 · Búsqueda difusa** (n-gramas + Jaccard + ranking) — encontrar "Cocacola" aunque busques "Coca Cola"
 - [ ] **4 · Autocompletado predictivo** (Trie + LRU cache) — Marca/Submarca/Producto al escribir
 - [ ] **5 · Normalización inteligente de texto** (stemming + `normalize('NFD')` + scoring) — detectar "Coca-Cola" = "COCA COLA"
 - [ ] **6 · Check digit / dígito verificador** para IDs de 8 dígitos
