@@ -181,6 +181,13 @@ td.td-ver  { color: var(--text-bright); max-width: 200px; }
   padding: 6px;
 }
 
+/* ─── AUTOCOMPLETADO ──────────────────────────────────── */
+.ac-dropdown { position: fixed; z-index: 900; background: var(--bg3); border: 1px solid var(--border); border-radius: 3px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); max-height: 260px; overflow-y: auto; font-family: var(--mono); padding: 4px; }
+.ac-item { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 7px 10px; cursor: pointer; color: var(--text-bright); font-size: 12px; border-radius: 2px; }
+.ac-item:hover, .ac-item.active { background: rgba(0,200,255,0.1); color: var(--accent); }
+.ac-val { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ac-freq { color: var(--text-dim); font-size: 10px; white-space: nowrap; }
+
 /* ─── THEME SELECTOR ───────────────────────────────────── */
 #theme-select {
   appearance: none; -webkit-appearance: none; -moz-appearance: none;

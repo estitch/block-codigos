@@ -224,6 +224,7 @@
 </div>
 
 <script src="busqueda.js"></script>
+<script src="autocompletar.js"></script>
 <script>
 const BASE = window.location.origin;
 const API  = BASE + '/api/codigos';
@@ -257,6 +258,8 @@ async function loadFromServer() {
     if (!r.ok) throw new Error();
     db = await r.json();
     _searchDirty = true;
+    _acDirty = true;
+    inicializarAutocompletado(() => db.codigos);
     const sb = document.getElementById('sb-status');
     sb.textContent = '✓ conectado';
     sb.classList.add('ok');
@@ -336,6 +339,7 @@ async function submitForm() {
   } catch (e) { toast('Error: ' + e.message, true); }
   finally { btn.disabled = false; }
   _searchDirty = true;
+  _acDirty = true;
   renderTable(); updateCounts();
 }
 
@@ -385,6 +389,7 @@ async function confirmDelete() {
     const res = await r.json();
     db.codigos = db.codigos.filter(c => c.id !== deleteId);
     _searchDirty = true;
+    _acDirty = true;
     actualizarContadores(res.total);
     toast('Registro eliminado');
   } catch (e) { toast('Error: ' + e.message, true); }
