@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const zlib = require('zlib');
 const cors = require('cors');
 
 const app = express();
@@ -31,6 +32,51 @@ function asegurarDirectorioBackup() {
 }
 
 /**
+ * Valida que un nombre de backup sea seguro (evita path traversal)
+ * @param {string} nombre
+ * @returns {boolean}
+ */
+function nombreBackupValido(nombre) {
+  return typeof nombre === 'string' &&
+         /^db_backup_\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}\.json\.gz$/.test(nombre) &&
+         path.basename(nombre) === nombre;
+}
+
+/**
+ * Lista los backups comprimidos (.json.gz) del más reciente al más antiguo
+ * @returns {Array<{nombre:string,tamaño:number,fecha:Date}>}
+ */
+function listarBackups() {
+  asegurarDirectorioBackup();
+  return fs.readdirSync(BACKUP_DIR)
+    .filter(f => f.startsWith('db_backup_') && f.endsWith('.json.gz'))
+    .sort()
+    .reverse()
+    .map(f => {
+      const stats = fs.statSync(path.join(BACKUP_DIR, f));
+      return { nombre: f, tamaño: stats.size, fecha: stats.mtime };
+    });
+}
+
+/**
+ * Migración única: elimina los backups .json planos antiguos (previos a la compresión .gz)
+ * Respeta los backups de la Tienda (tienda-db_*)
+ */
+function migrarBackupsViejos() {
+  try {
+    if (!fs.existsSync(BACKUP_DIR)) return;
+    const viejos = fs.readdirSync(BACKUP_DIR)
+      .filter(f => f.startsWith('db_backup_') && f.endsWith('.json'));
+    viejos.forEach(f => fs.unlinkSync(path.join(BACKUP_DIR, f)));
+    if (viejos.length > 0) {
+      console.log(`🧹 ${viejos.length} backup(s) .json antiguo(s) eliminado(s) (migración a .json.gz)`);
+    }
+  } catch (error) {
+    console.error('⚠️  Error al migrar backups antiguos:', error.message);
+  }
+}
+
+/**
  * Realiza un backup periódico de la base de datos
  * @returns {string} Ruta del archivo de backup creado
  */
@@ -40,11 +86,12 @@ function realizarBackupPeriodico() {
     
     const fecha = new Date();
     const timestamp = fecha.toISOString().replace(/[:.]/g, '-').slice(0, 19);
-    const backupFileName = `db_backup_${timestamp}.json`;
+    const backupFileName = `db_backup_${timestamp}.json.gz`;
     const backupPath = path.join(BACKUP_DIR, backupFileName);
-    
-    // Crear el backup
-    fs.writeFileSync(backupPath, JSON.stringify(db, null, 2), 'utf8');
+
+    // Crear el backup comprimido (gzip nivel 9)
+    const contenido = zlib.gzipSync(Buffer.from(JSON.stringify(db, null, 2), 'utf8'), { level: 9 });
+    fs.writeFileSync(backupPath, contenido);
     
     console.log(`💾 Backup periódico creado: ${backupFileName}`);
     
@@ -65,7 +112,7 @@ function realizarBackupPeriodico() {
 function limpiarBackupsAntiguos(maxBackups = 10) {
   try {
     const archivos = fs.readdirSync(BACKUP_DIR)
-      .filter(file => file.startsWith('db_backup_') && file.endsWith('.json'))
+      .filter(file => file.startsWith('db_backup_') && file.endsWith('.json.gz'))
       .sort()
       .reverse(); // Ordenar del más reciente al más antiguo
     
@@ -91,17 +138,17 @@ function esTiempoDeBackup() {
     
     // Buscar el backup más reciente
     const archivos = fs.readdirSync(BACKUP_DIR)
-      .filter(file => file.startsWith('db_backup_') && file.endsWith('.json'))
+      .filter(file => file.startsWith('db_backup_') && file.endsWith('.json.gz'))
       .sort()
       .reverse();
-    
+
     if (archivos.length === 0) {
       return true; // No hay backups, crear el primero
     }
-    
+
     // Extraer la fecha del nombre del archivo más reciente
     const ultimoBackup = archivos[0];
-    const fechaStr = ultimoBackup.replace('db_backup_', '').replace('.json', '');
+    const fechaStr = ultimoBackup.replace('db_backup_', '').replace('.json.gz', '');
     const fechaUltimoBackup = new Date(fechaStr.replace(/-/g, ':').replace('T', ' '));
     
     if (isNaN(fechaUltimoBackup.getTime())) {
@@ -176,26 +223,66 @@ app.post('/api/backup', (req, res) => {
 
 app.get('/api/backups', (req, res) => {
   try {
-    asegurarDirectorioBackup();
-    
-    const archivos = fs.readdirSync(BACKUP_DIR)
-      .filter(file => file.startsWith('db_backup_') && file.endsWith('.json'))
-      .sort()
-      .reverse()
-      .map(file => {
-        const filePath = path.join(BACKUP_DIR, file);
-        const stats = fs.statSync(filePath);
-        return {
-          nombre: file,
-          tamaño: stats.size,
-          fecha: stats.mtime,
-          ruta: filePath
-        };
-      });
-    
+    const archivos = listarBackups();
     res.json({ ok: true, backups: archivos, total: archivos.length });
   } catch (error) {
     res.status(500).json({ error: 'Error al listar backups' });
+  }
+});
+
+// ─── DESCARGAR BACKUP ──────────────────────────────────────
+
+app.get('/api/backups/:nombre', (req, res) => {
+  try {
+    const nombre = req.params.nombre;
+    if (!nombreBackupValido(nombre)) {
+      return res.status(400).json({ error: 'Nombre de backup inválido' });
+    }
+    const backupPath = path.join(BACKUP_DIR, nombre);
+    if (!fs.existsSync(backupPath)) {
+      return res.status(404).json({ error: 'Backup no encontrado' });
+    }
+    res.download(backupPath, nombre);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al descargar backup' });
+  }
+});
+
+// ─── RESTAURAR BACKUP ──────────────────────────────────────
+
+app.post('/api/backups/restaurar', (req, res) => {
+  try {
+    const { nombre, clave } = req.body;
+
+    if (clave !== CLAVE_GESTION) {
+      return res.status(403).json({ error: 'Clave incorrecta' });
+    }
+    if (!nombreBackupValido(nombre)) {
+      return res.status(400).json({ error: 'Nombre de backup inválido' });
+    }
+
+    const backupPath = path.join(BACKUP_DIR, nombre);
+    if (!fs.existsSync(backupPath)) {
+      return res.status(404).json({ error: 'Backup no encontrado' });
+    }
+
+    const crudo = zlib.gunzipSync(fs.readFileSync(backupPath));
+    const restaurado = JSON.parse(crudo.toString('utf8'));
+
+    if (!restaurado || !Array.isArray(restaurado.codigos) || !Array.isArray(restaurado.propietarios)) {
+      return res.status(400).json({ error: 'El backup no tiene una estructura válida' });
+    }
+
+    db = {
+      codigos: restaurado.codigos,
+      propietarios: restaurado.propietarios,
+      meta: restaurado.meta || {}
+    };
+    persistir();
+
+    res.json({ ok: true, mensaje: 'Backup restaurado correctamente', total: db.codigos.length });
+  } catch (error) {
+    res.status(500).json({ error: 'No se pudo restaurar el backup' });
   }
 });
 
@@ -485,6 +572,9 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`  📁  DB:     ${DB_PATH}`);
   console.log(`  💾  Backup: ${DB_BAK_PATH}`);
   console.log(`  📂  Backups: ${BACKUP_DIR}\n`);
+  
+  // Migrar backups antiguos (.json → .gz) una sola vez
+  migrarBackupsViejos();
   
   // Iniciar el sistema de backup programado
   programarBackupPeriodico();

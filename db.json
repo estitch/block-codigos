@@ -47748,10 +47748,6 @@
       "producto": "YOGHURT GRIEGO LÍNEA"
     }
   ],
-  "meta": {
-    "total": 4754,
-    "ultima_actualizacion": "2026-07-31"
-  },
   "propietarios": [
     {
       "id": 1,
@@ -47797,5 +47793,9 @@
       "id": 12,
       "nombre": "sandro"
     }
-  ]
+  ],
+  "meta": {
+    "total": 4754,
+    "ultima_actualizacion": "2026-08-01"
+  }
 }

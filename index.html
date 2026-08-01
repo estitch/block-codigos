@@ -141,6 +141,7 @@
         </select>
       <button class="btn-export" id="btn-toggle-aside-toolbar" onclick="toggleAside()" title="Mostrar / ocultar panel" style="display:none">➕ Panel</button>
         <button class="btn-export" onclick="exportCSV()">⬇ CSV</button>
+        <button class="btn-export" onclick="abrirModalBackups()" title="Crear, descargar o restaurar backups">💾 BACKUPS</button>
       </div>
     </div>
 
@@ -203,6 +204,27 @@
     <div class="prop-list" id="prop-list"></div>
     <div class="modal-btns">
       <button class="btn-cancel" onclick="cerrarModalPropietarios()">CERRAR</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: backups -->
+<div class="modal-overlay" id="modal-backups">
+  <div class="modal" style="max-width:560px;">
+    <h3>💾 BACKUPS</h3>
+    <p style="margin-bottom:14px;">Copias comprimidas de <span class="mono">db.json</span> (gzip).<br>
+    <span style="font-size:11px;color:var(--text-dim);">⚠ Restaurar reemplaza la base de datos actual — requiere la palabra secreta.</span></p>
+    <div style="display:flex; gap:8px; margin-bottom:12px;">
+      <button class="btn-add" style="flex:1; min-width:140px;" onclick="crearBackupManual()">➕ CREAR BACKUP</button>
+    </div>
+    <div class="secret-field" style="margin-bottom:10px;">
+      <label>Palabra secreta</label>
+      <input type="password" id="backup-clave" placeholder="••••••••••" autocomplete="off" oninput="limpiarHintBackup()">
+      <div class="secret-hint" id="backup-hint">Necesaria solo para restaurar</div>
+    </div>
+    <div class="prop-list" id="backups-list" style="max-height:260px;"></div>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="cerrarModalBackups()">CERRAR</button>
     </div>
   </div>
 </div>
@@ -411,6 +433,99 @@ function cerrarModalPropietarios() {
   _secretOk = false;
   document.getElementById('secret-input').value = '';
   document.getElementById('modal-prop').classList.remove('active');
+}
+
+// ─── BACKUPS ────────────────────────────────────────────
+function formatearBytes(n) {
+  if (n < 1024) return n + ' B';
+  if (n < 1024 * 1024) return (n / 1024).toFixed(1) + ' KB';
+  return (n / (1024 * 1024)).toFixed(1) + ' MB';
+}
+function abrirModalBackups() {
+  document.getElementById('backup-clave').value = '';
+  limpiarHintBackup();
+  document.getElementById('modal-backups').classList.add('active');
+  renderBackupsList();
+}
+function cerrarModalBackups() {
+  document.getElementById('modal-backups').classList.remove('active');
+}
+function limpiarHintBackup() {
+  const hint = document.getElementById('backup-hint');
+  hint.textContent = 'Necesaria solo para restaurar';
+  hint.classList.remove('error'); hint.style.color = '';
+}
+async function renderBackupsList() {
+  const lista = document.getElementById('backups-list');
+  lista.innerHTML = '<div style="font-family:var(--mono);font-size:12px;color:var(--text-dim);text-align:center;padding:16px;">Cargando…</div>';
+  try {
+    const r = await fetch(`${BASE}/api/backups`);
+    if (!r.ok) throw new Error();
+    const data = await r.json();
+    if (!data.backups || data.backups.length === 0) {
+      lista.innerHTML = '<div style="font-family:var(--mono);font-size:12px;color:var(--text-dim);text-align:center;padding:16px;">No hay backups aún</div>';
+      return;
+    }
+    lista.innerHTML = data.backups.map(b =>
+      `<div style="background:var(--bg3);border:1px solid var(--border);border-radius:3px;padding:8px 10px;margin-bottom:6px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+          <div style="min-width:0;">
+            <div class="mono" style="font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${x(b.nombre)}</div>
+            <div style="font-size:10px;color:var(--text-dim);margin-top:2px;">${formatearBytes(b.tamaño)} · ${new Date(b.fecha).toLocaleString('es-MX')}</div>
+          </div>
+          <div style="display:flex;gap:6px;flex-shrink:0;">
+            <button class="btn-icon" title="Descargar" onclick="descargarBackup('${b.nombre}')">⬇</button>
+            <button class="btn-icon btn-del" title="Restaurar" onclick="restaurarBackup('${b.nombre}')">♻</button>
+          </div>
+        </div>
+      </div>`
+    ).join('');
+  } catch {
+    lista.innerHTML = '<div style="font-family:var(--mono);font-size:12px;color:var(--accent2);text-align:center;padding:16px;">Error al listar backups</div>';
+  }
+}
+async function crearBackupManual() {
+  try {
+    const r = await fetch(`${BASE}/api/backup`, { method: 'POST' });
+    if (!r.ok) throw new Error();
+    const data = await r.json();
+    toast(`💾 ${data.mensaje || 'Backup creado'}`);
+    renderBackupsList();
+  } catch {
+    toast('No se pudo crear el backup', true);
+  }
+}
+function descargarBackup(nombre) {
+  window.open(`${BASE}/api/backups/${encodeURIComponent(nombre)}`, '_blank');
+}
+async function restaurarBackup(nombre) {
+  const clave = document.getElementById('backup-clave').value.trim();
+  const hint = document.getElementById('backup-hint');
+  if (!clave) {
+    hint.textContent = '✗ Ingresa la palabra secreta para restaurar';
+    hint.classList.add('error'); hint.style.color = '';
+    document.getElementById('backup-clave').focus();
+    return;
+  }
+  if (!confirm('⚠ Se reemplazará db.json con el backup seleccionado. ¿Continuar?')) return;
+  try {
+    const r = await fetch(`${BASE}/api/backups/restaurar`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nombre, clave })
+    });
+    const data = await r.json();
+    if (!r.ok) {
+      hint.textContent = data.error === 'Clave incorrecta' ? '✗ Clave incorrecta' : `✗ ${data.error || 'Error al restaurar'}`;
+      hint.classList.add('error'); hint.style.color = '';
+      return;
+    }
+    toast(`✅ Backup restaurado (${data.total} códigos)`);
+    cerrarModalBackups();
+    await loadFromServer();
+  } catch {
+    toast('No se pudo restaurar el backup', true);
+  }
 }
 
 // ─── SIMILAR DUPLICATE MODAL ────────────────────────────

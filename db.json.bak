@@ -45638,16 +45638,6 @@
       "producto": "PASTAS"
     },
     {
-      "id": 4834,
-      "codigo": "16891170",
-      "tipo": "MENCION",
-      "propietarios_ids": [],
-      "version": "LA NORTEÑITA",
-      "marca": "LA NORTEÑITA",
-      "submarca": "LA NORTEÑITA (SM)",
-      "producto": "SALSAS PICANTES"
-    },
-    {
       "id": 4835,
       "codigo": "16898430",
       "tipo": "SUPERIMPOSICION",
@@ -47759,7 +47749,7 @@
     }
   ],
   "meta": {
-    "total": 4755,
+    "total": 4754,
     "ultima_actualizacion": "2026-07-31"
   },
   "propietarios": [

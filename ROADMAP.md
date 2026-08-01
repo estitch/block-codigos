@@ -2,7 +2,7 @@
 
 > Implementado: `[x]` · Pendiente: `[ ]` · Omitido: ~~tachado~~ · Los números indican el **orden sugerido de implementación** por categoría.
 
-**Progreso: 4 / 28 ítems implementados (~14%)**
+**Progreso: 5 / 28 ítems implementados (~18%)**
 
 ## 🧠 Algoritmos & Lógica
 
@@ -11,8 +11,8 @@
 - [x] **3 · Búsqueda difusa** (n-gramas + Jaccard + ranking) — encontrar "Cocacola" aunque busques "Coca Cola"
 - [x] **4 · Autocompletado predictivo** (Trie + LRU cache) — Marca/Submarca/Producto al escribir
 - [x] **5 · Normalización inteligente de texto** (stemming + `normalize('NFD')` + scoring) — detectar "Coca-Cola" = "COCA COLA"
-- [ ] **6 · Check digit / dígito verificador** para IDs de 8 dígitos
-- [ ] **7 · Compresión de DB al vuelo** (`.json.gz` para backups)
+- [ ] ~~**6 · Check digit / dígito verificador** para IDs de 8 dígitos~~ ⏭ **OMITIDO** — los códigos provienen de otro software (importación Excel) y no cumplen ningún esquema de verificador: probados Luhn y 6 variantes de mod10/mod11 sobre los 4,754 códigos, todos aciertan ~10% (azar). Un verificador obligatorio rechazaría ~90% de códigos legítimos; como detector de tipeo soft, marcaría falso positivo en ~90% de los códigos importados. No aporta valor.
+- [x] **7 · Compresión de DB al vuelo** (`.json.gz` para backups) — backups gzip nivel 9 (~1.27 MB → ~140 KB) + descarga y restauración protegida por clave
 - [ ] **8 · Batch insert con rollback** (snapshot → revertir si falla lote en importación Excel)
 
 ## 🖥️ UI / Experiencia
