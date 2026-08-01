@@ -2,7 +2,7 @@
 
 > Implementado: `[x]` · Pendiente: `[ ]` · Omitido: ~~tachado~~ · Los números indican el **orden sugerido de implementación** por categoría.
 
-**Progreso: 3 / 28 ítems implementados (~11%)**
+**Progreso: 4 / 28 ítems implementados (~14%)**
 
 ## 🧠 Algoritmos & Lógica
 
@@ -10,7 +10,7 @@
 - [ ] ~~**2 · Sugerencia de código siguiente** (búsqueda binaria + relleno de gaps numéricos) — próximo código 8 dígitos libre sin scrollear~~ ⏭ **OMITIDO** — un código sugerido manualmente puede chocar con la importación (IDs generados por otro software, no a decisión de una persona); la importación gana y actualiza el existente, por lo que la sugerencia no aporta.
 - [x] **3 · Búsqueda difusa** (n-gramas + Jaccard + ranking) — encontrar "Cocacola" aunque busques "Coca Cola"
 - [x] **4 · Autocompletado predictivo** (Trie + LRU cache) — Marca/Submarca/Producto al escribir
-- [ ] **5 · Normalización inteligente de texto** (stemming + `normalize('NFD')` + scoring) — detectar "Coca-Cola" = "COCA COLA"
+- [x] **5 · Normalización inteligente de texto** (stemming + `normalize('NFD')` + scoring) — detectar "Coca-Cola" = "COCA COLA"
 - [ ] **6 · Check digit / dígito verificador** para IDs de 8 dígitos
 - [ ] **7 · Compresión de DB al vuelo** (`.json.gz` para backups)
 - [ ] **8 · Batch insert con rollback** (snapshot → revertir si falla lote en importación Excel)

@@ -223,6 +223,7 @@
   </div>
 </div>
 
+<script src="normalizar.js"></script>
 <script src="busqueda.js"></script>
 <script src="autocompletar.js"></script>
 <script>
@@ -521,7 +522,9 @@ function getFiltered() {
   }
   const q = normalizarTexto(document.getElementById('search-input').value);
   const exactos = [];
+  const semi = [];
   const fuzzy = [];
+  const raiz = stemizar(q);
   for (const c of db.codigos) {
     const matchTipo = filterTipo === 'ALL' || c.tipo === filterTipo;
     const matchProp = propietarioActivoId === null ||
@@ -534,10 +537,19 @@ function getFiltered() {
            || normalizarTexto(c.producto).includes(q)
            || normalizarTexto(c.tipo).includes(q)) {
       exactos.push(c);
+    } else if (q && raiz.length >= 4
+               && (coincideStem(c.codigo, raiz)
+                   || coincideStem(c.version, raiz)
+                   || coincideStem(c.marca, raiz)
+                   || coincideStem(c.submarca, raiz)
+                   || coincideStem(c.producto, raiz)
+                   || coincideStem(c.tipo, raiz))) {
+      semi.push(c);
+      _fuzzyIds.add(c.id);
     }
   }
   if (q && q.length >= FUZZY_MIN_LEN) {
-    const yaExacto = new Set(exactos.map(c => c.id));
+    const yaExacto = new Set(exactos.concat(semi).map(c => c.id));
     for (const { idx } of buscarFuzzy(q, db.codigos, _busquedaIndex)) {
       const c = db.codigos[idx];
       if (yaExacto.has(c.id)) continue;
@@ -550,7 +562,7 @@ function getFiltered() {
       }
     }
   }
-  return exactos.concat(fuzzy);
+  return exactos.concat(semi).concat(fuzzy);
 }
 
 function sortBy(col) {

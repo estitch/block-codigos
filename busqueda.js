@@ -6,14 +6,6 @@ const FUZZY_MIN_LEN   = 3;
 const FUZZY_MAX       = 250;
 const FUZZY_FIELDS    = ['codigo','version','tipo','marca','submarca','producto'];
 
-function normalizarTexto(s) {
-  return String(s || '')
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]+/g, '');
-}
-
 function bigramas(s) {
   const set = new Set();
   for (let i = 0; i < s.length - 1; i++) set.add(s.slice(i, i + 2));
