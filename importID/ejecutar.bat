@@ -14,7 +14,7 @@ echo OK
 
 echo.
 echo ========================================
-echo 2/2 - Ejecutando transferir_ids.py...
+echo 2/2 - Importando a la DB en vivo (transferir_ids.py)...
 echo ========================================
 python transferir_ids.py
 if %errorlevel% neq 0 (

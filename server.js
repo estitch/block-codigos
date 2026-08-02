@@ -13,7 +13,7 @@ const CLAVE_GESTION = 'AUDITSA2026';
 const BACKUP_INTERVAL_DAYS = 3; // Intervalo de backup en días
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
 app.use(express.static(__dirname));
 
 // ─── DB EN MEMORIA ────────────────────────────────────────
@@ -298,6 +298,21 @@ function nextId(arr) {
   return arr.reduce((max, item) => item.id > max ? item.id : max, 0) + 1;
 }
 
+function limpiarTipo(texto) {
+  if (!texto) return texto;
+  const reemplazos = {
+    'MENCIÓN': 'MENCION',
+    'I. AMBIENTAL': 'I.AMBIENTAL',
+    'I. ACTIVA': 'I.ACTIVA',
+    'ACCIÓN ESPECIAL': 'ACCION ESPECIAL'
+  };
+  let t = String(texto).trim().toUpperCase();
+  for (const [original, reemplazo] of Object.entries(reemplazos)) {
+    t = t.replace(original, reemplazo);
+  }
+  return t;
+}
+
 function damerauLevenshtein(a, b) {
   const m = a.length, n = b.length;
   const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
@@ -458,6 +473,99 @@ app.post('/api/codigos', (req, res) => {
     res.json({ ok: true, registro, total: db.meta.total });
   } catch (e) {
     res.status(500).json({ error: 'No se pudo agregar el registro' });
+  }
+});
+
+app.post('/api/codigos/batch', (req, res) => {
+  try {
+    const { codigos } = req.body;
+    if (!Array.isArray(codigos) || codigos.length === 0) {
+      return res.status(400).json({ error: 'El campo codigos debe ser un array no vacío' });
+    }
+
+    // ─── PRE-VALIDACIÓN (todo-o-nada) ──────────────────────
+    const limpios = [];
+    const errores = [];
+    codigos.forEach((item, i) => {
+      const codigo   = String(item.codigo || '').trim();
+      const version  = String(item.version || '').trim();
+      const tipo     = limpiarTipo(item.tipo);
+      const marca    = String(item.marca || '').trim();
+      const submarca = String(item.submarca || '').trim();
+      const producto = String(item.producto || '').trim();
+
+      if (!codigo || !version || !tipo || !marca) {
+        errores.push({ fila: i + 2, codigo: codigo || '(vacío)', motivo: 'Faltan campos obligatorios (codigo, version, tipo, marca)' });
+        return;
+      }
+      limpios.push({ codigo, version, tipo, marca, submarca, producto });
+    });
+
+    if (errores.length > 0) {
+      return res.status(400).json({
+        error: `Lote rechazado — ${errores.length} fila(s) inválida(s)`,
+        errores,
+        totalErrores: errores.length
+      });
+    }
+
+    // ─── SNAPSHOT ANTES DE MUTAR ──────────────────────────
+    const snapshot = JSON.parse(JSON.stringify(db.codigos));
+
+    try {
+      const porCodigo = new Map(db.codigos.map(c => [c.codigo, c]));
+      let agregados   = 0;
+      let actualizados = 0;
+      let sinCambios  = 0;
+
+      const norm = (s) => (typeof s === 'string' ? s.trim() : '');
+
+      for (const item of limpios) {
+        const existente = porCodigo.get(item.codigo);
+        if (existente) {
+          const hayCambio =
+            norm(existente.version)  !== item.version  ||
+            limpiarTipo(existente.tipo) !== item.tipo  ||
+            norm(existente.marca)    !== item.marca    ||
+            norm(existente.submarca) !== item.submarca ||
+            norm(existente.producto) !== item.producto;
+          if (!hayCambio) {
+            sinCambios++;
+            continue;
+          }
+          existente.version  = item.version;
+          existente.tipo     = item.tipo;
+          existente.marca    = item.marca;
+          existente.submarca = item.submarca;
+          existente.producto = item.producto;
+          porCodigo.set(item.codigo, existente);
+          actualizados++;
+        } else {
+          const registro = {
+            id: nextId(db.codigos),
+            codigo:   item.codigo,
+            version:  item.version,
+            tipo:     item.tipo,
+            marca:    item.marca,
+            submarca: item.submarca,
+            producto: item.producto,
+            propietarios_ids: []
+          };
+          db.codigos.push(registro);
+          porCodigo.set(item.codigo, registro);
+          agregados++;
+        }
+      }
+
+      persistir();
+      res.json({ ok: true, agregados, actualizados, sinCambios, total: db.meta.total });
+    } catch (e) {
+      db.codigos = snapshot;
+      console.error('❌ Lote falló, se revirtió al snapshot:', e.message);
+      res.status(500).json({ error: 'El lote falló y fue revertido — no se aplicó ningún cambio', detalle: e.message });
+    }
+  } catch (e) {
+    res.status(500).json({ error: 'No se pudo procesar el lote' });
   }
 });
 

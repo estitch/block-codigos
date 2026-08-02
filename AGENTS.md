@@ -23,6 +23,7 @@ They share no code. Dependencies: `express`, `cors` only (plain Express + `fs`, 
 - Block auth: plain password check per `POST /api/propietarios/verificar-clave`. No session.
 - Tienda brute force: 5 attempts → 15 min IP block (in-memory, lost on restart). SHA-256 timing-safe comparison.
 - Stock: decremented on pedido creation, restored to `productos` on cancel. No separate inventory table.
+- `express.json({ limit: '50mb' })` — required so `POST /api/codigos/batch` accepts real batches (a 1,074-row `_filtrado` payload is ~190 KB; the old 100 KB default caused 413). Restart the server after changing this.
 
 ## DB files
 
@@ -37,9 +38,10 @@ They share no code. Dependencies: `express`, `cors` only (plain Express + `fs`, 
 - **Block:** every 3 days (checked hourly), keeps max 10, manual `POST /api/backup`. Also creates `db.json.bak` on every mutation.
 - **Tienda:** every hour + on server start, keeps max 30. Admin endpoints: `GET /api/backups`, `POST /api/backups` (create), `POST /api/backups/restaurar` (restore), `DELETE /api/backups/:nombre`.
 
-## Excel import (`transferir_ids.py`)
+## Excel import
 
-Reads `id_partido.xlsx` (sheet `Hoja1`, columns `ID Deteccion`, `SUB Tipo de Spot`, `VersiOn`, `Marca`, `Submarca`, `Producto`), merges new codes into `db.json`. Deduplicates by code. Output: `db_actualizado.json`. Requires `pandas` + `openpyxl`.
+- **By browser (preferred):** button `⬆ IMPORTAR` in `index.html` parses an `.xlsx` client-side with SheetJS (CDN) and sends the batch to `POST /api/codigos/batch`. It scans all sheets and finds the header row (first 15 rows) by matching columns `ID Deteccion`, `SUB Tipo de Spot`, `VersiOn`, `Marca`, `Submarca`, `Producto` (order/case tolerant). If no sheet matches, it shows a diagnostic listing each sheet's structure. Upsert semantics: existing codes are updated (preserving `propietarios_ids`), new ones inserted. **Atomic**: the server snapshots `db.codigos` before applying and restores it if the batch or `persistir()` fails — the DB is never left half-imported. Duplicates inside the batch: last occurrence wins. Tipo is normalized server-side by `limpiarTipo()` (`MENCIÓN→MENCION`, `I. AMBIENTAL→I.AMBIENTAL`, `I. ACTIVA→I.ACTIVA`, `ACCIÓN ESPECIAL→ACCION ESPECIAL`).
+- **Python script (for large RevQA files):** `transferir_ids.py` (copies in root and `importID/`) prioritizes the latest `RevQA_*_filtrado.xlsx` (clean output of `ejecutar.bat`/`filter_revqa.py`); if none, reads the raw `RevQA_*.xlsx` sheet `Calidad Dedicado` with pandas `usecols` (the raw sheet is ~1 GB, too big for the browser) and filters to allowed tipos + dedups. Normalizes tipo and **POSTs the batch to `POST /api/codigos/batch`** (live, atomic, with rollback). The server must be running (`INICIAR_CODIGOS.bat`). To change the target server, edit `SERVER_URL`.
 
 ## Windows firewall — port 3030
 

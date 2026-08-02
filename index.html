@@ -140,6 +140,7 @@
           <option value="violet">🟣 Violeta</option>
         </select>
       <button class="btn-export" id="btn-toggle-aside-toolbar" onclick="toggleAside()" title="Mostrar / ocultar panel" style="display:none">➕ Panel</button>
+        <button class="btn-export" onclick="abrirImportador()" title="Importar códigos desde Excel (xlsx)">⬆ IMPORTAR</button>
         <button class="btn-export" onclick="exportCSV()">⬇ CSV</button>
         <button class="btn-export" onclick="abrirModalBackups()" title="Crear, descargar o restaurar backups">💾 BACKUPS</button>
       </div>
@@ -229,6 +230,40 @@
   </div>
 </div>
 
+<!-- Modal: importar desde Excel -->
+<div class="modal-overlay" id="modal-import">
+  <div class="modal" style="max-width:600px;">
+    <h3>⬆ IMPORTAR DESDE EXCEL</h3>
+    <input type="file" id="import-file" accept=".xlsx,.xls" style="display:none" onchange="procesarArchivoImport(this)">
+    <div id="import-paso1" style="text-align:center;padding:24px 0;">
+      <div id="import-error" style="display:none;text-align:left;font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--accent2);background:var(--bg3);border:1px solid rgba(255,75,110,0.3);padding:10px 12px;border-radius:3px;margin-bottom:14px;white-space:pre-wrap;"></div>
+      <div style="font-size:40px;margin-bottom:10px;">📄</div>
+      <p style="font-size:12px;color:var(--text-dim);margin-bottom:16px;">Selecciona un archivo <span class="mono">.xlsx</span> con las columnas<br>
+      <span class="mono">ID Deteccion · SUB Tipo de Spot · VersiOn · Marca · Submarca · Producto</span></p>
+      <div style="display:flex;gap:10px;justify-content:center;">
+        <button class="btn-add" onclick="document.getElementById('import-file').click()">ELEGIR ARCHIVO</button>
+        <button class="btn-cancel" onclick="cerrarModalImport()">CANCELAR</button>
+      </div>
+    </div>
+    <div id="import-paso2" style="display:none;">
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:3px;padding:10px 12px;margin-bottom:12px;">
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <div class="import-stat"><span class="mono" id="import-filas">—</span> filas leídas</div>
+          <div class="import-stat"><span class="mono" id="import-nuevos">—</span> nuevos</div>
+          <div class="import-stat"><span class="mono" id="import-actualizar">—</span> a actualizar</div>
+          <div class="import-stat" id="import-invalidos-wrap" style="display:none;"><span class="mono" id="import-invalidos">—</span> inválidos (omitidos)</div>
+        </div>
+      </div>
+      <div class="import-preview-wrap" id="import-preview"></div>
+      <p style="font-size:11px;color:var(--text-dim);margin:10px 0;">⚠ Los códigos ya existentes se <strong>actualizarán</strong> (se preservan los propietarios). La importación es atómica: si falla, no se aplica ningún cambio.</p>
+      <div class="modal-btns">
+        <button class="btn-cancel" onclick="cerrarModalImport()">CANCELAR</button>
+        <button class="btn-add" id="btn-import-confirmar" onclick="confirmarImport()" style="min-width:140px">IMPORTAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <!-- Modal: código similar detectado -->
@@ -245,6 +280,7 @@
   </div>
 </div>
 
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 <script src="normalizar.js"></script>
 <script src="busqueda.js"></script>
 <script src="autocompletar.js"></script>
@@ -526,6 +562,161 @@ async function restaurarBackup(nombre) {
   } catch {
     toast('No se pudo restaurar el backup', true);
   }
+}
+
+// ─── IMPORTAR DESDE EXCEL ──────────────────────────────
+let _importItems = [];
+
+function abrirImportador() {
+  const f = document.getElementById('import-file');
+  f.value = '';
+  const err = document.getElementById('import-error');
+  err.style.display = 'none';
+  err.textContent = '';
+  document.getElementById('import-paso1').style.display = 'block';
+  document.getElementById('import-paso2').style.display = 'none';
+  document.getElementById('modal-import').classList.add('active');
+  setTimeout(() => f.click(), 80);
+}
+function cerrarModalImport() {
+  document.getElementById('import-file').value = '';
+  document.getElementById('modal-import').classList.remove('active');
+}
+function limpiarTipoImport(texto) {
+  if (!texto) return '';
+  const reemplazos = { 'MENCIÓN':'MENCION','I. AMBIENTAL':'I.AMBIENTAL','I. ACTIVA':'I.ACTIVA','ACCIÓN ESPECIAL':'ACCION ESPECIAL' };
+  let t = String(texto).trim().toUpperCase();
+  for (const [orig, reemp] of Object.entries(reemplazos)) t = t.replace(orig, reemp);
+  return t;
+}
+function normHeader(s) {
+  return String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+function buscarCol(headers, nombre) {
+  const target = normHeader(nombre);
+  for (let i = 0; i < headers.length; i++) {
+    if (normHeader(headers[i]) === target) return i;
+  }
+  return -1;
+}
+function buscarHojaDatos(wb) {
+  const cols = ['ID Deteccion', 'SUB Tipo de Spot'];
+  for (const name of wb.SheetNames) {
+    const filas = XLSX.utils.sheet_to_json(wb.Sheets[name], { header: 1, defval: '' });
+    const limit = Math.min(filas.length, 15);
+    for (let r = 0; r < limit; r++) {
+      const headers = filas[r] || [];
+      if (cols.every(c => buscarCol(headers, c) !== -1)) {
+        return { name, headerRow: r };
+      }
+    }
+  }
+  return null;
+}
+function procesarArchivoImport(input) {
+  const file = input.files && input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      if (typeof XLSX === 'undefined') throw new Error('Librería XLSX no cargada (revisa la conexión a internet)');
+      const wb = XLSX.read(e.target.result, { type: 'array' });
+      const datos = buscarHojaDatos(wb);
+      if (!datos) {
+        const detalle = wb.SheetNames.map(n => {
+          const f = XLSX.utils.sheet_to_json(wb.Sheets[n], { header: 1, defval: '' });
+          const lim = Math.min(f.length, 15);
+          let hdr = '(hoja vacía)';
+          for (let r = 0; r < lim; r++) {
+            const h = (f[r] || []).filter(Boolean);
+            if (h.length >= 2) { hdr = 'encabezado en fila ' + r + ': ' + h.slice(0, 8).join(' | '); break; }
+          }
+          return `  "${n}": ${hdr}`;
+        }).join('\n');
+        throw new Error('No se encontró una hoja con las columnas requeridas (ID Deteccion + SUB Tipo de Spot).\nEstructura del archivo:\n' + detalle + '\n\nSugerencia: para archivos RevQA grandes usa la hoja "Calidad Dedicado" (importador de navegador no puede leerla) y ejecuta: python transferir_ids.py\nO sube un archivo _filtrado.xlsx (incluye la columna "SUB Tipo de Spot").');
+      }
+      const filas = XLSX.utils.sheet_to_json(wb.Sheets[datos.name], { header: 1, defval: '' });
+      const headers = filas[datos.headerRow] || [];
+
+      const ci = { codigo: buscarCol(headers,'ID Deteccion'), tipo: buscarCol(headers,'SUB Tipo de Spot'),
+                   version: buscarCol(headers,'VersiOn'), marca: buscarCol(headers,'Marca'),
+                   submarca: buscarCol(headers,'Submarca'), producto: buscarCol(headers,'Producto') };
+
+      const porCodigo = new Map();
+      let invalidos = 0;
+      for (const row of filas.slice(datos.headerRow + 1)) {
+        const codigo = String(row[ci.codigo] ?? '').trim();
+        if (!codigo || codigo === 'nan') continue;
+        const version  = String(row[ci.version] ?? '').trim();
+        const tipo     = limpiarTipoImport(ci.tipo >= 0 ? row[ci.tipo] : '');
+        const marca    = String(row[ci.marca] ?? '').trim();
+        const submarca = String(row[ci.submarca] ?? '').trim();
+        const producto = String(row[ci.producto] ?? '').trim();
+        if (!version || !tipo || !marca) { invalidos++; continue; }
+        porCodigo.set(codigo, { codigo, version, tipo, marca, submarca, producto });
+      }
+
+      _importItems = [...porCodigo.values()];
+      if (_importItems.length === 0) { toast('No se encontraron códigos válidos en el archivo', true); return; }
+
+      const existentes = new Set(db.codigos.map(c => c.codigo));
+      let nuevos = 0, actualizar = 0;
+      for (const it of _importItems) { if (existentes.has(it.codigo)) actualizar++; else nuevos++; }
+
+      document.getElementById('import-filas').textContent = _importItems.length;
+      document.getElementById('import-nuevos').textContent = nuevos;
+      document.getElementById('import-actualizar').textContent = actualizar;
+      const wrap = document.getElementById('import-invalidos-wrap');
+      if (invalidos > 0) {
+        wrap.style.display = 'block';
+        document.getElementById('import-invalidos').textContent = invalidos;
+      } else { wrap.style.display = 'none'; }
+
+      document.getElementById('import-preview').innerHTML =
+        `<div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);padding:4px 10px;border-bottom:1px solid var(--border);">Hoja detectada: <span style="color:var(--accent3);">${x(datos.name)}</span> (encabezado en fila ${datos.headerRow})</div>` +
+        '<div class="import-row import-row-head"><span>CÓDIGO</span><span>VERSIÓN</span><span>TIPO</span><span>MARCA</span><span></span></div>' +
+        _importItems.slice(0, 6).map(it =>
+          `<div class="import-row">
+            <span style="color:var(--accent);">${x(it.codigo)}</span>
+            <span>${x(it.version)}</span>
+            <span>${x(it.tipo)}</span>
+            <span>${x(it.marca)}</span>
+            <span style="font-size:9px;${existentes.has(it.codigo) ? 'color:var(--accent3);' : 'color:var(--accent);'}">${existentes.has(it.codigo) ? 'ACTUALIZAR' : 'NUEVO'}</span>
+          </div>`).join('');
+
+      document.getElementById('import-paso1').style.display = 'none';
+      document.getElementById('import-paso2').style.display = 'block';
+    } catch (err) {
+      const el = document.getElementById('import-error');
+      el.textContent = 'Error al leer el archivo:\n' + err.message;
+      el.style.display = 'block';
+      document.getElementById('import-paso1').style.display = 'block';
+      document.getElementById('import-paso2').style.display = 'none';
+    }
+  };
+  reader.onerror = () => { toast('No se pudo leer el archivo', true); cerrarModalImport(); };
+  reader.readAsArrayBuffer(file);
+}
+async function confirmarImport() {
+  const btn = document.getElementById('btn-import-confirmar');
+  btn.disabled = true; btn.textContent = 'IMPORTANDO…';
+  try {
+    const r = await fetch(`${API}/batch`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ codigos: _importItems })
+    });
+    let data;
+    try { data = await r.json(); }
+    catch {
+      if (r.status === 413) throw new Error('El archivo es demasiado grande para el servidor (límite 50 MB)');
+      throw new Error('Respuesta del servidor no válida (HTTP ' + r.status + ')');
+    }
+    if (!r.ok) throw new Error(data.error || 'Error al importar');
+    toast(`✅ Importado: ${data.agregados} nuevos, ${data.actualizados} actualizados${data.sinCambios ? ', ' + data.sinCambios + ' sin cambios' : ''}`);
+    cerrarModalImport();
+    await loadFromServer();
+  } catch (e) { toast('Error: ' + e.message, true); }
+  finally { btn.disabled = false; btn.textContent = 'IMPORTAR'; }
 }
 
 // ─── SIMILAR DUPLICATE MODAL ────────────────────────────
@@ -931,8 +1122,16 @@ function changeTheme(theme) {
 })();
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeModal(); cerrarModalPropietarios(); if (editingId !== null) cancelEdit(); }
+  if (e.key === 'Escape') {
+    closeModal(); cerrarModalPropietarios();
+    cerrarModalImport();
+    if (editingId !== null) cancelEdit();
+  }
   if (e.key === 'Enter' && document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.closest('aside')) submitForm();
+});
+
+document.getElementById('modal-import').addEventListener('click', e => {
+  if (e.target.id === 'modal-import') cerrarModalImport();
 });
 
 loadFromServer();
