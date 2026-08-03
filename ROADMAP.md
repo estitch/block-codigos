@@ -18,17 +18,17 @@
 ## 🖥️ UI / Experiencia
 
 - [x] **1 · Modal de vista rápida** (click en fila → detalle sin abrir edición)
-- [ ] **2 · Atajo duplicar registro** (editar → "guardar como nuevo")
+- [ ] ~~**2 · Atajo duplicar registro** (editar → "guardar como nuevo")~~ ⏭ **OMITIDO** — los códigos provienen de otro software (importación Excel) y la importación gana por upsert; duplicar manualmente un registro no aporta valor.
 - [x] **3 · Vista de tarjetas** (cards) alternativa a tabla
-- [ ] **4 · Selección múltiple + acciones batch** (reasignar propietario, eliminar, exportar)
+- [ ] ~~**4 · Selección múltiple + acciones batch** (reasignar propietario, eliminar, exportar)~~ ⏭ **OMITIDO** — las acciones en lote (en especial el borrado, que requeriría clave) aumentan el riesgo de pérdida de datos; se prefiere la edición individual con confirmación.
 - [x] **5 · Panel de estadísticas** con gráficos (torta por tipo, barras por marca)
 - [x] **6 · Query params en URL** (`?filter=tipo:MENCION&q=gonher`) para compartir vista
 - [x] **7 · Paginación virtual** (virtual scroll para >10K registros)
 
 ## 📦 Datos & Persistencia
 
-- [ ] **1 · Historial de cambios** por código (quién, qué, cuándo)
-- [ ] **2 · Papelera de reciclaje** (soft delete en vez de borrado directo)
+- [ ] ⏭ **1 · Historial de cambios** por código (quién, qué, cuándo) — pendiente para futura implementación
+- [ ] ⏭ **2 · Papelera de reciclaje** (soft delete en vez de borrado directo) — pendiente para futura implementación
 - [ ] **3 · Tags / etiquetas** (clasificación cruzada adicional a propietarios)
 - [ ] **4 · Campos personalizados** (columnas extra dinámicas)
 - [ ] **5 · Exportación programada** (CRON a carpeta compartida)
