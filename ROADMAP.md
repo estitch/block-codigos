@@ -2,7 +2,7 @@
 
 > Implementado: `[x]` · Pendiente: `[ ]` · Omitido: ~~tachado~~ · Los números indican el **orden sugerido de implementación** por categoría.
 
-**Progreso: 6 / 28 ítems implementados (~21%)**
+**Progreso: 11 / 28 ítems implementados (~39%)**
 
 ## 🧠 Algoritmos & Lógica
 
@@ -17,13 +17,13 @@
 
 ## 🖥️ UI / Experiencia
 
-- [ ] **1 · Modal de vista rápida** (click en fila → detalle sin abrir edición)
+- [x] **1 · Modal de vista rápida** (click en fila → detalle sin abrir edición)
 - [ ] **2 · Atajo duplicar registro** (editar → "guardar como nuevo")
-- [ ] **3 · Vista de tarjetas** (cards) alternativa a tabla
+- [x] **3 · Vista de tarjetas** (cards) alternativa a tabla
 - [ ] **4 · Selección múltiple + acciones batch** (reasignar propietario, eliminar, exportar)
-- [ ] **5 · Panel de estadísticas** con gráficos (torta por tipo, barras por marca)
-- [ ] **6 · Query params en URL** (`?filter=tipo:MENCION&q=gonher`) para compartir vista
-- [ ] **7 · Paginación virtual** (virtual scroll para >10K registros)
+- [x] **5 · Panel de estadísticas** con gráficos (torta por tipo, barras por marca)
+- [x] **6 · Query params en URL** (`?filter=tipo:MENCION&q=gonher`) para compartir vista
+- [x] **7 · Paginación virtual** (virtual scroll para >10K registros)
 
 ## 📦 Datos & Persistencia
 

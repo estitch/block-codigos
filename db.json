@@ -36959,7 +36959,9 @@
       "id": 3967,
       "codigo": "16842539",
       "tipo": "SUPERIMPOSICION",
-      "propietarios_ids": [],
+      "propietarios_ids": [
+        13
+      ],
       "version": "MOANA",
       "marca": "MOANA",
       "submarca": "MOANA (SM)",

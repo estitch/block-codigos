@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap"></noscript>
-<link rel="stylesheet" href="estilos.css?v=2">
+<link rel="stylesheet" href="estilos.css?v=3">
 </head>
 <body>
 
@@ -114,20 +114,20 @@
         <input type="text" id="search-input" placeholder="Buscar código, nombre..." oninput="searchDebounce()" onclick="this.select();">
       </div>
       <div class="filter-group">
-        <button class="filter-btn active" onclick="setFilter('ALL',this)">TODOS</button>
-        <button class="filter-btn" onclick="setFilter('ACCION ESPECIAL',this)">ACCIÓN</button>
-        <button class="filter-btn" onclick="setFilter('BLOQUE PATROCINADO',this)">BLOQUE</button>
-        <button class="filter-btn" onclick="setFilter('CORTINILLA COMERCIAL',this)">CORTINILLA</button>
-        <button class="filter-btn" onclick="setFilter('FESTEJOS DE GOL',this)">FESTEJOS</button>
-        <button class="filter-btn" onclick="setFilter('I.ACTIVA',this)">I.ACTIVA</button>
-        <button class="filter-btn" onclick="setFilter('I.AMBIENTAL',this)">I.AMBIENTAL</button>
-        <button class="filter-btn" onclick="setFilter('INFOMERCIAL',this)">INFOMERCIAL</button>
-        <button class="filter-btn" onclick="setFilter('MENCION',this)">MENCIÓN</button>
-        <button class="filter-btn" onclick="setFilter('MULTIPATROCINIO',this)">MULTI</button>
-        <button class="filter-btn" onclick="setFilter('PATROCINIO',this)">PATROCINIO</button>
-        <button class="filter-btn" onclick="setFilter('SUPERIMPOSICION',this)">SUPER.</button>
-        <button class="filter-btn" onclick="setFilter('VIRTUAL',this)">VIRTUAL</button>
-        <button class="filter-btn" onclick="setFilter('AUTOPROMO',this)">AUTOPROMO</button>
+        <button class="filter-btn active" data-tipo="ALL" onclick="setFilter('ALL',this)">TODOS</button>
+        <button class="filter-btn" data-tipo="ACCION ESPECIAL" onclick="setFilter('ACCION ESPECIAL',this)">ACCIÓN</button>
+        <button class="filter-btn" data-tipo="BLOQUE PATROCINADO" onclick="setFilter('BLOQUE PATROCINADO',this)">BLOQUE</button>
+        <button class="filter-btn" data-tipo="CORTINILLA COMERCIAL" onclick="setFilter('CORTINILLA COMERCIAL',this)">CORTINILLA</button>
+        <button class="filter-btn" data-tipo="FESTEJOS DE GOL" onclick="setFilter('FESTEJOS DE GOL',this)">FESTEJOS</button>
+        <button class="filter-btn" data-tipo="I.ACTIVA" onclick="setFilter('I.ACTIVA',this)">I.ACTIVA</button>
+        <button class="filter-btn" data-tipo="I.AMBIENTAL" onclick="setFilter('I.AMBIENTAL',this)">I.AMBIENTAL</button>
+        <button class="filter-btn" data-tipo="INFOMERCIAL" onclick="setFilter('INFOMERCIAL',this)">INFOMERCIAL</button>
+        <button class="filter-btn" data-tipo="MENCION" onclick="setFilter('MENCION',this)">MENCIÓN</button>
+        <button class="filter-btn" data-tipo="MULTIPATROCINIO" onclick="setFilter('MULTIPATROCINIO',this)">MULTI</button>
+        <button class="filter-btn" data-tipo="PATROCINIO" onclick="setFilter('PATROCINIO',this)">PATROCINIO</button>
+        <button class="filter-btn" data-tipo="SUPERIMPOSICION" onclick="setFilter('SUPERIMPOSICION',this)">SUPER.</button>
+        <button class="filter-btn" data-tipo="VIRTUAL" onclick="setFilter('VIRTUAL',this)">VIRTUAL</button>
+        <button class="filter-btn" data-tipo="AUTOPROMO" onclick="setFilter('AUTOPROMO',this)">AUTOPROMO</button>
       </div>
       <div class="toolbar-right">
         <select id="theme-select" onchange="changeTheme(this.value)" title="Cambiar tema visual">
@@ -143,10 +143,12 @@
         <button class="btn-export" onclick="abrirImportador()" title="Importar códigos desde Excel (xlsx)">⬆ IMPORTAR</button>
         <button class="btn-export" onclick="exportCSV()">⬇ CSV</button>
         <button class="btn-export" onclick="abrirModalBackups()" title="Crear, descargar o restaurar backups">💾 BACKUPS</button>
+        <button class="btn-export" id="btn-view-toggle" onclick="toggleVista()" title="Alternar entre tabla y tarjetas">⊞ TABLA</button>
+        <button class="btn-export" onclick="abrirEstadisticas()" title="Estadísticas de la base">📊 ESTADÍSTICAS</button>
       </div>
     </div>
 
-    <div class="table-wrap">
+    <div class="table-wrap" id="table-wrap">
       <table>
         <thead>
           <tr>
@@ -163,10 +165,13 @@
         </thead>
         <tbody id="table-body"></tbody>
       </table>
-      <div class="empty-state" id="empty-state" style="display:none">
-        <div class="big">📭</div>
-        <div>No hay registros que coincidan</div>
-      </div>
+    </div>
+    <div class="cards-wrap" id="cards-wrap" style="display:none">
+      <div id="cards-inner"></div>
+    </div>
+    <div class="empty-state" id="empty-state" style="display:none">
+      <div class="big">📭</div>
+      <div>No hay registros que coincidan</div>
     </div>
 
     <div class="statusbar">
@@ -280,7 +285,32 @@
   </div>
 </div>
 
+<!-- Modal: vista rápida -->
+<div class="modal-overlay" id="modal-quick">
+  <div class="modal" style="max-width:460px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+      <h3 style="margin:0;">👁 VISTA RÁPIDA</h3>
+      <button class="quick-close" onclick="cerrarVistaRapida()" title="Cerrar">✕</button>
+    </div>
+    <div id="quick-body"></div>
+  </div>
+</div>
+
+<!-- Modal: estadísticas -->
+<div class="modal-overlay" id="modal-stats">
+  <div class="modal modal-lg">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+      <h3 style="margin:0;">📊 ESTADÍSTICAS</h3>
+      <button class="quick-close" onclick="cerrarEstadisticas()" title="Cerrar">✕</button>
+    </div>
+    <div class="chart-box"><canvas id="chart-tipo"></canvas></div>
+    <div class="chart-box"><canvas id="chart-marca"></canvas></div>
+    <div class="chart-box"><canvas id="chart-prop"></canvas></div>
+  </div>
+</div>
+
 <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="normalizar.js"></script>
 <script src="busqueda.js"></script>
 <script src="autocompletar.js"></script>
@@ -305,6 +335,25 @@ let _fuzzyIds      = new Set();
 let _busquedaIndex = null;
 let _searchDirty   = true;
 
+// ─── VISTA / VIRTUAL SCROLL / STATS ─────────────────────
+const ROW_H = 41;
+const ROW_BUFFER = 12;
+const CARD_MIN_W = 260;
+const CARD_GAP = 12;
+const CARD_H = 124;
+const TIPO_COLOR = {
+  'MENCION':'#00c8ff','SUPERIMPOSICION':'#39ff8c','PATROCINIO':'#ffaa00',
+  'I.AMBIENTAL':'#b464ff','CORTINILLA COMERCIAL':'#ff4b6e','BLOQUE PATROCINADO':'#ffc800',
+  'VIRTUAL':'#8888ff','ACCION ESPECIAL':'#ff7800','AUTOPROMO':'#50cc50',
+  'FESTEJOS DE GOL':'#ffdc32','MULTIPATROCINIO':'#64c8ff','INFOMERCIAL':'#cc50cc','I.ACTIVA':'#00ffc8'
+};
+let vista           = 'tabla';
+let _rows           = [];
+let _scrollPending  = false;
+let _rszTimer       = null;
+let _quickId        = null;
+let _charts         = [];
+
 function actualizarContadores(total) {
   document.getElementById('sb-time').textContent  = new Date().toLocaleTimeString('es-MX');
   document.getElementById('sb-total').textContent  = total;
@@ -323,6 +372,8 @@ async function loadFromServer() {
     sb.textContent = '✓ conectado';
     sb.classList.add('ok');
     await cargarPropietarios();
+    leerURLParams();
+    syncVistaUI();
     renderTable();
     updateCounts();
   } catch {
@@ -391,8 +442,14 @@ async function submitForm() {
       toast('Registro agregado ✓');
       clearForm();
       setTimeout(() => {
-        const row = document.querySelector(`tr[data-id="${res.registro.id}"]`);
-        if (row) { row.classList.add('highlight-new'); row.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+        const wrap = document.getElementById('table-wrap');
+        const idx = _rows.findIndex(c => c.id === res.registro.id);
+        if (idx !== -1 && wrap) {
+          wrap.scrollTop = Math.max(0, idx * ROW_H - (wrap.clientHeight / 2));
+          _renderWindow();
+          const row = document.querySelector(`tr[data-id="${res.registro.id}"]`);
+          if (row) row.classList.add('highlight-new');
+        }
       }, 80);
     }
   } catch (e) { toast('Error: ' + e.message, true); }
@@ -816,10 +873,11 @@ function searchDebounce() {
 function setFilter(tipo, btn) {
   filterTipo = tipo;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+  const target = btn || document.querySelector(`.filter-btn[data-tipo="${tipo}"]`);
+  if (target) target.classList.add('active');
   applyFilters();
 }
-function applyFilters() { renderTable(); updateCounts(); }
+function applyFilters() { renderTable(); updateCounts(); actualizarURL(); }
 function getFiltered() {
   _fuzzyIds = new Set();
   if (_searchDirty || !_busquedaIndex) {
@@ -878,7 +936,12 @@ function sortBy(col) {
     th.classList.remove('sort-asc','sort-desc');
     if (th.dataset.col === col) th.classList.add(sortDir === 'asc' ? 'sort-asc' : 'sort-desc');
   });
+  const tw = document.getElementById('table-wrap');
+  if (tw) tw.scrollTop = 0;
+  const cw = document.getElementById('cards-wrap');
+  if (cw) cw.scrollTop = 0;
   renderTable();
+  actualizarURL();
 }
 function getSorted(arr) {
   return [...arr].sort((a,b) => {
@@ -907,44 +970,123 @@ function bc(v='') {
 }
 
 function renderTable() {
-  const rows = getSorted(getFiltered());
+  _rows = getSorted(getFiltered());
+  const empty = document.getElementById('empty-state');
+  empty.style.display = _rows.length ? 'none' : 'flex';
+  document.getElementById('table-wrap').style.display = _rows.length && vista === 'tabla' ? 'block' : 'none';
+  document.getElementById('cards-wrap').style.display = _rows.length && vista === 'cards' ? 'block' : 'none';
+  _renderWindow();
+  document.getElementById('sb-visible').textContent = _rows.length;
+  document.getElementById('hdr-filtered').textContent = _rows.length;
+}
+
+function _renderWindow() {
+  if (vista === 'cards') { _renderCards(); return; }
   const tbody = document.getElementById('table-body');
-  document.getElementById('empty-state').style.display = rows.length ? 'none' : 'flex';
+  if (!_rows.length) { tbody.innerHTML = ''; return; }
+  const wrap = document.getElementById('table-wrap');
+  const vh = wrap.clientHeight || 400;
+  const totalH = _rows.length * ROW_H;
+  const maxScroll = Math.max(0, totalH - vh);
+  if (wrap.scrollTop > maxScroll) wrap.scrollTop = maxScroll;
+  const st = wrap.scrollTop || 0;
+  const start = Math.max(0, Math.floor(st / ROW_H) - ROW_BUFFER);
+  const end = Math.min(_rows.length, Math.ceil((st + vh) / ROW_H) + ROW_BUFFER);
+  const topH = start * ROW_H;
+  const bottomH = totalH - end * ROW_H;
+  tbody.innerHTML =
+    (topH > 0 ? `<tr class="spacer" style="height:${topH}px"><td colspan="9"></td></tr>` : '') +
+    _rows.slice(start, end).map(rowHtml).join('') +
+    (bottomH > 0 ? `<tr class="spacer" style="height:${bottomH}px"><td colspan="9"></td></tr>` : '');
+}
 
-  tbody.innerHTML = rows.map(c => {
-    const cls = bc(c.tipo);
-    let celdaProp = '';
-    if (propietarioActivoId !== null) {
-      const marcado = Array.isArray(c.propietarios_ids) && c.propietarios_ids.includes(propietarioActivoId);
-      celdaProp = `<td style="text-align:center;">
-        <input type="checkbox" ${marcado ? 'checked' : ''} onchange="togglePropietario(${c.id}, ${propietarioActivoId}, this.checked)">
-      </td>`;
-    } else {
-      const opciones = propietarios.map(p => `<option value="${p.id}">${p.nombre}</option>`).join('');
-      celdaProp = `<td style="padding:4px 8px;vertical-align:middle;">
-        <select class="prop-select-table" aria-label="Añadir propietario al código ${c.codigo}" onchange="agregarPropietarioDesdeSelect(${c.id}, this.value); this.value=''">
-          <option value="">+</option>${opciones}
-        </select>
-      </td>`;
-    }
-    return `<tr data-id="${c.id}">
-      <td class="td-id">${c.id}</td>
-      <td class="td-code" onclick="copiarCodigo(this,'${c.codigo}')" title="Copiar">${x(c.codigo)}${_fuzzyIds.has(c.id) ? '<span class="badge-fuzzy" title="Match aproximado">≈</span>' : ''}</td>
-      <td class="td-ver">${x(c.version||'')}</td>
-      <td><span class="badge ${cls}">${x(c.tipo||'')}</span></td>
-      <td><span class="badge ${cls}">${x(c.marca||'—')}</span></td>
-      <td><span class="badge ${cls}">${x(c.submarca||'—')}</span></td>
-      <td><span class="badge ${cls}">${x(c.producto||'—')}</span></td>
-      ${celdaProp}
-      <td><div class="action-btns">
-        <button class="btn-icon" onclick="startEdit(${c.id})">✏️ EDIT</button>
-        <button class="btn-icon btn-del" onclick="askDelete(${c.id})">🗑</button>
-      </div></td>
-    </tr>`;
-  }).join('');
+function rowHtml(c) {
+  const cls = bc(c.tipo);
+  let celdaProp = '';
+  if (propietarioActivoId !== null) {
+    const marcado = Array.isArray(c.propietarios_ids) && c.propietarios_ids.includes(propietarioActivoId);
+    celdaProp = `<td style="text-align:center;">
+      <input type="checkbox" ${marcado ? 'checked' : ''} onchange="togglePropietario(${c.id}, ${propietarioActivoId}, this.checked)">
+    </td>`;
+  } else {
+    const opciones = propietarios.map(p => `<option value="${p.id}">${p.nombre}</option>`).join('');
+    celdaProp = `<td style="padding:4px 8px;vertical-align:middle;">
+      <select class="prop-select-table" aria-label="Añadir propietario al código ${c.codigo}" onchange="agregarPropietarioDesdeSelect(${c.id}, this.value); this.value=''">
+        <option value="">+</option>${opciones}
+      </select>
+    </td>`;
+  }
+  return `<tr data-id="${c.id}">
+    <td class="td-id">${c.id}</td>
+    <td class="td-code" onclick="copiarCodigo(this,'${c.codigo}')" title="Copiar">${x(c.codigo)}${_fuzzyIds.has(c.id) ? '<span class="badge-fuzzy" title="Match aproximado">≈</span>' : ''}</td>
+    <td class="td-ver" title="${x(c.version||'')}">${x(c.version||'')}</td>
+    <td><span class="badge ${cls}" title="${x(c.tipo||'')}">${x(c.tipo||'')}</span></td>
+    <td><span class="badge ${cls}" title="${x(c.marca||'')}">${x(c.marca||'—')}</span></td>
+    <td><span class="badge ${cls}" title="${x(c.submarca||'')}">${x(c.submarca||'—')}</span></td>
+    <td><span class="badge ${cls}" title="${x(c.producto||'')}">${x(c.producto||'—')}</span></td>
+    ${celdaProp}
+    <td><div class="action-btns">
+      <button class="btn-icon" onclick="startEdit(${c.id})">✏️ EDIT</button>
+      <button class="btn-icon btn-del" onclick="askDelete(${c.id})">🗑</button>
+    </div></td>
+  </tr>`;
+}
 
-  document.getElementById('sb-visible').textContent  = rows.length;
-  document.getElementById('hdr-filtered').textContent = rows.length;
+function _renderCards() {
+  const inner = document.getElementById('cards-inner');
+  if (!_rows.length) { inner.innerHTML = ''; return; }
+  const wrap = document.getElementById('cards-wrap');
+  const w = wrap.clientWidth || 800;
+  const cols = Math.max(1, Math.floor((w + CARD_GAP) / (CARD_MIN_W + CARD_GAP)));
+  const totalRows = Math.ceil(_rows.length / cols);
+  const vh = wrap.clientHeight || 400;
+  const totalH = totalRows * CARD_H;
+  const maxScroll = Math.max(0, totalH - vh);
+  if (wrap.scrollTop > maxScroll) wrap.scrollTop = maxScroll;
+  const st = wrap.scrollTop || 0;
+  const startRow = Math.max(0, Math.floor(st / CARD_H) - ROW_BUFFER);
+  const endRow = Math.min(totalRows, Math.ceil((st + vh) / CARD_H) + ROW_BUFFER);
+  const parts = [];
+  if (startRow > 0) parts.push(`<div style="height:${startRow * CARD_H}px;flex-shrink:0;"></div>`);
+  for (let r = startRow; r < endRow; r++) {
+    const slice = _rows.slice(r * cols, (r + 1) * cols);
+    parts.push(`<div class="cards-row" style="grid-template-columns:repeat(${cols},1fr);height:${CARD_H}px;">${slice.map(cardHtml).join('')}</div>`);
+  }
+  if (endRow < totalRows) parts.push(`<div style="height:${(totalRows - endRow) * CARD_H}px;flex-shrink:0;"></div>`);
+  inner.innerHTML = parts.join('');
+}
+
+function cardHtml(c) {
+  const cls = bc(c.tipo);
+  const props = (Array.isArray(c.propietarios_ids) ? c.propietarios_ids : [])
+    .map(pid => (propietarios.find(p => p.id === pid) || {}).nombre)
+    .filter(Boolean).join(', ');
+  return `<div class="card" data-id="${c.id}" title="Ver detalle">
+    <div class="card-top">
+      <span class="badge ${cls}" title="${x(c.tipo||'')}">${x(c.tipo||'—')}</span>
+      <div class="card-top-right">
+        <span class="card-code" onclick="copiarCodigo(this,'${c.codigo}')" title="Copiar">${x(c.codigo)}${_fuzzyIds.has(c.id) ? '<span class="badge-fuzzy" title="Match aproximado">≈</span>' : ''}</span>
+        <button class="btn-icon btn-mini" onclick="startEdit(${c.id})" title="Editar">✏️</button>
+        <button class="btn-icon btn-mini btn-del" onclick="askDelete(${c.id})" title="Eliminar">🗑</button>
+      </div>
+    </div>
+    <div class="card-ver" title="${x(c.version||'')}">${x(c.version||'—')}</div>
+    <div class="card-marca" title="${x(c.marca||'')}">${x(c.marca||'—')}${c.submarca ? ' <span class="card-sub">/ ' + x(c.submarca) + '</span>' : ''}</div>
+    <div class="card-prod" title="${x(c.producto||'')}">${x(c.producto||'—')}</div>
+    <div class="card-props" title="${x(props)}">${x(props || 'Sin propietarios')}</div>
+  </div>`;
+}
+
+function toggleVista() {
+  vista = vista === 'tabla' ? 'cards' : 'tabla';
+  localStorage.setItem('block-view', vista);
+  syncVistaUI();
+  renderTable();
+  actualizarURL();
+}
+function syncVistaUI() {
+  const b = document.getElementById('btn-view-toggle');
+  if (b) b.textContent = vista === 'tabla' ? '⊞ TABLA' : '▦ CARDS';
 }
 
 function updateCounts() {
@@ -998,8 +1140,7 @@ function cambiarPropietarioActivo() {
   const val = document.getElementById('filtroPropietario').value;
   propietarioActivoId = val === '' ? null : Number(val);
   applyFilters();
-}
-async function crearPropietario() {
+}async function crearPropietario() {
   const nombre = document.getElementById('nuevoPropietarioNombre').value.trim();
   if (!nombre) { toast('Escribe un nombre para el nuevo propietario', true); return; }
   const btns = document.querySelectorAll('.field-group button');
@@ -1108,6 +1249,151 @@ function toggleAside() {
   }
 }
 
+// ─── VISTA RÁPIDA ───────────────────────────────────────
+function abrirVistaRapida(id) {
+  const c = db.codigos.find(x => x.id === id);
+  if (!c) return;
+  _quickId = id;
+  const cls = bc(c.tipo);
+  const props = (Array.isArray(c.propietarios_ids) ? c.propietarios_ids : [])
+    .map(pid => (propietarios.find(p => p.id === pid) || {}).nombre)
+    .filter(Boolean).join(', ') || 'Sin propietarios';
+  document.getElementById('quick-body').innerHTML = `
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+      <div>
+        <div class="mono" style="font-size:22px;color:var(--accent);">${x(c.codigo)}</div>
+        <div style="font-size:10px;color:var(--text-dim);font-family:var(--mono);margin-top:2px;">ID #${c.id}</div>
+      </div>
+      <button class="btn-icon" onclick="copiarCodigo(this,'${c.codigo}')">📋 COPIAR</button>
+    </div>
+    <div class="quick-grid">
+      <div class="quick-row"><span>VERSIÓN</span><strong>${x(c.version||'—')}</strong></div>
+      <div class="quick-row"><span>TIPO</span><strong><span class="badge ${cls}">${x(c.tipo||'—')}</span></strong></div>
+      <div class="quick-row"><span>MARCA</span><strong>${x(c.marca||'—')}</strong></div>
+      <div class="quick-row"><span>SUBMARCA</span><strong>${x(c.submarca||'—')}</strong></div>
+      <div class="quick-row"><span>PRODUCTO</span><strong>${x(c.producto||'—')}</strong></div>
+      <div class="quick-row"><span>PROPIETARIOS</span><strong>${x(props)}</strong></div>
+    </div>
+    <div class="modal-btns" style="margin-top:18px;">
+      <button class="btn-cancel" onclick="cerrarVistaRapida()">CERRAR</button>
+      <button class="btn-icon btn-del" onclick="cerrarVistaRapida(); askDelete(${c.id})">🗑 ELIMINAR</button>
+      <button class="btn-add" style="min-width:110px;" onclick="cerrarVistaRapida(); startEdit(${c.id})">✏️ EDITAR</button>
+    </div>`;
+  document.getElementById('modal-quick').classList.add('active');
+}
+function cerrarVistaRapida() {
+  document.getElementById('modal-quick').classList.remove('active');
+  _quickId = null;
+}
+
+// ─── ESTADÍSTICAS ───────────────────────────────────────
+function abrirEstadisticas() {
+  document.getElementById('modal-stats').classList.add('active');
+  renderEstadisticas();
+}
+function cerrarEstadisticas() {
+  document.getElementById('modal-stats').classList.remove('active');
+  _charts.forEach(c => { try { c.destroy(); } catch (e) {} });
+  _charts = [];
+}
+function renderEstadisticas() {
+  if (typeof Chart === 'undefined') return;
+  _charts.forEach(c => { try { c.destroy(); } catch (e) {} });
+  _charts = [];
+  const tipoCount = {}, marcaCount = {}, propCount = {};
+  for (const c of db.codigos) {
+    const t = c.tipo || '(sin tipo)';
+    tipoCount[t] = (tipoCount[t] || 0) + 1;
+    const m = c.marca || '(sin marca)';
+    marcaCount[m] = (marcaCount[m] || 0) + 1;
+    for (const pid of (Array.isArray(c.propietarios_ids) ? c.propietarios_ids : [])) {
+      const n = (propietarios.find(p => p.id === pid) || {}).nombre || ('#' + pid);
+      propCount[n] = (propCount[n] || 0) + 1;
+    }
+  }
+  const axisColor = '#8aa0b8';
+  const tipoLabels = Object.keys(tipoCount).sort((a, b) => tipoCount[b] - tipoCount[a]);
+  _charts.push(new Chart(document.getElementById('chart-tipo'), {
+    type: 'doughnut',
+    data: { labels: tipoLabels, datasets: [{ data: tipoLabels.map(t => tipoCount[t]), backgroundColor: tipoLabels.map(t => TIPO_COLOR[t] || '#888888'), borderColor: 'rgba(0,0,0,0.35)', borderWidth: 1 }] },
+    options: { plugins: { legend: { position: 'right', labels: { color: '#c8d8e8', font: { family: 'Barlow', size: 11 }, boxWidth: 10, padding: 10 } } }, maintainAspectRatio: false }
+  }));
+  const topMarcas = Object.entries(marcaCount).sort((a, b) => b[1] - a[1]).slice(0, 12);
+  _charts.push(new Chart(document.getElementById('chart-marca'), {
+    type: 'bar',
+    data: { labels: topMarcas.map(m => m[0]), datasets: [{ label: 'Códigos', data: topMarcas.map(m => m[1]), backgroundColor: 'rgba(0,200,255,0.6)', borderColor: '#00c8ff', borderWidth: 1 }] },
+    options: { plugins: { legend: { display: false } }, scales: { x: { ticks: { color: axisColor } }, y: { ticks: { color: axisColor }, beginAtZero: true } }, maintainAspectRatio: false }
+  }));
+  const props = Object.entries(propCount).sort((a, b) => b[1] - a[1]);
+  _charts.push(new Chart(document.getElementById('chart-prop'), {
+    type: 'bar',
+    data: { labels: props.map(p => p[0]), datasets: [{ label: 'Códigos', data: props.map(p => p[1]), backgroundColor: 'rgba(57,255,140,0.55)', borderColor: '#39ff8c', borderWidth: 1 }] },
+    options: { indexAxis: 'y', plugins: { legend: { display: false } }, scales: { x: { ticks: { color: axisColor }, beginAtZero: true }, y: { ticks: { color: axisColor } } }, maintainAspectRatio: false }
+  }));
+}
+
+// ─── QUERY PARAMS EN URL ────────────────────────────────
+function leerURLParams() {
+  const p = new URLSearchParams(location.search);
+  const tipo = p.get('tipo');
+  if (tipo) setFilter(tipo, null);
+  const q = p.get('q');
+  if (q !== null) document.getElementById('search-input').value = q;
+  const prop = p.get('prop');
+  if (prop) {
+    propietarioActivoId = Number(prop);
+    document.getElementById('filtroPropietario').value = prop;
+  }
+  const sort = p.get('sort');
+  if (sort && ['id','codigo','version','tipo','marca','submarca','producto'].includes(sort)) sortCol = sort;
+  const dir = p.get('dir');
+  if (dir === 'asc' || dir === 'desc') sortDir = dir;
+  const v = p.get('view');
+  if (v === 'cards' || v === 'tabla') vista = v;
+}
+function actualizarURL() {
+  const p = new URLSearchParams();
+  if (filterTipo !== 'ALL') p.set('tipo', filterTipo);
+  const q = document.getElementById('search-input').value.trim();
+  if (q) p.set('q', q);
+  if (propietarioActivoId !== null) p.set('prop', propietarioActivoId);
+  if (sortCol !== 'id' || sortDir !== 'asc') { p.set('sort', sortCol); p.set('dir', sortDir); }
+  if (vista !== 'tabla') p.set('view', vista);
+  history.replaceState(null, '', p.toString() ? '?' + p.toString() : location.pathname);
+}
+
+// ─── SCROLL / RESIZE (virtual scroll) ───────────────────
+function _throttleRender() {
+  if (_scrollPending) return;
+  _scrollPending = true;
+  requestAnimationFrame(() => { _scrollPending = false; _renderWindow(); });
+}
+document.getElementById('table-wrap').addEventListener('scroll', _throttleRender);
+document.getElementById('cards-wrap').addEventListener('scroll', _throttleRender);
+window.addEventListener('resize', () => {
+  clearTimeout(_rszTimer);
+  _rszTimer = setTimeout(() => _renderWindow(), 120);
+});
+
+// ─── DELEGACIÓN DE CLICKS (vista rápida) ────────────────
+document.getElementById('table-body').addEventListener('click', e => {
+  const tr = e.target.closest('tr[data-id]');
+  if (!tr) return;
+  if (e.target.closest('button, select, .td-code')) return;
+  abrirVistaRapida(Number(tr.dataset.id));
+});
+document.getElementById('cards-inner').addEventListener('click', e => {
+  const card = e.target.closest('.card');
+  if (!card) return;
+  if (e.target.closest('button, .card-code')) return;
+  abrirVistaRapida(Number(card.dataset.id));
+});
+
+// ─── INIT VISTA ─────────────────────────────────────────
+(function initVista() {
+  vista = localStorage.getItem('block-view') === 'cards' ? 'cards' : 'tabla';
+})();
+
 // ─── THEMES ─────────────────────────────────────────────
 function changeTheme(theme) {
   const cls = 'theme-' + theme;
@@ -1125,6 +1411,8 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closeModal(); cerrarModalPropietarios();
     cerrarModalImport();
+    cerrarVistaRapida();
+    cerrarEstadisticas();
     if (editingId !== null) cancelEdit();
   }
   if (e.key === 'Enter' && document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.closest('aside')) submitForm();

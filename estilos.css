@@ -247,3 +247,41 @@ body.theme-violet {
   --accent: #c084fc; --accent2: #f472b6; --accent3: #67e8f9;
   --text: #d4c8e8; --text-dim: #7a6a8e; --text-bright: #ede4f5;
 }
+
+/* ─── FILAS UNIFORMES + CLIP (virtual scroll) ─────────── */
+tbody tr { height: 41px; }
+td { white-space: nowrap; }
+td .badge { display: block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+td.td-ver { overflow: hidden; text-overflow: ellipsis; }
+tr.spacer td { padding: 0; border-bottom: none; height: auto; }
+
+/* ─── MODAL GRANDE (estadísticas) ──────────────────────── */
+.modal-lg { max-width: 760px; max-height: 90vh; overflow-y: auto; }
+.chart-box { position: relative; height: 260px; margin-bottom: 20px; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 12px; }
+.chart-box:last-child { margin-bottom: 0; }
+
+/* ─── VISTA RÁPIDA ─────────────────────────────────────── */
+.quick-grid { display: flex; flex-direction: column; gap: 8px; }
+.quick-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 10px; background: var(--bg3); border: 1px solid var(--border); border-radius: 3px; }
+.quick-row > span:first-child { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; color: var(--text-dim); white-space: nowrap; flex-shrink: 0; }
+.quick-row strong { font-family: var(--mono); font-size: 13px; color: var(--text-bright); text-align: right; word-break: break-word; }
+.quick-close { background: transparent; border: none; color: var(--text-dim); font-size: 16px; cursor: pointer; padding: 2px 6px; }
+.quick-close:hover { color: var(--accent); }
+
+/* ─── VISTA DE TARJETAS ────────────────────────────────── */
+#btn-view-toggle.active { border-color: var(--accent); color: var(--accent); }
+.cards-wrap { flex: 1; overflow-y: auto; overflow-x: hidden; }
+#cards-inner { display: flex; flex-direction: column; padding: 16px 20px; }
+.cards-row { display: grid; gap: 12px; height: 124px; }
+.card { position: relative; background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; overflow: hidden; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+.card:hover { border-color: var(--accent); box-shadow: 0 0 18px rgba(0,200,255,0.12); }
+.card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.card-top-right { display: flex; align-items: center; gap: 6px; }
+.card-code { font-family: var(--mono); font-size: 15px; color: var(--accent); cursor: pointer; white-space: nowrap; }
+.card-code:hover { color: var(--accent3); text-decoration: underline; }
+.btn-mini { padding: 3px 6px; font-size: 11px; }
+.card-ver { font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: 1px; color: var(--text-bright); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-marca { font-size: 12px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-sub { color: var(--text-dim); }
+.card-prod { font-size: 11px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-props { font-size: 10px; color: var(--accent3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
