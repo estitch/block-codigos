@@ -1421,6 +1421,12 @@ document.addEventListener('keydown', e => {
 document.getElementById('modal-import').addEventListener('click', e => {
   if (e.target.id === 'modal-import') cerrarModalImport();
 });
+document.getElementById('modal-quick').addEventListener('click', e => {
+  if (e.target.id === 'modal-quick') cerrarVistaRapida();
+});
+document.getElementById('modal-stats').addEventListener('click', e => {
+  if (e.target.id === 'modal-stats') cerrarEstadisticas();
+});
 
 loadFromServer();
 </script>
