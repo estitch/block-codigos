@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap"></noscript>
-<link rel="stylesheet" href="estilos.css?v=3">
+<link rel="stylesheet" href="estilos.css?v=4">
 </head>
 <body>
 
@@ -57,7 +57,7 @@
           <option>ACCION ESPECIAL</option>
           <option>BLOQUE PATROCINADO</option>
           <option>CORTINILLA COMERCIAL</option>
-          <option>FESTEJOS DE GOL</option>
+          <option>FESTEJO DE GOL</option>
           <option>I.ACTIVA</option>
           <option>I.AMBIENTAL</option>
           <option>INFOMERCIAL</option>
@@ -118,7 +118,7 @@
         <button class="filter-btn" data-tipo="ACCION ESPECIAL" onclick="setFilter('ACCION ESPECIAL',this)">ACCIÓN</button>
         <button class="filter-btn" data-tipo="BLOQUE PATROCINADO" onclick="setFilter('BLOQUE PATROCINADO',this)">BLOQUE</button>
         <button class="filter-btn" data-tipo="CORTINILLA COMERCIAL" onclick="setFilter('CORTINILLA COMERCIAL',this)">CORTINILLA</button>
-        <button class="filter-btn" data-tipo="FESTEJOS DE GOL" onclick="setFilter('FESTEJOS DE GOL',this)">FESTEJOS</button>
+        <button class="filter-btn" data-tipo="FESTEJO DE GOL" onclick="setFilter('FESTEJO DE GOL',this)">FESTEJO</button>
         <button class="filter-btn" data-tipo="I.ACTIVA" onclick="setFilter('I.ACTIVA',this)">I.ACTIVA</button>
         <button class="filter-btn" data-tipo="I.AMBIENTAL" onclick="setFilter('I.AMBIENTAL',this)">I.AMBIENTAL</button>
         <button class="filter-btn" data-tipo="INFOMERCIAL" onclick="setFilter('INFOMERCIAL',this)">INFOMERCIAL</button>
@@ -144,7 +144,7 @@
         <button class="btn-export" onclick="exportCSV()">⬇ CSV</button>
         <button class="btn-export" onclick="abrirModalBackups()" title="Crear, descargar o restaurar backups">💾 BACKUPS</button>
         <button class="btn-export" id="btn-view-toggle" onclick="toggleVista()" title="Alternar entre tabla y tarjetas">⊞ TABLA</button>
-        <button class="btn-export" onclick="abrirEstadisticas()" title="Estadísticas de la base">📊 ESTADÍSTICAS</button>
+        <button class="btn-export" id="btn-stats-toggle" onclick="irAEstadisticas()" title="Dashboard de estadísticas">📊 DASHBOARD</button>
       </div>
     </div>
 
@@ -172,6 +172,68 @@
     <div class="empty-state" id="empty-state" style="display:none">
       <div class="big">📭</div>
       <div>No hay registros que coincidan</div>
+    </div>
+
+    <div class="stats-view" id="stats-view" style="display:none">
+      <div class="stats-header">
+        <div>
+          <div class="stats-title">📊 DASHBOARD</div>
+          <div class="stats-sub">ANÁLISIS DE CÓDIGOS · click en un gráfico aplica el filtro y vuelve a la tabla</div>
+        </div>
+        <button class="btn-export" onclick="volverAEstadisticasTabla()">◀ VOLVER A TABLA</button>
+      </div>
+      <div class="stats-filters">
+        <div class="field-group">
+          <label>Tipo</label>
+          <select id="sf-tipo" onchange="sfTipoChange()"></select>
+        </div>
+        <div class="field-group">
+          <label>Propietario</label>
+          <select id="sf-prop" onchange="sfPropChange()"></select>
+        </div>
+        <div class="field-group">
+          <label>Sector (producto)</label>
+          <select id="sf-sector" onchange="sfSectorChange()"></select>
+        </div>
+        <button class="btn-export" onclick="limpiarFiltrosStats()" title="Quitar todos los filtros">✕ RESTABLECER</button>
+      </div>
+      <div class="kpi-grid" id="kpi-grid"></div>
+      <div class="charts-grid">
+        <div class="chart-card">
+          <div class="chart-title">CÓDIGOS POR TIPO</div>
+          <div class="chart-box"><canvas id="st-tipo"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">TOP MARCAS</div>
+          <div class="chart-box"><canvas id="st-marca"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">CÓDIGOS POR PROPIETARIO</div>
+          <div class="chart-box"><canvas id="st-prop"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">TOP SECTORES</div>
+          <div class="chart-box"><canvas id="st-sector"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">COBERTURA DE ASIGNACIÓN</div>
+          <div class="chart-box"><canvas id="st-cobertura"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">TIPO × PROPIETARIO</div>
+          <div class="chart-box"><canvas id="st-cruce"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">TOP MARCAS POR TIPO
+            <select class="stats-select-inline" id="st-marca-tipo-select" onchange="renderChartMarcasPorTipo()"></select>
+          </div>
+          <div class="chart-box"><canvas id="st-marca-tipo"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">RANGOS DE ID (bloques de 250K)</div>
+          <div class="chart-box"><canvas id="st-hist"></canvas></div>
+        </div>
+      </div>
     </div>
 
     <div class="statusbar">
@@ -296,19 +358,6 @@
   </div>
 </div>
 
-<!-- Modal: estadísticas -->
-<div class="modal-overlay" id="modal-stats">
-  <div class="modal modal-lg">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-      <h3 style="margin:0;">📊 ESTADÍSTICAS</h3>
-      <button class="quick-close" onclick="cerrarEstadisticas()" title="Cerrar">✕</button>
-    </div>
-    <div class="chart-box"><canvas id="chart-tipo"></canvas></div>
-    <div class="chart-box"><canvas id="chart-marca"></canvas></div>
-    <div class="chart-box"><canvas id="chart-prop"></canvas></div>
-  </div>
-</div>
-
 <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="normalizar.js"></script>
@@ -345,14 +394,16 @@ const TIPO_COLOR = {
   'MENCION':'#00c8ff','SUPERIMPOSICION':'#39ff8c','PATROCINIO':'#ffaa00',
   'I.AMBIENTAL':'#b464ff','CORTINILLA COMERCIAL':'#ff4b6e','BLOQUE PATROCINADO':'#ffc800',
   'VIRTUAL':'#8888ff','ACCION ESPECIAL':'#ff7800','AUTOPROMO':'#50cc50',
-  'FESTEJOS DE GOL':'#ffdc32','MULTIPATROCINIO':'#64c8ff','INFOMERCIAL':'#cc50cc','I.ACTIVA':'#00ffc8'
+  'FESTEJO DE GOL':'#ffdc32','MULTIPATROCINIO':'#64c8ff','INFOMERCIAL':'#cc50cc','I.ACTIVA':'#00ffc8'
 };
+const PROP_PALETTE = ['#00c8ff','#39ff8c','#ffaa00','#ff4b6e','#b464ff','#ffc800','#8888ff','#ff7800','#50cc50','#ffdc32','#64c8ff','#cc50cc','#00ffc8'];
 let vista           = 'tabla';
 let _rows           = [];
 let _scrollPending  = false;
 let _rszTimer       = null;
 let _quickId        = null;
 let _charts         = [];
+let _filtroSector   = '';
 
 function actualizarContadores(total) {
   document.getElementById('sb-time').textContent  = new Date().toLocaleTimeString('es-MX');
@@ -374,7 +425,8 @@ async function loadFromServer() {
     await cargarPropietarios();
     leerURLParams();
     syncVistaUI();
-    renderTable();
+    if (vista === 'stats') renderStatsView();
+    else renderTable();
     updateCounts();
   } catch {
     document.getElementById('sb-status').textContent = '✗ servidor no responde — abre INICIAR.bat';
@@ -962,19 +1014,25 @@ function bc(v='') {
   if (v === 'VIRTUAL')             return 'b-VIRTUAL';
   if (v === 'ACCION ESPECIAL')     return 'b-ACCION';
   if (v === 'AUTOPROMO')           return 'b-AUTOPROMO';
-  if (v === 'FESTEJOS DE GOL')     return 'b-FESTEJO';
+  if (v === 'FESTEJO DE GOL')     return 'b-FESTEJO';
   if (v === 'MULTIPATROCINIO')     return 'b-MULTI';
   if (v === 'INFOMERCIAL')         return 'b-INFOMERCIAL';
   if (v === 'I.ACTIVA')            return 'b-IACTIVA';
   return 'b-default';
 }
 
+function _applyVistaDisplay() {
+  const sv = document.getElementById('stats-view');
+  document.getElementById('table-wrap').style.display = (vista === 'tabla' && _rows.length) ? 'block' : 'none';
+  document.getElementById('cards-wrap').style.display = (vista === 'cards' && _rows.length) ? 'block' : 'none';
+  document.getElementById('empty-state').style.display = (!_rows.length && vista !== 'stats') ? 'flex' : 'none';
+  if (sv) sv.style.display = vista === 'stats' ? 'flex' : 'none';
+  document.body.classList.toggle('view-stats', vista === 'stats');
+}
 function renderTable() {
+  if (vista === 'stats') { _applyVistaDisplay(); return; }
   _rows = getSorted(getFiltered());
-  const empty = document.getElementById('empty-state');
-  empty.style.display = _rows.length ? 'none' : 'flex';
-  document.getElementById('table-wrap').style.display = _rows.length && vista === 'tabla' ? 'block' : 'none';
-  document.getElementById('cards-wrap').style.display = _rows.length && vista === 'cards' ? 'block' : 'none';
+  _applyVistaDisplay();
   _renderWindow();
   document.getElementById('sb-visible').textContent = _rows.length;
   document.getElementById('hdr-filtered').textContent = _rows.length;
@@ -1078,6 +1136,7 @@ function cardHtml(c) {
 }
 
 function toggleVista() {
+  if (vista === 'stats') { volverAEstadisticasTabla(); return; }
   vista = vista === 'tabla' ? 'cards' : 'tabla';
   localStorage.setItem('block-view', vista);
   syncVistaUI();
@@ -1087,6 +1146,7 @@ function toggleVista() {
 function syncVistaUI() {
   const b = document.getElementById('btn-view-toggle');
   if (b) b.textContent = vista === 'tabla' ? '⊞ TABLA' : '▦ CARDS';
+  _applyVistaDisplay();
 }
 
 function updateCounts() {
@@ -1286,50 +1346,322 @@ function cerrarVistaRapida() {
   _quickId = null;
 }
 
-// ─── ESTADÍSTICAS ───────────────────────────────────────
-function abrirEstadisticas() {
-  document.getElementById('modal-stats').classList.add('active');
-  renderEstadisticas();
+// ─── DASHBOARD DE ESTADÍSTICAS ──────────────────────────
+function irAEstadisticas() {
+  vista = 'stats';
+  localStorage.setItem('block-view', 'stats');
+  document.body.classList.add('view-stats');
+  _applyVistaDisplay();
+  renderStatsView();
+  actualizarURL();
 }
-function cerrarEstadisticas() {
-  document.getElementById('modal-stats').classList.remove('active');
-  _charts.forEach(c => { try { c.destroy(); } catch (e) {} });
-  _charts = [];
+function volverAEstadisticasTabla() {
+  vista = 'tabla';
+  localStorage.setItem('block-view', 'tabla');
+  document.body.classList.remove('view-stats');
+  destruirCharts();
+  renderTable();
+  actualizarURL();
 }
-function renderEstadisticas() {
-  if (typeof Chart === 'undefined') return;
-  _charts.forEach(c => { try { c.destroy(); } catch (e) {} });
-  _charts = [];
-  const tipoCount = {}, marcaCount = {}, propCount = {};
-  for (const c of db.codigos) {
-    const t = c.tipo || '(sin tipo)';
-    tipoCount[t] = (tipoCount[t] || 0) + 1;
-    const m = c.marca || '(sin marca)';
-    marcaCount[m] = (marcaCount[m] || 0) + 1;
+function cssVar(name, fallback) {
+  try { return getComputedStyle(document.body).getPropertyValue(name).trim() || fallback; } catch (e) { return fallback; }
+}
+const axisTickColor = () => cssVar('--text-dim', '#556677');
+const legendColor   = () => cssVar('--text', '#c8d8e8');
+const accentColor   = () => cssVar('--accent', '#00c8ff');
+const accent3Color  = () => cssVar('--accent3', '#39ff8c');
+const accent2Color  = () => cssVar('--accent2', '#ff4b6e');
+
+function contar(lista, campo) {
+  const m = {};
+  for (const c of lista) { const k = c[campo] || '(sin ' + campo + ')'; m[k] = (m[k] || 0) + 1; }
+  return m;
+}
+function contarPropietarios(lista) {
+  const m = {};
+  for (const c of lista) {
     for (const pid of (Array.isArray(c.propietarios_ids) ? c.propietarios_ids : [])) {
       const n = (propietarios.find(p => p.id === pid) || {}).nombre || ('#' + pid);
-      propCount[n] = (propCount[n] || 0) + 1;
+      m[n] = (m[n] || 0) + 1;
     }
   }
-  const axisColor = '#8aa0b8';
-  const tipoLabels = Object.keys(tipoCount).sort((a, b) => tipoCount[b] - tipoCount[a]);
-  _charts.push(new Chart(document.getElementById('chart-tipo'), {
+  return m;
+}
+function getStatsBase() {
+  return db.codigos.filter(c => {
+    if (filterTipo !== 'ALL' && c.tipo !== filterTipo) return false;
+    if (propietarioActivoId !== null && !(Array.isArray(c.propietarios_ids) && c.propietarios_ids.includes(propietarioActivoId))) return false;
+    if (_filtroSector && c.producto !== _filtroSector) return false;
+    return true;
+  });
+}
+
+function limpiarFiltrosStats() {
+  filterTipo = 'ALL';
+  propietarioActivoId = null;
+  _filtroSector = '';
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.tipo === 'ALL'));
+  renderStatsView();
+}
+function sfTipoChange() {
+  const v = document.getElementById('sf-tipo').value;
+  filterTipo = v || 'ALL';
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.tipo === filterTipo));
+  renderStatsView();
+}
+function sfPropChange() {
+  const v = document.getElementById('sf-prop').value;
+  propietarioActivoId = v === '' ? null : Number(v);
+  renderStatsView();
+}
+function sfSectorChange() {
+  _filtroSector = document.getElementById('sf-sector').value;
+  renderStatsView();
+}
+
+function poblarFiltrosStats() {
+  const tipos = contar(db.codigos, 'tipo');
+  const sectores = contar(db.codigos, 'producto');
+  const selTipo = document.getElementById('sf-tipo');
+  selTipo.innerHTML = '<option value="">— Todos —</option>' +
+    Object.entries(tipos).sort((a, b) => b[1] - a[1]).map(([t]) => `<option value="${x(t)}">${x(t)} (${tipos[t]})</option>`).join('');
+  selTipo.value = filterTipo === 'ALL' ? '' : filterTipo;
+  const selProp = document.getElementById('sf-prop');
+  selProp.innerHTML = '<option value="">— Todos —</option>' + propietarios.map(p => {
+    const cnt = db.codigos.filter(c => Array.isArray(c.propietarios_ids) && c.propietarios_ids.includes(p.id)).length;
+    return `<option value="${p.id}">${x(p.nombre)} (${cnt})</option>`;
+  }).join('');
+  selProp.value = propietarioActivoId === null ? '' : String(propietarioActivoId);
+  const selSector = document.getElementById('sf-sector');
+  selSector.innerHTML = '<option value="">— Todos —</option>' +
+    Object.entries(sectores).sort((a, b) => b[1] - a[1]).map(([s]) => `<option value="${x(s)}">${x(s)} (${sectores[s]})</option>`).join('');
+  selSector.value = _filtroSector;
+}
+
+function renderKPIs(data) {
+  const total = data.length;
+  const marcas = new Set(data.map(c => c.marca)).size;
+  const sectores = new Set(data.map(c => c.producto)).size;
+  const conProp = data.filter(c => Array.isArray(c.propietarios_ids) && c.propietarios_ids.length).length;
+  const pct = total ? Math.round(conProp / total * 100) : 0;
+  const tipos = contar(data, 'tipo');
+  const topTipo = Object.entries(tipos).sort((a, b) => b[1] - a[1])[0] || [];
+  const marcasC = contar(data, 'marca');
+  const topMarca = Object.entries(marcasC).sort((a, b) => b[1] - a[1])[0] || [];
+  document.getElementById('kpi-grid').innerHTML =
+    `<div class="kpi-card"><div class="kpi-label">Total códigos</div><div class="kpi-value">${total.toLocaleString('es-MX')}</div></div>` +
+    `<div class="kpi-card"><div class="kpi-label">Marcas únicas</div><div class="kpi-value accent">${marcas.toLocaleString('es-MX')}</div></div>` +
+    `<div class="kpi-card"><div class="kpi-label">Sectores únicos</div><div class="kpi-value accent">${sectores.toLocaleString('es-MX')}</div></div>` +
+    `<div class="kpi-card"><div class="kpi-label">Con propietario</div><div class="kpi-value ${pct > 0 ? 'green' : 'red'}">${pct}%</div><div class="kpi-sub">${conProp.toLocaleString('es-MX')} de ${total.toLocaleString('es-MX')}</div></div>` +
+    `<div class="kpi-card"><div class="kpi-label">Tipo dominante</div><div class="kpi-value">${x(topTipo[0] || '—')}</div><div class="kpi-sub">${(topTipo[1] || 0).toLocaleString('es-MX')} códigos</div></div>` +
+    `<div class="kpi-card"><div class="kpi-label">Marca #1</div><div class="kpi-value">${x(topMarca[0] || '—')}</div><div class="kpi-sub">${(topMarca[1] || 0).toLocaleString('es-MX')} códigos</div></div>`;
+}
+
+function nuevoChart(id, config) {
+  if (typeof Chart === 'undefined') return null;
+  const canvas = document.getElementById(id);
+  if (!canvas) return null;
+  _charts = _charts.filter(ch => {
+    if (ch.canvas && ch.canvas.id === id) { try { ch.destroy(); } catch (e) {} return false; }
+    return true;
+  });
+  const ch = new Chart(canvas, config);
+  _charts.push(ch);
+  return ch;
+}
+function destruirCharts() {
+  _charts.forEach(c => { try { c.destroy(); } catch (e) {} });
+  _charts = [];
+}
+
+function renderChartTipo(data) {
+  const tipos = contar(data, 'tipo');
+  const labels = Object.keys(tipos).sort((a, b) => tipos[b] - tipos[a]);
+  nuevoChart('st-tipo', {
     type: 'doughnut',
-    data: { labels: tipoLabels, datasets: [{ data: tipoLabels.map(t => tipoCount[t]), backgroundColor: tipoLabels.map(t => TIPO_COLOR[t] || '#888888'), borderColor: 'rgba(0,0,0,0.35)', borderWidth: 1 }] },
-    options: { plugins: { legend: { position: 'right', labels: { color: '#c8d8e8', font: { family: 'Barlow', size: 11 }, boxWidth: 10, padding: 10 } } }, maintainAspectRatio: false }
-  }));
-  const topMarcas = Object.entries(marcaCount).sort((a, b) => b[1] - a[1]).slice(0, 12);
-  _charts.push(new Chart(document.getElementById('chart-marca'), {
+    data: { labels, datasets: [{ data: labels.map(t => tipos[t]), backgroundColor: labels.map(t => TIPO_COLOR[t] || '#888888'), borderColor: 'rgba(0,0,0,0.35)', borderWidth: 1 }] },
+    options: {
+      plugins: { legend: { position: 'right', labels: { color: legendColor(), font: { family: 'Barlow', size: 11 }, boxWidth: 10, padding: 10 } } },
+      maintainAspectRatio: false,
+      onClick: (evt, el) => { if (el.length) drillTipo(labels[el[0].index]); }
+    }
+  });
+}
+function renderChartMarca(data) {
+  const marcas = contar(data, 'marca');
+  const top = Object.entries(marcas).sort((a, b) => b[1] - a[1]).slice(0, 15);
+  nuevoChart('st-marca', {
     type: 'bar',
-    data: { labels: topMarcas.map(m => m[0]), datasets: [{ label: 'Códigos', data: topMarcas.map(m => m[1]), backgroundColor: 'rgba(0,200,255,0.6)', borderColor: '#00c8ff', borderWidth: 1 }] },
-    options: { plugins: { legend: { display: false } }, scales: { x: { ticks: { color: axisColor } }, y: { ticks: { color: axisColor }, beginAtZero: true } }, maintainAspectRatio: false }
-  }));
-  const props = Object.entries(propCount).sort((a, b) => b[1] - a[1]);
-  _charts.push(new Chart(document.getElementById('chart-prop'), {
+    data: { labels: top.map(m => m[0]), datasets: [{ label: 'Códigos', data: top.map(m => m[1]), backgroundColor: 'rgba(0,200,255,0.6)', borderColor: '#00c8ff', borderWidth: 1 }] },
+    options: {
+      plugins: { legend: { display: false } },
+      scales: { x: { ticks: { color: axisTickColor() } }, y: { ticks: { color: axisTickColor() }, beginAtZero: true } },
+      maintainAspectRatio: false,
+      onClick: (evt, el) => { if (el.length) drillMarca(top[el[0].index][0]); }
+    }
+  });
+}
+function renderChartProp(data) {
+  const props = Object.entries(contarPropietarios(data)).sort((a, b) => b[1] - a[1]);
+  const propIds = props.map(p => p[0]).map(n => (propietarios.find(p => p.nombre === n) || {}).id);
+  nuevoChart('st-prop', {
     type: 'bar',
-    data: { labels: props.map(p => p[0]), datasets: [{ label: 'Códigos', data: props.map(p => p[1]), backgroundColor: 'rgba(57,255,140,0.55)', borderColor: '#39ff8c', borderWidth: 1 }] },
-    options: { indexAxis: 'y', plugins: { legend: { display: false } }, scales: { x: { ticks: { color: axisColor }, beginAtZero: true }, y: { ticks: { color: axisColor } } }, maintainAspectRatio: false }
+    data: { labels: props.map(p => p[0]), datasets: [{ label: 'Códigos', data: props.map(p => p[1]), backgroundColor: props.map((p, i) => PROP_PALETTE[i % PROP_PALETTE.length]), borderColor: 'rgba(0,0,0,0.3)', borderWidth: 1 }] },
+    options: {
+      indexAxis: 'y',
+      plugins: { legend: { display: false } },
+      scales: { x: { ticks: { color: axisTickColor() }, beginAtZero: true }, y: { ticks: { color: axisTickColor() } } },
+      maintainAspectRatio: false,
+      onClick: (evt, el) => { if (el.length) drillProp(propIds[el[0].index]); }
+    }
+  });
+}
+function renderChartSector(data) {
+  const sectores = contar(data, 'producto');
+  const top = Object.entries(sectores).sort((a, b) => b[1] - a[1]).slice(0, 15);
+  nuevoChart('st-sector', {
+    type: 'bar',
+    data: { labels: top.map(s => s[0]), datasets: [{ label: 'Códigos', data: top.map(s => s[1]), backgroundColor: 'rgba(255,170,0,0.6)', borderColor: '#ffaa00', borderWidth: 1 }] },
+    options: {
+      plugins: { legend: { display: false } },
+      scales: { x: { ticks: { color: axisTickColor() } }, y: { ticks: { color: axisTickColor() }, beginAtZero: true } },
+      maintainAspectRatio: false,
+      onClick: (evt, el) => { if (el.length) drillSector(top[el[0].index][0]); }
+    }
+  });
+}
+function renderChartCobertura(data) {
+  const con = data.filter(c => Array.isArray(c.propietarios_ids) && c.propietarios_ids.length).length;
+  const sin = data.length - con;
+  nuevoChart('st-cobertura', {
+    type: 'doughnut',
+    data: { labels: ['Con propietario', 'Sin propietario'], datasets: [{ data: [con, sin], backgroundColor: [accent3Color(), accent2Color()], borderColor: 'rgba(0,0,0,0.35)', borderWidth: 1 }] },
+    options: {
+      plugins: { legend: { position: 'right', labels: { color: legendColor(), font: { family: 'Barlow', size: 11 }, boxWidth: 10, padding: 10 } }, tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.parsed.toLocaleString('es-MX')} (${Math.round(ctx.parsed / data.length * 100)}%)` } } },
+      maintainAspectRatio: false
+    }
+  });
+}
+function renderChartCruce(data) {
+  const tipos = Object.keys(contar(data, 'tipo')).sort((a, b) => contar(data, 'tipo')[b] - contar(data, 'tipo')[a]);
+  const props = propietarios.filter(p => data.some(c => Array.isArray(c.propietarios_ids) && c.propietarios_ids.includes(p.id)));
+  const datasets = props.map((p, i) => ({
+    label: p.nombre,
+    backgroundColor: PROP_PALETTE[i % PROP_PALETTE.length],
+    borderColor: 'rgba(0,0,0,0.3)',
+    borderWidth: 1,
+    stack: 's',
+    data: tipos.map(t => data.filter(c => c.tipo === t && Array.isArray(c.propietarios_ids) && c.propietarios_ids.includes(p.id)).length)
   }));
+  nuevoChart('st-cruce', {
+    type: 'bar',
+    data: { labels: tipos, datasets },
+    options: {
+      plugins: { legend: { position: 'bottom', labels: { color: legendColor(), font: { family: 'Barlow', size: 10 }, boxWidth: 10, padding: 8 } } },
+      scales: { x: { stacked: true, ticks: { color: axisTickColor() } }, y: { stacked: true, ticks: { color: axisTickColor() }, beginAtZero: true } },
+      maintainAspectRatio: false,
+      onClick: (evt, el) => { if (el.length) drillCruce(tipos[el[0].index], props[el[0].datasetIndex].id); }
+    }
+  });
+}
+function poblarSelectMarcasPorTipo() {
+  const tipos = Object.entries(contar(getStatsBase(), 'tipo')).sort((a, b) => b[1] - a[1]);
+  const sel = document.getElementById('st-marca-tipo-select');
+  sel.innerHTML = tipos.map(([t]) => `<option value="${x(t)}">${x(t)}</option>`).join('');
+}
+function renderChartMarcasPorTipo() {
+  const sel = document.getElementById('st-marca-tipo-select');
+  const tipo = sel.value;
+  const data = getStatsBase().filter(c => c.tipo === tipo);
+  const marcas = contar(data, 'marca');
+  const top = Object.entries(marcas).sort((a, b) => b[1] - a[1]).slice(0, 10);
+  nuevoChart('st-marca-tipo', {
+    type: 'bar',
+    data: { labels: top.map(m => m[0]), datasets: [{ label: 'Códigos', data: top.map(m => m[1]), backgroundColor: 'rgba(180,100,255,0.6)', borderColor: '#b464ff', borderWidth: 1 }] },
+    options: {
+      plugins: { legend: { display: false } },
+      scales: { x: { ticks: { color: axisTickColor() } }, y: { ticks: { color: axisTickColor() }, beginAtZero: true } },
+      maintainAspectRatio: false,
+      onClick: (evt, el) => { if (el.length) drillMarcaYTipo(top[el[0].index][0], tipo); }
+    }
+  });
+}
+function renderChartHist(data) {
+  const MIN = 15000000, MAX = 16999999, BW = 250000;
+  const labels = [];
+  const counts = [];
+  let fuera = 0;
+  for (let lo = MIN; lo <= MAX; lo += BW) {
+    const hi = lo + BW - 1;
+    labels.push(`${(lo / 1e6).toFixed(2)}M`);
+    counts.push(data.filter(c => Number(c.codigo) >= lo && Number(c.codigo) <= hi).length);
+  }
+  for (const c of data) {
+    const n = Number(c.codigo);
+    if (n < MIN || n > MAX) fuera++;
+  }
+  if (fuera) { labels.push('fuera'); counts.push(fuera); }
+  nuevoChart('st-hist', {
+    type: 'bar',
+    data: { labels, datasets: [{ label: 'Códigos', data: counts, backgroundColor: 'rgba(57,255,140,0.5)', borderColor: '#39ff8c', borderWidth: 1 }] },
+    options: {
+      plugins: { legend: { display: false } },
+      scales: { x: { ticks: { color: axisTickColor() } }, y: { ticks: { color: axisTickColor() }, beginAtZero: true } },
+      maintainAspectRatio: false
+    }
+  });
+}
+
+function renderStatsView() {
+  if (vista !== 'stats') return;
+  poblarFiltrosStats();
+  const data = getStatsBase();
+  renderKPIs(data);
+  destruirCharts();
+  renderChartTipo(data);
+  renderChartMarca(data);
+  renderChartProp(data);
+  renderChartSector(data);
+  renderChartCobertura(data);
+  renderChartCruce(data);
+  poblarSelectMarcasPorTipo();
+  renderChartMarcasPorTipo();
+  renderChartHist(data);
+}
+
+// ─── DRILL-DOWN (chart → filtro en tabla) ───────────────
+function drillTipo(tipo) { setFilter(tipo, null); volverAEstadisticasTabla(); }
+function drillProp(propId) {
+  document.getElementById('filtroPropietario').value = String(propId);
+  propietarioActivoId = Number(propId);
+  applyFilters();
+  volverAEstadisticasTabla();
+}
+function drillMarca(marca) {
+  document.getElementById('search-input').value = marca;
+  _searchDirty = true;
+  applyFilters();
+  volverAEstadisticasTabla();
+}
+function drillSector(sector) {
+  document.getElementById('search-input').value = sector;
+  _searchDirty = true;
+  applyFilters();
+  volverAEstadisticasTabla();
+}
+function drillMarcaYTipo(marca, tipo) {
+  document.getElementById('search-input').value = marca;
+  _searchDirty = true;
+  setFilter(tipo, null);
+  applyFilters();
+  volverAEstadisticasTabla();
+}
+function drillCruce(tipo, propId) {
+  setFilter(tipo, null);
+  document.getElementById('filtroPropietario').value = String(propId);
+  propietarioActivoId = Number(propId);
+  applyFilters();
+  volverAEstadisticasTabla();
 }
 
 // ─── QUERY PARAMS EN URL ────────────────────────────────
@@ -1349,7 +1681,7 @@ function leerURLParams() {
   const dir = p.get('dir');
   if (dir === 'asc' || dir === 'desc') sortDir = dir;
   const v = p.get('view');
-  if (v === 'cards' || v === 'tabla') vista = v;
+  if (v === 'cards' || v === 'tabla' || v === 'stats') vista = v;
 }
 function actualizarURL() {
   const p = new URLSearchParams();
@@ -1391,14 +1723,16 @@ document.getElementById('cards-inner').addEventListener('click', e => {
 
 // ─── INIT VISTA ─────────────────────────────────────────
 (function initVista() {
-  vista = localStorage.getItem('block-view') === 'cards' ? 'cards' : 'tabla';
+  const saved = localStorage.getItem('block-view');
+  vista = (saved === 'cards' || saved === 'stats') ? saved : 'tabla';
 })();
 
 // ─── THEMES ─────────────────────────────────────────────
 function changeTheme(theme) {
-  const cls = 'theme-' + theme;
-  document.body.className = theme === 'default' ? '' : cls;
+  document.body.classList.remove('theme-contrast', 'theme-warm', 'theme-light', 'theme-classic', 'theme-sepia', 'theme-violet');
+  if (theme !== 'default') document.body.classList.add('theme-' + theme);
   localStorage.setItem('block-theme', theme);
+  if (vista === 'stats') renderStatsView();
 }
 (function loadTheme() {
   const saved = localStorage.getItem('block-theme') || 'default';
@@ -1412,8 +1746,8 @@ document.addEventListener('keydown', e => {
     closeModal(); cerrarModalPropietarios();
     cerrarModalImport();
     cerrarVistaRapida();
-    cerrarEstadisticas();
-    if (editingId !== null) cancelEdit();
+    if (vista === 'stats') volverAEstadisticasTabla();
+    else if (editingId !== null) cancelEdit();
   }
   if (e.key === 'Enter' && document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.closest('aside')) submitForm();
 });
@@ -1423,9 +1757,6 @@ document.getElementById('modal-import').addEventListener('click', e => {
 });
 document.getElementById('modal-quick').addEventListener('click', e => {
   if (e.target.id === 'modal-quick') cerrarVistaRapida();
-});
-document.getElementById('modal-stats').addEventListener('click', e => {
-  if (e.target.id === 'modal-stats') cerrarEstadisticas();
 });
 
 loadFromServer();

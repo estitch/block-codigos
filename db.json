@@ -1796,7 +1796,7 @@
     {
       "id": 312,
       "codigo": "16066713",
-      "tipo": "FESTEJOS DE GOL",
+      "tipo": "FESTEJO DE GOL",
       "propietarios_ids": [],
       "version": "CODERE",
       "marca": "CODERE",
@@ -50270,6 +50270,6 @@
   ],
   "meta": {
     "total": 5001,
-    "ultima_actualizacion": "2026-08-02"
+    "ultima_actualizacion": "2026-08-03"
   }
 }

@@ -304,7 +304,8 @@ function limpiarTipo(texto) {
     'MENCIÓN': 'MENCION',
     'I. AMBIENTAL': 'I.AMBIENTAL',
     'I. ACTIVA': 'I.ACTIVA',
-    'ACCIÓN ESPECIAL': 'ACCION ESPECIAL'
+    'ACCIÓN ESPECIAL': 'ACCION ESPECIAL',
+    'FESTEJOS DE GOL': 'FESTEJO DE GOL'
   };
   let t = String(texto).trim().toUpperCase();
   for (const [original, reemplazo] of Object.entries(reemplazos)) {
