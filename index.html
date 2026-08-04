@@ -398,6 +398,7 @@ const TIPO_COLOR = {
 };
 const PROP_PALETTE = ['#00c8ff','#39ff8c','#ffaa00','#ff4b6e','#b464ff','#ffc800','#8888ff','#ff7800','#50cc50','#ffdc32','#64c8ff','#cc50cc','#00ffc8'];
 let vista           = 'tabla';
+let _rowH           = ROW_H;
 let _rows           = [];
 let _scrollPending  = false;
 let _rszTimer       = null;
@@ -497,7 +498,9 @@ async function submitForm() {
         const wrap = document.getElementById('table-wrap');
         const idx = _rows.findIndex(c => c.id === res.registro.id);
         if (idx !== -1 && wrap) {
-          wrap.scrollTop = Math.max(0, idx * ROW_H - (wrap.clientHeight / 2));
+          const thead = wrap.querySelector('thead');
+          const theadH = thead ? thead.offsetHeight : 0;
+          wrap.scrollTop = Math.max(0, theadH + idx * _rowH - (wrap.clientHeight / 2));
           _renderWindow();
           const row = document.querySelector(`tr[data-id="${res.registro.id}"]`);
           if (row) row.classList.add('highlight-new');
@@ -1038,24 +1041,34 @@ function renderTable() {
   document.getElementById('hdr-filtered').textContent = _rows.length;
 }
 
-function _renderWindow() {
+function _renderWindow(_re = false) {
   if (vista === 'cards') { _renderCards(); return; }
   const tbody = document.getElementById('table-body');
   if (!_rows.length) { tbody.innerHTML = ''; return; }
   const wrap = document.getElementById('table-wrap');
+  const thead = wrap.querySelector('thead');
+  const theadH = thead ? thead.offsetHeight : 0;
   const vh = wrap.clientHeight || 400;
-  const totalH = _rows.length * ROW_H;
-  const maxScroll = Math.max(0, totalH - vh);
+  const totalH = _rows.length * _rowH;
+  const contentH = theadH + totalH;
+  const maxScroll = Math.max(0, contentH - vh);
   if (wrap.scrollTop > maxScroll) wrap.scrollTop = maxScroll;
   const st = wrap.scrollTop || 0;
-  const start = Math.max(0, Math.floor(st / ROW_H) - ROW_BUFFER);
-  const end = Math.min(_rows.length, Math.ceil((st + vh) / ROW_H) + ROW_BUFFER);
-  const topH = start * ROW_H;
-  const bottomH = totalH - end * ROW_H;
+  const start = Math.max(0, Math.floor((st - theadH) / _rowH) - ROW_BUFFER);
+  const end = Math.min(_rows.length, Math.ceil((st - theadH + vh) / _rowH) + ROW_BUFFER);
+  const topH = start * _rowH;
+  const bottomH = totalH - end * _rowH;
   tbody.innerHTML =
     (topH > 0 ? `<tr class="spacer" style="height:${topH}px"><td colspan="9"></td></tr>` : '') +
     _rows.slice(start, end).map(rowHtml).join('') +
     (bottomH > 0 ? `<tr class="spacer" style="height:${bottomH}px"><td colspan="9"></td></tr>` : '');
+  if (!_re) {
+    const sample = tbody.querySelector('tr:not(.spacer)');
+    if (sample) {
+      const h = sample.offsetHeight;
+      if (h > 0 && h !== _rowH) { _rowH = h; _renderWindow(true); }
+    }
+  }
 }
 
 function rowHtml(c) {
