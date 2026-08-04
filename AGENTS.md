@@ -22,6 +22,7 @@ They share no code. Dependencies: `express`, `cors` only (plain Express + `fs`, 
 - Tienda admin sessions: in-memory `Map<token, 2hr expiry>`. Token in `sessionStorage` (`ts_usuario`, `ts_esAdmin`, `ts_adminToken`, `ts_vistaAdmin`).
 - Block auth: plain password check per `POST /api/propietarios/verificar-clave`. No session.
 - Tienda brute force: 5 attempts → 15 min IP block (in-memory, lost on restart). SHA-256 timing-safe comparison.
+- Rate limiting: fixed-window per-IP middleware (`rateLimit`) applied to all `/api/*` routes in **both** servers. Buckets (per minute, in-memory, lost on restart): reads 300, writes 60; Block extras: batch (`/api/codigos/batch`) 10, key check (`/api/propietarios/verificar-clave`) 30. Toggle `RATE_LIMIT_ENABLED` (default true) or tune the `RL_*` constants at the top of each server file. Static files are not limited. A hit returns `429` + `Retry-After`. The Tienda login (`/api/admin/verificar-clave`) keeps its own brute-force logic (no `rateLimit` middleware).
 - Stock: decremented on pedido creation, restored to `productos` on cancel. No separate inventory table.
 - `express.json({ limit: '50mb' })` — required so `POST /api/codigos/batch` accepts real batches (a 1,074-row `_filtrado` payload is ~190 KB; the old 100 KB default caused 413). Restart the server after changing this.
 

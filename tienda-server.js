@@ -11,6 +11,14 @@ const BACKUP_INTERVALO_MS = 60 * 60 * 1000; // backup automático cada 1 hora
 const ADMIN_CLAVE = 'TIENDA2026';
 const crypto = require('crypto');
 
+// ─── RATE LIMITING POR IP (rutas generales) ──────────────────────────────────
+const RATE_LIMIT_ENABLED = true;
+const RL_WINDOW_MS = 60 * 1000;  // ventana de 1 minuto
+const RL_READ_MAX  = 300;        // lecturas / min
+const RL_WRITE_MAX = 60;         // escrituras / min
+
+const rateLimitCounters = new Map(); // `ip|bucket` -> { ventana, count }
+
 // ─── SESIONES ADMIN (token en memoria) ───────────────────────────────────────
 const sesionesAdmin = new Map(); // token -> { expira }
 const TOKEN_TTL_MS = 2 * 60 * 60 * 1000; // 2 horas
@@ -23,6 +31,42 @@ const BLOQUEO_MS = 15 * 60 * 1000; // 15 minutos
 function getIP(req) {
   return req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
 }
+
+/**
+ * Middleware de ventana fija por IP. Devuelve 429 + Retry-After al superar el máximo.
+ * @param {string} bucket - identificador del grupo de rutas
+ * @param {number} max - solicitudes permitidas por ventana
+ * @param {number} windowMs - duración de la ventana (ms)
+ */
+function rateLimit(bucket, max, windowMs = RL_WINDOW_MS) {
+  return (req, res, next) => {
+    if (!RATE_LIMIT_ENABLED) return next();
+    const ip = getIP(req);
+    const key = ip + '|' + bucket;
+    const now = Date.now();
+    let reg = rateLimitCounters.get(key);
+    if (!reg || now - reg.ventana >= windowMs) {
+      rateLimitCounters.set(key, { ventana: now, count: 1 });
+      return next();
+    }
+    reg.count++;
+    if (reg.count > max) {
+      const retry = Math.max(1, Math.ceil((reg.ventana + windowMs - now) / 1000));
+      res.setHeader('Retry-After', String(retry));
+      console.warn(`⚠️ [RATE] IP ${ip} excedió límite '${bucket}' (${max}/min)`);
+      return res.status(429).json({ error: `Demasiadas solicitudes. Intenta de nuevo en ${retry}s.`, retryAfter: retry });
+    }
+    next();
+  };
+}
+
+// Limpieza periódica de contadores vencidos (evita fuga de memoria)
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, reg] of rateLimitCounters) {
+    if (now - reg.ventana >= RL_WINDOW_MS * 2) rateLimitCounters.delete(key);
+  }
+}, 5 * 60 * 1000);
 
 function estaBloquedoIP(ip) {
   const reg = intentosFallidos.get(ip);
@@ -244,14 +288,14 @@ app.post('/api/admin/verificar-clave', (req, res) => {
 });
 
 // Cerrar sesión admin
-app.post('/api/admin/logout', (req, res) => {
+app.post('/api/admin/logout', rateLimit('escrituras', RL_WRITE_MAX), (req, res) => {
   const token = req.headers['x-admin-token'];
   if (token) sesionesAdmin.delete(token);
   res.json({ ok: true });
 });
 
 // Verificar si un token sigue válido (usado al restaurar sesión tras recarga)
-app.post('/api/admin/verificar-token', (req, res) => {
+app.post('/api/admin/verificar-token', rateLimit('escrituras', RL_WRITE_MAX), (req, res) => {
   const token = req.headers['x-admin-token'];
   if (tokenValido(token)) {
     res.json({ ok: true });
@@ -262,12 +306,12 @@ app.post('/api/admin/verificar-token', (req, res) => {
 
 // ─── USUARIOS ─────────────────────────────────────────────────────────────────
 
-app.get('/api/usuarios', (req, res) => {
+app.get('/api/usuarios', rateLimit('lecturas', RL_READ_MAX), (req, res) => {
   const db = cargarDB();
   res.json(db.usuarios);
 });
 
-app.post('/api/usuarios', (req, res) => {
+app.post('/api/usuarios', rateLimit('escrituras', RL_WRITE_MAX), (req, res) => {
   const { nombre } = req.body;
   if (!nombre || !nombre.trim()) return res.status(400).json({ error: 'Nombre requerido' });
   const db = cargarDB();
@@ -282,12 +326,12 @@ app.post('/api/usuarios', (req, res) => {
 
 // ─── CATEGORIAS ───────────────────────────────────────────────────────────────
 
-app.get('/api/categorias', (req, res) => {
+app.get('/api/categorias', rateLimit('lecturas', RL_READ_MAX), (req, res) => {
   const db = cargarDB();
   res.json(db.categorias);
 });
 
-app.post('/api/categorias', requireAdmin, (req, res) => {
+app.post('/api/categorias', rateLimit('escrituras', RL_WRITE_MAX), requireAdmin, (req, res) => {
   const { nombre, emoji, color } = req.body;
   if (!nombre || !nombre.trim()) return res.status(400).json({ error: 'Nombre requerido' });
   const db = cargarDB();
@@ -304,7 +348,7 @@ app.post('/api/categorias', requireAdmin, (req, res) => {
   res.json(nueva);
 });
 
-app.put('/api/categorias/:id', requireAdmin, (req, res) => {
+app.put('/api/categorias/:id', rateLimit('escrituras', RL_WRITE_MAX), requireAdmin, (req, res) => {
   const db = cargarDB();
   const idx = db.categorias.findIndex(c => c.id === req.params.id);
   if (idx === -1) return res.status(404).json({ error: 'No encontrada' });
@@ -316,7 +360,7 @@ app.put('/api/categorias/:id', requireAdmin, (req, res) => {
   res.json(db.categorias[idx]);
 });
 
-app.delete('/api/categorias/:id', requireAdmin, (req, res) => {
+app.delete('/api/categorias/:id', rateLimit('escrituras', RL_WRITE_MAX), requireAdmin, (req, res) => {
   const db = cargarDB();
   const idx = db.categorias.findIndex(c => c.id === req.params.id);
   if (idx === -1) return res.status(404).json({ error: 'No encontrada' });
@@ -330,12 +374,12 @@ app.delete('/api/categorias/:id', requireAdmin, (req, res) => {
 
 // ─── PRODUCTOS ────────────────────────────────────────────────────────────────
 
-app.get('/api/productos', (req, res) => {
+app.get('/api/productos', rateLimit('lecturas', RL_READ_MAX), (req, res) => {
   const db = cargarDB();
   res.json(db.productos);
 });
 
-app.post('/api/productos', requireAdmin, (req, res) => {
+app.post('/api/productos', rateLimit('escrituras', RL_WRITE_MAX), requireAdmin, (req, res) => {
   const { nombre, categoria, precio, precioBase, imagen, stock } = req.body;
   if (!nombre || !categoria || precio == null) return res.status(400).json({ error: 'Faltan campos' });
   const db = cargarDB();
@@ -353,7 +397,7 @@ app.post('/api/productos', requireAdmin, (req, res) => {
   res.json(nuevo);
 });
 
-app.put('/api/productos/:id', requireAdmin, (req, res) => {
+app.put('/api/productos/:id', rateLimit('escrituras', RL_WRITE_MAX), requireAdmin, (req, res) => {
   const db = cargarDB();
   const idx = db.productos.findIndex(p => p.id === parseInt(req.params.id));
   if (idx === -1) return res.status(404).json({ error: 'No encontrado' });
@@ -375,7 +419,7 @@ app.put('/api/productos/:id', requireAdmin, (req, res) => {
   res.json(db.productos[idx]);
 });
 
-app.delete('/api/productos/:id', requireAdmin, (req, res) => {
+app.delete('/api/productos/:id', rateLimit('escrituras', RL_WRITE_MAX), requireAdmin, (req, res) => {
   const db = cargarDB();
   const idx = db.productos.findIndex(p => p.id === parseInt(req.params.id));
   if (idx === -1) return res.status(404).json({ error: 'No encontrado' });
@@ -386,7 +430,7 @@ app.delete('/api/productos/:id', requireAdmin, (req, res) => {
 
 // ─── PEDIDOS ──────────────────────────────────────────────────────────────────
 
-app.get('/api/pedidos', (req, res) => {
+app.get('/api/pedidos', rateLimit('lecturas', RL_READ_MAX), (req, res) => {
   const db = cargarDB();
   // Enriquecer items viejos que no tienen precioBase con el valor actual del producto
   let modificado = false;
@@ -405,7 +449,7 @@ app.get('/api/pedidos', (req, res) => {
   res.json(db.pedidos);
 });
 
-app.post('/api/pedidos', (req, res) => {
+app.post('/api/pedidos', rateLimit('escrituras', RL_WRITE_MAX), (req, res) => {
   const { usuario, items, total } = req.body;
   if (!usuario || !items || !items.length) return res.status(400).json({ error: 'Pedido inválido' });
   const db = cargarDB();
@@ -441,7 +485,7 @@ app.post('/api/pedidos', (req, res) => {
   res.json({ pedido, productos: db.productos });
 });
 
-app.put('/api/pedidos/:id/pagado', requireAdmin, (req, res) => {
+app.put('/api/pedidos/:id/pagado', rateLimit('escrituras', RL_WRITE_MAX), requireAdmin, (req, res) => {
   const db = cargarDB();
   const idx = db.pedidos.findIndex(p => p.id === parseInt(req.params.id));
   if (idx === -1) return res.status(404).json({ error: 'No encontrado' });
@@ -450,7 +494,7 @@ app.put('/api/pedidos/:id/pagado', requireAdmin, (req, res) => {
   res.json(db.pedidos[idx]);
 });
 
-app.put('/api/pedidos/:id/estado', requireAdmin, (req, res) => {
+app.put('/api/pedidos/:id/estado', rateLimit('escrituras', RL_WRITE_MAX), requireAdmin, (req, res) => {
   const { estado } = req.body;
   if (!['pendiente', 'entregado', 'cancelado'].includes(estado)) return res.status(400).json({ error: 'Estado inválido' });
   const db = cargarDB();
@@ -475,7 +519,7 @@ app.put('/api/pedidos/:id/estado', requireAdmin, (req, res) => {
   res.json({ pedido, productos: db.productos });
 });
 
-app.delete('/api/usuarios/:nombre', requireAdmin, (req, res) => {
+app.delete('/api/usuarios/:nombre', rateLimit('escrituras', RL_WRITE_MAX), requireAdmin, (req, res) => {
   const nombre = decodeURIComponent(req.params.nombre);
   if (nombre === 'Admin') return res.status(403).json({ error: 'No se puede eliminar Admin' });
   const db = cargarDB();
@@ -488,7 +532,7 @@ app.delete('/api/usuarios/:nombre', requireAdmin, (req, res) => {
 // ─── ENDPOINTS BACKUP ────────────────────────────────────────────────────────
 
 // Listar backups disponibles
-app.get('/api/backups', requireAdmin, (req, res) => {
+app.get('/api/backups', rateLimit('lecturas', RL_READ_MAX), requireAdmin, (req, res) => {
   if (!fs.existsSync(BACKUP_DIR)) return res.json([]);
   const archivos = fs.readdirSync(BACKUP_DIR)
     .filter(f => f.startsWith('tienda-db_') && f.endsWith('.json'))
@@ -501,7 +545,7 @@ app.get('/api/backups', requireAdmin, (req, res) => {
 });
 
 // Crear backup manual
-app.post('/api/backups', requireAdmin, (req, res) => {
+app.post('/api/backups', rateLimit('escrituras', RL_WRITE_MAX), requireAdmin, (req, res) => {
   try {
     const nombre = crearBackup('manual');
     res.json({ ok: true, nombre });
@@ -511,7 +555,7 @@ app.post('/api/backups', requireAdmin, (req, res) => {
 });
 
 // Restaurar un backup específico
-app.post('/api/backups/restaurar', requireAdmin, (req, res) => {
+app.post('/api/backups/restaurar', rateLimit('escrituras', RL_WRITE_MAX), requireAdmin, (req, res) => {
   const { nombre } = req.body;
   if (!nombre) return res.status(400).json({ error: 'Nombre requerido' });
   const origen = path.join(BACKUP_DIR, nombre);
@@ -524,7 +568,7 @@ app.post('/api/backups/restaurar', requireAdmin, (req, res) => {
 });
 
 // Eliminar un backup
-app.delete('/api/backups/:nombre', requireAdmin, (req, res) => {
+app.delete('/api/backups/:nombre', rateLimit('escrituras', RL_WRITE_MAX), requireAdmin, (req, res) => {
   const archivo = path.join(BACKUP_DIR, req.params.nombre);
   if (!fs.existsSync(archivo)) return res.status(404).json({ error: 'No encontrado' });
   fs.unlinkSync(archivo);

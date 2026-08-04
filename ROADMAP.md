@@ -2,7 +2,7 @@
 
 > Implementado: `[x]` · Pendiente: `[ ]` · Omitido: ~~tachado~~ · Los números indican el **orden sugerido de implementación** por categoría.
 
-**Progreso: 11 / 28 ítems implementados (~39%)**
+**Progreso: 12 / 28 ítems implementados (~43%)**
 
 ## 🧠 Algoritmos & Lógica
 
@@ -35,7 +35,7 @@
 
 ## 🔌 Infraestructura & Red
 
-- [ ] **1 · Rate limiting por IP** en todas las rutas (hoy solo en login de tienda)
+- [x] **1 · Rate limiting por IP** en todas las rutas (ventana fija por IP en ambos servidores: lecturas 300/min, escrituras 60/min; extras del Block: batch 10/min, clave 30/min; el login de Tienda conserva su fuerza bruta propia)
 - [ ] **2 · Autenticación por usuario** con login (quién hizo cada cambio)
 - [ ] **3 · WebSocket** para sincronización en tiempo real entre PCs
 - [ ] **4 · Modo offline** (Service Worker + IndexedDB) con sync al reconectar

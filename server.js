@@ -12,6 +12,56 @@ const BACKUP_DIR  = path.join(__dirname, 'backups'); // Directorio para backups 
 const CLAVE_GESTION = 'AUDITSA2026';
 const BACKUP_INTERVAL_DAYS = 3; // Intervalo de backup en días
 
+// ─── RATE LIMITING POR IP ──────────────────────────────────
+const RATE_LIMIT_ENABLED = true;
+const RL_WINDOW_MS = 60 * 1000;   // ventana de 1 minuto
+const RL_READ_MAX  = 300;         // lecturas / min
+const RL_WRITE_MAX = 60;          // escrituras / min
+const RL_BATCH_MAX = 10;          // importaciones batch / min
+const RL_KEY_MAX   = 30;          // verificación de clave / min
+
+const rateLimitCounters = new Map(); // `ip|bucket` -> { ventana, count }
+
+function getIP(req) {
+  return (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket.remoteAddress || 'unknown';
+}
+
+/**
+ * Middleware de ventana fija por IP. Devuelve 429 + Retry-After al superar el máximo.
+ * @param {string} bucket - identificador del grupo de rutas
+ * @param {number} max - solicitudes permitidas por ventana
+ * @param {number} windowMs - duración de la ventana (ms)
+ */
+function rateLimit(bucket, max, windowMs = RL_WINDOW_MS) {
+  return (req, res, next) => {
+    if (!RATE_LIMIT_ENABLED) return next();
+    const ip = getIP(req);
+    const key = ip + '|' + bucket;
+    const now = Date.now();
+    let reg = rateLimitCounters.get(key);
+    if (!reg || now - reg.ventana >= windowMs) {
+      rateLimitCounters.set(key, { ventana: now, count: 1 });
+      return next();
+    }
+    reg.count++;
+    if (reg.count > max) {
+      const retry = Math.max(1, Math.ceil((reg.ventana + windowMs - now) / 1000));
+      res.setHeader('Retry-After', String(retry));
+      console.warn(`⚠️ [RATE] IP ${ip} excedió límite '${bucket}' (${max}/min)`);
+      return res.status(429).json({ error: `Demasiadas solicitudes. Intenta de nuevo en ${retry}s.`, retryAfter: retry });
+    }
+    next();
+  };
+}
+
+// Limpieza periódica de contadores vencidos (evita fuga de memoria)
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, reg] of rateLimitCounters) {
+    if (now - reg.ventana >= RL_WINDOW_MS * 2) rateLimitCounters.delete(key);
+  }
+}, 5 * 60 * 1000);
+
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.static(__dirname));
@@ -201,7 +251,7 @@ function programarBackupPeriodico() {
 
 // ─── ENDPOINT PARA BACKUP MANUAL ──────────────────────────
 
-app.post('/api/backup', (req, res) => {
+app.post('/api/backup', rateLimit('escrituras', RL_WRITE_MAX), (req, res) => {
   try {
     const backupPath = realizarBackupPeriodico();
     if (backupPath) {
@@ -221,7 +271,7 @@ app.post('/api/backup', (req, res) => {
 
 // ─── ENDPOINT PARA LISTAR BACKUPS ─────────────────────────
 
-app.get('/api/backups', (req, res) => {
+app.get('/api/backups', rateLimit('lecturas', RL_READ_MAX), (req, res) => {
   try {
     const archivos = listarBackups();
     res.json({ ok: true, backups: archivos, total: archivos.length });
@@ -232,7 +282,7 @@ app.get('/api/backups', (req, res) => {
 
 // ─── DESCARGAR BACKUP ──────────────────────────────────────
 
-app.get('/api/backups/:nombre', (req, res) => {
+app.get('/api/backups/:nombre', rateLimit('lecturas', RL_READ_MAX), (req, res) => {
   try {
     const nombre = req.params.nombre;
     if (!nombreBackupValido(nombre)) {
@@ -250,7 +300,7 @@ app.get('/api/backups/:nombre', (req, res) => {
 
 // ─── RESTAURAR BACKUP ──────────────────────────────────────
 
-app.post('/api/backups/restaurar', (req, res) => {
+app.post('/api/backups/restaurar', rateLimit('escrituras', RL_WRITE_MAX), (req, res) => {
   try {
     const { nombre, clave } = req.body;
 
@@ -436,11 +486,11 @@ function buscarSimilares(lista, codigo, umbral = 1) {
 
 // ─── ENDPOINTS ────────────────────────────────────────────
 
-app.get('/api/codigos', (req, res) => {
+app.get('/api/codigos', rateLimit('lecturas', RL_READ_MAX), (req, res) => {
   res.json(db);
 });
 
-app.post('/api/codigos', (req, res) => {
+app.post('/api/codigos', rateLimit('escrituras', RL_WRITE_MAX), (req, res) => {
   try {
     const nuevo = req.body;
     if (!nuevo.codigo || !nuevo.version || !nuevo.tipo || !nuevo.marca) {
@@ -477,7 +527,7 @@ app.post('/api/codigos', (req, res) => {
   }
 });
 
-app.post('/api/codigos/batch', (req, res) => {
+app.post('/api/codigos/batch', rateLimit('batch', RL_BATCH_MAX), (req, res) => {
   try {
     const { codigos } = req.body;
     if (!Array.isArray(codigos) || codigos.length === 0) {
@@ -570,7 +620,7 @@ app.post('/api/codigos/batch', (req, res) => {
   }
 });
 
-app.patch('/api/codigos/:id', (req, res) => {
+app.patch('/api/codigos/:id', rateLimit('escrituras', RL_WRITE_MAX), (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const { version, tipo, marca, submarca, producto } = req.body;
@@ -591,7 +641,7 @@ app.patch('/api/codigos/:id', (req, res) => {
   }
 });
 
-app.delete('/api/codigos/:id', (req, res) => {
+app.delete('/api/codigos/:id', rateLimit('escrituras', RL_WRITE_MAX), (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const antes = db.codigos.length;
@@ -606,7 +656,7 @@ app.delete('/api/codigos/:id', (req, res) => {
   }
 });
 
-app.patch('/api/codigos/:id/propietarios', (req, res) => {
+app.patch('/api/codigos/:id/propietarios', rateLimit('escrituras', RL_WRITE_MAX), (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const { propietarios_ids } = req.body;
@@ -626,17 +676,17 @@ app.patch('/api/codigos/:id/propietarios', (req, res) => {
 
 // ─── PROPIETARIOS ──────────────────────────────────────────
 
-app.get('/api/propietarios', (req, res) => {
+app.get('/api/propietarios', rateLimit('lecturas', RL_READ_MAX), (req, res) => {
   res.json(db.propietarios);
 });
 
-app.post('/api/propietarios/verificar-clave', (req, res) => {
+app.post('/api/propietarios/verificar-clave', rateLimit('clave', RL_KEY_MAX), (req, res) => {
   const { clave } = req.body;
   if (!clave) return res.status(400).json({ ok: false, error: 'Clave requerida' });
   res.json({ ok: clave === CLAVE_GESTION });
 });
 
-app.post('/api/propietarios', (req, res) => {
+app.post('/api/propietarios', rateLimit('escrituras', RL_WRITE_MAX), (req, res) => {
   try {
     const { nombre } = req.body;
     if (!nombre || !nombre.trim()) return res.status(400).json({ error: 'El nombre es obligatorio' });
@@ -654,7 +704,7 @@ app.post('/api/propietarios', (req, res) => {
   }
 });
 
-app.delete('/api/propietarios/:id', (req, res) => {
+app.delete('/api/propietarios/:id', rateLimit('escrituras', RL_WRITE_MAX), (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const idx = db.propietarios.findIndex(p => p.id === id);
