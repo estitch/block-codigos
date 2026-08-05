@@ -1,8 +1,10 @@
 const express = require('express');
+const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
 const cors = require('cors');
+const { WebSocketServer } = require('ws');
 
 const app = express();
 const PORT = 3030;
@@ -68,6 +70,80 @@ app.use(express.static(__dirname));
 
 // ─── DB EN MEMORIA ────────────────────────────────────────
 let db = { codigos: [], propietarios: [], meta: {} };
+
+// ─── WEBSOCKET (SYNC EN TIEMPO REAL ENTRE PCS) ─────────────
+const WS_PATH = '/ws';
+const WS_HEARTBEAT_MS = 30 * 1000;
+let wss = null;
+const wsClients = new Set();
+
+function getRevision() {
+  return Number(db.meta && db.meta.revision) || 0;
+}
+
+function enviarWS(ws, obj) {
+  if (ws && ws.readyState === 1) {
+    try { ws.send(JSON.stringify(obj)); } catch (e) { /* socket cerrado */ }
+  }
+}
+
+/**
+ * Emite un cambio incremental a todos los clientes conectados.
+ * Incrementa meta.revision, persiste y hace broadcast. Solo debe llamarse
+ * DESPUÉS de una mutación exitosa (persistir() aquí ya incluye la revisión).
+ */
+function emitirSync(opts = {}) {
+  db.meta.revision = getRevision() + 1;
+  persistir();
+  const msg = {
+    type: 'sync',
+    revision: db.meta.revision,
+    total: db.meta.total,
+    codigos: {
+      upserts:  opts.codigosUpserts  || [],
+      deletes:  opts.codigosDeletes  || []
+    },
+    propietarios: {
+      upserts:  opts.propsUpserts    || [],
+      deletes:  opts.propsDeletes    || []
+    }
+  };
+  for (const ws of wsClients) enviarWS(ws, msg);
+}
+
+/**
+ * Emite una señal de "recarga completa" (batch, borrado de propietario,
+ * restauración de backup, etc.). El cliente re-fetcha /api/codigos.
+ */
+function emitirSyncFull() {
+  db.meta.revision = getRevision() + 1;
+  persistir();
+  const msg = { type: 'sync-full', revision: db.meta.revision, total: db.meta.total };
+  for (const ws of wsClients) enviarWS(ws, msg);
+}
+
+function iniciarWebSocket() {
+  wss = new WebSocketServer({ server, path: WS_PATH });
+  wss.on('connection', (ws) => {
+    ws.isAlive = true;
+    wsClients.add(ws);
+    ws.on('pong', () => { ws.isAlive = true; });
+    ws.on('close', () => wsClients.delete(ws));
+    ws.on('error', () => wsClients.delete(ws));
+    enviarWS(ws, { type: 'hello', revision: getRevision(), total: db.meta.total });
+  });
+
+  const intervalo = setInterval(() => {
+    for (const ws of wss.clients) {
+      if (ws.isAlive === false) { ws.terminate(); wsClients.delete(ws); continue; }
+      ws.isAlive = false;
+      try { ws.ping(); } catch (e) { /* sin conexión */ }
+    }
+  }, WS_HEARTBEAT_MS);
+  wss.on('close', () => clearInterval(intervalo));
+
+  console.log(`🔌 WebSocket activo en ws://0.0.0.0:${PORT}${WS_PATH} (${wsClients.size} clientes)`);
+}
 
 // ─── FUNCIONES DE BACKUP ──────────────────────────────────
 
@@ -328,7 +404,7 @@ app.post('/api/backups/restaurar', rateLimit('escrituras', RL_WRITE_MAX), (req, 
       propietarios: restaurado.propietarios,
       meta: restaurado.meta || {}
     };
-    persistir();
+    emitirSyncFull();
 
     res.json({ ok: true, mensaje: 'Backup restaurado correctamente', total: db.codigos.length });
   } catch (error) {
@@ -473,6 +549,7 @@ function buscarSimilares(lista, codigo, umbral = 1) {
     });
 
     if (modificado) {
+      db.meta.revision = getRevision() + 1;
       persistir();
       console.log('✅ Base de datos migrada y actualizada');
     }
@@ -520,7 +597,7 @@ app.post('/api/codigos', rateLimit('escrituras', RL_WRITE_MAX), (req, res) => {
     };
 
     db.codigos.push(registro);
-    persistir();
+    emitirSync({ codigosUpserts: [registro] });
     res.json({ ok: true, registro, total: db.meta.total });
   } catch (e) {
     res.status(500).json({ error: 'No se pudo agregar el registro' });
@@ -609,6 +686,7 @@ app.post('/api/codigos/batch', rateLimit('batch', RL_BATCH_MAX), (req, res) => {
       }
 
       persistir();
+      emitirSyncFull();
       res.json({ ok: true, agregados, actualizados, sinCambios, total: db.meta.total });
     } catch (e) {
       db.codigos = snapshot;
@@ -634,7 +712,7 @@ app.patch('/api/codigos/:id', rateLimit('escrituras', RL_WRITE_MAX), (req, res) 
     if (submarca !== undefined) codigo.submarca  = submarca.trim();
     if (producto !== undefined) codigo.producto  = producto.trim();
 
-    persistir();
+    emitirSync({ codigosUpserts: [codigo] });
     res.json({ ok: true, registro: codigo, total: db.meta.total });
   } catch (e) {
     res.status(500).json({ error: 'No se pudo editar el registro' });
@@ -649,7 +727,7 @@ app.delete('/api/codigos/:id', rateLimit('escrituras', RL_WRITE_MAX), (req, res)
 
     if (db.codigos.length === antes) return res.status(404).json({ error: 'Código no encontrado' });
 
-    persistir();
+    emitirSync({ codigosDeletes: [id] });
     res.json({ ok: true, total: db.meta.total });
   } catch (e) {
     res.status(500).json({ error: 'No se pudo eliminar el registro' });
@@ -667,7 +745,7 @@ app.patch('/api/codigos/:id/propietarios', rateLimit('escrituras', RL_WRITE_MAX)
     if (!codigo) return res.status(404).json({ error: 'Código no encontrado' });
 
     codigo.propietarios_ids = propietarios_ids;
-    persistir();
+    emitirSync({ codigosUpserts: [codigo] });
     res.json({ ok: true, propietarios_ids });
   } catch (e) {
     res.status(500).json({ error: 'No se pudo actualizar' });
@@ -697,7 +775,7 @@ app.post('/api/propietarios', rateLimit('escrituras', RL_WRITE_MAX), (req, res) 
 
     const propietario = { id: nextId(db.propietarios), nombre: nombre.trim() };
     db.propietarios.push(propietario);
-    persistir();
+    emitirSync({ propsUpserts: [propietario] });
     res.json({ ok: true, propietario });
   } catch (e) {
     res.status(500).json({ error: 'No se pudo crear el propietario' });
@@ -717,7 +795,7 @@ app.delete('/api/propietarios/:id', rateLimit('escrituras', RL_WRITE_MAX), (req,
     });
 
     db.propietarios.splice(idx, 1);
-    persistir();
+    emitirSyncFull();
     res.json({ ok: true });
   } catch (e) {
     res.status(500).json({ error: 'No se pudo eliminar el propietario' });
@@ -726,14 +804,19 @@ app.delete('/api/propietarios/:id', rateLimit('escrituras', RL_WRITE_MAX), (req,
 
 // ─── INICIAR SERVIDOR ─────────────────────────────────────
 
-app.listen(PORT, '0.0.0.0', () => {
+const server = http.createServer(app);
+
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`\n  ✅  Block Codigos corriendo en http://localhost:${PORT}`);
   console.log(`  📁  DB:     ${DB_PATH}`);
   console.log(`  💾  Backup: ${DB_BAK_PATH}`);
-  console.log(`  📂  Backups: ${BACKUP_DIR}\n`);
+  console.log(`  📂  Backups: ${BACKUP_DIR}\n  🔌  WS:     ws://localhost:${PORT}${WS_PATH}\n`);
   
   // Migrar backups antiguos (.json → .gz) una sola vez
   migrarBackupsViejos();
+  
+  // Servidor WebSocket para sincronización en tiempo real
+  iniciarWebSocket();
   
   // Iniciar el sistema de backup programado
   programarBackupPeriodico();

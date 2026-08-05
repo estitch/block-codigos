@@ -7,7 +7,7 @@
 | Block Códigos | `server.js` | 3030 | `index.html` | `db.json` | `AUDITSA2026` | `0.0.0.0` — LAN reachable |
 | Tienda Teleactiva | `tienda-server.js` | 3031 | `tienda.html` | `tienda-db.json` | `TIENDA2026` | localhost only |
 
-They share no code. Dependencies: `express`, `cors` only (plain Express + `fs`, no database client).
+They share no code. Dependencies: `express`, `cors`, `ws` (Block only; plain Express + `fs`, no database client).
 
 ## Commands
 
@@ -21,6 +21,7 @@ They share no code. Dependencies: `express`, `cors` only (plain Express + `fs`, 
 - `tienda.js` calls `localhost:3031/api/*`. Retries login up to 3× with 1s delays.
 - Tienda admin sessions: in-memory `Map<token, 2hr expiry>`. Token in `sessionStorage` (`ts_usuario`, `ts_esAdmin`, `ts_adminToken`, `ts_vistaAdmin`).
 - Block auth: plain password check per `POST /api/propietarios/verificar-clave`. No session.
+- **WebSocket real-time sync (Block only):** `ws` at `ws://host:3030/ws` (path `WS_PATH`). One server = single source of truth; pushes state to all connected browsers so PCs on the LAN stay in sync without refreshing. Protocol: server→client `{type:'hello', revision, total}`, `{type:'sync', revision, total, codigos:{upserts[],deletes[]}, propietarios:{upserts[],deletes[]}}`, `{type:'sync-full', revision, total}`; client→server only `{type:'init', lastRevision}` on connect. `db.meta.revision` is a persisted monotonic counter bumped on every mutation; if a client's last-known revision differs from `hello.revision` (was offline / server restarted) it re-fetches `GET /api/codigos`. Broadcasts: incremental for create/edit/delete of códigos and propietario create; `sync-full` for batch import, propietario delete (cascade), and backup restore. Emitters `emitirSync()`/`emitirSyncFull()` in `server.js` always persist before broadcasting. Client (`index.html`) applies upserts/deletes idempotently with a 250 ms debounce and re-renders preserving virtual-scroll position; reconnects with exponential backoff (max 10 s). WS traffic does **not** pass through the HTTP `rateLimit` middleware, and there is no auth on the socket (LAN-only). Two PCs editing the same record: last HTTP write wins.
 - Tienda brute force: 5 attempts → 15 min IP block (in-memory, lost on restart). SHA-256 timing-safe comparison.
 - Rate limiting: fixed-window per-IP middleware (`rateLimit`) applied to all `/api/*` routes in **both** servers. Buckets (per minute, in-memory, lost on restart): reads 300, writes 60; Block extras: batch (`/api/codigos/batch`) 10, key check (`/api/propietarios/verificar-clave`) 30. Toggle `RATE_LIMIT_ENABLED` (default true) or tune the `RL_*` constants at the top of each server file. Static files are not limited. A hit returns `429` + `Retry-After`. The Tienda login (`/api/admin/verificar-clave`) keeps its own brute-force logic (no `rateLimit` middleware).
 - Stock: decremented on pedido creation, restored to `productos` on cancel. No separate inventory table.

@@ -2,7 +2,7 @@
 
 > Implementado: `[x]` · Pendiente: `[ ]` · Omitido: ~~tachado~~ · Los números indican el **orden sugerido de implementación** por categoría.
 
-**Progreso: 12 / 28 ítems implementados (~43%)**
+**Progreso: 13 / 28 ítems implementados (~46%)**
 
 ## 🧠 Algoritmos & Lógica
 
@@ -37,7 +37,7 @@
 
 - [x] **1 · Rate limiting por IP** en todas las rutas (ventana fija por IP en ambos servidores: lecturas 300/min, escrituras 60/min; extras del Block: batch 10/min, clave 30/min; el login de Tienda conserva su fuerza bruta propia)
 - [ ] **2 · Autenticación por usuario** con login (quién hizo cada cambio)
-- [ ] **3 · WebSocket** para sincronización en tiempo real entre PCs
+- [x] **3 · WebSocket** para sincronización en tiempo real entre PCs — `ws` en `ws://host:3030/ws`; el servidor emite cambios incrementales (`sync` con upserts/deletes de códigos y propietarios) o recarga completa (`sync-full`) en batch/restore/borrado de propietario; `meta.revision` persistente detecta gaps al reconectar y el cliente re-fetcha
 - [ ] **4 · Modo offline** (Service Worker + IndexedDB) con sync al reconectar
 
 ## 🧹 Mantenimiento / Calidad de Datos

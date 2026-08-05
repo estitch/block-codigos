@@ -384,6 +384,18 @@ let _fuzzyIds      = new Set();
 let _busquedaIndex = null;
 let _searchDirty   = true;
 
+// ─── WEBSOCKET (SYNC EN TIEMPO REAL) ──────────────────────
+let _ws                = null;
+let _lastRevision      = null;
+let _reconnectDelay    = 1000;
+let _wsReconnectTimer  = null;
+let _syncTimer         = null;
+let _syncCodUps        = new Map();
+let _syncCodDel        = new Set();
+let _syncPropUps       = new Map();
+let _syncPropDel       = new Set();
+let _syncFullPendiente = false;
+
 // ─── VISTA / VIRTUAL SCROLL / STATS ─────────────────────
 const ROW_H = 41;
 const ROW_BUFFER = 12;
@@ -436,6 +448,142 @@ async function loadFromServer() {
 }
 
 let _confirmarSimilar = false;
+
+// ─── WEBSOCKET: CLIENTE / SYNC EN TIEMPO REAL ───────────
+function setEstadoWS(conectado) {
+  const sb = document.getElementById('sb-status');
+  if (!sb) return;
+  sb.textContent = conectado ? '🟢 en tiempo real' : '⚠ sin tiempo real — reconectando…';
+  sb.classList.toggle('ok', conectado);
+}
+
+function marcarCachesSucias() {
+  _searchDirty = true;
+  _acDirty = true;
+}
+
+function actualizarAutocompletado() {
+  if (typeof inicializarAutocompletado === 'function') inicializarAutocompletado(() => db.codigos);
+}
+
+function rerenderSync() {
+  actualizarSelectPropietarios();
+  if (propietarioActivoId !== null && !propietarios.some(p => p.id === propietarioActivoId)) {
+    propietarioActivoId = null;
+    document.getElementById('filtroPropietario').value = '';
+  }
+  marcarCachesSucias();
+  actualizarAutocompletado();
+  renderTable();
+  updateCounts();
+  if (vista === 'stats') renderStatsView();
+}
+
+function aplicarSyncIncremental() {
+  for (const id of _syncCodDel) db.codigos = db.codigos.filter(c => c.id !== id);
+  for (const [id, rec] of _syncCodUps) {
+    const idx = db.codigos.findIndex(c => c.id === id);
+    if (idx === -1) db.codigos.push(rec); else db.codigos[idx] = rec;
+  }
+  for (const id of _syncPropDel) propietarios = propietarios.filter(p => p.id !== id);
+  for (const [id, pr] of _syncPropUps) {
+    const idx = propietarios.findIndex(p => p.id === id);
+    if (idx === -1) propietarios.push(pr); else propietarios[idx] = pr;
+  }
+  db.meta = db.meta || {};
+  _syncCodUps.clear(); _syncCodDel.clear();
+  _syncPropUps.clear(); _syncPropDel.clear();
+  rerenderSync();
+}
+
+async function refrescarDatosRemoto() {
+  try {
+    const r = await fetch(API);
+    if (!r.ok) return;
+    db = await r.json();
+    await cargarPropietarios();
+    _syncCodUps.clear(); _syncCodDel.clear();
+    _syncPropUps.clear(); _syncPropDel.clear();
+    rerenderSync();
+    toast('🔄 Datos sincronizados');
+  } catch { /* se reintentará en la próxima señal */ }
+}
+
+function programarSyncIncremental() {
+  const aplicar = () => {
+    if (_syncFullPendiente) return;
+    aplicarSyncIncremental();
+  };
+  clearTimeout(_syncTimer);
+  _syncTimer = setTimeout(aplicar, 250);
+}
+
+function manejarMensajeWS(msg) {
+  if (!msg || typeof msg !== 'object') return;
+  if (msg.type === 'hello') {
+    const nueva = Number(msg.revision) || 0;
+    if (_lastRevision !== null && _lastRevision !== nueva) {
+      _syncFullPendiente = true;
+      refrescarDatosRemoto().finally(() => { _syncFullPendiente = false; });
+    }
+    _lastRevision = nueva;
+    return;
+  }
+  if (msg.type === 'sync') {
+    _lastRevision = Number(msg.revision) || _lastRevision;
+    const cod = msg.codigos || {};
+    const prop = msg.propietarios || {};
+    (cod.upserts || []).forEach(r => _syncCodUps.set(Number(r.id), r));
+    (cod.deletes || []).forEach(id => { _syncCodDel.add(Number(id)); _syncCodUps.delete(Number(id)); });
+    (prop.upserts || []).forEach(p => _syncPropUps.set(Number(p.id), p));
+    (prop.deletes || []).forEach(id => { _syncPropDel.add(Number(id)); _syncPropUps.delete(Number(id)); });
+    programarSyncIncremental();
+    return;
+  }
+  if (msg.type === 'sync-full') {
+    _lastRevision = Number(msg.revision) || _lastRevision;
+    _syncFullPendiente = true;
+    _syncCodUps.clear(); _syncCodDel.clear();
+    _syncPropUps.clear(); _syncPropDel.clear();
+    clearTimeout(_syncTimer);
+    clearTimeout(manejarMensajeWS._fullTimer);
+    manejarMensajeWS._fullTimer = setTimeout(() => {
+      _syncFullPendiente = false;
+      refrescarDatosRemoto();
+    }, 250);
+  }
+}
+
+function initWebSocket() {
+  try {
+    const proto = location.protocol === 'https:' ? 'wss' : 'ws';
+    _ws = new WebSocket(`${proto}://${location.host}/ws`);
+  } catch (e) {
+    programarReconexion();
+    return;
+  }
+  _ws.onopen = () => {
+    _reconnectDelay = 1000;
+    setEstadoWS(true);
+    try { _ws.send(JSON.stringify({ type: 'init', lastRevision: _lastRevision })); } catch (e) {}
+  };
+  _ws.onmessage = (ev) => {
+    let msg;
+    try { msg = JSON.parse(ev.data); } catch (e) { return; }
+    manejarMensajeWS(msg);
+  };
+  _ws.onclose = () => {
+    setEstadoWS(false);
+    programarReconexion();
+  };
+  _ws.onerror = () => { /* onclose maneja la reconexión */ };
+}
+
+function programarReconexion() {
+  clearTimeout(_wsReconnectTimer);
+  _wsReconnectTimer = setTimeout(() => initWebSocket(), _reconnectDelay);
+  _reconnectDelay = Math.min(_reconnectDelay * 2, 10000);
+}
 
 async function submitForm() {
   const codigo   = document.getElementById('f-codigo').value.trim();
@@ -1773,6 +1921,7 @@ document.getElementById('modal-quick').addEventListener('click', e => {
 });
 
 loadFromServer();
+initWebSocket();
 </script>
 </body>
 </html>
