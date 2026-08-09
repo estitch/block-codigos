@@ -76,6 +76,7 @@ const WS_PATH = '/ws';
 const WS_HEARTBEAT_MS = 30 * 1000;
 let wss = null;
 const wsClients = new Set();
+const ipConnections = new Map(); // ip normalizada -> Set<ws> (deduplica por IP)
 
 function getRevision() {
   return Number(db.meta && db.meta.revision) || 0;
@@ -85,6 +86,32 @@ function enviarWS(ws, obj) {
   if (ws && ws.readyState === 1) {
     try { ws.send(JSON.stringify(obj)); } catch (e) { /* socket cerrado */ }
   }
+}
+
+function getIPWS(ws) {
+  const ra = (ws && ws._socket && ws._socket.remoteAddress) || 'unknown';
+  return ra.replace(/^::ffff:/, '');
+}
+
+function registrarWS(ws) {
+  ws._ip = getIPWS(ws);
+  if (!ipConnections.has(ws._ip)) ipConnections.set(ws._ip, new Set());
+  ipConnections.get(ws._ip).add(ws);
+  wsClients.add(ws);
+}
+
+function quitarWS(ws) {
+  wsClients.delete(ws);
+  const set = ws._ip && ipConnections.get(ws._ip);
+  if (set) {
+    set.delete(ws);
+    if (set.size === 0) ipConnections.delete(ws._ip);
+  }
+}
+
+function broadcastOnline() {
+  const msg = { type: 'online', online: ipConnections.size };
+  for (const ws of wsClients) enviarWS(ws, msg);
 }
 
 /**
@@ -126,23 +153,26 @@ function iniciarWebSocket() {
   wss = new WebSocketServer({ server, path: WS_PATH });
   wss.on('connection', (ws) => {
     ws.isAlive = true;
-    wsClients.add(ws);
+    registrarWS(ws);
     ws.on('pong', () => { ws.isAlive = true; });
-    ws.on('close', () => wsClients.delete(ws));
-    ws.on('error', () => wsClients.delete(ws));
-    enviarWS(ws, { type: 'hello', revision: getRevision(), total: db.meta.total });
+    ws.on('close', () => { quitarWS(ws); broadcastOnline(); });
+    ws.on('error', () => { quitarWS(ws); broadcastOnline(); });
+    enviarWS(ws, { type: 'hello', revision: getRevision(), total: db.meta.total, online: ipConnections.size });
+    broadcastOnline();
   });
 
   const intervalo = setInterval(() => {
+    let huboBaja = false;
     for (const ws of wss.clients) {
-      if (ws.isAlive === false) { ws.terminate(); wsClients.delete(ws); continue; }
+      if (ws.isAlive === false) { quitarWS(ws); ws.terminate(); huboBaja = true; continue; }
       ws.isAlive = false;
       try { ws.ping(); } catch (e) { /* sin conexión */ }
     }
+    if (huboBaja) broadcastOnline();
   }, WS_HEARTBEAT_MS);
   wss.on('close', () => clearInterval(intervalo));
 
-  console.log(`🔌 WebSocket activo en ws://0.0.0.0:${PORT}${WS_PATH} (${wsClients.size} clientes)`);
+  console.log(`🔌 WebSocket activo en ws://0.0.0.0:${PORT}${WS_PATH} (${ipConnections.size} dispositivos)`);
 }
 
 // ─── FUNCIONES DE BACKUP ──────────────────────────────────

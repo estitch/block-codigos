@@ -241,7 +241,8 @@
       Total: <span id="sb-total">—</span> &nbsp;|&nbsp;
       Mostrando: <span id="sb-visible">—</span> &nbsp;|&nbsp;
       Guardado: <span id="sb-time">—</span> &nbsp;|&nbsp;
-      Estado: <span id="sb-status">conectando...</span>
+      Estado: <span id="sb-status">conectando...</span> &nbsp;|&nbsp;
+      Conectados: <span id="sb-online">—</span>
     </div>
   </main>
 </div>
@@ -457,6 +458,11 @@ function setEstadoWS(conectado) {
   sb.classList.toggle('ok', conectado);
 }
 
+function setOnline(n) {
+  const el = document.getElementById('sb-online');
+  if (el) el.textContent = (n === undefined || n === null) ? '—' : n;
+}
+
 function marcarCachesSucias() {
   _searchDirty = true;
   _acDirty = true;
@@ -527,6 +533,11 @@ function manejarMensajeWS(msg) {
       refrescarDatosRemoto().finally(() => { _syncFullPendiente = false; });
     }
     _lastRevision = nueva;
+    setOnline(msg.online);
+    return;
+  }
+  if (msg.type === 'online') {
+    setOnline(msg.online);
     return;
   }
   if (msg.type === 'sync') {
@@ -574,6 +585,7 @@ function initWebSocket() {
   };
   _ws.onclose = () => {
     setEstadoWS(false);
+    setOnline(null);
     programarReconexion();
   };
   _ws.onerror = () => { /* onclose maneja la reconexión */ };
